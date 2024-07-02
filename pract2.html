@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fetch Operation</title>
+</head>
+<body>
+    <input type="submit" value="Submit" id="btn">
+    <div id="divdata"></div>
+    <script>    
+     document.getElementById("btn").addEventListener("click", zod);
+     async function zod(){  
+            try{  
+                const und = await fetch('https://procodrr.vercel.app/?sleep=5000')
+                if(!und.ok){
+                    throw Error(fetone.statusText)
+                }
+                console.log(und);
+                const tt = await und.text();
+                console.log("tt "+tt);
+                document.getElementById("divdata").innerText = tt;
+            } catch(error){
+                console.log(error);
+            }
+        }
+    console.log("hi");
+    </script>
+</body>
+</html>
+
+<!-- The issue you're encountering is due to the Same-Origin Policy (SOP), which restricts web pages from making requests to a different domain than the one that served the web page. Since your HTML file is being served from a local file system (file://), and you're trying to fetch a JSON file from the same local file system, you're running into CORS (Cross-Origin Resource Sharing) restrictions.
+
+To resolve this issue, you can either:
+
+Serve your HTML file from a local server: You can use tools like Live Server (for VS Code) or XAMPP to serve your HTML file from a local server. This way, both your HTML file and the JSON file will have the same origin, and you won't encounter CORS issues.
+
+Use a data URI: If your JSON data is small, you can embed it directly into your HTML file using a data URI. This bypasses the need for a separate JSON file and avoids CORS issues altogether. -->

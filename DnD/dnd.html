@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag and Drop</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: rgb(112, 2, 2);
+        }
+
+        .imgBox {
+            background-image: url('../MY-min.png');
+            position: relative;
+            top: 2px;
+            height: 145px;
+            width: 145px;
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin: auto auto;
+            cursor: pointer;
+        }
+
+        .whiteBox {
+            margin: 5rem 2rem;
+            height: 151px;
+            width: 151px;
+            background-color: wheat;
+            display: inline-block;
+            
+        }
+
+        .hold {
+            border: 2px solid red;
+        }
+
+        .hide {
+            display: none;
+        }
+        .dashed{
+            border: 2px dashed black;;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- to enable draging for an element then we nned to give it an attribute draggable=true -->
+    <div class="whiteBox">
+        <div class="imgBox" draggable="true"></div>
+    </div>
+    <div class="whiteBox"></div>
+    <div class="whiteBox"></div>
+    <div class="whiteBox"></div>
+
+    <script>
+        const whiteBox = document.getElementsByClassName('whiteBox');
+        const imgBox = document.querySelector('.imgBox');
+
+        imgBox.addEventListener('dragstart', (e) => {
+            console.log('dragged');
+            e.target.className += ' hold';
+            setTimeout(() => {
+                e.target.className +=' hide';
+            }, 0);
+            // when we give time 0 then it means that delay will end after all tasks have been executed whatever we are doing on the screen
+        })
+        imgBox.addEventListener('dragend', (e) => {
+            console.log('drag end')
+            // e.target.classList.remove('hold')
+            e.target.className = 'imgBox' ;
+
+        })
+
+        for (whiteBoxs of whiteBox) {
+            whiteBoxs.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                console.log('dragover');
+                e.target.classList.add('dashed');
+                // e.target.style.border ='2px solid black'
+            })
+            whiteBoxs.addEventListener('dragenter', (e) => {
+                console.log('dragenter');
+
+            })
+            whiteBoxs.addEventListener('dragleave', (e) => {
+                console.log('dragleave');
+                e.target.className = 'whiteBox';
+                // e.target.style.border ='';
+
+            })
+            whiteBoxs.addEventListener('drop', (e) => {
+                console.log('drop');
+                e.target.append(imgBox);
+            })
+        }
+    </script>
+</body>
+
+</html>

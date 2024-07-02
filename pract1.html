@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="textbox" type="text">&nbsp&nbsp&nbsp<input id="age" type="number">
+    <h2 id="feild">My name is <span id="name"></span></h2>
+    <h2 id="feild">My age is <span id="agespan"></span></h2>
+
+</body>
+<script>
+  var boxname = document.getElementById("textbox");
+  var boxspan = document.getElementById("name");
+  var boxage = document.getElementById("age");
+  var agespan = document.getElementById("agespan");
+  // boxspan.innerText= JSON.parse(localStorage.getItem("name")).name;
+  // agespan.innerText= JSON.parse(localStorage.getItem("name")).age;
+  //  non empty value is true value.
+  if(obj.age){
+  agespan.innerText=obj.age; 
+  }
+  //agr age wegra set hua h empty nahi hai tabhi value set hogi otherwise, aise nahi karenge to boxspan.innerText=obj.name; null value produce karega jo ki error dega
+  if(obj.name){
+    boxspan.innerText=obj.name;
+  }
+ 
+  
+  //will also work because we have already set the obj from local storage.
+
+
+  //boxspan.innerText= localStorage.getItem("name");
+  
+  // var obj = {
+  //   name:"",
+  //   age:""
+  // }
+
+  //best way 
+  var obj = JSON.parse(localStorage.getItem("name")) || {};
+  //initially when there isn't any object (null will be returned by getItem()) we will have {} empty object but if (on second input when object is set then we will get that object in obj)
+  //But First one is also working.
+
+  boxname.addEventListener("input", (e)=>{
+    let valuename = boxname.value
+    obj.name=valuename;
+    window.localStorage.setItem("name", JSON.stringify(obj));
+    boxspan.innerText= JSON.parse(localStorage.getItem("name")).name;
+  })
+  boxage.addEventListener("input", (e)=>{
+    let valueage = boxage.value;
+    obj.age=valueage;
+    window.localStorage.setItem("name", JSON.stringify(obj));
+    agespan.innerText= JSON.parse(localStorage.getItem("name")).age;
+
+  })
+ 
+</script>
+</html>

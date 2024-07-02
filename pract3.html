@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body> 
+    <script>
+       let str = prompt("Give your string: ");
+       let len = str.length;
+       
+       function comp(n){
+        if(n >= len/2){
+            console.log("string is palindrome");
+            return true;
+        }else{
+            if(str[n].toLowerCase() === str[len-n-1].toLowerCase()){
+                comp(n+1);
+            }else{
+                console.log("Not a palindrome");
+                return false;
+            }
+        }
+       }
+       comp(0);
+       
+    </script>
+</body>
+</html> 

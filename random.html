@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+        .hero{
+            width: 100%;
+            height: 100vh;
+            background-image: linear-gradient(#f44336, #730228);
+            display: flex;
+            justify-content: center;
+        }
+        #selector{
+            width: 350px;
+            margin-top: 4vh;
+        }
+        #selectField{
+            width: 100%;
+            padding: 15px 20px;
+            margin-bottom:5px;
+            background:rgba(255, 255, 255, 0.7);
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+        p{
+            user-select: none;
+        }
+        #list{
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 6px;
+            overflow: hidden;
+            height: 0;
+            transition: all 0.5s;
+        }
+        .options{
+            width: 100%;
+            padding: 15px;
+            list-style: none;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .options:hover{
+            background-color: #91130a;
+        }
+        .rotate {
+            transform: rotate(-180deg);
+        }
+        
+        #icon{
+            transition: transform 0.5s;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div id="selector">
+            <div id="selectField">
+                <p id="selectText">Select the region</p>
+                <i id="icon" class="fa-solid fa-caret-down"></i>
+            </div>
+            <ul id="list">
+                <li class="options">Asia</li>
+                <li class="options">America</li>
+                <li class="options">Africa</li>
+                <li class="options">Oceania</li>
+                <li class="options">Europe</li>
+            </ul>
+        </div>       
+    </div>  
+    <script>
+       const selectField = document.getElementById('selectField');
+       const selectText = document.getElementById('selectText');
+       const options = document.getElementsByClassName('options');
+       const list = document.getElementById('list');
+       const icon = document.getElementById('icon');
+
+       for(option of options){
+        option.onclick = function(){
+            selectText.innerText = this.textContent;
+            list.style.height='0';
+            console.log(selectText.innerText);            
+            icon.classList.remove('rotate');
+
+        }
+       }
+       selectField.onclick=function(){
+            list.style.height='unset';
+            icon.classList.add('rotate');
+       }
+       let con="mis";
+       let i;
+       console.log(con+i);
+    </script>
+</body>
+</html>
