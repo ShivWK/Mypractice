@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-image: linear-gradient(to right, rgb(6, 6, 150) 25% , rgb(110, 6, 23), rgb(37, 105, 5));
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #progress-bar{
+            width: 30%;
+            height: 15vh;
+            border-radius: 10px;
+            border: 2px double blueviolet;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .loader-1{
+            width: 80%;
+            height: 2.5vh;
+            border-radius: 10px;
+            border: 2px solid rgb(190, 4, 4);
+            animation: turn 4s linear 2s  infinite;
+        }
+        .loader-1::before{
+            content: " ";
+            display: block;
+            height: 100%;
+            width: 25%;
+            background-color: rgb(190, 4, 4);
+            border-radius: 10px;
+            box-shadow: 0 0 10px 2px rgb(190, 4, 4);
+            animation: Anime-1 2s linear infinite forwards;
+        }
+        .loader-2{
+            color: white;
+            font-size: small;
+        }
+        /* div ko vertically certer karna */
+        @keyframes Anime-1{
+            0%{
+                width: 0%;
+            }
+
+            100%{
+                width: 100%;
+            }
+        }
+
+        @keyframes turn{
+            0%{
+                transform: rotateY(0deg);
+            }
+            6.25%,
+            50%{
+                transform: rotateY(180deg);
+            }
+            56.25%,
+            100%{
+                transform: rotateY(360deg);
+            }
+
+        }
+    </style>
+</head>
+<body>
+    <div id="progress-bar">
+        <div class="loader-1"></div>
+        <div class="loader-2">Loading<span id="1st">.</span><span id="2nd">.</span><span id="3rd">.</span></div>
+    </div>
+</body>
+</html>
