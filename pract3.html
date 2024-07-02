@@ -7,23 +7,38 @@
 </head>
 <body> 
     <script>
-       let str = prompt("Give your string: ");
-       let len = str.length;
+        //to check whether given string is palindrome or not 
+    //    let str = prompt("Give your string: ");
+    //    let len = str.length;
        
-       function comp(n){
-        if(n >= len/2){
-            console.log("string is palindrome");
-            return true;
+    //    function comp(n){
+    //     if(n >= len/2){
+    //         console.log("string is palindrome");
+    //         return true;
+    //     }else{
+    //         if(str[n].toLowerCase() === str[len-n-1].toLowerCase()){
+    //             comp(n+1);
+    //         }else{
+    //             console.log("Not a palindrome");
+    //             return false;
+    //         }
+    //     }
+    //    }
+    //    comp(0);
+
+    //to print nth fibonacci number not counting startiong 0 in the series
+
+    let term = parseInt(prompt("Your term: "),10);
+    console.log(fiboterm(term));
+    function fiboterm(n){
+        if(n <=1){
+            return n;
         }else{
-            if(str[n].toLowerCase() === str[len-n-1].toLowerCase()){
-                comp(n+1);
-            }else{
-                console.log("Not a palindrome");
-                return false;
-            }
+            let last = fiboterm(n-1);
+            let slast = fiboterm(n-2);
+            return last + slast;
         }
-       }
-       comp(0);
+    }
        
     </script>
 </body>
