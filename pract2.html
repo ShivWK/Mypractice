@@ -5,26 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>fetch Operation</title>
 </head>
-<body>
-    <input type="submit" value="Submit" id="btn">
-    <div id="divdata"></div>
+<body></body>
+    <div id="divdata">
+        Lorem ipsum dolor sit amet <abbr title="Read Access Memory">RAM</abbr> consectetur adipisicing elit. Dolorem, ipsa.
+
+        <address>
+            <p>
+                Shivendra Dwivedi<br/>
+                Triveni Nagar Naini Prayagraj<br/>
+            </p>
+            <ul>
+                <li>Tel : 7897532327</li>
+            </ul>
+        </address>
+        <address>
+            Written by <a href="#">Shivendra Dwivedi</a>
+        </address>
+        <pre>
+            <code>
+                boxname.addEventListener("input", (e)=>{
+                    let <var>valuename</var> = boxname.value
+                    obj.name=valuename;
+                    window.localStorage.setItem("name", JSON.stringify(obj));
+                    <samp>boxspan.innerText= JSON.parse(localStorage.getItem("name")).name;</samp>
+                  })
+                  use <kbd>ctrl+A</kbd> to copy all
+            </code>
+        </pre>
+        <time datetime="1999-02-05T19:50">5th of feb 1999 at 07:50pm</time>
+        <blockquote cite="https://webchatter.00.pe">Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi ex debitis ipsum repudiandae minus sapiente fuga officia temporibus, laudantium quas.</blockquote>
+
+        <p>Lorem ipsum dolor sit amet <q cite="http://www.wwe.com">Lorem ipsum dolor sit amet.</q>consectetur, adipisicing elit. Quidem voluptatibus aliquid rem repellat perferendis, fuga quod deserunt iusto quo ipsam?</p>
+
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, officia, voluptas error voluptates cum repellat quos hic deserunt explicabo, recusandae odio? Architecto velit, laudantium natus sit omnis eius. Assumenda, saepe?
+            <cite><a href="https:??www.mdn.com">MDN DOcs</a></cite>
+        </p>
+        <video src="https://youtu.be/4MxTUuxSCeQ?si=NGwa0cH8B8ba9UeU" controls 
+            preload="auto"
+            width="300"
+            height="400"
+            autoplay
+            loop
+            muted
+            poster="audiocover.j">   
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit, eos!
+            <a href="c:\Users\user\Desktop\My Projects JS\Porfolio\images\audiocover.jpg">link to vedio</a>
+            </p>
+        </video>
     <script>    
-     document.getElementById("btn").addEventListener("click", zod);
-     async function zod(){  
-            try{  
-                const und = await fetch('https://procodrr.vercel.app/?sleep=5000')
-                if(!und.ok){
-                    throw Error(fetone.statusText)
-                }
-                console.log(und);
-                const tt = await und.text();
-                console.log("tt "+tt);
-                document.getElementById("divdata").innerText = tt;
-            } catch(error){
-                console.log(error);
-            }
-        }
-    console.log("hi");
     </script>
 </body>
 </html>

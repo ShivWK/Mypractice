@@ -28,18 +28,76 @@
 
     //to print nth fibonacci number not counting startiong 0 in the series
 
-    let term = parseInt(prompt("Your term: "),10);
-    console.log(fiboterm(term));
-    function fiboterm(n){
-        if(n <=1){
-            return n;
-        }else{
-            let last = fiboterm(n-1);
-            let slast = fiboterm(n-2);
-            return last + slast;
-        }
-    }
+    // let term = parseInt(prompt("Your term: "),10);
+    // console.log(fiboterm(term));
+    // function fiboterm(n){
+    //     if(n <=1){
+    //         return n;
+    //     }else{
+    //         let last = fiboterm(n-1);
+    //         let slast = fiboterm(n-2);
+    //         return last + slast;
+    //     }
+    // }
        
+//hashing, counting how many times a particular number have been appered in the array
+    // function countArray(){
+    //     //prompt returns string
+    //     let size = parseInt(prompt("Enter the size of the array "));
+    //     let arr = new Array(size);
+    //     for(let i=0; i<size; i++){
+    //         arr[i] = parseInt(prompt(`Give ${i+1} number `));
+    //     }
+
+        //size should be large enugh so because item in arr is index in has, so if arr has size 5 but elements are [1,15,44,50] so 50 index should be present in has array so give size to has as the max value in arr + 1, 1 is for 0 index; because if 12 then index would be 0 to 11 but we want 0 to 12;
+
+    //     let has = new Array(Math.max(...arr) + 1).fill(0);
+
+    //     for(let i=0; i<size; i++){
+    //         has[arr[i]] += 1;
+    //     }
+    //     let q = parseInt(prompt("How many query "));
+    //     while(q--){
+    //         let num = parseInt(prompt("Your query "));
+    //         console.log(has[num]);
+    //     }        
+    // }
+    // countArray();
+
+    // // function frequencyCount(arr,N,P){    
+    // //     let has = new Array(P + 1).fill(0);
+    // //     for(let i=0; i<has.length; i++){ 
+    // //         if(arr.includes(i)){
+    // //             has[i] += 1;
+    // //         }                     
+    // //     }
+    // //     return has;
+    // // }   
+    // console.log(frequencyCount([1,2,1,1,3], 5, 3)); 
+    
+    //Selection sort
+        function selectionSort(arr){
+            const n = arr.length;
+
+            for(let i=0; i<=n-2; i++){
+                let minIndex = i;
+                for(let j=i+1; j<=n-1; j++){
+                    if(arr[j]<arr[minIndex])
+                    {
+                        minIndex=j;
+                    }
+                }
+                let temp = arr[i];
+                arr[i] = arr[minIndex];
+                arr[minIndex] = temp;
+            }
+            for(let i=0; i<n; i++){
+                console.log(arr[i]+" ");
+            }
+
+        }
+        
+        selectionSort([11,9,50,85,15,3,0]);
     </script>
 </body>
 </html> 

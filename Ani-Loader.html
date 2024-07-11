@@ -20,31 +20,29 @@
         }
         #progress-bar{
             width: 30%;
-            height: 15vh;
+            height: 5vh;
             border-radius: 10px;
-            border: 2px double blueviolet;
+            /* border: 2px double blueviolet; */
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-direction: column;
-            gap: 10px;
         }
         .loader-1{
             width: 80%;
             height: 2.5vh;
             border-radius: 10px;
-            border: 2px solid rgb(190, 4, 4);
-            animation: turn 4s linear 2s  infinite;
+            border: 2px solid #aca9a8;
+            animation: turn 1s linear 0.5s  infinite;
         }
         .loader-1::before{
             content: " ";
             display: block;
             height: 100%;
             width: 25%;
-            background-color: rgb(190, 4, 4);
+            background-color: #aca9a8;
             border-radius: 10px;
-            box-shadow: 0 0 10px 2px rgb(190, 4, 4);
-            animation: Anime-1 2s linear infinite forwards;
+            box-shadow: 0 0 10px 2px #aca9a8;
+            animation: Anime-1 0.5s linear infinite forwards;
         }
         .loader-2{
             color: white;
@@ -80,7 +78,6 @@
 <body>
     <div id="progress-bar">
         <div class="loader-1"></div>
-        <div class="loader-2">Loading<span id="1st">.</span><span id="2nd">.</span><span id="3rd">.</span></div>
     </div>
 </body>
 </html>
