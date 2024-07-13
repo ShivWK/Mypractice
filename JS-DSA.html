@@ -151,63 +151,98 @@
         // bubbleSort([1,2,3,5,8,9])
 
         //merge sort 
-        function merge(arr, low, mid, high){
-            let temp = [];
-            let left = low;
-            let right = mid + 1;
-            let i = 0;
-            while(left <= mid && right <= high){
-                if(arr[left] <= arr[right]){
-                    temp[i] = arr[left];
+        // function merge(arr, low, mid, high){
+        //     let temp = [];
+        //     let left = low;
+        //     let right = mid + 1;
+        //     let i = 0;
+        //     while(left <= mid && right <= high){
+        //         if(arr[left] <= arr[right]){
+        //             temp[i] = arr[left];
+        //             i++;
+        //             left++;
+        //         }else{
+        //             temp[i] = arr[right];
+        //             i++;
+        //             right++;
+        //         }
+        //     }
+        //     while(left <= mid){
+        //         temp[i] = arr[left];
+        //         i++;
+        //         left++;
+        //     }
+        //     while(right <= high){
+        //         temp[i] = arr[right];
+        //         i++;
+        //         right++;
+        //     }
+
+        //     for(let i=0; i<temp.length; i++){
+        //         arr[low + i] = temp[i];
+        //     }
+
+        //     //mean if low is point to other index not 0 like 2 then we should replace the elements from index 2 in original array, this can be in case we have array like [1,2,4,9,6,12,80] then here I will point low to 2 .
+
+        //     // The concept behind using low + i is to ensure that the merged elements are placed back into their correct positions in the original array. This is particularly important when you're merging subarrays that do not start at index 0.
+          
+        // }
+
+        // function mergeSort(arr){
+        //     const n = arr.length;
+        //     let low = 0;
+        //     let high = n-1;
+        //     ms(arr, low, high);
+        //     function ms(arr, low, high){
+        //         if(low >= high) return;
+        //         let mid = Math.floor((low + high) / 2);
+        //         ms(arr, low, mid);
+        //         ms(arr, mid+1, high);
+
+        //         merge(arr, low, mid, high);
+        //     }   
+        //     for(let i=0; i<arr.length; i++){
+        //         console.log(arr[i]);
+        //     }        
+
+        // }
+        // // mergeSort([11,9,50,85,15,3,0]);
+        // mergeSort([1,2,3,5,8,9])
+
+        //quick sort problem
+        function partition(arr, low, high){
+            let pivot = arr[low];
+            let i = low;
+            let j = high;
+            while(i < j){
+                while(arr[i] <= pivot && i <= high -1){
                     i++;
-                    left++;
-                }else{
-                    temp[i] = arr[right];
-                    i++;
-                    right++;
+                }
+                while(arr[j] > pivot && j >= low +1 ){
+                    j--;
+                }
+                if(i < j){
+                    let temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
                 }
             }
-            while(left <= mid){
-                temp[i] = arr[left];
-                i++;
-                left++;
-            }
-            while(right <= high){
-                temp[i] = arr[right];
-                i++;
-                right++;
-            }
-
-            for(let i=0; i<temp.length; i++){
-                arr[low + i] = temp[i];
-            }
-
-            //mean if low is point to other index not 0 like 2 then we should replace the elements from index 2 in original array, this can be in case we have array like [1,2,4,9,6,12,80] then here I will point low to 2 .
-
-            // The concept behind using low + i is to ensure that the merged elements are placed back into their correct positions in the original array. This is particularly important when you're merging subarrays that do not start at index 0.
-          
+            let temp = arr[j];
+            arr[j] = pivot;
+            arr[low] = temp;
+            return j;
         }
 
-        function mergeSort(arr){
-            const n = arr.length;
-            let low = 0;
-            let high = n-1;
-            ms(arr, low, high);
-            function ms(arr, low, high){
-                if(low >= high) return;
-                let mid = Math.floor((low + high) / 2);
-                ms(arr, low, mid);
-                ms(arr, mid+1, high);
-
-                merge(arr, low, mid, high);
-            }   
-            for(let i=0; i<arr.length; i++){
-                console.log(arr[i]);
-            }        
-
+        function quickSort(arr, low = 0, high = arr.length-1){
+            if(low < high){
+                let indexOfPivot = partition(arr, low, high);
+                quickSort(arr, low, indexOfPivot -1);
+                quickSort(arr, indexOfPivot + 1, high);
+            }
+           return arr; 
         }
-        // mergeSort([11,9,50,85,15,3,0]);
-        mergeSort([1,2,3,5,8,9])
+
+        console.log(quickSort([11,9,50,85,15,3,0]));
     </script>
 </body>
 </html> 
