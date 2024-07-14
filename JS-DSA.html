@@ -210,18 +210,52 @@
         // mergeSort([1,2,3,5,8,9])
 
         //quick sort problem
+        //  function partition(arr, low, high){
+        //      let pivot = arr[low];
+        //      let i = low;
+        //      let j = high;
+        //      while(i < j){
+        //          while(arr[i] <= pivot && i <= high -1){
+        //              i++;
+        //          }
+        //          while(arr[j] > pivot && j >= low +1 ){
+       
+         // The conditions i <= high - 1 and j >= low + 1 in the partition function of the quicksort algorithm are given to ensure that the indices i and j do not go out of bounds (last index ko i par n kar jae aur j o ko na par karv jae) while traversing the array. 
+
+//                      j--;
+//                  }
+//                  if(i < j){
+//                      let temp = arr[i];
+//                      arr[i] = arr[j];
+//                      arr[j] = temp;
+//                  }
+//              }
+//              let temp = arr[j];
+//              arr[j] = pivot;
+//                arr[low] = temp;
+//              return j;
+//          }
+
+//          function quickSort(arr, low = 0, high = arr.length-1){
+//              if(low < high){
+//                  let indexOfPivot = partition(arr, low, high);
+//                  quickSort(arr, low, indexOfPivot -1);
+//                  quickSort(arr, indexOfPivot + 1, high);
+//              }
+//             return arr; 
+//          }
+
+//  console.log(quickSort([11,9,50,85,15,3,0]));
+//quick sort by abdul bari sir
         // function partition(arr, low, high){
         //     let pivot = arr[low];
         //     let i = low;
         //     let j = high;
         //     while(i < j){
-        //         while(arr[i] <= pivot && i <= high -1){
+        //         while(arr[i] <= pivot ){
         //             i++;
         //         }
-        //         while(arr[j] > pivot && j >= low +1 ){
-       
-         // The conditions i <= high - 1 and j >= low + 1 in the partition function of the quicksort algorithm are given to ensure that the indices i and j do not go out of bounds (last index ko i par n kar jae aur j o ko na par karv jae) while traversing the array. 
-
+        //         while(arr[j] > pivot ){
         //             j--;
         //         }
         //         if(i < j){
@@ -246,40 +280,41 @@
         // }
 
         // console.log(quickSort([11,9,50,85,15,3,0]));
-//quick sort by abdul bari sir
-        function partition(arr, low, high){
-            let pivot = arr[low];
-            let i = low;
-            let j = high;
-            while(i < j){
-                while(arr[i] <= pivot ){
-                    i++;
-                }
-                while(arr[j] > pivot ){
-                    j--;
-                }
-                if(i < j){
-                    let temp = arr[i];
-                    arr[i] = arr[j];
-                    arr[j] = temp;
-                }
-            }
-            let temp = arr[j];
-            arr[j] = pivot;
-            arr[low] = temp;
-            return j;
-        }
 
-        function quickSort(arr, low = 0, high = arr.length-1){
-            if(low < high){
-                let indexOfPivot = partition(arr, low, high);
-                quickSort(arr, low, indexOfPivot -1);
-                quickSort(arr, indexOfPivot + 1, high);
-            }
-           return arr; 
-        }
+       // quick sort problem decending order
+         function partition(arr, low, high){
+             let pivot = arr[low];
+             let i = low;
+             let j = high;
+             while(i < j){
+                 while(arr[i] > pivot && i <= high -1){
+                     i++;
+                 }
+                 while(arr[j] <= pivot && j >= low +1 ){ 
+                     j--;
+                 }
+                 if(i < j){
+                     let temp = arr[i];
+                     arr[i] = arr[j];
+                     arr[j] = temp;
+                 }
+             }
+             let temp = arr[j];
+             arr[j] = pivot;
+               arr[low] = temp;
+             return j;
+         }
 
-        console.log(quickSort([11,9,50,85,15,3,0]));
+         function quickSort(arr, low = 0, high = arr.length-1){
+             if(low < high){
+                 let indexOfPivot = partition(arr, low, high);
+                 quickSort(arr, low, indexOfPivot -1);
+                 quickSort(arr, indexOfPivot + 1, high);
+             }
+            return arr; 
+         }
+
+ console.log(quickSort([11,9,50,85,15,3,0]));
     </script>
 </body>
 </html> 
