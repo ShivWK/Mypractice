@@ -7,27 +7,83 @@
 </head>
 <body>
     <script>
-        //Second Largest
-        function secondLargest(arr){
-            let max = arr[0],
-             secondMax = -1; //assuming array doesn't have element lesser than -1;
+
+//Second Largest
+
+        // function secondLargest(arr){
+        //     let max = arr[0],
+        //      secondMax = -1; //assuming array doesn't have element lesser than -1;
             
-            for(let i=0; i<arr.length; i++){
-                if(arr[i] > max){
-                    secondMax = max;
-                    max = arr[i];
-                }
-                else if(arr[i] > secondMax && arr[i] != max){
-                    secondMax = arr[i];
-                }
-            }
-            return [max, secondMax];
-        }
+        //     for(let i=0; i<arr.length; i++){
+        //         if(arr[i] > max){
+        //             secondMax = max;
+        //             max = arr[i];
+        //         }
+        //         else if(arr[i] > secondMax && arr[i] < max){
+        //             secondMax = arr[i];
+        //         }
+        //     }
+        //     return [max, secondMax];
+        // }
 
-        console.log(secondLargest([1,2]));
+        // console.log(secondLargest([1,2]));
 
-        //Second Smallest
-        
+//Second Smallest
+
+        // function secondSmallest(arr){
+        //     let small = arr[0],
+        //      secondsmall = Infinity; //assuming array doesn't have element lesser than -1;
+            
+        //     for(let i=0; i<arr.length; i++){
+        //         if(arr[i] < small){
+        //             secondsmall = small;
+        //             small = arr[i];
+        //         }
+        //         else if(arr[i] > small && arr[i] < secondsmall){
+        //             secondsmall = arr[i];
+        //         }
+        //     }
+        //     return [small, secondsmall];
+        // }
+
+        // console.log(secondSmallest([1,2,9,15,0,-2,-5]));
+
+//Array is sorted or not for non decending mean array will in increasing if sorted
+
+        // function sorted(arr){
+        //     for(let i = 1; i<arr.length; i++){
+        //         if(arr[i] >= arr[i-1]){
+        //             return "sorted";
+        //         }else{
+        //             return "not sorted";
+        //         }
+        //     }     
+        // }
+        // console.log(sorted([1,2,3,4]));
+        // console.log(sorted([4,3,2,1]));
+
+//for both kind increasing and decreasing
+
+    //     function sorted(arr){
+
+    //         if(arr.length <= 1) return "sorted as Increasing";
+    //         let decreasing = increasing = false;
+
+    //         for(let i = 1; i<arr.length; i++){
+    //             if(arr[i] <= arr[i-1]){
+    //                 decreasing =  true;
+    //             }else if (arr[i] >= arr[i-1]){
+    //                 increasing = true;
+    //             }               
+    //         }
+    //         if(decreasing) return "sorted as deceresing"  ;
+    //         if(increasing) return "sorted as increasing"  ;
+    //         return 'not sorted'; 
+    //     }
+    //     console.log(sorted([1,2,3,4]));
+    //    console.log(sorted([4,3,2,1]));
+    //    console.log(sorted([1]));
+
     </script>
 </body>
 </html>
