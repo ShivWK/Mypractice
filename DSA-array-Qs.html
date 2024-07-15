@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Second Largest
+        function secondLargest(arr){
+            let max = arr[0],
+             secondMax = -1; //assuming array doesn't have element lesser than -1;
+            
+            for(let i=0; i<arr.length; i++){
+                if(arr[i] > max){
+                    secondMax = max;
+                    max = arr[i];
+                }
+                else if(arr[i] > secondMax && arr[i] != max){
+                    secondMax = arr[i];
+                }
+            }
+            return [max, secondMax];
+        }
+
+        console.log(secondLargest([1,2]));
+
+        //Second Smallest
+        
+    </script>
+</body>
+</html>
