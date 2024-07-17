@@ -10,7 +10,7 @@
 <body>
     <script>
 
-        //Second Largest
+//Second Largest
 
         // function secondLargest(arr){
         //     let max = arr[0],
@@ -30,7 +30,7 @@
 
         // console.log(secondLargest([1,2]));
 
-        //Second Smallest
+//Second Smallest
 
         // function secondSmallest(arr){
         //     let small = arr[0],
@@ -50,7 +50,7 @@
 
         // console.log(secondSmallest([1,2,9,15,0,-2,-5]));
 
-        //Array is sorted or not for non decending mean array will in increasing if sorted
+//Array is sorted or not for non decending mean array will in increasing if sorted
 
         // function sorted(arr){
         //     for(let i = 1; i<arr.length; i++){
@@ -64,7 +64,7 @@
         // console.log(sorted([1,2,3,4]));
         // console.log(sorted([4,3,2,1]));
 
-        //for both kind increasing and decreasing
+//for both kind increasing and decreasing
 
         //     function sorted(arr){
 
@@ -86,8 +86,9 @@
         //    console.log(sorted([4,3,2,1]));
         //    console.log(sorted([1]));
 
-        //REmove dublicates from the given array
+//REmove dublicates from the given array
 
+    //Not efficient
         // function remover(arr){
         //     const mySet = new Set(arr);
 
@@ -96,7 +97,8 @@
         //     return arr;
         // }
         // console.log(remover([1,1,2,2,3,3,4,5,4]))
-
+    
+    //Efficient one by set data structure
         // function remover(arr){
         //     const mySet = new Set(arr);
         //     let i = 0;
@@ -113,7 +115,7 @@
         // console.log("new array is "+ num);
 
 
-        //optimal for sorted arrays 
+//optimal for sorted arrays 
         //     function removeDuplicates(nums) {
         //     if (nums.length === 0) return 0;
 
@@ -131,9 +133,9 @@
         // console.log("New length:", newLength);
         // console.log("Array after removing duplicates:", nums.slice(0, newLength));
 
-        //Left Rotate an array by one place
+//Left Rotate an array by one place
 
-        //1 functional approach
+    //1 functional approach
         // function rotate(arr){
         //     const firstElement = arr.shift();
         //     arr.push(firstElement);
@@ -143,7 +145,7 @@
 
         // console.log(rotate([1,2,1,5,8,9,10]));
 
-        //2 genuin approach
+    //2 genuin approach
 
         // function rotate(arr){
         //     const firstElement = arr[0];
@@ -155,7 +157,7 @@
         // }
         // console.log(rotate([1,2,3,4,5,6]));
 
-        //rotation for n number of places
+//rotation for n number of places
 
         // function rotate(arr, n){
 
@@ -180,40 +182,91 @@
         // }
         // console.log(rotate([1, 2, 3, 4, 5, 6, 7], 2));
 
-        function reverseArray(arr, start, end) {
-            while (start < end) {
-                [arr[start], arr[end]] = [arr[end], arr[start]];
-                start++;
-                end--;
-            }
-        }
+    //optimal solution for rotation left by n  places
 
-        function leftRotateByN(arr, n) {
-            const len = arr.length;
-            if (len === 0) return arr;
+        // function reverseArray(arr, start, end) {
+        //     while (start < end) {
+        //         [arr[start], arr[end]] = [arr[end], arr[start]];
+        //         start++;
+        //         end--;
+        //     }
+        // }
 
-            // Normalize the number of rotations
-            n = n % len;
-            if (n === 0) return arr;
+        // function leftRotateByN(arr, n) {
+        //     const len = arr.length;
+        //     if (len === 0) return arr;
 
-            // Step 1: Reverse the first n elements
-            reverseArray(arr, 0, n - 1);
+        //     // Normalize the number of rotations
+        //     n = n % len;
+        //     if (n === 0) return arr;
 
-            // Step 2: Reverse the remaining elements
-            reverseArray(arr, n, len - 1);
+        //     // Step 1: Reverse the first n elements
+        //     reverseArray(arr, 0, n - 1);
 
-            // Step 3: Reverse the entire array
-            reverseArray(arr, 0, len - 1);
+        //     // Step 2: Reverse the remaining elements
+        //     reverseArray(arr, n, len - 1);
 
-            return arr;
-        }
+        //     // Step 3: Reverse the entire array
+        //     reverseArray(arr, 0, len - 1);
 
-        // Example usage
-        const arr = [1, 2, 3, 4, 5];
-        const n = 3;
-        console.log(leftRotateByN(arr, n)); // Output: [4, 5, 1, 2, 3]
+        //     return arr;
+        // }
 
+        // // Example usage
+        // const arr = [1, 2, 3, 4, 5];
+        // const n = 3;
+        // console.log(leftRotateByN(arr, n)); // Output: [4, 5, 1, 2, 3]
 
+//Put all zeros to the end of the array
+    
+    //Brute Force
+        // function ZeroReversal(arr){
+        //     let len = arr.length;
+        //     if(len <= 1) return arr;
+        //     let tempArr =[];
+
+        //     for(let i = 0; i<len; i++){
+        //         if(arr[i] !== 0){
+        //             tempArr.push(arr[i]);
+        //         }
+        //     }
+        //     for(let i=0; i<tempArr.length; i++){
+        //         arr[i]=tempArr[i];
+        //     }
+        //     for(let i=tempArr.length; i<len; i++){
+        //         arr[i] = 0;
+        //     }
+        //     return arr;
+
+        // }
+        // console.log(ZeroReversal([1,0,2,3,2,0,0,4,5,1]));
+
+    //Optimal Solution
+        // function ZeroReversal(arr){
+        //     let len = arr.length;
+        //     if(len <= 1) return arr;
+        //     let j = -1;
+        //     for(let i=0; i<len; i++){
+        //         if(arr[i] === 0){
+        //             j=i;
+        //             break;
+        //         }
+        //     }
+
+        //     if(j == -1) return arr;
+
+        //     for(let i = j+1; i<len; i++ ){
+        //         if(arr[i] !== 0){
+        //             // let temp = arr[j];
+        //             arr[j] = arr[i];
+        //             arr[i] = 0;
+        //             j++
+        //         }
+        //     }
+
+        //     return arr;
+        // } 
+        // console.log(ZeroReversal([1,0,2,3,2,0,0,4,5,1]));
     </script>
 </body>
 
