@@ -126,8 +126,6 @@
         //     }
         //     return i + 1;
         // }
-
-        // // Example usage:
         // let nums = [1, 1, 2, 2, 3, 4, 4];
         // let newLength = removeDuplicates(nums);
         // console.log("New length:", newLength);
@@ -182,29 +180,39 @@
         // }
         // console.log(rotate([1, 2, 3, 4, 5, 6, 7], 2));
 
+        function reverseArray(arr, start, end) {
+            while (start < end) {
+                [arr[start], arr[end]] = [arr[end], arr[start]];
+                start++;
+                end--;
+            }
+        }
+
         function leftRotateByN(arr, n) {
             const len = arr.length;
             if (len === 0) return arr;
 
             // Normalize the number of rotations
             n = n % len;
+            if (n === 0) return arr;
 
-            // Rotate the array left by n places
-            for (let i = 0; i < n; i++) {
-                const firstElement = arr[0];
-                for (let j = 1; j < len; j++) {
-                    arr[j - 1] = arr[j];
-                }
-                arr[len - 1] = firstElement;
-            }
+            // Step 1: Reverse the first n elements
+            reverseArray(arr, 0, n - 1);
+
+            // Step 2: Reverse the remaining elements
+            reverseArray(arr, n, len - 1);
+
+            // Step 3: Reverse the entire array
+            reverseArray(arr, 0, len - 1);
 
             return arr;
         }
 
         // Example usage
         const arr = [1, 2, 3, 4, 5];
-        const n = 4;
+        const n = 3;
         console.log(leftRotateByN(arr, n)); // Output: [4, 5, 1, 2, 3]
+
 
     </script>
 </body>
