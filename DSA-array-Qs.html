@@ -266,7 +266,18 @@
 
         //     return arr;
         // } 
-        // console.log(ZeroReversal([1,0,2,3,2,0,0,4,5,1]));
+        // console.log(ZeroReversal([0,2,3,2,0,0,4,5,1]));
+
+//Linear search in an array telling occurence index of an element
+
+        function iterate(arr, n){
+            for(let i= 0; i<arr.length; i++){
+                if(arr[i] === n){
+                    return i;
+                }
+            }
+        }
+        console.log(iterate([1,5,8,3,7,10,12,55,9], 7))
     </script>
 </body>
 
