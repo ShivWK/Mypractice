@@ -10,7 +10,7 @@
 <body>
     <script>
 
-//Second Largest
+        //Second Largest
 
         // function secondLargest(arr){
         //     let max = arr[0],
@@ -30,7 +30,7 @@
 
         // console.log(secondLargest([1,2]));
 
-//Second Smallest
+        //Second Smallest
 
         // function secondSmallest(arr){
         //     let small = arr[0],
@@ -50,7 +50,7 @@
 
         // console.log(secondSmallest([1,2,9,15,0,-2,-5]));
 
-//Array is sorted or not for non decending mean array will in increasing if sorted
+        //Array is sorted or not for non decending mean array will in increasing if sorted
 
         // function sorted(arr){
         //     for(let i = 1; i<arr.length; i++){
@@ -64,7 +64,7 @@
         // console.log(sorted([1,2,3,4]));
         // console.log(sorted([4,3,2,1]));
 
-//for both kind increasing and decreasing
+        //for both kind increasing and decreasing
 
         //     function sorted(arr){
 
@@ -86,9 +86,9 @@
         //    console.log(sorted([4,3,2,1]));
         //    console.log(sorted([1]));
 
-//REmove dublicates from the given array
+        //REmove dublicates from the given array
 
-    //Not efficient
+        //Not efficient
         // function remover(arr){
         //     const mySet = new Set(arr);
 
@@ -97,8 +97,8 @@
         //     return arr;
         // }
         // console.log(remover([1,1,2,2,3,3,4,5,4]))
-    
-    //Efficient one by set data structure
+
+        //Efficient one by set data structure
         // function remover(arr){
         //     const mySet = new Set(arr);
         //     let i = 0;
@@ -115,7 +115,7 @@
         // console.log("new array is "+ num);
 
 
-//optimal for sorted arrays 
+        //optimal for sorted arrays 
         //     function removeDuplicates(nums) {
         //     if (nums.length === 0) return 0;
 
@@ -133,9 +133,9 @@
         // console.log("New length:", newLength);
         // console.log("Array after removing duplicates:", nums.slice(0, newLength));
 
-//Left Rotate an array by one place
+        //Left Rotate an array by one place
 
-    //1 functional approach
+        //1 functional approach
         // function rotate(arr){
         //     const firstElement = arr.shift();
         //     arr.push(firstElement);
@@ -145,7 +145,7 @@
 
         // console.log(rotate([1,2,1,5,8,9,10]));
 
-    //2 genuin approach
+        //2 genuin approach
 
         // function rotate(arr){
         //     const firstElement = arr[0];
@@ -157,7 +157,7 @@
         // }
         // console.log(rotate([1,2,3,4,5,6]));
 
-//rotation for n number of places
+        //rotation for n number of places
 
         // function rotate(arr, n){
 
@@ -182,7 +182,7 @@
         // }
         // console.log(rotate([1, 2, 3, 4, 5, 6, 7], 2));
 
-    //optimal solution for rotation left by n  places
+        //optimal solution for rotation left by n  places
 
         // function reverseArray(arr, start, end) {
         //     while (start < end) {
@@ -212,14 +212,14 @@
         //     return arr;
         // }
 
-        // // Example usage
+    // Example usage
         // const arr = [1, 2, 3, 4, 5];
         // const n = 3;
         // console.log(leftRotateByN(arr, n)); // Output: [4, 5, 1, 2, 3]
 
-//Put all zeros to the end of the array
-    
-    //Brute Force
+        //Put all zeros to the end of the array
+
+        //Brute Force
         // function ZeroReversal(arr){
         //     let len = arr.length;
         //     if(len <= 1) return arr;
@@ -241,7 +241,7 @@
         // }
         // console.log(ZeroReversal([1,0,2,3,2,0,0,4,5,1]));
 
-    //Optimal Solution
+        //Optimal Solution
         // function ZeroReversal(arr){
         //     let len = arr.length;
         //     if(len <= 1) return arr;
@@ -268,16 +268,130 @@
         // } 
         // console.log(ZeroReversal([0,2,3,2,0,0,4,5,1]));
 
-//Linear search in an array telling occurence index of an element
+        //Linear search in an array telling occurence index of an element
 
-        function iterate(arr, n){
-            for(let i= 0; i<arr.length; i++){
-                if(arr[i] === n){
-                    return i;
+        // function iterate(arr, n){
+        //     for(let i= 0; i<arr.length; i++){
+        //         if(arr[i] === n){
+        //             return i;
+        //         }
+        //      return -1;
+        //     }
+        // }
+        // console.log(iterate([1,5,8,3,7,10,12,55,9], 0))
+
+//Union of two arrays
+
+    //Brute force Dont pass all test cases
+        // function union(arr1 , arr2){
+        //     if(arr1.length == 0 && arr2.length ==0) return arr1;
+        //     let mySet = new Set();
+        //     for(let i=0; i<arr1.length; i++){
+        //         mySet.add(arr1[i]);
+        //     }
+        //     for(let i=0; i<arr2.length; i++){
+        //         mySet.add(arr2[i]);
+        //     }
+
+        //     let i =0;
+        //     let newArray = [];
+        //     for (let values of mySet){
+        //         newArray[i] = values;
+        //         i++;
+        //     }
+        //     return newArray;
+        // }
+        // console.log(union([1,2,2,3,3,4,5,6], [1,2,3,3,4,5,8,9]));
+    
+    //Optimal
+
+        // function Union(arr1, arr2) {
+        //     let len1 = arr1.length;
+        //     let len2 = arr2.length;
+        //     if (len1 == 0 && len2 == 0) return arr1;
+        //     let newArray = [];
+        //     let i = j = 0;
+
+        //     while (i < len1 && j < len2) {
+        //         if (arr1[i] <= arr2[j]) {
+        //             if (newArray.length == 0 || newArray[newArray.length - 1] !== arr1[i]) {
+        //                 //dont use pop() to get last element for checking whether it maches or not use newArray[len -1] because newArray.pop() will take that element out forever and you will lose that element 
+        //                 newArray.push(arr1[i]);
+        //             }
+        //             i++;
+        //         } else {
+        //             if (newArray.length == 0 || newArray[newArray.length - 1] !== arr2[j]) {
+        //                 newArray.push(arr2[j]);
+        //             }
+        //             j++;
+        //         }
+        //     }
+        //     while (j < len2) {
+        //         if (newArray.length == 0 || newArray[newArray.length - 1] !== arr2[j]) {
+        //             newArray.push(arr2[j]);
+        //         }
+        //         j++;
+        //     }
+        //     while (i < len1) {
+        //         if (newArray.length == 0 || newArray[newArray.length - 1] !== arr1[i]) {
+        //             newArray.push(arr1[i]);
+        //         }
+        //         i++;
+        //     }
+        //     return newArray;
+        // }
+        // console.log(Union([1, 2, 2, 3, 3, 4, 5, 6], [1, 2, 3, 3, 4, 5, 8, 9]));
+
+//Intersection of two Array
+
+        //brute force
+        
+        // function Intersection(arr1, arr2) {
+        //     //repeatation is allowed
+        //         let len1 = arr1.length;
+        //         let len2 = arr2.length;
+        //         if (len1 == 0 && len2 == 0) return arr1;
+        //         let newArray = [];
+        //         let visitedArray = new Array(len2);
+        //         visitedArray.fill(0);
+
+        //         for(let i =0; i<len1; i++){
+        //             for(let j =0; j<len2; j++){
+        //                 if(arr1[i] == arr2[j] && visitedArray[j] !== 1){
+        //                     newArray.push(arr1[i]);
+        //                     visitedArray[j] = 1;
+        //                     break;
+        //                 }
+        //                 if(arr2[j] > arr1[i]) break;
+        //             }
+        //         }
+
+        //         return newArray;
+        //     }
+        // console.log(Intersection([1, 2, 2, 3, 3, 4, 5, 6], [1, 2, 3, 3, 4, 5, 8, 9]));
+
+        function Intersection(arr1, arr2){
+        
+            if (arr1.length == 0 ) return arr2;
+            else if(arr2.length == 0) return arr1;
+            let i = 0 , j = 0;
+            let newArray = [];
+            while(i<arr1.length && j<arr2.length){
+                if(arr1[i] < arr2[j]){
+                    i++;
                 }
+                else if(arr2[j] < arr1[i]){
+                    j++;
+                }else{
+                    newArray.push(arr1[i]);
+                    i++;
+                    j++;
+                }
+                
             }
+            return newArray;
         }
-        console.log(iterate([1,5,8,3,7,10,12,55,9], 7))
+        console.log(Intersection([1, 2, 2, 3, 3, 4, 5, 6], [1, 2, 3, 3, 4, 5, 8, 9]));
     </script>
 </body>
 
