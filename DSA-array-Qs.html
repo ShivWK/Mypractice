@@ -370,28 +370,95 @@
         //     }
         // console.log(Intersection([1, 2, 2, 3, 3, 4, 5, 6], [1, 2, 3, 3, 4, 5, 8, 9]));
 
-        function Intersection(arr1, arr2){
+        // function Intersection(arr1, arr2){
         
-            if (arr1.length == 0 ) return arr2;
-            else if(arr2.length == 0) return arr1;
-            let i = 0 , j = 0;
-            let newArray = [];
-            while(i<arr1.length && j<arr2.length){
-                if(arr1[i] < arr2[j]){
-                    i++;
-                }
-                else if(arr2[j] < arr1[i]){
-                    j++;
-                }else{
-                    newArray.push(arr1[i]);
-                    i++;
-                    j++;
-                }
+        //     if (arr1.length == 0 ) return arr2;
+        //     else if(arr2.length == 0) return arr1;
+        //     let i = 0 , j = 0;
+        //     let newArray = [];
+        //     while(i<arr1.length && j<arr2.length){
+        //         if(arr1[i] < arr2[j]){
+        //             i++;
+        //         }
+        //         else if(arr2[j] < arr1[i]){
+        //             j++;
+        //         }else{
+        //             newArray.push(arr1[i]);
+        //             i++;
+        //             j++;
+        //         }
                 
-            }
-            return newArray;
+        //     }
+        //     return newArray;
+        // }
+        // console.log(Intersection([1, 2, 2, 3, 3, 4, 5, 6], [1, 2, 3, 3, 4, 5, 8, 9]));
+
+//Find Missing element
+
+    //Brute Force
+    // function Missing(arr, n){
+    //     for(let i = 1; i<= n; i++){
+    //         let flag = 0;
+
+    //         for(let j =0; j<arr.length; j++){
+    //             if(arr[j] === i){
+    //                 flag = 1;
+    //                 //we will break here because we have got what we are searching no need to gibeyond
+    //                 break;
+    //             }
+    //         }
+    //         if(flag === 0){
+    //             return i;
+    //         }
+    //     }
+    // }
+
+    //Better approach
+        // function Missing(arr, n){
+        //     let hash = new Array(n+1).fill(0);
+
+        //     for(let i = 0; i<arr.length; i++){
+        //         hash[arr[i]] = 1;
+        //     }
+        //     for(let i = 1; i<hash.length; i++){
+        //         if(hash[i] === 0){
+        //             return i;
+        //         }
+        //     }
+
+        // }
+
+    //optimal 1 Sum
+
+    // function Missing(arr, n){
+    //     let sum1 = n*(n + 1)/2, sum2 = 0;
+
+    //     for(let i = 0; i<arr.length; i++){
+    //             sum2 += arr[i];
+    //     }
+    //     return (sum1 - sum2);
+
+    // }
+
+    //optimal 2 XOR
+
+    function Missing(arr, n){
+        let xor1 = 0, xor2 = 0;
+
+        for(let i = 1; i<=n; i++ ){
+            xor1 ^= i;
         }
-        console.log(Intersection([1, 2, 2, 3, 3, 4, 5, 6], [1, 2, 3, 3, 4, 5, 8, 9]));
+
+        for(let i = 0; i<n-1; i++){
+                xor2 ^= arr[i];
+        }
+        return (xor1 ^ xor2);
+
+    }
+
+
+
+console.log(Missing([1,2,3,4,6,7],7))
     </script>
 </body>
 
