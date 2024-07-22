@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Prolyfill</h1>
+    <script>
+    // the Array.prototype.myForEach method is defined as a property on the Array prototype, which does not benefit from hoisting in the same way as function declarations. So, myForEach wont be hoisted here
+
+    //forEach Prolyfill
+
+        let arr = [1,2,3,4,5,6,7,8,9,10]
+        // function callback(vl, index, self){
+        //     console.log(vl);
+        //     console.log(index+" index");
+        // }
+        
+        // Array.prototype.myForEach = function(cb){
+        //     if(!cb){
+        //         throw new Error('undefined is not a function')
+        //     }
+        //     for(let i=0; i<this.length; i++){
+        //         cb(this[i], i, this);
+        //     }
+        // }
+        // arr.myForEach(callback);
+
+    //map Prolyfill
+        
+        // Array.prototype.myMap = function(cb){
+        //     if(!cb) throw new Error("undefined is an array");
+            
+        //     let newArray = [];
+            
+        //     for(let i=0; i<this.length; i++){
+        //         const result = cb(this[i], i, this);
+        //         newArray.push(result);
+        //     }
+        //     return newArray;
+        // }
+
+        // const result = arr.myMap(value => value * 3)
+        // console.log(result)
+
+    //filter function prolyfill
+
+    Array.prototype.myFilter = function(cb){
+            if(!cb) throw new Error("undefined is an array");
+            const newArray = [];
+            
+            for(let i=0; i<this.length; i++){
+                const result = cb(this[i], i, this);
+                if(result) newArray.push(this[i]);
+            }
+            return newArray;
+        }
+
+        const result = arr.myFilter(value => value < 3)
+        console.log(result)
+    </script>
+</body>
+</html>
