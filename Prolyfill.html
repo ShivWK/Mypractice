@@ -1,30 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <h1>Prolyfill</h1>
     <script>
-    // the Array.prototype.myForEach method is defined as a property on the Array prototype, which does not benefit from hoisting in the same way as function declarations. So, myForEach wont be hoisted here
+        // the Array.prototype.myForEach method is defined as a property on the Array prototype, which does not benefit from hoisting in the same way as function declarations. So, myForEach wont be hoisted here
 
-    //forEach Prolyfill
+        //forEach Prolyfill
 
-        let arr = [1,2,3,4,5,6,7,8,9,10]
+        let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
         let obj = [
-            {id: 1 , name : 'Shivendra'},
-            {id: 2 , name : 'Shiv'},
-            {id: 3 , name : 'Sahil'},
-            {id: 4 , name : 'Ritik'}
+            { id: 1, name: 'Shivendra' },
+            { id: 2, name: 'Shiv' },
+            { id: 3, name: 'Sahil' },
+            { id: 4, name: 'Ritik' }
         ]
         // function callback(vl, index, self){
         //     console.log(vl);
         //     console.log(index+" index");
         // }
-        
+
         // Array.prototype.myForEach = function(cb){
         //     if(!cb){
         //         throw new Error('undefined is not a function')
@@ -35,13 +37,13 @@
         // }
         // arr.myForEach(callback);
 
-    //map Prolyfill
-        
+        //map Prolyfill
+
         // Array.prototype.myMap = function(cb){
         //     if(!cb) throw new Error("undefined is not a function");
-            
+
         //     let newArray = [];
-            
+
         //     for(let i=0; i<this.length; i++){
         //         const result = cb(this[i], i, this);
         //         newArray.push(result);
@@ -52,23 +54,23 @@
         // const result = arr.myMap(value => value * 3)
         // console.log(result)
 
-    //filter function prolyfill
+        //filter function prolyfill
 
-    //      Array.prototype.myFilter = function(cb){
-    //         if(!cb) throw new Error("undefined is not a function");
-    //         const newArray = [];
-            
-    //         for(let i=0; i<this.length; i++){
-    //             const result = cb(this[i], i, this);
-    //             if(result) newArray.push(this[i]);
-    //         }
-    //         return newArray;
-    //     }
+        //      Array.prototype.myFilter = function(cb){
+        //         if(!cb) throw new Error("undefined is not a function");
+        //         const newArray = [];
 
-    //     const result = arr.myFilter(value => value < 3)
-    //     console.log(result)
+        //         for(let i=0; i<this.length; i++){
+        //             const result = cb(this[i], i, this);
+        //             if(result) newArray.push(this[i]);
+        //         }
+        //         return newArray;
+        //     }
 
-    //FIND FUNCTION Prolyfill
+        //     const result = arr.myFilter(value => value < 3)
+        //     console.log(result)
+
+        //FIND FUNCTION Prolyfill
 
         // Array.prototype.myFind = function(cd){
         //     if(!cd) throw new Error("undefined is not a function");
@@ -82,26 +84,75 @@
 
         // console.log(arr2.myFind((e)=>e == 3))
 
-    //Some function Prolyfill
+        //Some function Prolyfill
 
-     let arr2 = [1,-2];  
-     
-    //  Array.prototype.mySome = function(cd){
-    //         if(!cd) throw new Error("undefined is not a function");
-             
-    //         for (let i=0; i<this.length; i++){
-    //             const result = cd(this[i], i, this);
-                
-    //             if(result) return true;
-    //         }
-    //         return false;
-    //     }
-    //  console.log(arr2.mySome((e)=> e<0) )
+        let arr2 = [1, -2];
 
+        //  Array.prototype.mySome = function(cd){
+        //         if(!cd) throw new Error("undefined is not a function");
 
-    
-    console.log(arr2.every((e)=> e<0) )
+        //         for (let i=0; i<this.length; i++){
+        //             const result = cd(this[i], i, this);
+
+        //             if(result) return true;
+        //         }
+        //         return false;
+        //     }
+        //  console.log(arr2.mySome((e)=> e<0) )
+
+        //every function prolyfill
+
+        // Array.prototype.myEvery = function(cd){
+        //         if(!cd) throw new Error("undefined is not a function");
+
+        //         for (let i=0; i<this.length; i++){
+        //             const result = cd(this[i], i, this);
+
+        //             if(!result) return false;
+        //         }
+        //         return true;
+        //     }
+        // console.log(arr2.myEvery((e)=> e>0) )
+
+        //reduce function prolyfill
+
+        const user = [
+            { firstName: "shiv", age: 25 },
+            { firstName: "shivendra", age: 25 },
+            { firstName: "shivshena", age: 26 },
+            { firstName: "sahil", age: 27 },
+            { firstName: "Shiva ji", age: 35 },
+        ]
+
+        Array.prototype.myReduce = function (callback, initialValue) {
+            if (typeof callback !== 'function') throw new Error('undefined is not a function');
+
+            let accumulator = initialValue;
+            let startIndex = 0;
+
+            if(accumulator === undefined){
+                if(this.length === 0){
+                    throw new TypeError("reduce of empty array with no initial values")
+                }
+                accumulator = this[0];
+                startIndex = 1
+            }
+
+            for (let i = startIndex; i < this.length; i++) {
+               accumulator = callback(accumulator, this[i], i, this);     
+            }
+            return accumulator;
+        }
+
+        const outputq = user.myReduce(function (acc, curr) {
+            if (curr.age > 25) {
+                acc.push(curr.firstName);
+            }
+            return acc;
+        }, [])
+        console.log(outputq)
     </script>
 
 </body>
+
 </html>
