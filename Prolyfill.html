@@ -116,41 +116,84 @@
 
         //reduce function prolyfill
 
-        const user = [
-            { firstName: "shiv", age: 25 },
-            { firstName: "shivendra", age: 25 },
-            { firstName: "shivshena", age: 26 },
-            { firstName: "sahil", age: 27 },
-            { firstName: "Shiva ji", age: 35 },
-        ]
+        // const user = [
+        //     { firstName: "shiv", age: 25 },
+        //     { firstName: "shivendra", age: 25 },
+        //     { firstName: "shivshena", age: 26 },
+        //     { firstName: "sahil", age: 27 },
+        //     { firstName: "Shiva ji", age: 35 },
+        // ]
 
-        Array.prototype.myReduce = function (callback, initialValue) {
-            if (typeof callback !== 'function') throw new Error('undefined is not a function');
+        // Array.prototype.myReduce = function (callback, initialValue) {
+        //     if (typeof callback !== 'function') throw new Error('undefined is not a function');
 
-            let accumulator = initialValue;
-            let startIndex = 0;
+        //     let accumulator = initialValue;
+        //     let startIndex = 0;
 
-            if(accumulator === undefined){
-                if(this.length === 0){
-                    throw new TypeError("reduce of empty array with no initial values")
-                }
-                accumulator = this[0];
-                startIndex = 1
-            }
+        //     if(accumulator === undefined){
+        //         if(this.length === 0){
+        //             throw new TypeError("reduce of empty array with no initial values")
+        //         }
+        //         accumulator = this[0];
+        //         startIndex = 1
+        //     }
 
-            for (let i = startIndex; i < this.length; i++) {
-               accumulator = callback(accumulator, this[i], i, this);     
-            }
-            return accumulator;
+        //     for (let i = startIndex; i < this.length; i++) {
+        //        accumulator = callback(accumulator, this[i], i, this);     
+        //     }
+        //     return accumulator;
+        // }
+
+        // const outputq = user.myReduce(function (acc, curr) {
+        //     if (curr.age > 25) {
+        //         acc.push(curr.firstName);
+        //     }
+        //     return acc;
+        // }, [])
+        // console.log(outputq)
+
+        //call() polyfill
+
+        persion = {
+            name: "shivendra"
         }
 
-        const outputq = user.myReduce(function (acc, curr) {
-            if (curr.age > 25) {
-                acc.push(curr.firstName);
+        persion2 = {
+            name: "sahil"
+        }
+
+        function foo(age) {
+            console.log(`hi I'm ${this.name} and my age is ${age}`);
+        }
+
+        foo.call(24);
+        foo.call(persion2);
+
+        Function.prototype.myCall = function (context, ...args) {
+            if (typeof this !== 'function') {
+                throw new Error(this + " is not a callable function");
             }
-            return acc;
-        }, [])
-        console.log(outputq)
+
+            if (context == null) {
+                context = globalThis;
+            } else {
+                context = Object(context);
+            }
+
+            const uniqueId = Symbol('reffunc');
+
+            context[uniqueId] = this;
+
+            const result = context[uniqueId](...args);
+
+            delete context[uniqueId];
+
+            return result;
+
+        }
+        let re = foo.myCall();
+        console.log(re)
+        foo.myCall(persion2);
     </script>
 
 </body>
