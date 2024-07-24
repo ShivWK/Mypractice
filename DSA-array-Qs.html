@@ -64,7 +64,7 @@
         // console.log(sorted([1,2,3,4]));
         // console.log(sorted([4,3,2,1]));
 
-        //for both kind increasing and decreasing
+//for both kind increasing and decreasing
 
         //     function sorted(arr){
 
@@ -98,7 +98,7 @@
         // }
         // console.log(remover([1,1,2,2,3,3,4,5,4]))
 
-        //Efficient one by set data structure
+    //Efficient one by set data structure
         // function remover(arr){
         //     const mySet = new Set(arr);
         //     let i = 0;
@@ -115,7 +115,7 @@
         // console.log("new array is "+ num);
 
 
-        //optimal for sorted arrays 
+    //optimal for sorted arrays 
         //     function removeDuplicates(nums) {
         //     if (nums.length === 0) return 0;
 
@@ -133,7 +133,7 @@
         // console.log("New length:", newLength);
         // console.log("Array after removing duplicates:", nums.slice(0, newLength));
 
-        //Left Rotate an array by one place
+//Left Rotate an array by one place
 
         //1 functional approach
         // function rotate(arr){
@@ -157,7 +157,7 @@
         // }
         // console.log(rotate([1,2,3,4,5,6]));
 
-        //rotation for n number of places
+//rotation for n number of places
 
         // function rotate(arr, n){
 
@@ -212,14 +212,14 @@
         //     return arr;
         // }
 
-    // Example usage
+// Example usage
         // const arr = [1, 2, 3, 4, 5];
         // const n = 3;
         // console.log(leftRotateByN(arr, n)); // Output: [4, 5, 1, 2, 3]
 
         //Put all zeros to the end of the array
 
-        //Brute Force
+    //Brute Force
         // function ZeroReversal(arr){
         //     let len = arr.length;
         //     if(len <= 1) return arr;
@@ -241,7 +241,7 @@
         // }
         // console.log(ZeroReversal([1,0,2,3,2,0,0,4,5,1]));
 
-        //Optimal Solution
+    //Optimal Solution
         // function ZeroReversal(arr){
         //     let len = arr.length;
         //     if(len <= 1) return arr;
@@ -344,7 +344,7 @@
 
 //Intersection of two Array
 
-        //brute force
+    //brute force
         
         // function Intersection(arr1, arr2) {
         //     //repeatation is allowed
@@ -370,6 +370,7 @@
         //     }
         // console.log(Intersection([1, 2, 2, 3, 3, 4, 5, 6], [1, 2, 3, 3, 4, 5, 8, 9]));
 
+    //optimal solution    
         // function Intersection(arr1, arr2){
         
         //     if (arr1.length == 0 ) return arr2;
@@ -514,37 +515,56 @@
         // }
         // console.log(finding([1,1,5,5,5,3,5,6,6,5,5]));
 
-     //Better solution 2
+    //Better solution 2
 
-    //  function finding(arr){
-    //     let myMap = new Map();
+        //  function finding(arr){
+        //     let myMap = new Map();
 
-    //     for(let i =0; i<arr.length; i++){
-    //         if(myMap.get(arr[i])){
-    //             myMap.set(arr[i], myMap.get(arr[i]) +1)
-    //         }else{
-    //             myMap.set(arr[i], 1)
-    //         }
-    //     }
-    //     for(let [key,value] of myMap){
-    //         if(value === 1){
-    //             return key;
-    //         }
-    //     }
-    //     return -1;
-    //  }
-    //  console.log(finding([1,1,5,5,5,5,6,5,5]));
+        //     for(let i =0; i<arr.length; i++){
+        //         if(myMap.get(arr[i])){
+        //             myMap.set(arr[i], myMap.get(arr[i]) +1)
+        //         }else{
+        //             myMap.set(arr[i], 1)
+        //         }
+        //     }
+        //     for(let [key,value] of myMap){
+        //         if(value === 1){
+        //             return key;
+        //         }
+        //     }
+        //     return -1;
+        //  }
+        //  console.log(finding([1,1,5,5,5,5,6,5,5]));
 
     //Optimal Solution 
 
-    function finding(arr){
-        let xor =0;
-        for(let i=0; i<arr.length; i++){
-            xor ^= arr[i];
+        // function finding(arr){
+        //     let xor =0;
+        //     for(let i=0; i<arr.length; i++){
+        //         xor ^= arr[i];
+        //     }
+        //     return xor;
+        // }
+        // console.log(finding([1,1,5,5,5,5,6,5,5]));
+
+//Logest subArray with k sum
+
+        //Brute force
+        function LongestSubA(arr, n){
+            let len = 0;
+            for(let i =0; i<arr.length; i++){
+                let sum = 0;
+                for(let j =i; j<arr.length; j++){
+                    sum += arr[j];
+                    
+                    if(sum === n) {
+                        len = Math.max(len, j-i+1);
+                    }
+                }
+            }
+            return len;
         }
-        return xor;
-    }
-    console.log(finding([1,1,5,5,5,5,6,5,5]));
+        console.log(LongestSubA([1,1,2,3,4,4,5,6,6], 3))
     </script>
 </body>
 

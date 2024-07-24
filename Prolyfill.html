@@ -154,17 +154,17 @@
 
         //call() polyfill
 
-        // persion = {
-        //     name: "shivendra"
-        // }
+        persion = {
+            name: "shivendra"
+        }
 
-        // persion2 = {
-        //     name: "sahil"
-        // }
+        persion2 = {
+            name: "sahil"
+        }
 
-        // function foo(age) {
-        //     console.log(`hi I'm ${this.name} and my age is ${age}`);
-        // }
+        function foo(age, profession) {
+            console.log(`hi I'm ${this.name} and my age is ${age} and i'm a ${profession}`);
+        }
 
         // foo.call(24);
         // foo.call(persion2);
@@ -195,6 +195,55 @@
         // console.log(re)
         // foo.myCall(persion2);
 
+//apply function polyfill
+
+
+// Function.prototype.myApply = function(context, args){
+//             if(!typeof this === 'function') throw new Error(`${this} is not a callable function`);
+
+//             context = context || globalTHis;
+
+//             args = args || [];
+
+//             let uniqueID = Symbol('refunc');
+            
+//             context[uniqueID] = this;
+
+//             const result = context[uniqueID](...args);
+
+//             delete context[uniqueID];
+
+//             return result;
+//         }
+        
+//         foo.myApply( [25, "web developer"])
+        
+//         foo.apply([25, "web developer"])
+        
+//flat() polyfill
+
+  Array.prototype.myFlat = function(depth = 1) {
+    // Ensure depth is a number and defaults to 1
+    depth = isNaN(depth) ? 1 : Number(depth);
+
+    const flatten = (arr, depth) => {
+      return arr.reduce((acc, val) => {
+        // If the value is an array and depth is greater than 0, recursively flatten
+        if (Array.isArray(val) && depth > 0) {
+          acc.push(...flatten(val, depth - 1));
+        } else {
+          acc.push(val);
+        }
+        return acc;
+      }, []);
+    };
+
+    return flatten(this, depth);
+  };
+
+arr = [1,2,[3,4,[5,6,[7,8,[9]]]]] 
+console.log(arr.myFlat(Infinity))
+        
         //JS interview questions
 
         // let name = "shiv";
@@ -202,11 +251,11 @@
         // console.log(delete name);
         // console.log(delete age);
 
-        for (var i = 0; i<10; i++){
-            setTimeout(()=>{
-                console.log(i);
-            },0)
-        }
+        // for (var i = 0; i<10; i++){
+        //     setTimeout(()=>{
+        //         console.log(i);
+        //     },0)
+        // }
 
         // when used var
         // global
