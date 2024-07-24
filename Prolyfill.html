@@ -154,46 +154,109 @@
 
         //call() polyfill
 
-        persion = {
-            name: "shivendra"
+        // persion = {
+        //     name: "shivendra"
+        // }
+
+        // persion2 = {
+        //     name: "sahil"
+        // }
+
+        // function foo(age) {
+        //     console.log(`hi I'm ${this.name} and my age is ${age}`);
+        // }
+
+        // foo.call(24);
+        // foo.call(persion2);
+
+        // Function.prototype.myCall = function (context, ...args) {
+        //     if (typeof this !== 'function') {
+        //         throw new Error(this + " is not a callable function");
+        //     }
+
+        //     if (context == null) {
+        //         context = globalThis;
+        //     } else {
+        //         context = Object(context);
+        //     }
+
+        //     const uniqueId = Symbol('reffunc');
+
+        //     context[uniqueId] = this;
+
+        //     const result = context[uniqueId](...args);
+
+        //     delete context[uniqueId];
+
+        //     return result;
+
+        // }
+        // let re = foo.myCall();
+        // console.log(re)
+        // foo.myCall(persion2);
+
+        //JS interview questions
+
+        // let name = "shiv";
+        // age = 23;
+        // console.log(delete name);
+        // console.log(delete age);
+
+        for (var i = 0; i<10; i++){
+            setTimeout(()=>{
+                console.log(i);
+            },0)
         }
 
-        persion2 = {
-            name: "sahil"
-        }
+        // when used var
+        // global
+        // ---------------------------------------
+        // i=10
+        // setTimeout() --1
+        // setTimeout() --2
+        // setTimeout() --3
+        // setTimeout() --4
+        // setTimeout() --5
+        // setTimeout() --6
+        // setTimeout() --7
+        // setTimeout() --8
+        // setTimeout() --9
+        // setTimeout() --10
+        // ---------------------------------------
 
-        function foo(age) {
-            console.log(`hi I'm ${this.name} and my age is ${age}`);
-        }
-
-        foo.call(24);
-        foo.call(persion2);
-
-        Function.prototype.myCall = function (context, ...args) {
-            if (typeof this !== 'function') {
-                throw new Error(this + " is not a callable function");
-            }
-
-            if (context == null) {
-                context = globalThis;
-            } else {
-                context = Object(context);
-            }
-
-            const uniqueId = Symbol('reffunc');
-
-            context[uniqueId] = this;
-
-            const result = context[uniqueId](...args);
-
-            delete context[uniqueId];
-
-            return result;
-
-        }
-        let re = foo.myCall();
-        console.log(re)
-        foo.myCall(persion2);
+        // when used let 
+        // block scope
+        // ---------------------------------------
+        // i =0;
+        // setTimeout() --1
+        // ---------------------------------------
+        // i =1;
+        // setTimeout() --2
+        // ---------------------------------------
+        // i =2;
+        // setTimeout() --3th
+        // ---------------------------------------
+        // i =3;
+        // setTimeout() --4th
+        // ---------------------------------------
+        // i =4;
+        // setTimeout() --5
+        // ---------------------------------------
+        // i =5;
+        // setTimeout() --6
+        // ---------------------------------------
+        // i =6;
+        // setTimeout() --1
+        // ---------------------------------------
+        // i =7;
+        // setTimeout() --1
+        // ---------------------------------------
+        // i =8;
+        // setTimeout() --1
+        // ---------------------------------------
+        // i =9;
+        // setTimeout() --1
+        // ---------------------------------------
     </script>
 
 </body>
