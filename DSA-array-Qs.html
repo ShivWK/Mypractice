@@ -549,23 +549,98 @@
 
 //Logest subArray with k sum
 
-        //Brute force
-        function LongestSubA(arr, n){
-            let len = 0;
-            for(let i =0; i<arr.length; i++){
-                let sum = 0;
-                for(let j =i; j<arr.length; j++){
-                    sum += arr[j];
+    //Brute force
+        // function LongestSubA(arr, n){
+        //     let len = 0;
+        //     for(let i =0; i<arr.length; i++){
+                
+        //         for(let j =i; j<arr.length; j++){
+        //             let sum = 0;
+        //             for(let k; k<=j; k++){
+        //                 sum += arr[k];
+        //             }       
+        //             if(sum === n) {
+        //                 len = Math.max(len, j-i+1);
+        //             }
+        //         }
+        //     }
+        //     return len;
+        // }
+        // console.log(LongestSubA([1,1,2,3,4,4,5,6,6], 3))
+
+    //Better solution
+        // function LongestSubA(arr, n){
+        //     let len = 0;
+        //     for(let i =0; i<arr.length; i++){
+        //         let sum = 0;
+        //         for(let j =i; j<arr.length; j++){
+        //             sum += arr[j];
                     
-                    if(sum === n) {
-                        len = Math.max(len, j-i+1);
-                    }
+        //             if(sum === n) {
+        //                 len = Math.max(len, j-i+1);
+        //             }
+        //         }
+        //     }
+        //     return len;
+        // }
+        // console.log(LongestSubA([1,1,2,3,4,4,5,6,6], 3))
+
+    //optimal Solution for array having 0, +ve, -ve, Better for array having only +ve, no 0, -ve
+
+        // function LongestSubA(arr, n){
+        //     let map = new Map();
+        //     let sum = 0;
+        //     let maxLen = 0;
+
+        //     for(let i=0; i<arr.length; i++){
+        //         sum += arr[i];
+
+        //         if(sum == n){
+        //             maxLen = Math.max(maxLen, i+1);
+        //         }
+
+        //         if(!map.has(sum)){
+        //             map.set(sum, i );
+        //         }
+
+        //         let rem = sum - n;
+
+        //         if(map.has(rem)){
+        //             let len = i - map.get(rem);
+        //             maxLen = Math.max(maxLen, len);
+        //         }
+        //     }
+        //     return maxLen;       
+        //  }
+        //  console.log(LongestSubA([1,0,2,0,-4,4,5,6,6],4 ))
+
+    //Optimal for having only +ve, 0
+    
+        function LongestSubA(arr, n){
+            let left = 0, right = 0;
+            let maxLen = 0;
+            let sum = arr[0];
+            let len = arr.length;
+
+            while(right < len){
+
+                
+                while(sum > n && left <= right){
+                    sum -= arr[left];
+                    left++;
                 }
+                if(sum == n){
+                    maxLen = Math.max(maxLen, right - left + 1)
+                }
+
+                right++;
+                if(right < len) sum += arr[right];
+
             }
-            return len;
+            return maxLen;
         }
-        console.log(LongestSubA([1,1,2,3,4,4,5,6,6], 3))
-    </script>
+        console.log(LongestSubA([1,0,2,0,4,5,6,6],2))
+    </script>, 
 </body>
 
 </html>

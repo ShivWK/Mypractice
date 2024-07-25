@@ -222,27 +222,27 @@
         
 //flat() polyfill
 
-  Array.prototype.myFlat = function(depth = 1) {
-    // Ensure depth is a number and defaults to 1
-    depth = isNaN(depth) ? 1 : Number(depth);
+        Array.prototype.myFlat = function(depth = 1) {
+            // Ensure depth is a number and defaults to 1
+            depth = isNaN(depth) ? 1 : Number(depth);
 
-    const flatten = (arr, depth) => {
-      return arr.reduce((acc, val) => {
-        // If the value is an array and depth is greater than 0, recursively flatten
-        if (Array.isArray(val) && depth > 0) {
-          acc.push(...flatten(val, depth - 1));
-        } else {
-          acc.push(val);
-        }
-        return acc;
-      }, []);
-    };
+            const flatten = (arr, depth) => {
+            return arr.reduce((acc, val) => {
+                // If the value is an array and depth is greater than 0, recursively flatten
+                if (Array.isArray(val) && depth > 0) {
+                acc.push(...flatten(val, depth - 1));
+                } else {
+                acc.push(val);
+                }
+                return acc;
+            }, []);
+            };
 
-    return flatten(this, depth);
-  };
+            return flatten(this, depth);
+        };
 
-arr = [1,2,[3,4,[5,6,[7,8,[9]]]]] 
-console.log(arr.myFlat(Infinity))
+        arr = [1,2,[3,4,[5,6,[7,8,[9]]]]] 
+        console.log(arr.myFlat(Infinity))
         
         //JS interview questions
 
