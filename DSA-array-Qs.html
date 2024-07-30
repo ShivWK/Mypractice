@@ -753,6 +753,43 @@
         //     return arr;
         // }
         // console.log(sortZero([0,1,2,0,1,2,0,0,1,1,2,1,0,2,1]))
+
+//Majority element (>n/2)
+
+    //Brute Force
+
+        // function majority(arr){
+        //     for(let i=0; i<arr.length; i++){
+        //         let count = 0;
+
+        //         for(let j =0; j<arr.length; j++){
+        //             if(arr[i] === arr[j]) count++;
+        //         }
+
+        //         if(count > Math.floor(arr.length/2)) return arr[i];
+        //     }
+
+        //     return -1;
+        // }
+        // console.log(majority([0,1,0,0,1,2,0]))
+
+    //Better Solution 
+
+        function Majority(arr){
+
+            const myMap = new Map();
+
+            for(let i = 0; i<arr.length; i++){
+                myMap.set(arr[i], myMap.get(arr[i]) + 1 || 1)
+            }
+
+            for(let i = 0; i< arr.length; i++){
+                if(myMap.get(arr[i]) > Math.floor(arr.length/2)) return arr[i]
+            }
+
+            return -1;
+        }
+        console.log(Majority([0,1,1,1,1,2,0]))
        </script>, 
 </body>
 
