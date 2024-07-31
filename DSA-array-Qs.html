@@ -788,28 +788,103 @@
         // console.log(Majority([0,1,1,1,1,2,0]))
 
     //Optimal Solution
-        function Majority(arr){
-            let count = 0;
-            let element = null;
+        // function Majority(arr){
+        //     let count = 0;
+        //     let element = null;
 
-            for(let i = 0; i<arr.length; i++ ){
-                if(count === 0){
-                    element = arr[i]
+        //     for(let i = 0; i<arr.length; i++ ){
+        //         if(count === 0){
+        //             element = arr[i]
+        //         }
+        //         count += (arr[i] === element) ? 1 : -1;
+        //     }
+        //     count = 0;
+        //     for(let i =0; i<arr.length; i++){
+        //         if(arr[i] === element){
+        //             count++;
+        //         }
+        //     }
+        //     if(count > Math.floor(arr.length/2)){
+        //         return element;
+        //     }
+        //     return -1;
+        // }
+        // console.log(Majority([0,1,0,0,1,2,0]))
+        
+//Kadane's Algo Maximum sub array sum
+
+    //Brute Force
+    // function MaxSumSubArray(arr){
+    //         let maxSum = -Infinity;
+    //         for(let i= 0; i<arr.length; i++){                                      
+    //             for(let j = i; j<arr.length; j++){   
+    //                 let sum = 0;  
+    //                 for(let k = i; k<=j; k++){
+    //                     sum += arr[k];
+    //                 }                  
+    //                 maxSum = Math.max(maxSum, sum);
+    //             }
+    //         }
+    //         return maxSum;
+    //     }
+
+    //Better solution
+
+        // function MaxSumSubArray(arr){
+        //     let maxSum = -Infinity;
+        //     for(let i= 0; i<arr.length; i++){              
+        //         let sum = 0;             
+        //         for(let j = i; j<arr.length; j++){                   
+        //             sum += arr[j];
+        //             maxSum = Math.max(maxSum, sum);
+        //         }
+        //     }
+        //     return maxSum;
+        // }
+        // console.log(MaxSumSubArray([5,4,-1,7,8]))
+
+    //Optimal Solution Kadane's Algo
+
+    //If asked only sum
+
+        // function MaxSumSubArray(arr){
+        //     let maxSum = -Infinity;
+        //     let sum = 0;
+
+        //     for(let i=0; i<arr.length; i++){
+                
+        //         sum += arr[i];
+
+        //         maxSum = Math.max(maxSum, sum);
+
+        //         if(sum < 0) sum = 0;
+        //     }
+        //     return maxSum;
+        //     //if question says that if sum is leeser than 0 then consider an empty array which mean if sum < 0 then take [] empty array as your sub Array and eturn its sum that is 0 .So if(sum < 0) retuen 0;  
+        // }
+        // console.log(MaxSumSubArray([5,4,-1,7,8]))
+        
+    //If asked the sub array whose sum is greatest
+          
+        function MaxSumSubArray(arr){
+                let maxSum = -Infinity;
+                let sum = 0;
+                let ansStart = -1, ansEnd = -1;
+                for(let i=0; i<arr.length; i++){
+                    if(sum === 0) start = i;
+                    sum += arr[i];
+                    if(sum > maxSum){
+                        maxSum = sum;
+                        ansStart = start;
+                        ansEnd = i;
+                    }
+
+                    if(sum < 0) sum = 0;
                 }
-                count += (arr[i] === element) ? 1 : -1;
-            }
-            count = 0;
-            for(let i =0; i<arr.length; i++){
-                if(arr[i] === element){
-                    count++;
-                }
-            }
-            if(count > Math.floor(arr.length/2)){
-                return element;
-            }
-            return -1;
+                
+                return arr.slice(ansStart, ansEnd + 1);
         }
-        console.log(Majority([0,1,0,0,1,2,0]))
+        console.log(MaxSumSubArray([5,4,-1,7,8]))
     </script>, 
 </body>
 
