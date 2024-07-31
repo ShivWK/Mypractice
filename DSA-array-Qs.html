@@ -775,22 +775,42 @@
 
     //Better Solution 
 
+        // function Majority(arr){
+        //     const myMap = new Map();
+        //     for(let i = 0; i<arr.length; i++){
+        //         myMap.set(arr[i], myMap.get(arr[i]) + 1 || 1)
+        //     }
+        //     for(let i = 0; i< arr.length; i++){
+        //         if(myMap.get(arr[i]) > Math.floor(arr.length/2)) return arr[i]
+        //     }
+        //     return -1;
+        // }
+        // console.log(Majority([0,1,1,1,1,2,0]))
+
+    //Optimal Solution
         function Majority(arr){
+            let count = 0;
+            let element = null;
 
-            const myMap = new Map();
-
-            for(let i = 0; i<arr.length; i++){
-                myMap.set(arr[i], myMap.get(arr[i]) + 1 || 1)
+            for(let i = 0; i<arr.length; i++ ){
+                if(count === 0){
+                    element = arr[i]
+                }
+                count += (arr[i] === element) ? 1 : -1;
             }
-
-            for(let i = 0; i< arr.length; i++){
-                if(myMap.get(arr[i]) > Math.floor(arr.length/2)) return arr[i]
+            count = 0;
+            for(let i =0; i<arr.length; i++){
+                if(arr[i] === element){
+                    count++;
+                }
             }
-
+            if(count > Math.floor(arr.length/2)){
+                return element;
+            }
             return -1;
         }
-        console.log(Majority([0,1,1,1,1,2,0]))
-       </script>, 
+        console.log(Majority([0,1,0,0,1,2,0]))
+    </script>, 
 </body>
 
 </html>
