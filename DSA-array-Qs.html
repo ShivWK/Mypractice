@@ -866,25 +866,39 @@
         
     //If asked the sub array whose sum is greatest
           
-        function MaxSumSubArray(arr){
-                let maxSum = -Infinity;
-                let sum = 0;
-                let ansStart = -1, ansEnd = -1;
-                for(let i=0; i<arr.length; i++){
-                    if(sum === 0) start = i;
-                    sum += arr[i];
-                    if(sum > maxSum){
-                        maxSum = sum;
-                        ansStart = start;
-                        ansEnd = i;
-                    }
+        // function MaxSumSubArray(arr){
+        //         let maxSum = -Infinity;
+        //         let sum = 0;
+        //         let ansStart = -1, ansEnd = -1;
+        //         for(let i=0; i<arr.length; i++){
+        //             if(sum === 0) start = i;
+        //             sum += arr[i];
+        //             if(sum > maxSum){
+        //                 maxSum = sum;
+        //                 ansStart = start;
+        //                 ansEnd = i;
+        //             }
+        //             if(sum < 0) sum = 0;
+        //         }             
+        //         return arr.slice(ansStart, ansEnd + 1);
+        // }
+        // console.log(MaxSumSubArray([5,4,-1,7,8]));
 
-                    if(sum < 0) sum = 0;
-                }
-                
-                return arr.slice(ansStart, ansEnd + 1);
+//Best time buy and sell stock
+
+    //Brute Force
+
+    function BestBuySell(arr){
+        let min = arr[0], profit = 0;
+
+        for(let i = 0; i<arr.length; i++){
+            let cost = arr[i] - min;
+            profit = Math.max(profit, cost);
+            min = Math.min(min, arr[i]);
         }
-        console.log(MaxSumSubArray([5,4,-1,7,8]))
+        return profit;
+    }
+    console.log(BestBuySell([7,1,5,3,6,4]))
     </script>, 
 </body>
 
