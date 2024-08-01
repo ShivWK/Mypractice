@@ -886,20 +886,108 @@
 
 //Best time buy and sell stock
 
+        // function BestBuySell(arr){
+        //     let min = arr[0], profit = 0;
+
+        //     for(let i = 0; i<arr.length; i++){
+        //         let cost = arr[i] - min;
+        //         profit = Math.max(profit, cost);
+        //         min = Math.min(min, arr[i]);
+        //     }
+        //     return profit;
+        // }
+        // console.log(BestBuySell([7,1,5,3,6,4]))
+
+//Rearrange elements based on sign
+    
     //Brute Force
 
-    function BestBuySell(arr){
-        let min = arr[0], profit = 0;
+        // function Rearrange(arr){
+        //     let arrPositive = [], arrNegative = [];
 
-        for(let i = 0; i<arr.length; i++){
-            let cost = arr[i] - min;
-            profit = Math.max(profit, cost);
-            min = Math.min(min, arr[i]);
+        //     for(let i = 0; i<arr.length; i++){
+        //         if(arr[i] < 0){
+        //             arrNegative.push(arr[i]);
+        //         }
+        //         if(arr[i] >= 0){
+        //             arrPositive.push(arr[i]);
+        //         }
+        //     }
+
+        //     for(let i = 0; i<arr.length/2; i++){
+        //         arr[2*i] = arrPositive[i];
+        //         arr[2*i + 1] = arrNegative[i];
+        //     }
+
+        //     return arr;
+        // }
+        
+        // console.log(Rearrange([-1,2,-2,-3,5,8,-1,-2,2,4]))
+
+    //optimal for array having equal number of positives and negatives
+
+        // function Rearrange(arr){
+
+        //     let arrPositive = 0, arrNegative = 1;
+        //     let arrNew = [];
+
+        //     for(let i = 0; i<arr.length; i++){
+
+        //         if(arr[i] < 0){
+        //             arrNew[arrNegative] = arr[i];
+        //             arrNegative += 2;
+        //         }else{
+        //             arrNew[arrPositive] = arr[i];
+        //             arrPositive += 2;
+        //         }
+
+        //     }
+        //     return arrNew;
+        // }
+        
+        // console.log(Rearrange([-1,2,-2,-3,5,8,-1,-2,2,4]));
+
+    //opti  for array having unequal number of positives and negatives
+
+        function Rearrange(arr){
+            let arrPositive = [], arrNegative = [];
+
+            for(let i = 0; i<arr.length; i++){
+                if(arr[i] < 0){
+                    arrNegative.push(arr[i]);
+                }
+                if(arr[i] >= 0){
+                    arrPositive.push(arr[i]);
+                }
+            }
+
+            if(arrPositive.length > arrNegative.length){
+                for(let i =0; i<arrNegative.length; i++){
+                    arr[2*i] = arrPositive[i];
+                    arr[2*i + 1] = arrNegative[i]
+                }
+
+                let index = arrNegative.length*2;
+                for(let i = arrNegative.length; i<arrPositive.length; i++){
+                    arr[index] = arrPositive[i];
+                    index++;
+                }
+            }else{
+                for(let i =0; i<arrPositive.length; i++){
+                    arr[2*i] = arrPositive[i];
+                    arr[2*i +1] = arrNegative[i]
+                }
+
+                let index = arrPositive.length*2;
+                for(let i = arrPositive.length; i<arrNegative.length; i++){
+                    arr[index] = arrNegative[i];
+                    index++;
+                }
+            }
+            return arr
         }
-        return profit;
-    }
-    console.log(BestBuySell([7,1,5,3,6,4]))
-    </script>, 
+        console.log(Rearrange([-1,2,-2,-3,5,8,-1,-2,2,-4]));
+    </script>
 </body>
 
 </html>
