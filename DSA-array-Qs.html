@@ -949,44 +949,49 @@
 
     //opti  for array having unequal number of positives and negatives
 
-        function Rearrange(arr){
-            let arrPositive = [], arrNegative = [];
+        // function Rearrange(arr){
+        //     let arrPositive = [], arrNegative = [];
 
-            for(let i = 0; i<arr.length; i++){
-                if(arr[i] < 0){
-                    arrNegative.push(arr[i]);
-                }
-                if(arr[i] >= 0){
-                    arrPositive.push(arr[i]);
-                }
-            }
+        //     for(let i = 0; i<arr.length; i++){
+        //         if(arr[i] < 0){
+        //             arrNegative.push(arr[i]);
+        //         }
+        //         if(arr[i] >= 0){
+        //             arrPositive.push(arr[i]);
+        //         }
+        //     }
 
-            if(arrPositive.length > arrNegative.length){
-                for(let i =0; i<arrNegative.length; i++){
-                    arr[2*i] = arrPositive[i];
-                    arr[2*i + 1] = arrNegative[i]
-                }
+        //     if(arrPositive.length > arrNegative.length){
+        //         for(let i =0; i<arrNegative.length; i++){
+        //             arr[2*i] = arrPositive[i];
+        //             arr[2*i + 1] = arrNegative[i]
+        //         }
 
-                let index = arrNegative.length*2;
-                for(let i = arrNegative.length; i<arrPositive.length; i++){
-                    arr[index] = arrPositive[i];
-                    index++;
-                }
-            }else{
-                for(let i =0; i<arrPositive.length; i++){
-                    arr[2*i] = arrPositive[i];
-                    arr[2*i +1] = arrNegative[i]
-                }
+        //         let index = arrNegative.length*2;
+        //         for(let i = arrNegative.length; i<arrPositive.length; i++){
+        //             arr[index] = arrPositive[i];
+        //             index++;
+        //         }
+        //     }else{
+        //         for(let i =0; i<arrPositive.length; i++){
+        //             arr[2*i] = arrPositive[i];
+        //             arr[2*i +1] = arrNegative[i]
+        //         }
 
-                let index = arrPositive.length*2;
-                for(let i = arrPositive.length; i<arrNegative.length; i++){
-                    arr[index] = arrNegative[i];
-                    index++;
-                }
-            }
-            return arr
-        }
-        console.log(Rearrange([-1,2,-2,-3,5,8,-1,-2,2,-4]));
+        //         let index = arrPositive.length*2;
+        //         for(let i = arrPositive.length; i<arrNegative.length; i++){
+        //             arr[index] = arrNegative[i];
+        //             index++;
+        //         }
+        //     }
+        //     return arr
+        // }
+        // console.log(Rearrange([-1,2,-2,-3,5,8,-1,-2,2,-4]));
+
+//Next permutation
+
+    //Brute Force
+    
     </script>
 </body>
 
