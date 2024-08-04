@@ -992,43 +992,84 @@
 
     //Optimal Solution
 
-        function nextPermutation(arr){
-            let index = -1;
-            let n = arr.length;
+        // function nextPermutation(arr){
+        //     let index = -1;
+        //     let n = arr.length;
             
-            for (let i = n-2; i >= 0; i-- ){
-                if(arr[i] < arr[i+1]){
-                    index =i;
-                    break;
-                }
+        //     for (let i = n-2; i >= 0; i-- ){
+        //         if(arr[i] < arr[i+1]){
+        //             index =i;
+        //             break;
+        //         }
                 
-            }
+        //     }
 
-            if(index == -1){
-               return arr.reverse();
-            }
+        //     if(index == -1){
+        //        return arr.reverse();
+        //     }
 
-            for(let i = n-1; i>index; i--){
-                if(arr[i] > arr[index]){
-                    [arr[index], arr[i]] = [arr[i], arr[index]]
-                    break;
-                }
+        //     for(let i = n-1; i>index; i--){
+        //         if(arr[i] > arr[index]){
+        //             [arr[index], arr[i]] = [arr[i], arr[index]]
+        //             break;
+        //         }
                
-            }
+        //     }
 
-            function reverse(arr, start, end){
-                while(start < end){
-                    [arr[start], arr[end]] = [arr[end], arr[start]]
-                    start++;
-                    end--;
-                }
-                return arr;
-            }
+        //     function reverse(arr, start, end){
+        //         while(start < end){
+        //             [arr[start], arr[end]] = [arr[end], arr[start]]
+        //             start++;
+        //             end--;
+        //         }
+        //         return arr;
+        //     }
             
-            return reverse(arr, index+1, n-1);
-        }
+        //     return reverse(arr, index+1, n-1);
+        // }
     
-        console.log(nextPermutation([2,1,5,4,3,0,0]))
+        // console.log(nextPermutation([2,1,5,4,3,0,0]))
+
+//Leaders in an array
+
+    //Brute Force
+        // function leader(arr){
+        //     let leader = true;
+        //     let leaders = [];
+        //     for(let i=0; i< arr.length; i++){
+        //         leader = true;
+        //         for(let j = i+1; j<arr.length; j++){
+        //             if(arr[j] > arr[i]){
+        //                 leader = false;
+        //                 break;
+        //             }
+        //         }
+        //         if(leader === true){
+        //             leaders.push(arr[i]);
+        //         }
+        //     }
+        //     return leaders;
+        // }
+
+    //Optimal Solution
+            function leader(arr){
+                let max = -Infinity;
+                let ans = [];
+
+                let n = arr.length;
+
+                for(let i = n-1; i>= 0; i--){
+                    if(arr[i] > max){
+                        ans.push(arr[i]);
+                        max = arr[i];
+                    }
+                }
+
+                ans.reverse();
+
+                return ans
+            }
+    console.log(leader([10, 22, 12, 3, 0,6]))
     </script>
 </body>
 
