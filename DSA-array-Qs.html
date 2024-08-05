@@ -1052,24 +1052,79 @@
         // }
 
     //Optimal Solution
-            function leader(arr){
-                let max = -Infinity;
-                let ans = [];
+    //         function leader(arr){
+    //             let max = -Infinity;
+    //             let ans = [];
 
-                let n = arr.length;
+    //             let n = arr.length;
 
-                for(let i = n-1; i>= 0; i--){
-                    if(arr[i] > max){
-                        ans.push(arr[i]);
-                        max = arr[i];
-                    }
-                }
+    //             for(let i = n-1; i>= 0; i--){
+    //                 if(arr[i] > max){
+    //                     ans.push(arr[i]);
+    //                     max = arr[i];
+    //                 }
+    //             }
 
-                ans.reverse();
+    //             ans.reverse();
 
-                return ans
-            }
-    console.log(leader([10, 22, 12, 3, 0,6]))
+    //             return ans
+    //         }
+    // console.log(leader([10, 22, 12, 3, 0,6]))
+
+//Longest Consecutive Sequence
+
+    //Brute force
+        // function LongestSequence(arr){
+        //     if(arr.length === 0) return 0;
+        //     let longest = 1;
+        //     let n = arr.length;
+
+        //     for(let i = 0; i<n; i++){
+        //         let count = 1;
+        //         let element = arr[i];
+        //         for (let j = 0; j<n; j++){
+        //             if(arr[j] === element + 1) {
+        //                 element = arr[j];
+        //                 count++;
+        //                 j= -1;
+        //             }
+        //         }
+        //         //console.log(count);
+        //         longest = Math.max(longest, count);
+        //     }
+
+        //     return longest;
+        // }
+        //console.log(LongestSequence([102,4,100,1,101,3,2,1,1]))
+
+    //Better SOlution
+
+        // function LongestSequence(arr){
+        //     if(arr.length === 0) return 0;
+        //     let longest = 1;
+        //     let lastSmaller = -Infinity;
+        //     let count = 0;
+            
+        //     arr.sort((a,b)=> a - b);
+
+        //     for(let i = 0; i<arr.length; i++){
+        //         if(arr[i] - 1 == lastSmaller){
+        //             count += 1;
+        //             lastSmaller = arr[i]
+        //         }else if(arr[i] != lastSmaller){
+        //             count = 1;
+        //             lastSmaller = arr[i];
+        //         }
+
+        //         longest = Math.max(longest, count);
+        //     }
+        //     return longest;
+        // }
+        // console.log(LongestSequence([102,4,100,1,101,3,2,1,1]))
+
+    //Optimal solution
+
+        
     </script>
 </body>
 
