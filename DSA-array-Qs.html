@@ -1124,7 +1124,29 @@
 
     //Optimal solution
 
-        
+        function LongestSequence(arr){
+            if(arr.length === 0) return 0;
+
+            let mySet = new Set(arr);
+            let longest = 1;
+
+            for(let element of mySet){
+                if(!mySet.has(element - 1)){
+                    let currentElement = element;
+                    let count = 1
+
+                    while(mySet.has(currentElement + 1)){
+                        currentElement++;
+                        count++
+                    }
+
+                    longest = Math.max(longest, count);
+                }
+            }
+
+            return longest;
+        }
+        console.log(LongestSequence([102,4,100,1,101,3,2,1,1]));
     </script>
 </body>
 

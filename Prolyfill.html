@@ -12,7 +12,7 @@
     <script>
         // the Array.prototype.myForEach method is defined as a property on the Array prototype, which does not benefit from hoisting in the same way as function declarations. So, myForEach wont be hoisted here
 
-        //forEach Prolyfill
+//forEach Prolyfill
 
         let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
@@ -37,7 +37,7 @@
         // }
         // arr.myForEach(callback);
 
-        //map Prolyfill
+//map Prolyfill
 
         // Array.prototype.myMap = function(cb){
         //     if(!cb) throw new Error("undefined is not a function");
@@ -54,7 +54,7 @@
         // const result = arr.myMap(value => value * 3)
         // console.log(result)
 
-        //filter function prolyfill
+//filter function prolyfill
 
         //      Array.prototype.myFilter = function(cb){
         //         if(!cb) throw new Error("undefined is not a function");
@@ -70,7 +70,7 @@
         //     const result = arr.myFilter(value => value < 3)
         //     console.log(result)
 
-        //FIND FUNCTION Prolyfill
+//FIND FUNCTION Prolyfill
 
         // Array.prototype.myFind = function(cd){
         //     if(!cd) throw new Error("undefined is not a function");
@@ -84,7 +84,7 @@
 
         // console.log(arr2.myFind((e)=>e == 3))
 
-        //Some function Prolyfill
+//Some function Prolyfill
 
         let arr2 = [1, -2];
 
@@ -100,7 +100,7 @@
         //     }
         //  console.log(arr2.mySome((e)=> e<0) )
 
-        //every function prolyfill
+//every function prolyfill
 
         // Array.prototype.myEvery = function(cd){
         //         if(!cd) throw new Error("undefined is not a function");
@@ -114,7 +114,7 @@
         //     }
         // console.log(arr2.myEvery((e)=> e>0) )
 
-        //reduce function prolyfill
+//reduce function prolyfill
 
         // const user = [
         //     { firstName: "shiv", age: 25 },
@@ -152,7 +152,7 @@
         // }, [])
         // console.log(outputq)
 
-        //call() polyfill
+//call() polyfill
 
         persion = {
             name: "shivendra"
@@ -198,7 +198,7 @@
 //apply function polyfill
 
 
-// Function.prototype.myApply = function(context, args){
+//          Function.prototype.myApply = function(context, args){
 //             if(!typeof this === 'function') throw new Error(`${this} is not a callable function`);
 
 //             context = context || globalTHis;
@@ -244,7 +244,7 @@
         arr = [1,2,[3,4,[5,6,[7,8,[9]]]]] 
         console.log(arr.myFlat(Infinity))
         
-        //JS interview questions
+//JS interview questions
 
         // let name = "shiv";
         // age = 23;
