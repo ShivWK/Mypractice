@@ -549,48 +549,49 @@
 
 //Logest subArray with k sum
 
-    //Brute force
-        // function LongestSubA(arr, n){
-        //     let len = 0;
-        //     for(let i =0; i<arr.length; i++){
+    // //Brute force
+    //     function LongestSubA(arr, n){
+    //         let len = 0;
+    //         for(let i =0; i<arr.length; i++){
                 
-        //         for(let j =i; j<arr.length; j++){
-        //             let sum = 0;
-        //             for(let k; k<=j; k++){
-        //                 sum += arr[k];
-        //             }       
-        //             if(sum === n) {
-        //                 len = Math.max(len, j-i+1);
-        //             }
-        //         }
-        //     }
-        //     return len;
-        // }
-        // console.log(LongestSubA([1,1,2,3,4,4,5,6,6], 3))
+    //             for(let j =i; j<arr.length; j++){
+    //                 let sum = 0;
+    //                 for(let k; k<=j; k++){
+    //                     sum += arr[k];
+    //                 }       
+    //                 if(sum === n) {
+    //                     len = Math.max(len, j-i+1);
+    //                 }
+    //             }
+    //         }
+    //         return len;
+    //     }
+    //     console.log(LongestSubA([1,1,2,3,4,4,5,6,6], 3))
 
-    //Better solution
-        // function LongestSubA(arr, n){
-        //     let len = 0;
-        //     for(let i =0; i<arr.length; i++){
-        //         let sum = 0;
-        //         for(let j =i; j<arr.length; j++){
-        //             sum += arr[j];
+    // //Better solution
+    //     function LongestSubA(arr, n){
+    //         let len = 0;
+    //         for(let i =0; i<arr.length; i++){
+    //             let sum = 0;
+    //             for(let j =i; j<arr.length; j++){
+    //                 sum += arr[j];
                     
-        //             if(sum === n) {
-        //                 len = Math.max(len, j-i+1);
-        //             }
-        //         }
-        //     }
-        //     return len;
-        // }
-        // console.log(LongestSubA([1,1,2,3,4,4,5,6,6], 3))
+    //                 if(sum === n) {
+    //                     len = Math.max(len, j-i+1);
+    //                 }
+    //             }
+    //         }
+    //         return len;
+    //     }
+    //     console.log(LongestSubA([1,1,2,3,4,4,5,6,6], 3))
 
-    //optimal Solution for array having 0, +ve, -ve, Better for array having only +ve, no 0, -ve
+    //optimal Solution for array having 0, +ve, -ve, Better for array having only +ve, no 0, no -ve
 
         // function LongestSubA(arr, n){
         //     let map = new Map();
         //     let sum = 0;
         //     let maxLen = 0;
+        //      let count = 0;
 
         //     for(let i=0; i<arr.length; i++){
         //         sum += arr[i];
@@ -608,6 +609,7 @@
         //         if(map.has(rem)){
         //             let len = i - map.get(rem);
         //             maxLen = Math.max(maxLen, len);
+        //              count++;
         //         }
         //     }
         //     return maxLen;       
@@ -1124,29 +1126,73 @@
 
     //Optimal solution
 
-        function LongestSequence(arr){
-            if(arr.length === 0) return 0;
+        // function LongestSequence(arr){
+        //     if(arr.length === 0) return 0;
 
-            let mySet = new Set(arr);
-            let longest = 1;
+        //     let mySet = new Set(arr);
+        //     let longest = 1;
 
-            for(let element of mySet){
-                if(!mySet.has(element - 1)){
-                    let currentElement = element;
-                    let count = 1
+        //     for(let element of mySet){
+        //         if(!mySet.has(element - 1)){
+        //             let currentElement = element;
+        //             let count = 1
 
-                    while(mySet.has(currentElement + 1)){
-                        currentElement++;
-                        count++
-                    }
+        //             while(mySet.has(currentElement + 1)){
+        //                 currentElement++;
+        //                 count++
+        //             }
 
-                    longest = Math.max(longest, count);
-                }
-            }
+        //             longest = Math.max(longest, count);
+        //         }
+        //     }
 
-            return longest;
+        //     return longest;
+        // }
+        // console.log(LongestSequence([102,4,100,1,101,3,2,1,1]));
+
+//Number of subarrays whose sum is k
+
+    //Brute force
+    // function NumberOfSubarrayWithSum_k(arr, n){
+    //         let count = 0;
+    //         for(let i =0; i<arr.length; i++){
+                
+    //             for(let j =i; j<arr.length; j++){
+    //                 let sum = 0;
+    //                 for(let k; k<=j; k++){
+    //                     sum += arr[k];
+    //                 }       
+    //                 if(sum === n) {
+    //                     count++;
+    //                 }
+    //             }
+    //         }
+    //         return count;
+    //     }
+    //     console.log(NumberOfSubarrayWithSum_k([1,1,2,3,4,4,5,6,6], 3))
+
+    // //Better solution
+    //     function NumberOfSubarrayWithSum_k(arr, n){
+    //        let count = 0;
+    //         for(let i =0; i<arr.length; i++){
+    //             let sum = 0;
+    //             for(let j =i; j<arr.length; j++){
+    //                 sum += arr[j];
+                    
+    //                 if(sum === n) {
+    //                     count++;
+    //                 }
+    //             }
+    //         }
+    //         return count;
+    //     }
+    //     console.log(NumberOfSubarrayWithSum_k([1,1,2,3,4,4,5,6,6], 4))
+
+    //Optimal Solution
+
+        function NumberOfSubarrayWithSum_k(arr, n) {
+            
         }
-        console.log(LongestSequence([102,4,100,1,101,3,2,1,1]));
     </script>
 </body>
 

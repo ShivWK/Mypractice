@@ -18,8 +18,6 @@ function reducer(state, action){
 
 console.log(reduxState);
 
-//redux updates the state by giving it new returned object by itself, means here object returned by reducer will be given to the state
-
 reduxState = reducer(reduxState, {type: 'post/increment'})
 console.log(reduxState);
 
@@ -29,9 +27,7 @@ console.log(reduxState);
 reduxState = reducer(reduxState, {type: 'post/increment'})
 console.log(reduxState);
 
-reduxState = reducer(reduxState, {type: 'post/increment'})
-console.log(reduxState);
-
 reduxState = reducer(reduxState, {type: 'post/incrementBy', payLoad : 2})
 console.log(reduxState);
 
+//redux updates the state by giving it new returned object by itself, means here object returned by reducer will be given to the state
