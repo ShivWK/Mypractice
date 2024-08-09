@@ -1190,22 +1190,51 @@
 
     //Optimal Solution
 
-        function NumberOfSubarrayWithSum_k(arr, n) {
-            let myMap = new Map();
-            let count = 0, sum = 0;
-            myMap.set(0, 1);
+        // function NumberOfSubarrayWithSum_k(arr, n) {
+        //     let myMap = new Map();
+        //     let count = 0, sum = 0;
+        //     myMap.set(0, 1);
             
-            for(let i = 0; i < arr.length; i++) {
-                sum += arr[i];
-                let remaining = sum - n;
-                count += myMap.get(remaining) || 0;
-                //remaining is not present then returned count will be 0 no increase in the total count
+        //     for(let i = 0; i < arr.length; i++) {
+        //         sum += arr[i];
+        //         let remaining = sum - n;
+        //         count += myMap.get(remaining) || 0;
+        //         //remaining is not present then returned count will be 0 no increase in the total count
 
-                myMap.set(sum, myMap.get(sum) + 1 || 1)
+        //         myMap.set(sum, myMap.get(sum) + 1 || 1)
+        //     }
+        //     return count;
+        // }
+        // console.log(NumberOfSubarrayWithSum_k([1,1,2,3,4,4,5,6,6], 3))
+
+//majority element n/3 times
+
+    //Brute force
+        function MajorityScond(arr) {
+            let resultArray = [];
+
+            for(let i = 0; i < arr.length; i++) {
+
+                if(resultArray.length == 0 || resultArray[0] !== arr[i]) {
+                    let count = 0;
+
+                    for(let j = 0; j < arr.length; j++) {    
+                            if(arr[j] === arr[i]) {
+                                count++;
+                            }
+                    }
+                    if(count > Math.floor(arr.length / 3)) {
+                        resultArray.push(arr[i]);
+                    } 
+                }
+
+                if(resultArray.length === 2) break;
             }
-            return count;
-        }
-        console.log(NumberOfSubarrayWithSum_k([1,1,2,3,4,4,5,6,6], 3))
+
+            return resultArray;
+        } 
+        
+        console.log(MajorityScond([1,1,1,2,2,2,3,3]));
     </script>
 </body>
 
