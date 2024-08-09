@@ -1191,8 +1191,21 @@
     //Optimal Solution
 
         function NumberOfSubarrayWithSum_k(arr, n) {
+            let myMap = new Map();
+            let count = 0, sum = 0;
+            myMap.set(0, 1);
             
+            for(let i = 0; i < arr.length; i++) {
+                sum += arr[i];
+                let remaining = sum - n;
+                count += myMap.get(remaining) || 0;
+                //remaining is not present then returned count will be 0 no increase in the total count
+
+                myMap.set(sum, myMap.get(sum) + 1 || 1)
+            }
+            return count;
         }
+        console.log(NumberOfSubarrayWithSum_k([1,1,2,3,4,4,5,6,6], 3))
     </script>
 </body>
 
