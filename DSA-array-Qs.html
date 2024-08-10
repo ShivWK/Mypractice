@@ -1248,10 +1248,12 @@
                 if(myMap.get(arr[i]) == min) {
                     resultArray.push(arr[i]);
                 }
+                
+                if(resultArray.length == 2) break;
             }
             return resultArray;
         }
-        console.log(MajorityScond([1,1,1]));
+        console.log(MajorityScond([1,1,1,2,2,2,3,3]));
     </script>
 </body>
 
