@@ -1,33 +1,65 @@
-let reduxState = {
+import * as redux from 'redux';
+const createStore = redux.createStore;
+
+let initialState = {
     post : 0,
     name : "Shivendra",
     age : 25
 }
+const increament = 'post/increment';
+const decrement = 'post/decrement';
+const increaseBy = 'post/increaseBy';
 
-function reducer(state, action){
-    if(action.type === 'post/increment'){
+function reducer(state = initialState, action){
+    if(action.type === increament){
         return {...state, post : state.post + 1}
-    }else if(action.type === 'post/decrement'){
+    }else if(action.type === decrement){
         return {...state, post : state.post - 1}
-    }else if(action.type === 'post/incrementBy'){
-        return {...state, post : state.post + action.payLoad}
+    }else if(action.type === increaseBy){
+        return {...state, post : state.post + action.payload}
     }else{
         return state;
     }
 }
 
-console.log(reduxState);
+const actionIncrement = () => {
+    return {
+        type : increament,
+    }
+}
 
-reduxState = reducer(reduxState, {type: 'post/increment'})
-console.log(reduxState);
+const actionDecrement = () => {
+    return {
+        type : decrement,
+    }
+}
 
-reduxState = reducer(reduxState, {type: 'post/decrement'})
-console.log(reduxState);
+const actionIncrementBy = (by) => {
+    return {
+        type : increaseBy,
+        payload : by,
+    }
+}
 
-reduxState = reducer(reduxState, {type: 'post/increment'})
-console.log(reduxState);
+const store = createStore(reducer);
+store.subscribe(() => { console.log(store.getState())});
 
-reduxState = reducer(reduxState, {type: 'post/incrementBy', payLoad : 2})
-console.log(reduxState);
+store.dispatch(actionIncrement());
+store.dispatch(actionDecrement());
+store.dispatch(actionIncrementBy(2));
+
+// console.log(reduxState);
+
+// reduxState = reducer(reduxState, {type: 'post/increment'})
+// console.log(reduxState);
+
+// reduxState = reducer(reduxState, {type: 'post/decrement'})
+// console.log(reduxState);
+
+// reduxState = reducer(reduxState, {type: 'post/increment'})
+// console.log(reduxState);
+
+// reduxState = reducer(reduxState, {type: 'post/incrementBy', payLoad : 2})
+// console.log(reduxState);
 
 //redux updates the state by giving it new returned object by itself, means here object returned by reducer will be given to the state
