@@ -584,10 +584,16 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 }
 
 },{}],"6rimH":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _redux = require("redux");
-const createStore = _redux.createStore;
+var _myCreateStore = require("./myCreateStore");
+var _myCreateStoreDefault = parcelHelpers.interopDefault(_myCreateStore);
+const postCount = document.getElementById("post_count");
+const postBtn = document.getElementById("postBtn");
+//const store2 = myCreateStore();
+// console.log(store2);
 let initialState = {
-    post: 0,
+    post: 5,
     name: "Shivendra",
     age: 25
 };
@@ -625,13 +631,25 @@ const actionIncrementBy = (by)=>{
         payload: by
     };
 };
-const store = createStore(reducer);
-store.subscribe(()=>{
+// window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+const store = (0, _myCreateStoreDefault.default)(reducer);
+const unsubscribe = store.subscribe(()=>{
     console.log(store.getState());
+    postCount.innerText = store.getState().post;
 });
+postCount.innerText = store.getState().post;
+// console.log(store.getState());
 store.dispatch(actionIncrement());
+console.log(store.getState());
 store.dispatch(actionDecrement());
-store.dispatch(actionIncrementBy(2)); // console.log(reduxState);
+console.log(store.getState());
+store.dispatch(actionIncrementBy(2));
+console.log(store.getState());
+//unsubscribe();
+postBtn.addEventListener("click", ()=>{
+    store.dispatch(actionIncrement());
+    console.log(store.getState());
+}) // console.log(reduxState);
  // reduxState = reducer(reduxState, {type: 'post/increment'})
  // console.log(reduxState);
  // reduxState = reducer(reduxState, {type: 'post/decrement'})
@@ -641,8 +659,9 @@ store.dispatch(actionIncrementBy(2)); // console.log(reduxState);
  // reduxState = reducer(reduxState, {type: 'post/incrementBy', payLoad : 2})
  // console.log(reduxState);
  //redux updates the state by giving it new returned object by itself, means here object returned by reducer will be given to the state
+;
 
-},{"redux":"anWnS"}],"anWnS":[function(require,module,exports) {
+},{"redux":"anWnS","./myCreateStore":"lp8OB","@parcel/transformer-js/src/esmodule-helpers.js":"8f7LW"}],"anWnS":[function(require,module,exports) {
 // src/utils/formatProdErrorMessage.ts
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
@@ -980,6 +999,30 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}]},["asjdf","6rimH"], "6rimH", "parcelRequire94c2")
+},{}],"lp8OB":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>myCreateStore);
+function myCreateStore(reducer) {
+    let state;
+    const store = {
+        dispatch (action) {
+            state = reducer(state, action);
+        },
+        getState () {
+            return state;
+        },
+        subscribe (method) {
+            method();
+        }
+    };
+    store.dispatch({
+        type: "@@INIT"
+    });
+    //dispatched initially to store the initial value otherwise getState will give error because there is nothing in state as redux do 
+    return store;
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"8f7LW"}]},["asjdf","6rimH"], "6rimH", "parcelRequire94c2")
 
 //# sourceMappingURL=index.8cfc62b9.js.map
