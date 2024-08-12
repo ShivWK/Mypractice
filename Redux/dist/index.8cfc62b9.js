@@ -595,7 +595,7 @@ const postBtn = document.getElementById("postBtn");
 let initialState = {
     post: 5,
     name: "Shivendra",
-    age: 25
+    age: 22
 };
 const increament = "post/increment";
 const decrement = "post/decrement";
@@ -637,20 +637,19 @@ const unsubscribe = store.subscribe(()=>{
     console.log(store.getState());
     postCount.innerText = store.getState().post;
 });
+const unsubscribe2 = store.subscribe(()=>{
+    console.log("second");
+});
 postCount.innerText = store.getState().post;
 // console.log(store.getState());
 store.dispatch(actionIncrement());
-console.log(store.getState());
 store.dispatch(actionDecrement());
-console.log(store.getState());
+// unsubscribe();
+// unsubscribe2();
 store.dispatch(actionIncrementBy(2));
-console.log(store.getState());
-//unsubscribe();
 postBtn.addEventListener("click", ()=>{
     store.dispatch(actionIncrement());
-    console.log(store.getState());
-}) // console.log(reduxState);
- // reduxState = reducer(reduxState, {type: 'post/increment'})
+}) // reduxState = reducer(reduxState, {type: 'post/increment'})
  // console.log(reduxState);
  // reduxState = reducer(reduxState, {type: 'post/decrement'})
  // console.log(reduxState);
@@ -1005,23 +1004,30 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>myCreateStore);
 function myCreateStore(reducer) {
     let state;
+    const listeners = [];
     const store = {
         dispatch (action) {
             state = reducer(state, action);
+            for (let methodS of listeners)methodS();
         },
         getState () {
             return state;
         },
         subscribe (method) {
-            method();
+            listeners.push(method);
+            return ()=>{
+                const listenerIndex = listeners.findIndex((listener)=>{
+                    return listener === method;
+                });
+                listeners.splice(listenerIndex, 1);
+            };
         }
     };
     store.dispatch({
         type: "@@INIT"
     });
-    //dispatched initially to store the initial value otherwise getState will give error because there is nothing in state as redux do 
     return store;
-}
+} //dispatched initially to store the initial value otherwise getState will give error because there is nothing in state as redux do
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"8f7LW"}]},["asjdf","6rimH"], "6rimH", "parcelRequire94c2")
 

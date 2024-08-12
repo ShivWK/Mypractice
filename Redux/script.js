@@ -10,7 +10,7 @@ const postBtn = document.getElementById('postBtn')
 let initialState = {
     post: 5,
     name: "Shivendra",
-    age: 25
+    age: 22
 }
 const increament = 'post/increment';
 const decrement = 'post/decrement';
@@ -49,31 +49,36 @@ const actionIncrementBy = (by) => {
 
 // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 
-const store = myCreateStore(reducer);
+// const store = myCreateStore(reducer);
+const store = myCreateStore(reducer,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+
+
 
 const unsubscribe = store.subscribe(() => {
     console.log(store.getState())
     postCount.innerText = store.getState().post
 });
 
+const unsubscribe2 = store.subscribe(() => { console.log("second")})
+
 postCount.innerText = store.getState().post
 
 // console.log(store.getState());
 
 store.dispatch(actionIncrement());
-console.log(store.getState())
+
 store.dispatch(actionDecrement());
-console.log(store.getState())
+// unsubscribe();
+// unsubscribe2();
 store.dispatch(actionIncrementBy(2));
-console.log(store.getState())
-//unsubscribe();
+
+
 postBtn.addEventListener('click' , () => {
     store.dispatch(actionIncrement());
-    console.log(store.getState())
 })
 
-
-// console.log(reduxState);
 
 // reduxState = reducer(reduxState, {type: 'post/increment'})
 // console.log(reduxState);
