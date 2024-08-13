@@ -586,154 +586,95 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 },{}],"i51lh":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _redux = require("redux");
-var _products = require("./products");
-var _productsDefault = parcelHelpers.interopDefault(_products);
-let initialState = {
-    products: (0, _productsDefault.default),
-    cart: [],
-    wishList: []
-};
-const CART_ADD_ITEM = "cart/addItem";
-const CART_REMOVE_ITEM = "post/removeItem";
-const CART_ADD_QUANTITY = "post/addQuantity";
-const CART_SUBTRACT_QUANTITY = "post/subtractQuantity";
-const WISHLIST_ADD_ITEM = "wishlost/addItem";
-const WISHLIST_REMOVE_ITEM = "wishlist/subtractItem";
-function reducer(state = initialState, action) {
-    switch(action.type){
-        case CART_ADD_ITEM:
-            return {
-                ...state,
-                cart: [
-                    ...state.cart,
-                    action.payload
-                ] //used spread because there can be products in cart previously we cant lose them
-            };
-        case CART_REMOVE_ITEM:
-            return {
-                ...state,
-                cart: state.cart.filter((item)=>item.productId !== action.payload.productId)
-            };
-        case CART_ADD_QUANTITY:
-            return {
-                ...state,
-                cart: state.cart.map((items)=>{
-                    if (items.productId === action.payload.productId) //item.quantity += action.payload.quantity //this is mutating the object it is wrong
-                    return {
-                        ...items,
-                        quantity: items.quantity + 1
-                    } // In react we dont use pre or post increment or decrement because they mutate the property instead use simply + 1
-                    ;
-                    return items;
-                })
-            };
-        case CART_SUBTRACT_QUANTITY:
-            return {
-                ...state,
-                cart: state.cart.map((items)=>{
-                    if (items.productId === action.payload.productId) return {
-                        ...items,
-                        quantity: items.quantity - 1
-                    };
-                    return items;
-                }).filter((products)=>products.quantity > 0)
-            };
-        case WISHLIST_ADD_ITEM:
-            const item = action.payload;
-            const exist = state.wishList.find((product)=>product.productId === item.productId);
-            if (exist) return state;
-            else return {
-                ...state,
-                wishList: [
-                    ...state.wishList,
-                    item
-                ]
-            };
-        case WISHLIST_REMOVE_ITEM:
-            return {
-                ...state,
-                wishList: state.wishList.filter((prod)=>prod.productId !== action.payload.productId)
-            };
-        default:
-            return state;
-    }
-}
-const store = (0, _redux.createStore)(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
-console.log(store);
+var _cartReducer = require("./Reducer/cartReducer");
+var _cartReducerDefault = parcelHelpers.interopDefault(_cartReducer);
+var _productReducer = require("./Reducer/productReducer");
+var _productReducerDefault = parcelHelpers.interopDefault(_productReducer);
+var _wishListReducer = require("./Reducer/wishListReducer");
+var _wishListReducerDefault = parcelHelpers.interopDefault(_wishListReducer);
+const rootReducer = (0, _redux.combineReducers)({
+    products: (0, _productReducerDefault.default),
+    cart: (0, _cartReducerDefault.default),
+    wishList: (0, _wishListReducerDefault.default)
+});
+//in the above code we have told redux that main state(state of the application) will be like the above object i.e., on prodtucts key state given by productReducer will present, and on cart key state given by cartReducer will be present and so on 
+const store = (0, _redux.createStore)(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 const unsubscribe = store.subscribe(()=>{
     console.log(store.getState());
 });
 store.dispatch({
-    type: CART_ADD_ITEM,
+    type: (0, _cartReducer.CART_ADD_ITEM),
     payload: {
         productId: 1,
         quantity: 1
     }
 });
 store.dispatch({
-    type: CART_ADD_ITEM,
+    type: (0, _cartReducer.CART_ADD_ITEM),
     payload: {
         productId: 2,
         quantity: 1
     }
 });
 store.dispatch({
-    type: CART_ADD_ITEM,
+    type: (0, _cartReducer.CART_ADD_ITEM),
     payload: {
         productId: 3,
         quantity: 1
     }
 });
 store.dispatch({
-    type: CART_ADD_ITEM,
+    type: (0, _cartReducer.CART_ADD_ITEM),
     payload: {
         productId: 4,
         quantity: 1
     }
 });
 store.dispatch({
-    type: CART_ADD_ITEM,
+    type: (0, _cartReducer.CART_ADD_ITEM),
     payload: {
         productId: 5,
         quantity: 1
     }
 });
-// store.dispatch({type : CART_REMOVE_ITEM , payload : {productId : 2}});
-// store.dispatch({type : CART_REMOVE_ITEM , payload : {productId : 4}});
 store.dispatch({
-    type: CART_ADD_QUANTITY,
+    type: (0, _cartReducer.CART_REMOVE_ITEM),
+    payload: {
+        productId: 2
+    }
+});
+store.dispatch({
+    type: (0, _cartReducer.CART_ADD_QUANTITY),
     payload: {
         productId: 1
     }
 });
 store.dispatch({
-    type: CART_SUBTRACT_QUANTITY,
+    type: (0, _cartReducer.CART_SUBTRACT_QUANTITY),
     payload: {
         productId: 2
     }
 });
-// store.dispatch({type : CART_SUBTRACT_QUANTITY , payload : {productId : 2}});
 store.dispatch({
-    type: WISHLIST_ADD_ITEM,
+    type: (0, _wishListReducer.WISHLIST_ADD_ITEM),
     payload: {
         productId: 2
     }
 });
-// store.dispatch({type : WISHLIST_REMOVE_ITEM , payload : {productId : 2}});
 store.dispatch({
-    type: WISHLIST_ADD_ITEM,
+    type: (0, _wishListReducer.WISHLIST_ADD_ITEM),
     payload: {
         productId: 1
     }
 });
 store.dispatch({
-    type: WISHLIST_REMOVE_ITEM,
+    type: (0, _wishListReducer.WISHLIST_REMOVE_ITEM),
     payload: {
         productId: 2
     }
 });
 
-},{"redux":"anWnS","./products":"kQhZU","@parcel/transformer-js/src/esmodule-helpers.js":"8f7LW"}],"anWnS":[function(require,module,exports) {
+},{"redux":"anWnS","@parcel/transformer-js/src/esmodule-helpers.js":"8f7LW","./Reducer/cartReducer":"dVh8W","./Reducer/productReducer":"eSVW6","./Reducer/wishListReducer":"10NE6"}],"anWnS":[function(require,module,exports) {
 // src/utils/formatProdErrorMessage.ts
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
@@ -1071,7 +1012,74 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}],"kQhZU":[function(require,module,exports) {
+},{}],"dVh8W":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "CART_ADD_ITEM", ()=>CART_ADD_ITEM);
+parcelHelpers.export(exports, "CART_REMOVE_ITEM", ()=>CART_REMOVE_ITEM);
+parcelHelpers.export(exports, "CART_ADD_QUANTITY", ()=>CART_ADD_QUANTITY);
+parcelHelpers.export(exports, "CART_SUBTRACT_QUANTITY", ()=>CART_SUBTRACT_QUANTITY);
+parcelHelpers.export(exports, "default", ()=>cartReducer);
+let initialState = {
+    cart: []
+};
+const CART_ADD_ITEM = "cart/addItem";
+const CART_REMOVE_ITEM = "post/removeItem";
+const CART_ADD_QUANTITY = "post/addQuantity";
+const CART_SUBTRACT_QUANTITY = "post/subtractQuantity"; //these vars are called action types
+function cartReducer(state = initialState, action) {
+    switch(action.type){
+        case CART_ADD_ITEM:
+            return {
+                ...state,
+                cart: [
+                    ...state.cart,
+                    action.payload
+                ] //used spread because there can be products in cart previously we cant lose them
+            };
+        case CART_REMOVE_ITEM:
+            return {
+                ...state,
+                cart: state.cart.filter((item)=>item.productId !== action.payload.productId)
+            };
+        case CART_ADD_QUANTITY:
+            return {
+                ...state,
+                cart: state.cart.map((items)=>items.productId === action.payload.productId ? {
+                        ...items,
+                        quantity: items.quantity + 1
+                    } : items)
+            };
+        case CART_SUBTRACT_QUANTITY:
+            return {
+                ...state,
+                cart: state.cart.map((items)=>items.productId === action.payload.productId ? {
+                        ...items,
+                        quantity: items.quantity - 1
+                    } : items).filter((products)=>products.quantity > 0)
+            };
+        default:
+            return state;
+    }
+} //If you only returned { cart: ... } without ...state, and you later added another property to the state, such as wishlist, that property would be removed whenever the cart is updated.
+ //In Redux, the state should be immutable. This means that when you update the state, you should create a new state object rather than directly modifying the existing one.
+ //Even though your initial state only has a cart array, you still use ...state to maintain the overall structure of the state object.
+ //Always spread the existing state (...state) in your return statements, ensuring that all other parts of the state remain unchanged.
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"8f7LW"}],"eSVW6":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>productReducer);
+var _products = require("../products");
+var _productsDefault = parcelHelpers.interopDefault(_products);
+const initialState = {
+    products: (0, _productsDefault.default)
+};
+function productReducer(state = initialState) {
+    return state;
+} //this will set the state in the store when the default action is dispatched by redux
+
+},{"../products":"kQhZU","@parcel/transformer-js/src/esmodule-helpers.js":"8f7LW"}],"kQhZU":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 exports.default = productsList = [
@@ -1136,6 +1144,40 @@ exports.default = productsList = [
         }
     }
 ];
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"8f7LW"}],"10NE6":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "WISHLIST_ADD_ITEM", ()=>WISHLIST_ADD_ITEM);
+parcelHelpers.export(exports, "WISHLIST_REMOVE_ITEM", ()=>WISHLIST_REMOVE_ITEM);
+parcelHelpers.export(exports, "default", ()=>reducer);
+let initialState = {
+    wishList: []
+};
+const WISHLIST_ADD_ITEM = "wishlost/addItem";
+const WISHLIST_REMOVE_ITEM = "wishlist/subtractItem";
+function reducer(state = initialState, action) {
+    switch(action.type){
+        case WISHLIST_ADD_ITEM:
+            const item = action.payload;
+            const exist = state.wishList.find((product)=>product.productId === item.productId);
+            if (exist) return state;
+            else return {
+                ...state,
+                wishList: [
+                    ...state.wishList,
+                    item
+                ]
+            };
+        case WISHLIST_REMOVE_ITEM:
+            return {
+                ...state,
+                wishList: state.wishList.filter((prod)=>prod.productId !== action.payload.productId)
+            };
+        default:
+            return state;
+    }
+}
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"8f7LW"}]},["i4WFt","i51lh"], "i51lh", "parcelRequire94c2")
 
