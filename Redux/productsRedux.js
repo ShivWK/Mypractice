@@ -1,6 +1,5 @@
 import { createStore } from 'redux';
 import productsList from './products'
-import myCreateStore from './myCreateStore';
 
 let initialState = {
     products: productsList,
@@ -12,6 +11,8 @@ const CART_ADD_ITEM = 'cart/addItem';
 const CART_REMOVE_ITEM  = 'post/removeItem';
 const CART_ADD_QUANTITY = 'post/addQuantity';
 const CART_SUBTRACT_QUANTITY = 'post/subtractQuantity';
+const WISHLIST_ADD_ITEM = 'wishlost/addItem';
+const WISHLIST_REMOVE_ITEM = 'wishlist/subtractItem';
 
 
 function reducer(state = initialState, action) {
@@ -44,39 +45,37 @@ function reducer(state = initialState, action) {
                 return { ...state,
                         cart : state.cart.map((items) => {
                         if(items.productId === action.payload.productId) {
-                            if(items.quantity !== 0) {
-                                return { 
-                                    ...items, 
-                                    quantity : items.quantity - 1,
-                                } 
-                            }
+                            return { 
+                                ...items, 
+                                quantity : items.quantity - 1,
+                            } 
                         }
                         return items;
                     })
+                    .filter((products) => products.quantity > 0)
+                }
+
+            case WISHLIST_ADD_ITEM : 
+                const item = action.payload;
+                const exist = state.wishList.find((product) => product.productId === item.productId);
+
+                if(exist) return state;
+                else {
+                    return {
+                        ...state,
+                        wishList : [...state.wishList, item]
+                    }
+                }
+
+            case WISHLIST_REMOVE_ITEM :
+                return {
+                    ...state,
+                    wishList : state.wishList.filter((prod) => prod.productId !== action.payload.productId),
                 }
 
         default : return state;
     }
 }
-
-// const actionIncrement = () => {
-//     return {
-//         type: increament,
-//     }
-// }
-
-// const actionDecrement = () => {
-//     return {
-//         type: decrement,
-//     }
-// }
-
-// const actionIncrementBy = (by) => {
-//     return {
-//         type: increaseBy,
-//         payload: by,
-//     }
-// }
 
 const store = createStore(reducer,
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
@@ -101,6 +100,15 @@ store.dispatch({type : CART_ADD_QUANTITY , payload : {productId : 1}});
 
 store.dispatch({type : CART_SUBTRACT_QUANTITY , payload : {productId : 2}});
 
-store.dispatch({type : CART_SUBTRACT_QUANTITY , payload : {productId : 2}});
+// store.dispatch({type : CART_SUBTRACT_QUANTITY , payload : {productId : 2}});
+
+store.dispatch({type : WISHLIST_ADD_ITEM , payload : {productId : 2}});
+
+// store.dispatch({type : WISHLIST_REMOVE_ITEM , payload : {productId : 2}});
+
+store.dispatch({type : WISHLIST_ADD_ITEM , payload : {productId : 1}});
+
+store.dispatch({type : WISHLIST_REMOVE_ITEM , payload : {productId : 2}});
+
 
 

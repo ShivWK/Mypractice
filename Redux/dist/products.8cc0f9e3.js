@@ -588,8 +588,6 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _redux = require("redux");
 var _products = require("./products");
 var _productsDefault = parcelHelpers.interopDefault(_products);
-var _myCreateStore = require("./myCreateStore");
-var _myCreateStoreDefault = parcelHelpers.interopDefault(_myCreateStore);
 let initialState = {
     products: (0, _productsDefault.default),
     cart: [],
@@ -599,6 +597,8 @@ const CART_ADD_ITEM = "cart/addItem";
 const CART_REMOVE_ITEM = "post/removeItem";
 const CART_ADD_QUANTITY = "post/addQuantity";
 const CART_SUBTRACT_QUANTITY = "post/subtractQuantity";
+const WISHLIST_ADD_ITEM = "wishlost/addItem";
+const WISHLIST_REMOVE_ITEM = "wishlist/subtractItem";
 function reducer(state = initialState, action) {
     switch(action.type){
         case CART_ADD_ITEM:
@@ -631,35 +631,33 @@ function reducer(state = initialState, action) {
             return {
                 ...state,
                 cart: state.cart.map((items)=>{
-                    if (items.productId === action.payload.productId) {
-                        if (items.quantity !== 0) return {
-                            ...items,
-                            quantity: items.quantity - 1
-                        };
-                    }
+                    if (items.productId === action.payload.productId) return {
+                        ...items,
+                        quantity: items.quantity - 1
+                    };
                     return items;
-                })
+                }).filter((products)=>products.quantity > 0)
+            };
+        case WISHLIST_ADD_ITEM:
+            const item = action.payload;
+            const exist = state.wishList.find((product)=>product.productId === item.productId);
+            if (exist) return state;
+            else return {
+                ...state,
+                wishList: [
+                    ...state.wishList,
+                    item
+                ]
+            };
+        case WISHLIST_REMOVE_ITEM:
+            return {
+                ...state,
+                wishList: state.wishList.filter((prod)=>prod.productId !== action.payload.productId)
             };
         default:
             return state;
     }
 }
-// const actionIncrement = () => {
-//     return {
-//         type: increament,
-//     }
-// }
-// const actionDecrement = () => {
-//     return {
-//         type: decrement,
-//     }
-// }
-// const actionIncrementBy = (by) => {
-//     return {
-//         type: increaseBy,
-//         payload: by,
-//     }
-// }
 const store = (0, _redux.createStore)(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 console.log(store);
 const unsubscribe = store.subscribe(()=>{
@@ -714,14 +712,28 @@ store.dispatch({
         productId: 2
     }
 });
+// store.dispatch({type : CART_SUBTRACT_QUANTITY , payload : {productId : 2}});
 store.dispatch({
-    type: CART_SUBTRACT_QUANTITY,
+    type: WISHLIST_ADD_ITEM,
+    payload: {
+        productId: 2
+    }
+});
+// store.dispatch({type : WISHLIST_REMOVE_ITEM , payload : {productId : 2}});
+store.dispatch({
+    type: WISHLIST_ADD_ITEM,
+    payload: {
+        productId: 1
+    }
+});
+store.dispatch({
+    type: WISHLIST_REMOVE_ITEM,
     payload: {
         productId: 2
     }
 });
 
-},{"redux":"anWnS","./products":"kQhZU","./myCreateStore":"lp8OB","@parcel/transformer-js/src/esmodule-helpers.js":"8f7LW"}],"anWnS":[function(require,module,exports) {
+},{"redux":"anWnS","./products":"kQhZU","@parcel/transformer-js/src/esmodule-helpers.js":"8f7LW"}],"anWnS":[function(require,module,exports) {
 // src/utils/formatProdErrorMessage.ts
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
@@ -1124,37 +1136,6 @@ exports.default = productsList = [
         }
     }
 ];
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"8f7LW"}],"lp8OB":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>myCreateStore);
-function myCreateStore(reducer) {
-    let state;
-    const listeners = [];
-    const store = {
-        dispatch (action) {
-            state = reducer(state, action);
-            for (let methodS of listeners)methodS();
-        },
-        getState () {
-            return state;
-        },
-        subscribe (method) {
-            listeners.push(method);
-            return ()=>{
-                const listenerIndex = listeners.findIndex((listener)=>{
-                    return listener === method;
-                });
-                listeners.splice(listenerIndex, 1);
-            };
-        }
-    };
-    store.dispatch({
-        type: "@@INIT"
-    });
-    return store;
-} //dispatched initially to store the initial value otherwise getState will give error because there is nothing in state as redux do
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"8f7LW"}]},["i4WFt","i51lh"], "i51lh", "parcelRequire94c2")
 

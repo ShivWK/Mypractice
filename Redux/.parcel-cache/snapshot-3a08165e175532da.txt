@@ -1,7 +1,7 @@
 53
 55C:\Users\user\Desktop\mypractice\Redux\myCreateStore.js133679436133542472 0
 76C:\Users\user\Desktop\mypractice\Redux\node_modules\redux\dist\cjs\redux.cjs133677938934448644 0
-43C:\Users\user\Desktop\mypractice\Redux\dist133679662479943392 1
+43C:\Users\user\Desktop\mypractice\Redux\dist133680127655003249 1
 52C:\Users\user\Desktop\mypractice\Redux\products.html133679501584223064 0
 49C:\Users\user\Desktop\mypractice\Redux\index.html133678779721656740 0
 82C:\Users\user\Desktop\mypractice\Redux\node_modules\redux\dist\redux.legacy-esm.js133677938934518860 0
@@ -13,7 +13,7 @@
 56C:\Users\user\Desktop\mypractice\Redux\package-lock.json133677938935416213 0
 83C:\Users\user\Desktop\mypractice\Redux\node_modules\redux\src\bindActionCreators.ts133677938934924906 0
 50C:\Users\user\Desktop\mypractice\Redux\products.js133679496642555606 0
-55C:\Users\user\Desktop\mypractice\Redux\productsRedux.js133679662477531992 0
+55C:\Users\user\Desktop\mypractice\Redux\productsRedux.js133680127652531679 0
 62C:\Users\user\Desktop\mypractice\Redux\node_modules\redux\dist133677938935180587 1
 48C:\Users\user\Desktop\mypractice\Redux\script.js133679499633295451 0
 88C:\Users\user\Desktop\mypractice\Redux\node_modules\redux\src\utils\symbol-observable.ts133677938935245765 0
@@ -21,7 +21,7 @@
 57C:\Users\user\Desktop\mypractice\Redux\node_modules\redux133677938934779743 1
 68C:\Users\user\Desktop\mypractice\Redux\node_modules\redux\LICENSE.md133677938934694293 0
 67C:\Users\user\Desktop\mypractice\Redux\node_modules\redux\README.md133677938934714346 0
-68C:\Users\user\Desktop\mypractice\Redux\dist\products.8cc0f9e3.js.map133679662479938379 0
+68C:\Users\user\Desktop\mypractice\Redux\dist\products.8cc0f9e3.js.map133680127654983200 0
 61C:\Users\user\Desktop\mypractice\Redux\node_modules\redux\src133677938935050531 1
 80C:\Users\user\Desktop\mypractice\Redux\node_modules\redux\src\applyMiddleware.ts133677938934899835 0
 80C:\Users\user\Desktop\mypractice\Redux\node_modules\redux\src\combineReducers.ts133677938934954996 0
@@ -50,5 +50,5 @@
 65C:\Users\user\Desktop\mypractice\Redux\dist\index.8cfc62b9.js.map133679499635938085 0
 54C:\Users\user\Desktop\mypractice\Redux\dist\index.html133679498263684019 0
 68C:\Users\user\Desktop\mypractice\Redux\dist\products.29447368.js.map133679501035963016 0
-64C:\Users\user\Desktop\mypractice\Redux\dist\products.8cc0f9e3.js133679662479898277 0
-57C:\Users\user\Desktop\mypractice\Redux\dist\products.html133679662479898277 0
+64C:\Users\user\Desktop\mypractice\Redux\dist\products.8cc0f9e3.js133680127654933062 0
+57C:\Users\user\Desktop\mypractice\Redux\dist\products.html133680127654928049 0
