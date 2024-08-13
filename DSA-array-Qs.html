@@ -1308,7 +1308,7 @@
     //Brute force
 
         // function triplet(arr) {
-        //     if(arr.length === 0) return 0;
+        //     if(arr.length === 0) return [];
 
         //     let n = arr.length;
         //     let mySet = new Set();
@@ -1339,8 +1339,36 @@
 
     //Better appraoch
 
+    function triplateSum(arr) {
+        if(arr.length === 0) return [];
+        let mySet = new Set();
+
+        for(let i = 0; i < arr.length; i++) {
+            let pickSet = new Set();
+
+            for(let j = i + 1; j < arr.length; j++) {
+                let third = -(arr[i] + arr[j]);
+
+                if(pickSet.has(third)) {
+                    let triplate = [arr[i], arr[j], third].sort((a,b) => a - b).toString();
+                    if(!mySet.has(triplate)) {
+                        mySet.add(triplate);
+                    }
+                }
+
+                pickSet.add(arr[j]);
+            }
+        }
+        let result = [];
+
+        for(let str of mySet) {
+            result.push(str.split(',').map(num => Number(num)));
+        }
+
+        return result;
+    }
         
-       
+     console.log(triplateSum([-1, 0, 1, 2, -1, -4]))  
     </script>
 </body>
 
