@@ -1339,36 +1339,73 @@
 
     //Better appraoch
 
-    function triplateSum(arr) {
-        if(arr.length === 0) return [];
-        let mySet = new Set();
+        function triplateSum1(arr) {
+            if(arr.length === 0) return [];
+            let mySet = new Set();
 
-        for(let i = 0; i < arr.length; i++) {
-            let pickSet = new Set();
+            for(let i = 0; i < arr.length; i++) {
+                let pickSet = new Set();
 
-            for(let j = i + 1; j < arr.length; j++) {
-                let third = -(arr[i] + arr[j]);
+                for(let j = i + 1; j < arr.length; j++) {
+                    let third = -(arr[i] + arr[j]);
 
-                if(pickSet.has(third)) {
-                    let triplate = [arr[i], arr[j], third].sort((a,b) => a - b).toString();
-                    if(!mySet.has(triplate)) {
-                        mySet.add(triplate);
+                    if(pickSet.has(third)) {
+                        let triplate = [arr[i], arr[j], third].sort((a,b) => a - b).toString();
+                        if(!mySet.has(triplate)) {
+                            mySet.add(triplate);
+                        }
+                    }
+
+                    pickSet.add(arr[j]);
+                }
+            }
+            let result = [];
+
+            for(let str of mySet) {
+                result.push(str.split(',').map(num => Number(num)));
+            }
+
+            return result;
+        }
+            
+         console.log(triplateSum1([-1, 0, 1, 2, -1, -4]))  
+
+    //Optimal Approach
+
+        function triplateSum(arr) {
+            if (arr.length === 0) return [];
+
+            let n = arr.length;
+            let result = [];
+            arr.sort((a,b) => a - b);
+
+            for (let i = 0; i < n; i++) {
+                 // Skip duplicates for i
+                if(i > 0 && arr[i] === arr[i - 1]) continue;
+                //checked i > 0 so that i - 1 dont give error
+
+                let j = i + 1;
+                let k = n - 1;
+
+                while (j < k) {
+                    let sum = arr[i] + arr[j] + arr[k];
+                    
+                    if (sum < 0) j++;
+                    else if (sum > 0) k--;
+                    else {
+                        result.push([arr[i] , arr[j], arr[k]]);
+                        j++;
+                        k--;
+
+                        // Skip duplicates for j and k
+                        while (j < k && arr[j] === arr[j - 1]) j++; //j < k as we dont wnat it to go out of bound
+                        while (k > j && arr[k] === arr[k + 1]) k--;
                     }
                 }
-
-                pickSet.add(arr[j]);
             }
+            return result;
         }
-        let result = [];
-
-        for(let str of mySet) {
-            result.push(str.split(',').map(num => Number(num)));
-        }
-
-        return result;
-    }
-        
-     console.log(triplateSum([-1, 0, 1, 2, -1, -4]))  
+        console.log(triplateSum([-1, 0, 1, 2, -1, -4])) 
     </script>
 </body>
 
