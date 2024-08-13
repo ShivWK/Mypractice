@@ -49,12 +49,7 @@ const actionIncrementBy = (by) => {
 
 // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 
-// const store = myCreateStore(reducer);
-const store = myCreateStore(reducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
-
-
+const store = myCreateStore(reducer);
 
 const unsubscribe = store.subscribe(() => {
     console.log(store.getState())

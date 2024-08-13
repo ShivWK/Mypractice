@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+    //Object creatation by constructor function
+
+        // function User(name) {
+        //     this.name = name;
+        //     this.isAdmin = false;
+        // }
+  
+        // let mine = new User('shiv') ;
+        // console.log(mine.name);
+        // console.log(mine.isAdmin);
+
+    //Example of new.target use to save when new keyword is not used by the user     
+
+        // function User(name) {
+
+        //     if(!new.target) {
+        //         return new User(name);
+        //     }
+
+        //     this.name = name;
+        //     this.isAdmin = false;
+        // }
+
+    //imidiately called constructor function
+
+        // let mine = new function() {
+        //     this.name = "shivendra";
+        //     this.isAdmin = false; 
+        // }
+        // console.log(mine.name);
+        // console.log(mine.isAdmin);
+
+    //constructer function call without () paranthesis //not a good practice
+
+        // function User() {
+        //     this.name = "shivendra";
+        //     this.isAdmin = false;
+        // }
+  
+        // let mine = new User;
+        // console.log(mine.name);
+        // console.log(mine.isAdmin);
+        
+    </script>
+</body>
+</html>

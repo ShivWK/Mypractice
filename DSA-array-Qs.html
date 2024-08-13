@@ -1307,34 +1307,40 @@
 
     //Brute force
 
-        function triplet(arr) {
-            if(arr.length === 0) return 0;
+        // function triplet(arr) {
+        //     if(arr.length === 0) return 0;
 
-            let n = arr.length;
-            let mySet = new Set();
+        //     let n = arr.length;
+        //     let mySet = new Set();
 
-            for(let i = 0; i < n; i++) {
-                for(let j = i + 1; j < n; j++) {
+        //     for(let i = 0; i < n; i++) {
+        //         for(let j = i + 1; j < n; j++) {
 
-                    for(let k = j + 1; k < n; k++) {
-                        if(arr[i] + arr[j] + arr[k] === 0) {
-                            let triplate = [arr[i], arr[j], arr[k]].sort((a,b) => a - b).toString();
-                            if(!mySet.has(triplate)) {
-                                mySet.add(triplate);
-                            }
-                        }
-                    }
-                }
-            }
+        //             for(let k = j + 1; k < n; k++) {
+        //                 if(arr[i] + arr[j] + arr[k] === 0) {
+        //                     let triplate = [arr[i], arr[j], arr[k]].sort((a,b) => a - b).toString();
+        //                     if(!mySet.has(triplate)) {
+        //                         mySet.add(triplate);
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //     }
 
-            let result = [];
+        //     let result = [];
 
-            for(let str of mySet) {
-                result.push(str.split(',').map(Number)) //map(Number) to convert the elements back to number because with toString() on an array converts the whole array including its elements to string
-            }
-            return result;
-        }
-        console.log(triplet([-1, 0, 1, 2, -1, -4]))
+        //     for(let str of mySet) {
+        //         result.push(str.split(',').map(Number))
+        //          //map(Number) to convert the elements back to number because with toString() on an array converts the whole array including its elements to string
+        //     }
+        //     return result;
+        // }
+        // console.log(triplet([-1, 0, 1, 2, -1, -4]))
+
+    //Better appraoch
+
+        
+       
     </script>
 </body>
 
