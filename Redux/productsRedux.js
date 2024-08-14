@@ -1,18 +1,53 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore } from 'redux';
 
 import cartReducer, {
-    CART_ADD_ITEM, 
-    CART_REMOVE_ITEM, 
-    CART_ADD_QUANTITY, 
-    CART_SUBTRACT_QUANTITY 
+    addItemToCart,
+    removeItemFromCart,
+    addQuantityToCart,
+    removeQuantityFromCart
 } from './Reducer/cartReducer';
 
 import productReducer from './Reducer/productReducer';
 
 import wishListReducer , {
-    WISHLIST_ADD_ITEM, 
-    WISHLIST_REMOVE_ITEM
+    addItemToWishlist,
+    removeItemFromWishlist,
 } from './Reducer/wishListReducer';
+
+                                        // function combineReducers(reducers) {
+                                        //     const reducerKeys = Object.keys(reducers)
+                                        
+                                        //     return function (state = {}, action) {
+                                        //     const nextState = {}
+                                            
+                                        //     for (let i = 0; i < reducerKeys.length; i++) {
+                                        //         const key = reducerKeys[i]
+                                        //         const reducer = reducers[key]
+                                        //         const previousStateForKey = state[key]
+                                        //         const nextStateForKey = reducer(previousStateForKey, action)
+                                        //         nextState[key] = nextStateForKey
+                                        //     }
+                                        
+                                        //     return nextState
+                                        //     }
+                                        // }
+
+                                        function combineReducers(reducers) {
+                                        
+                                            return function (state = {}, action) {
+                                            const nextState = {}
+                                            
+                                            for (let [key , value] of Object.entries(reducers)) {
+                                                const reducer = value
+                                                const previousStateForKey = state[key]
+                                                const nextStateForKey = reducer(previousStateForKey, action)
+                                                nextState[key] = nextStateForKey
+                                            }
+                                        
+                                            return nextState
+                                            }
+                                        }
+  
 
 const rootReducer = combineReducers({
     products : productReducer,
@@ -30,23 +65,23 @@ const unsubscribe = store.subscribe(() => {
     console.log(store.getState())
 });
 
-store.dispatch({type : CART_ADD_ITEM , payload : {productId : 1, quantity : 1}});
-store.dispatch({type : CART_ADD_ITEM , payload : {productId : 2, quantity : 1}});
-store.dispatch({type : CART_ADD_ITEM , payload : {productId : 3, quantity : 1}});
-store.dispatch({type : CART_ADD_ITEM , payload : {productId : 4, quantity : 1}});
-store.dispatch({type : CART_ADD_ITEM , payload : {productId : 5, quantity : 1}});
+store.dispatch(addItemToCart(1));
+store.dispatch(addItemToCart(2));
+store.dispatch(addItemToCart(3));
+store.dispatch(addItemToCart(4));
+store.dispatch(addItemToCart(5));
 
-store.dispatch({type : CART_REMOVE_ITEM , payload : {productId : 2}});
+store.dispatch(removeItemFromCart(2));
 
-store.dispatch({type : CART_ADD_QUANTITY , payload : {productId : 1}});
+store.dispatch(addQuantityToCart(2));
 
-store.dispatch({type : CART_SUBTRACT_QUANTITY , payload : {productId : 2}});
+store.dispatch(removeQuantityFromCart(2));
 
-store.dispatch({type : WISHLIST_ADD_ITEM , payload : {productId : 2}});
+store.dispatch(addItemToWishlist(2));
 
-store.dispatch({type : WISHLIST_ADD_ITEM , payload : {productId : 1}});
+store.dispatch(addItemToWishlist(1));
 
-store.dispatch({type : WISHLIST_REMOVE_ITEM , payload : {productId : 2}});
+store.dispatch(removeItemFromWishlist(1));
 
 
 

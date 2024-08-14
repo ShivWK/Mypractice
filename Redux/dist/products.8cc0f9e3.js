@@ -592,7 +592,33 @@ var _productReducer = require("./Reducer/productReducer");
 var _productReducerDefault = parcelHelpers.interopDefault(_productReducer);
 var _wishListReducer = require("./Reducer/wishListReducer");
 var _wishListReducerDefault = parcelHelpers.interopDefault(_wishListReducer);
-const rootReducer = (0, _redux.combineReducers)({
+// function combineReducers(reducers) {
+//     const reducerKeys = Object.keys(reducers)
+//     return function (state = {}, action) {
+//     const nextState = {}
+//     for (let i = 0; i < reducerKeys.length; i++) {
+//         const key = reducerKeys[i]
+//         const reducer = reducers[key]
+//         const previousStateForKey = state[key]
+//         const nextStateForKey = reducer(previousStateForKey, action)
+//         nextState[key] = nextStateForKey
+//     }
+//     return nextState
+//     }
+// }
+function combineReducers(reducers) {
+    return function(state = {}, action) {
+        const nextState = {};
+        for (let [key, value] of Object.entries(reducers)){
+            const reducer = value;
+            const previousStateForKey = state[key];
+            const nextStateForKey = reducer(previousStateForKey, action);
+            nextState[key] = nextStateForKey;
+        }
+        return nextState;
+    };
+}
+const rootReducer = combineReducers({
     products: (0, _productReducerDefault.default),
     cart: (0, _cartReducerDefault.default),
     wishList: (0, _wishListReducerDefault.default)
@@ -602,79 +628,19 @@ const store = (0, _redux.createStore)(rootReducer, window.__REDUX_DEVTOOLS_EXTEN
 const unsubscribe = store.subscribe(()=>{
     console.log(store.getState());
 });
-store.dispatch({
-    type: (0, _cartReducer.CART_ADD_ITEM),
-    payload: {
-        productId: 1,
-        quantity: 1
-    }
-});
-store.dispatch({
-    type: (0, _cartReducer.CART_ADD_ITEM),
-    payload: {
-        productId: 2,
-        quantity: 1
-    }
-});
-store.dispatch({
-    type: (0, _cartReducer.CART_ADD_ITEM),
-    payload: {
-        productId: 3,
-        quantity: 1
-    }
-});
-store.dispatch({
-    type: (0, _cartReducer.CART_ADD_ITEM),
-    payload: {
-        productId: 4,
-        quantity: 1
-    }
-});
-store.dispatch({
-    type: (0, _cartReducer.CART_ADD_ITEM),
-    payload: {
-        productId: 5,
-        quantity: 1
-    }
-});
-store.dispatch({
-    type: (0, _cartReducer.CART_REMOVE_ITEM),
-    payload: {
-        productId: 2
-    }
-});
-store.dispatch({
-    type: (0, _cartReducer.CART_ADD_QUANTITY),
-    payload: {
-        productId: 1
-    }
-});
-store.dispatch({
-    type: (0, _cartReducer.CART_SUBTRACT_QUANTITY),
-    payload: {
-        productId: 2
-    }
-});
-store.dispatch({
-    type: (0, _wishListReducer.WISHLIST_ADD_ITEM),
-    payload: {
-        productId: 2
-    }
-});
-store.dispatch({
-    type: (0, _wishListReducer.WISHLIST_ADD_ITEM),
-    payload: {
-        productId: 1
-    }
-});
-store.dispatch({
-    type: (0, _wishListReducer.WISHLIST_REMOVE_ITEM),
-    payload: {
-        productId: 2
-    }
-});
+store.dispatch((0, _cartReducer.addItemToCart)(1));
+store.dispatch((0, _cartReducer.addItemToCart)(2));
+store.dispatch((0, _cartReducer.addItemToCart)(3));
+store.dispatch((0, _cartReducer.addItemToCart)(4));
+store.dispatch((0, _cartReducer.addItemToCart)(5));
+store.dispatch((0, _cartReducer.removeItemFromCart)(2));
+store.dispatch((0, _cartReducer.addQuantityToCart)(2));
+store.dispatch((0, _cartReducer.removeQuantityFromCart)(2));
+store.dispatch((0, _wishListReducer.addItemToWishlist)(2));
+store.dispatch((0, _wishListReducer.addItemToWishlist)(1));
+store.dispatch((0, _wishListReducer.removeItemFromWishlist)(1));
 
-},{"redux":"anWnS","@parcel/transformer-js/src/esmodule-helpers.js":"8f7LW","./Reducer/cartReducer":"dVh8W","./Reducer/productReducer":"eSVW6","./Reducer/wishListReducer":"10NE6"}],"anWnS":[function(require,module,exports) {
+},{"redux":"anWnS","./Reducer/cartReducer":"dVh8W","./Reducer/productReducer":"eSVW6","./Reducer/wishListReducer":"10NE6","@parcel/transformer-js/src/esmodule-helpers.js":"8f7LW"}],"anWnS":[function(require,module,exports) {
 // src/utils/formatProdErrorMessage.ts
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
@@ -1015,10 +981,10 @@ exports.export = function(dest, destName, get) {
 },{}],"dVh8W":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "CART_ADD_ITEM", ()=>CART_ADD_ITEM);
-parcelHelpers.export(exports, "CART_REMOVE_ITEM", ()=>CART_REMOVE_ITEM);
-parcelHelpers.export(exports, "CART_ADD_QUANTITY", ()=>CART_ADD_QUANTITY);
-parcelHelpers.export(exports, "CART_SUBTRACT_QUANTITY", ()=>CART_SUBTRACT_QUANTITY);
+parcelHelpers.export(exports, "addItemToCart", ()=>addItemToCart);
+parcelHelpers.export(exports, "removeItemFromCart", ()=>removeItemFromCart);
+parcelHelpers.export(exports, "addQuantityToCart", ()=>addQuantityToCart);
+parcelHelpers.export(exports, "removeQuantityFromCart", ()=>removeQuantityFromCart);
 parcelHelpers.export(exports, "default", ()=>cartReducer);
 let initialState = {
     cart: []
@@ -1027,6 +993,39 @@ const CART_ADD_ITEM = "cart/addItem";
 const CART_REMOVE_ITEM = "post/removeItem";
 const CART_ADD_QUANTITY = "post/addQuantity";
 const CART_SUBTRACT_QUANTITY = "post/subtractQuantity"; //these vars are called action types
+function addItemToCart(a) {
+    return {
+        type: CART_ADD_ITEM,
+        payload: {
+            productId: a,
+            quantity: 1
+        }
+    };
+}
+function removeItemFromCart(a) {
+    return {
+        type: CART_REMOVE_ITEM,
+        payload: {
+            productId: a
+        }
+    };
+}
+function addQuantityToCart(a) {
+    return {
+        type: CART_ADD_QUANTITY,
+        payload: {
+            productId: a
+        }
+    };
+}
+function removeQuantityFromCart(a) {
+    return {
+        type: CART_SUBTRACT_QUANTITY,
+        payload: {
+            productId: a
+        }
+    };
+}
 function cartReducer(state = initialState, action) {
     switch(action.type){
         case CART_ADD_ITEM:
@@ -1148,14 +1147,30 @@ exports.default = productsList = [
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"8f7LW"}],"10NE6":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "WISHLIST_ADD_ITEM", ()=>WISHLIST_ADD_ITEM);
-parcelHelpers.export(exports, "WISHLIST_REMOVE_ITEM", ()=>WISHLIST_REMOVE_ITEM);
+parcelHelpers.export(exports, "addItemToWishlist", ()=>addItemToWishlist);
+parcelHelpers.export(exports, "removeItemFromWishlist", ()=>removeItemFromWishlist);
 parcelHelpers.export(exports, "default", ()=>reducer);
 let initialState = {
     wishList: []
 };
 const WISHLIST_ADD_ITEM = "wishlost/addItem";
 const WISHLIST_REMOVE_ITEM = "wishlist/subtractItem";
+function addItemToWishlist(a) {
+    return {
+        type: WISHLIST_ADD_ITEM,
+        payload: {
+            productId: a
+        }
+    };
+}
+function removeItemFromWishlist(a) {
+    return {
+        type: WISHLIST_REMOVE_ITEM,
+        payload: {
+            productId: a
+        }
+    };
+}
 function reducer(state = initialState, action) {
     switch(action.type){
         case WISHLIST_ADD_ITEM:

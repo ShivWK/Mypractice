@@ -2,8 +2,22 @@ let initialState = {
     wishList : []
 }
 
-export const WISHLIST_ADD_ITEM = 'wishlost/addItem';
-export const WISHLIST_REMOVE_ITEM = 'wishlist/subtractItem';
+const WISHLIST_ADD_ITEM = 'wishlost/addItem';
+const WISHLIST_REMOVE_ITEM = 'wishlist/subtractItem';
+
+export function addItemToWishlist(a) {
+    return {
+        type : WISHLIST_ADD_ITEM,
+        payload : {productId : a}
+    }
+} 
+
+export function removeItemFromWishlist(a) {
+    return {
+        type : WISHLIST_REMOVE_ITEM,
+        payload : {productId : a}
+    }
+} 
 
 export default function reducer(state = initialState, action) {
 

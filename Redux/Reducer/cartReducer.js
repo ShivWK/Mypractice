@@ -3,10 +3,38 @@ let initialState = {
     cart : []   
 }
 
-export const CART_ADD_ITEM = 'cart/addItem';
-export const CART_REMOVE_ITEM  = 'post/removeItem';
-export const CART_ADD_QUANTITY = 'post/addQuantity';
-export const CART_SUBTRACT_QUANTITY = 'post/subtractQuantity'; //these vars are called action types
+const CART_ADD_ITEM = 'cart/addItem';
+const CART_REMOVE_ITEM  = 'post/removeItem';
+const CART_ADD_QUANTITY = 'post/addQuantity';
+const CART_SUBTRACT_QUANTITY = 'post/subtractQuantity'; //these vars are called action types
+
+export function addItemToCart(a) {
+    return {
+        type : CART_ADD_ITEM,
+        payload : {productId : a, quantity : 1}
+    }
+}
+
+export function removeItemFromCart(a) {
+    return {
+        type : CART_REMOVE_ITEM,
+        payload : {productId : a}
+    }
+}
+
+export function addQuantityToCart(a) {
+    return {
+        type : CART_ADD_QUANTITY,
+        payload : {productId : a}
+    }
+}
+
+export function removeQuantityFromCart(a) {
+    return {
+        type : CART_SUBTRACT_QUANTITY,
+        payload : {productId : a}
+    }
+}
 
 export default function cartReducer(state = initialState, action) {
     switch (action.type) {

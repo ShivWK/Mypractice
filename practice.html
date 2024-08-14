@@ -120,15 +120,16 @@
         // alert(acc.value);
 
     //Two function one object, object created from two constructer functions can be equal
+        // let obj = {};
+        // function SameObjectA() { return obj;}
+        // function SameObjectB() { return obj;}
+
+        // let user1 = new SameObjectA;
+        // let user2 = new SameObjectB;
+
+        // console.log(user1 === user2)
         let obj = {};
-        function SameObjectA() { return obj;}
-        function SameObjectB() { return obj;}
-
-        let user1 = new SameObjectA;
-        let user2 = new SameObjectB;
-
-        console.log(user1 === user2)
-        
+        console.log(obj == "[object Object]");
     </script>
 </body>
 </html>
