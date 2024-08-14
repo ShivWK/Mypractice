@@ -32,21 +32,21 @@ import wishListReducer , {
                                         //     }
                                         // }
 
-                                        function combineReducers(reducers) {
+ function combineReducers(reducers) {
                                         
-                                            return function (state = {}, action) {
-                                            const nextState = {}
+    return function (state = {}, action) {
+        const nextState = {}
+
+        for (let [key , value] of Object.entries(reducers)) {
+        const reducer = value
+        const previousStateForKey = state[key]
+        const nextStateForKey = reducer(previousStateForKey, action)
+        nextState[key] = nextStateForKey
+        }
                                             
-                                            for (let [key , value] of Object.entries(reducers)) {
-                                                const reducer = value
-                                                const previousStateForKey = state[key]
-                                                const nextStateForKey = reducer(previousStateForKey, action)
-                                                nextState[key] = nextStateForKey
-                                            }
-                                        
-                                            return nextState
-                                            }
-                                        }
+        return nextState
+    }
+}
   
 
 const rootReducer = combineReducers({
