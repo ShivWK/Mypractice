@@ -32,7 +32,7 @@ import wishListReducer , {
                                         //     }
                                         // }
 
- function combineReducers(reducers) {
+function combineReducers(reducers) {
                                         
     return function (state = {}, action) {
         const nextState = {}
