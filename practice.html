@@ -134,23 +134,33 @@
 
     //Symboll Practice
 
-    let user = {
-        id : "shivendra"
-    }
+    // let user = {
+    //     id : "shivendra"
+    // }
 
-    let id2 = Symbol("id2");
-    user[id2] = "Dwivedi";
+    // let id2 = Symbol("id2");
+    // user[id2] = "Dwivedi";
 
-    const simpleKey = Object.keys(user);
-    const symbolKey = Object.getOwnPropertySymbols(user);
+    // const simpleKey = Object.keys(user);
+    // const symbolKey = Object.getOwnPropertySymbols(user);
 
-    const keys = [...simpleKey, ...symbolKey];
+    // const keys = [...simpleKey, ...symbolKey];
 
-    //dont use for..in loop here it's made to iterate over objects not on arrays instead use other like for..of
+    // //dont use for..in loop here it's made to iterate over objects not on arrays instead use other like for..of
 
-    for(let key of keys) {
-        console.log(user[key]);
-    }
+    // for(let key of keys) {
+    //     console.log(user[key]);
+    // }
+
+    let id1 = Symbol.for("id");
+    let id2 = Symbol.for("id");
+    let id3 = Symbol('id3');
+
+    console.log(id2 == id2);
+    console.log(Symbol.keyFor(id1));
+    console.log(Symbol.keyFor(id2))
+    console.log(Symbol.keyFor(id3)) //undefined
+
 
     </script>
 </body>
