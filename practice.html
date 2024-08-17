@@ -141,13 +141,16 @@
     let id2 = Symbol("id2");
     user[id2] = "Dwivedi";
 
-    for(let ob in user) {
-        console.log(user[ob]
+    const simpleKey = Object.keys(user);
+    const symbolKey = Object.getOwnPropertySymbols(user);
 
-        
-        );
+    const keys = [...simpleKey, ...symbolKey];
+
+    //dont use for..in loop here it's made to iterate over objects not on arrays instead use other like for..of
+
+    for(let key of keys) {
+        console.log(user[key]);
     }
-
 
     </script>
 </body>

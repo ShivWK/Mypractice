@@ -1605,30 +1605,47 @@
 
     //Optimal One
 
-        function mergeSorted(arr1, m, arr2, n) {
-            let left = m - 1;;
-            let right = 0;
+        // function mergeSorted(arr1, m, arr2, n) {
+        //     let left = m - 1;;
+        //     let right = 0;
 
-            while (left < m, right < n) {
-                if (arr1[left] > arr2[right]) {
-                    [arr1[left], arr2[right]] = [arr2[right], arr1[left]];
-                    left--; 
-                    right++;
-                } else {
-                    break;
-                }
+        //     while (left < m, right < n) {
+        //         if (arr1[left] > arr2[right]) {
+        //             [arr1[left], arr2[right]] = [arr2[right], arr1[left]];
+        //             left--; 
+        //             right++;
+        //         } else {
+        //             break;
+        //         }
+        //     }
+
+        //     arr1.sort((a,b) => a - b);
+        //     arr2.sort((a,b) => a - b);
+
+        // }
+        // let arr1a = [0,2,5,8,9];
+        // let arr2b = [1,3,4,6,10];
+
+        // mergeSorted(arr1a, 5, arr2b, 5)
+        // console.log(arr1a);
+        // console.log(arr2b);
+
+
+//gggg
+        function mergeSorted(arr1, m, arr2, n) {
+
+            for (let i = 0; i < n; i++) {
+                arr1[m + i] = arr2[i]
             }
 
             arr1.sort((a,b) => a - b);
-            arr2.sort((a,b) => a - b);
-
+            return arr1;
         }
-        let arr1a = [0,2,5,8,9];
-        let arr2b = [1,3,4,6,10];
+        let arr1a = [0,2,5,0,0,0];
+        let arr2b = [1,3,4];
 
-        mergeSorted(arr1a, 5, arr2b, 5)
-        console.log(arr1a);
-        console.log(arr2b);
+        console.log(mergeSorted(arr1a, 3, arr2b, 3));
+        
     </script>
 </body>
 
