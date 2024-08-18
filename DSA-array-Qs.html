@@ -1648,33 +1648,158 @@
         
     //optimal solution
 
-        function mergeSorted(arr1, m, arr2, n) {
-            let left = m - 1;
-            let right = n - 1;
-            let position = m + n - 1;
+        // function mergeSorted(arr1, m, arr2, n) {
+        //     let left = m - 1;
+        //     let right = n - 1;
+        //     let position = m + n - 1;
 
-            while (left >= 0 && right >= 0) {
-                if (arr2[right] >= arr1[left]) {
-                    arr1[position--] = arr2[right--]; //j th element is placed thus we are decrementing it by post decrement mean it'll return the current value first then it'll decrement
-                   // right--, position--;
+        //     while (left >= 0 && right >= 0) {
+        //         if (arr2[right] >= arr1[left]) {
+        //             arr1[position--] = arr2[right--]; //j th element is placed thus we are decrementing it by post decrement mean it'll return the current value first then it'll decrement
+        //            // right--, position--;
+        //         } else {
+        //             arr1[position--] = arr1[left--];
+        //            // left--, position--;
+        //         }
+        //     }
+
+        //     while (right >= 0) {
+        //         arr1[position--] = arr2[right--];
+        //         //right--, position--;
+        //     }
+
+        //     return arr1;
+        // }
+
+        // let arr1a = [0,2,5,0,0,0];
+        // let arr2b = [1,3,4];
+
+        // console.log(mergeSorted(arr1a, 3, arr2b, 3));
+
+//Subarray with max product
+
+    //Brute Force
+
+    //    function maxProductSubarray1(arr) {
+    //     if (arr.length === 0) return [];
+
+    //     let n = arr.length;
+    //     let maxProduct = -Infinity;  //because product of subarray can be -ve because array has -ve elements too so this should be ass minimum as possible so that we can get the product result in this as it lowest of all so when compared it will get next value as that will be always greater than this.
+
+    //     for(let i = 0; i < n; i++) {
+    //         for(let j = i; j < n; j++) {
+    //             let product = 1;
+
+    //             for(let k = i; k <= j; k++) {
+
+    //                 product *= arr[k];
+    //             }
+                
+    //             maxProduct = Math.max(maxProduct, product);
+    //         }
+    //     }
+        
+    //     return maxProduct;
+
+    //    } 
+
+    //    console.log(maxProductSubarray1([-2,0,-1]));
+
+    //Better approach 
+
+        // function maxProductSubarray2(arr) {
+        //     if (arr.length === 0) return [];
+
+        //     let n = arr.length;
+        //     let maxProduct = -Infinity; 
+
+        //     for(let i = 0; i < n; i++) {
+        //         let product = 1;
+
+        //         for(let j = i; j < n; j++) {
+        //              product *= arr[j];
+        //              maxProduct = Math.max(maxProduct, product);
+
+        //              //we have pust max assignment inside because at each iteration we are getting a new subarray and we need to examin its product , if we check outsie this loop the product will be examined when loop will end at that time we will have product of the last sub array of i and we have lost the  products of all intermediat subarrays.
+        //         }          
+        //     }      
+        //     return maxProduct;
+
+        // } 
+ 
+        // console.log(maxProductSubarray2([-2,0,-1]));
+
+    //Optimal solution 
+
+    // function maxProductSubarray3(arr) {
+    //         if (arr.length === 0) return [];
+
+    //         let n = arr.length;
+    //         let maxProduct = -Infinity;  
+    //         let suffixProduct = 1;
+    //         let prefixProduct = 1;
+
+    //         for (let i = 0; i < n; i++) {
+    //             if (suffixProduct == 0) suffixProduct = 1;
+    //             if (prefixProduct == 0) prefixProduct =1;
+
+    //             suffixProduct *= arr[i];
+    //             prefixProduct *= arr[n-1-i];
+
+    //             maxProduct = Math.max(maxProduct, Math.max(suffixProduct, prefixProduct));
+    //         }      
+    //         return maxProduct;
+    //     } 
+
+    //     console.log(maxProductSubarray3([-2,0,-1])); 
+        
+//Container with most water
+
+    //Brute force
+    
+        function mostWater1(arr) {
+            if (arr.length === 0) return  0;
+             
+            let n = arr.length;
+            let maxArea = 0;
+
+            for (let i = 0; i < n; i++) {
+                for(let j = i + 1; j < n; j++) {
+                    let area = Math.min(arr[i], arr[j]) * (j - i);
+
+                    maxArea = Math.max(maxArea, area);
+                }
+            }
+            return maxArea;
+        }
+
+        console.log(mostWater1([3, 1, 2, 4, 5]));
+
+    //Optimal Solution
+
+        function mostWater2(arr) {
+            if (arr.length === 0) return 0;
+
+            let n = arr.length;
+            let maxArea = 0;
+            let left = 0;
+            let right = n-1;
+
+            while (left < right) {
+                let temp = Math.min(arr[left], arr[right]) * (right - left);
+                maxArea = Math.max(maxArea, temp);
+
+                if (arr[left] < arr[right]) {
+                    left++;
                 } else {
-                    arr1[position--] = arr1[left--];
-                   // left--, position--;
+                    right--;
                 }
             }
 
-            while (right >= 0) {
-                arr1[position--] = arr2[right--];
-                //right--, position--;
-            }
-
-            return arr1;
+            return maxArea;
         }
 
-        let arr1a = [0,2,5,0,0,0];
-        let arr2b = [1,3,4];
-
-        console.log(mergeSorted(arr1a, 3, arr2b, 3));
+        console.log(mostWater2([3, 1, 2, 4, 5]));
     </script>
 </body>
 
