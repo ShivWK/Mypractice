@@ -1,4 +1,13 @@
-//Binary search algo example 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Binary search algo example 
 
     //Brute force
     //     function binarSearch1(arr, target) {
@@ -96,69 +105,135 @@
 
 //Brute Force
 
+//     function floorCeil(arr, target) {
+//         let n = arr.length;
+//         if (n === 0) return -1;
+
+//         let floor = -1, ceil = -1;
+//         let low = 0, high = n - 1;
+
+//         //floor largest but <= target
+//         while (low <= high) {
+//             let mid = Math.floor((low + high) / 2);
+//             if (arr[mid] <= target) {
+//                 floor = arr[mid];
+//                 low = mid + 1;
+//             } else {
+//                 high = mid - 1;
+//             }
+//         }
+
+//         //Ceil smallest but >= target
+//         low = 0;
+//         high = n - 1;
+//         while (low <= high) {
+//             let mid = Math.floor((low + high) / 2);
+//             if (arr[mid] >= target) {
+//                 ceil = arr[mid];
+//                 high = mid - 1;
+//             } else {
+//                 low = mid + 1;
+//             }
+//         }
+        
+//         return [floor, ceil];
+//     }
+
+//     console.log(floorCeil([1, 2, 8, 10, 10, 12, 19], 5))
+
+// //Optimal Solution
+
     // function floorCeil(arr, target) {
     //     let n = arr.length;
-    //     if (n === 0) return -1;
+    //     if (n === 0) return [-1 , -1];
 
     //     let floor = -1, ceil = -1;
     //     let low = 0, high = n - 1;
 
-    //     //floor largest but <= target
+    // //floor largest but <= target
     //     while (low <= high) {
     //         let mid = Math.floor((low + high) / 2);
-    //         if (arr[mid] <= target) {
-    //             floor = arr[mid];
-    //             low = mid + 1;
-    //         } else {
-    //             high = mid - 1;
-    //         }
-    //     }
 
-    //     //Ceil smallest but >= target
-    //     low = 0;
-    //     high = n - 1;
-    //     while (low <= high) {
-    //         let mid = Math.floor((low + high) / 2);
-    //         if (arr[mid] >= target) {
+    //         if (arr[mid] === target) {
+    //             floor = arr[mid];
+    //             ceil = arr[mid];
+
+    //             return [floor, ceil];
+    //         } else if (arr[mid] > target) {
     //             ceil = arr[mid];
     //             high = mid - 1;
     //         } else {
+    //             floor = arr[mid];
     //             low = mid + 1;
     //         }
     //     }
-        
+
     //     return [floor, ceil];
     // }
+//     console.log(floorCeil([1, 2, 8, 10, 10, 12, 19], 5))
 
-    // console.log(floorCeil([1, 2, 8, 10, 10, 12, 19], 5))
+//first and last occurance
 
-//Optimal Solution
+    //Brute Force
 
-    function floorCeil(arr, target) {
+        function firstLast1(arr, x) {
+            let n = arr.length;
+            if (n === 0) return [-1, -1];
+            let first = -1;
+            let last = -1;
+
+            for (let i = 0; i < n; i++) {
+                if (arr[i] === x) {
+
+                    if (first === -1) {
+                        first = i;
+                    }
+                    last = i;
+                }
+            }
+
+            return [first, last]
+        }
+
+        console.log(firstLast1([2,4,4,4,4,6,8,8,8,,13], 4));
+
+    //optimal solution
+
+    function firstLast2(arr, target) {
         let n = arr.length;
         if (n === 0) return [-1 , -1];
 
-        let floor = -1, ceil = -1;
+        let lowerBound = n, upperBound = n;
         let low = 0, high = n - 1;
 
-    //floor largest but <= target
         while (low <= high) {
             let mid = Math.floor((low + high) / 2);
-
-            if (arr[mid] === target) {
-                floor = arr[mid];
-                ceil = arr[mid];
-
-                return [floor, ceil];
-            } else if (arr[mid] > target) {
-                ceil = arr[mid];
+            if (arr[mid] >= target) {
+                lowerBound = mid;
                 high = mid - 1;
             } else {
-                floor = arr[mid];
                 low = mid + 1;
             }
         }
 
-        return [floor, ceil];
+        low = 0;
+        high = n - 1;
+        while (low <= high) {
+            let mid = Math.floor((low + high) / 2);
+            if (arr[mid] > target) {
+                upperBound = mid;
+                high = mid - 1;
+            } else {
+                low = mid + 1;
+            }
+        }
+
+        if (arr[lowerBound] !== target || lowerBound === n) return [-1, -1]
+        
+        return [lowerBound, upperBound -1];
     }
-    console.log(floorCeil([1, 2, 8, 10, 10, 12, 19], 5))
+
+    console.log(firstLast2([2,4,4,4,4,6,8,8,8,,13], 4));
+    </script>
+</body>
+</html>
