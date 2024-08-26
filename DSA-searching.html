@@ -258,6 +258,8 @@
                 }
             }
 
+            if (first === -1) return [-1, -1];
+
             //Last Occurance 
             low = 0, high = n - 1;
             
@@ -276,7 +278,7 @@
 
             return [first , last];
         }   
-        console.log(firstLast3([2,4,4,4,4,6,8,8,8,13], 0));
+        console.log(firstLast3([2,4,4,4,4,6,8,8,8,13], 8));
     </script>
 </body>
 </html>
