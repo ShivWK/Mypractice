@@ -284,49 +284,98 @@
 
         //last occurance - first occurance
 
-        function firstLast3(arr, target) {
-            let n = arr.length;
-            if (n === 0) return [-1, -1];
+        // function firstLast3(arr, target) {
+        //     let n = arr.length;
+        //     if (n === 0) return [-1, -1];
 
-            let low = 0, high = n - 1;
-            let first = -1, last = -1;
+        //     let low = 0, high = n - 1;
+        //     let first = -1, last = -1;
 
-            //First Occurance
-            while (low <= high) {
-                let mid = Math.floor((low + high) / 2);
+        //     //First Occurance
+        //     while (low <= high) {
+        //         let mid = Math.floor((low + high) / 2);
 
-                if (arr[mid] === target) {
-                    first = mid;
-                    high = mid - 1;
-                } else if (arr[mid] > target) {
-                    high = mid - 1;
-                } else {
-                    low = mid + 1;
-                }
-            }
+        //         if (arr[mid] === target) {
+        //             first = mid;
+        //             high = mid - 1;
+        //         } else if (arr[mid] > target) {
+        //             high = mid - 1;
+        //         } else {
+        //             low = mid + 1;
+        //         }
+        //     }
 
-            if (first === -1) return 0;
+        //     if (first === -1) return 0;
 
-            //Last Occurance 
-            low = 0, high = n - 1;
+        //     //Last Occurance 
+        //     low = 0, high = n - 1;
             
-            while (low <= high) {
-                let mid = Math.floor((low + high) / 2);
+        //     while (low <= high) {
+        //         let mid = Math.floor((low + high) / 2);
 
-                if (arr[mid] === target) {
-                    last = mid;
-                    low = mid + 1;
-                } else if (arr[mid] > target) {
+        //         if (arr[mid] === target) {
+        //             last = mid;
+        //             low = mid + 1;
+        //         } else if (arr[mid] > target) {
+        //             high = mid - 1;
+        //         } else {
+        //             low = mid + 1;
+        //         }
+        //     }
+
+        //     return (last - first) + 1; //we are excluding the first one too so for that shake 1 is added
+        // }   
+        // console.log(firstLast3([2,4,4,4,4,4,8,8,8,13], 1));
+
+//Search in rotated sorted array
+//witout duplicates
+
+    //brute force
+
+        function search(arr, x) {
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] === x){
+                    return i;
+                }
+            }
+
+            return -1;
+        }
+    
+        console.log(search([7, 8, 9, 1, 2, 3, 4, 5, 6, 7], 5))
+
+    //by binary search
+
+    function search1(arr, x) {
+        let n = arr.length;
+        if (n === 0) return -1;
+
+        let low = 0;
+        let high = n - 1;
+
+        while (low <= high) {
+            let mid = Math.floor((low + high) / 2);
+
+            if (arr[mid] === x) return mid;
+            else if (arr[low] <= arr[mid]) {
+                if (arr[low] <= x && x <= arr[mid]) {
                     high = mid - 1;
                 } else {
                     low = mid + 1;
                 }
+            } else {
+                if (arr[mid] <= x && x <= arr[high]) {
+                    low = mid + 1;
+                } else {
+                    high = mid - 1;
+                }
             }
+        }
 
-            return (last - first) + 1; //we are excluding the first one too so for that shake 1 is added
-        }   
-        console.log(firstLast3([2,4,4,4,4,4,8,8,8,13], 1));
-    
+        return -1;
+    }
+
+    console.log(search1([1,3], 3))
     </script>
 </body>
 </html>
