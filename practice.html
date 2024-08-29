@@ -263,7 +263,65 @@
 
     // alert(obj);
 
-    
+//Array Method
+    //do backgrund-color to backgroundColor 
+
+        // function capitalize(word) {
+        //     let newArray = word.split('-');
+        //     let newStr = newArray.map((word, index) => index == 0 ? word : word[0].toUpperCase() + word.slice(1))
+        //     .join('');
+
+        //     return newStr;
+        // }
+
+        // console.log(capitalize("background-color"));
+        // console.log(capitalize("list-style-type"));
+
+    //Make a function func(arr, a, b) to return elements which are >= a and <= b in an array
+
+        // function filters(arr, a, b) {
+        //     let newArray = arr.filter(element => (element >= a && element <= b))
+        //     return newArray;
+        // }
+
+        // console.log(filters([5, 3, 8, 1], 1, 4))
+
+    //Do the above but in place
+
+        function inplaceChange(arr, a, b) {
+            let index = 0;
+
+            for (let i = 0; i < arr.length; i++) {
+                let value = arr[i];
+
+                if (value >= a && value <= b) {
+                    arr[index] = value;
+                    index++;
+                } 
+            }
+
+            arr.length = index;
+        }
+
+        //array ko chota karna hai ya katana hai to uski length chhoti kro 
+
+        let arr = [5, 3, 8, 1]
+        inplaceChange(arr, 1, 4);
+        console.log(arr);
+
+        function inplaceChange(arr, a, b) {
+
+            for (let i = 0; i < arr.length; i++) {
+                let value = arr[i];
+
+                if (value <= a && value >= b) {
+                    arr.splice(i, 1);
+                    i--;
+                } 
+            }
+        }
+
+
     </script>
 </body>
 </html>
