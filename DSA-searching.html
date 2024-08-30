@@ -620,42 +620,66 @@
 
     //Brute force
 
-        function sqrt(n) {
-            if (n === 0) return 0;
-            let ans;
+        // function sqrt(n) {
+        //     if (n === 0) return 0;
+        //     let ans;
 
-            for (let i = 1; i <= n; i++) {
-                if (i * i <= n) ans = i;
-                else break;
-            }
+        //     for (let i = 1; i <= n; i++) {
+        //         if (i * i <= n) ans = i;
+        //         else break;
+        //     }
 
-            return ans
-        }
+        //     return ans
+        // }
 
-        console.log(sqrt(1689623))
+        // console.log(sqrt(1689623))
 
     //Optimal 
 
-    function sqrt2(n) {
-        if (n === 0) return 0;
+        // function sqrt2(n) {
+        //     if (n === 0) return 0;
 
-        let low = 1, high = n;
-        let ans;
+        //     let low = 1, high = n;
+        //     let ans;
 
-        while (low <= high) {
-            let mid = Math.floor((low + high) / 2);
+        //     while (low <= high) {
+        //         let mid = Math.floor((low + high) / 2);
 
-            if (mid * mid === n) return mid;
-            else if (mid * mid > n) high = mid - 1;
-            else {
-                ans = mid;
-                low = mid + 1;
-            } 
+        //         if (mid * mid === n) return mid;
+        //         else if (mid * mid > n) high = mid - 1;
+        //         else {
+        //             ans = mid;
+        //             low = mid + 1;
+        //         } 
+        //     }
+        //     return ans;
+        // }
+
+        // console.log(sqrt2(1689623))
+
+//Nth root of give integer 
+
+    //Brute force
+
+    function  nthRoot(n, N) {
+
+        for (let i = 1; i <= n; i++) {
+            let ans = 1;
+            
+            for (let j = 1; j <= N; j++) {
+                ans *= i;
+            }
+
+            if (ans === n) return i;
+            else if (ans > n) break;
         }
-        return ans;
+
+        return -1;
     }
 
-    console.log(sqrt2(1689623))
+    console.log(nthRoot(9, 3));
+    console.log(nthRoot(9, 2))
+
     </script>
 </body>
 </html>
