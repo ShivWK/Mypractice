@@ -373,21 +373,48 @@
 
 //map to objects
 
-        let objArray = [
-            {name : "Shiv", surName : "Dwivedi", age : 25},
-            {name : "Sahil", surName : "Mishra", age : 27},
-            {name : "Ritik",  surName : "Pandit",  age : 28},
-        ]
+        // let objArray = [
+        //     {name : "Shiv", surName : "Dwivedi", age : 25},
+        //     {name : "Sahil", surName : "Mishra", age : 27},
+        //     {name : "Ritik",  surName : "Pandit",  age : 28},
+        // ]
 
-        let arrayOfObjects = objArray.map(data => (
-            {
-                fullName : data.name + " " + data.surName, 
-                id : data.age,
-            }
-        ));
+        // let arrayOfObjects = objArray.map(data => (
+        //     {
+        //         fullName : data.name + " " + data.surName, 
+        //         id : data.age,
+        //     }
+        // ));
 
-        console.log(arrayOfObjects);
+        // console.log(arrayOfObjects);
 
-    </script>
+//sort users by age
+
+    // let usersArray = [
+    //     {name : "shivendra" , age : 25},
+    //     {name : "sahil", age : 26},
+    //     {name : "Ritik", age : 22},
+    // ]
+
+    // usersArray.sort((a, b) => a.age - b.age);
+
+    // console.log(usersArray);
+
+//return array with unique elements
+
+function onlyUnique(arr) {
+    let arrResult = [];
+
+    for (let i = 0; i < arr.length; i++) {
+        if (!arrResult.includes(arr[i])) {
+            arrResult.push(arr[i]);
+        }
+    }
+
+    return arrResult;
+}
+
+console.log(onlyUnique(["hara", "shiv", "hara", "priya", "shiv", "priya", "hara"]));
+    </script> 
 </body>
 </html>
