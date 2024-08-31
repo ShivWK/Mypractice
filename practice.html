@@ -288,39 +288,105 @@
 
     //Do the above but in place
 
-        function inplaceChange(arr, a, b) {
-            let index = 0;
+        // function inplaceChange(arr, a, b) {
+        //     let index = 0;
 
-            for (let i = 0; i < arr.length; i++) {
-                let value = arr[i];
+        //     for (let i = 0; i < arr.length; i++) {
+        //         let value = arr[i];
 
-                if (value >= a && value <= b) {
-                    arr[index] = value;
-                    index++;
-                } 
-            }
+        //         if (value >= a && value <= b) {
+        //             arr[index] = value;
+        //             index++;
+        //         } 
+        //     }
 
-            arr.length = index;
-        }
+        //     arr.length = index;
+        // }
 
         //array ko chota karna hai ya katana hai to uski length chhoti kro 
 
-        let arr = [5, 3, 8, 1]
-        inplaceChange(arr, 1, 4);
-        console.log(arr);
+        // let arr = [5, 3, 8, 1]
+        // inplaceChange(arr, 1, 4);
+        // console.log(arr);
 
-        function inplaceChange(arr, a, b) {
+        // function inplaceChange(arr, a, b) {
 
-            for (let i = 0; i < arr.length; i++) {
-                let value = arr[i];
+        //     for (let i = 0; i < arr.length; i++) {
+        //         let value = arr[i];
 
-                if (value <= a && value >= b) {
-                    arr.splice(i, 1);
-                    i--;
-                } 
+        //         if (value <= a && value >= b) {
+        //             arr.splice(i, 1);
+        //             i--;
+        //         } 
+        //     }
+        // }
+
+//Calculater
+
+        // function Calculater(task) {
+        //     this.method = {
+        //         "+" : (a, b) => a + b,
+        //         "-" : (a, b) => a - b,
+        //     }
+
+        //     this.calculater = function(task) {
+        //         let operation = task.split(" ");
+
+        //         let a = Number(operation[0]);
+        //         //let a = +operation[0];
+        //         let op = (operation[1]);
+        //         let b = Number(operation[2]);
+
+            // if (!this.method[op] || isNaN(a) || isNaN(b)) {
+            //     return NaN;
+            // }
+
+        //         return this.method[op](a, b);
+        //     }
+
+        //     this.addMethod = function(name, func) {
+        //         this.method[name] = func;
+        //     }
+        // }
+        // const obj1 = new Calculater();
+
+        // console.log(obj1.calculater("1 + 2"));
+        // obj1.addMethod("*", (a, b) => a * b)
+        // console.log(obj1.calculater("5 * 2"));
+
+        // const obj2 = new Calculater();
+
+        //console.log(obj2.calculater("6 * 2"))
+        //each object have its unique methods in method object
+
+//create an array from a property values in objects present in an array / map to names
+
+        // let objArray = [
+        //     {name : "shiv", age : 25},
+        //     {name : "sahil", age : 27},
+        //     {name : "ritik", age : 28},
+        // ]
+
+        // let arrayOfNames = objArray.map(data => data.name);
+
+        // console.log(arrayOfNames);
+
+//map to objects
+
+        let objArray = [
+            {name : "Shiv", surName : "Dwivedi", age : 25},
+            {name : "Sahil", surName : "Mishra", age : 27},
+            {name : "Ritik",  surName : "Pandit",  age : 28},
+        ]
+
+        let arrayOfObjects = objArray.map(data => (
+            {
+                fullName : data.name + " " + data.surName, 
+                id : data.age,
             }
-        }
+        ));
 
+        console.log(arrayOfObjects);
 
     </script>
 </body>
