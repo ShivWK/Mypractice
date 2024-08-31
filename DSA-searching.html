@@ -682,56 +682,122 @@
 
 //Optimal solution
 
-        function nthRoot(n, N) {
-            let low = 1, high = n;
+        // function nthRoot(n, N) {
+        //     let low = 1, high = n;
 
-            function multiply(mid, N) {
-                let ans = 1;
-                for (let i = 1; i <= N; i++) {
-                    ans *= mid;
-                }
-                return ans;
-            }
+        //     function multiply(mid, N) {
+        //         let ans = 1;
+        //         for (let i = 1; i <= N; i++) {
+        //             ans *= mid;
+        //         }
+        //         return ans;
+        //     }
             
-            while (low <= high) {
-                let mid = Math.floor((low + high) / 2);
-                // let root = multiply(mid, N)
-                let root = Math.pow(mid , N);
+        //     while (low <= high) {
+        //         let mid = Math.floor((low + high) / 2);
+        //         // let root = multiply(mid, N)
+        //         let root = Math.pow(mid , N);
 
-                if (root === n) return mid;
-                else if (root > n) high = mid - 1;
-                else low = mid + 1;
-            }
+        //         if (root === n) return mid;
+        //         else if (root > n) high = mid - 1;
+        //         else low = mid + 1;
+        //     }
 
-            return -1;
-        }
+        //     return -1;
+        // }
 
-        console.log(nthRoot(9, 3));
-        console.log(nthRoot(9, 2));
+        // console.log(nthRoot(9, 3));
+        // console.log(nthRoot(9, 2));
 
-        console.log(" ");
+        // console.log(" ");
 
 //Optimal 2
 
-        function nthRoot2(n, N) {
-            let low = 1, high = n;
+        // function nthRoot2(n, N) {
+        //     let low = 1, high = n;
             
-            while (low <= high) {
-                let mid = Math.floor((low + high) / 2);
-                let root = Math.pow(mid , N);
+        //     while (low <= high) {
+        //         let mid = Math.floor((low + high) / 2);
+        //         let root = Math.pow(mid , N);
 
-                if (root === n) return mid;
-                else if (root > n) high = mid - 1;
-                else low = mid + 1;
-            }
+        //         if (root === n) return mid;
+        //         else if (root > n) high = mid - 1;
+        //         else low = mid + 1;
+        //     }
 
-            return -1;
+        //     return -1;
+        // }
+
+        // console.log(nthRoot2(9, 3));
+        // console.log(nthRoot2(9, 2));
+
+//smallest divisor given a threshold
+
+    //Brute force
+
+    function smallestDivisor(arr, t) {
+        let result = Infinity;
+        let maxEle = arr[0];
+
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] > maxEle) maxEle = arr[i];
         }
 
-        console.log(nthRoot2(9, 3));
-        console.log(nthRoot2(9, 2));
-
+        //Math.max() works on elements not on the so we need to give it individual elements separated with comma, for which we can use sprade operator. this will also take O(n) T.C but sprade operator creates a list of arguments from the array, especially for large arrays. This overhead is usually minor but worth noting, for very big array for loop is suitable.
         
+        //maxEle = Math.max(...arr);
+
+        for (let i = 1; i <= maxEle; i++) {
+            let sum = 0;
+
+            for (let j = 0; j < arr.length; j++) {
+                sum += Math.ceil(arr[j]/i);
+            }
+
+            if (sum <= t) {
+                result = Math.min(result, i);
+            }
+        }
+
+        return result
+    }
+
+    console.log(smallestDivisor([44,22,33,11,1], 5))
+        
+    //Optimal Solution
+
+        function smallestDivisor2(arr, t) {
+            let maxEle = arr[0];
+
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] > maxEle) maxEle = arr[i];
+            }
+
+            let low = 1, high = maxEle;
+            let ans;
+
+
+            while (low <= high) {
+                let sum = 0;
+                let mid = Math.floor((low + high) / 2);
+
+                for (let i = 0; i < arr.length; i++) {
+                    sum += Math.ceil(arr[i]/mid);
+                }
+
+                if (sum > t) {
+                    low = mid + 1;
+                } else {
+                    ans = mid;
+                    high = mid - 1;
+                }
+            }
+
+            return ans;
+        }
+
+    console.log(smallestDivisor2([44,22,33,11,1], 5))
+
     </script>
 </body>
 </html>
