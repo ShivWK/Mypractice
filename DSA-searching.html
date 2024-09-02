@@ -803,38 +803,21 @@
 
         function KthMissing(arr, n) {
             let missingArray = [];
-
-            for (let i = 1; i <= arr[arr.length - 1]; i++) {
-                if (!arr.includes(i)) {
-                    missingArray.push(i);
-                }
-            }
-
-            return missingArray[n - 1];
-        }
-
-        function KthMissing(arr, n) {
-            let missingArray = [];
-            let maxNumber = arr[arr.length - 1];  // The maximum number in the array
             let i = 1;
-            
+
             while (missingArray.length < n) {
                 if (!arr.includes(i)) {
                     missingArray.push(i);
+
                 }
+
                 i++;
             }
 
             return missingArray[n - 1];
         }
 
-        // Example usage:
-        const arr = [1, 2, 3, 4];
-        const k = 2;
-        console.log(KthMissing(arr, k));  // Output: 6
-
-
-        console.log(KthMissing([2, 3, 4, 7, 11], 4))
+        console.log(KthMissing([1,3,4,9,10,13], 6))
 
     </script>
 </body>

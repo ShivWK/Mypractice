@@ -263,6 +263,44 @@
 
     // alert(obj);
 
+//string methods
+
+    //uppercased first letter
+
+        // function upperCase(str){
+        //     return str[0].toUpperCase() + str.slice(1)
+        // }
+
+        // console.log(upperCase("shivendra"));
+
+    //Check for spam
+
+        // function checkForSpam(str) {
+        //     newStr = str.toLowerCase();
+        //     return newStr.includes('XXX') || newStr.includes('viagra');    
+        // } 
+
+        // console.log(checkForSpam("DOn't buy Viagra for me"));
+        // console.log(checkForSpam("i dont know"));
+
+    //truncate the string
+    
+        function truncateStr(str, maxLength) {
+            if (str.length > maxLength) {
+                return str.slice(0, maxLength - 1) + "...";
+            }
+        }
+
+        console.log(truncateStr("HiImShivendraDwivedi", 14));
+
+    //Extract spesific
+
+        function money(str) {
+            return +str.slice(1);
+        }
+
+        console.log(money("$123"));
+        
 //Array Method
     //do backgrund-color to backgroundColor 
 
@@ -447,7 +485,7 @@
 
 //avg age from an array of objects
 
-    let avgAge = usersArray.reduce((sum , object) => sum + object.age, 0)/ usersArray.length;
+    let avgAge = usersArray.reduce((sum , object) => sum + object.age, 0) / usersArray.length;
     console.log(avgAge);
 
 

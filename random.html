@@ -8,65 +8,210 @@
 <body>
     <h1 id="resp"></h1>
     <script>
-        const resp = document.getElementById("resp");
+        // const resp = document.getElementById("resp");
 
-        const cart = ["shoes", "sandel", "pen"];
+        // const cart = ["shoes", "sandel", "pen"];
 
-        const promise = createOrder(cart);
+        // const promise = createOrder(cart);
 
-        promise.then(orderId => {
-            resp.innerText = orderId;
-            // console.log(orderId)
-            return orderId;
-        })
-        .catch(err => {
-            console.log(err.message)
-        })
-        .then(orderId => {
-            return proceedToPayment(orderId);
-        })
-        .then(data => {
-            resp.innerText = data;
-            // console.log(data);
-        })
-        .catch(err => resp.innerText = err);
+        // promise.then(orderId => {
+        //     resp.innerText = orderId;
+        //     // console.log(orderId)
+        //     return orderId;
+        // })
+        // .catch(err => {
+        //     console.log(err.message)
+        // })
+        // .then(orderId => {
+        //     return proceedToPayment(orderId);
+        // })
+        // .then(data => {
+        //     resp.innerText = data;
+        //     // console.log(data);
+        // })
+        // .catch(err => resp.innerText = err);
 
-        function proceedToPayment(orderId) {
-            const pr = new Promise(function(resolve, reject) {
-                setTimeout(() => {
-                    resolve("payment successfull");
-                }, 2000)
-            })
+        // function proceedToPayment(orderId) {
+        //     const pr = new Promise(function(resolve, reject) {
+        //         setTimeout(() => {
+        //             resolve("payment successfull");
+        //         }, 2000)
+        //     })
 
-            return pr
-        }
+        //     return pr
+        // }
         
-        function createOrder(cart) {
-            const pr = new Promise(function(resolve, reject) {
+        // function createOrder(cart) {
+        //     const pr = new Promise(function(resolve, reject) {
 
-                //creating Order code
-                //validateOrder code
-                //getting orderId code
+        //         //creating Order code
+        //         //validateOrder code
+        //         //getting orderId code
 
-                if (!validateOrder(cart)) {
-                    const err = new Error("Somthing went wrong");
-                    reject(err);
-                }
+        //         if (!validateOrder(cart)) {
+        //             const err = new Error("Somthing went wrong");
+        //             reject(err);
+        //         }
 
-                const orderId = 172340;
-                if (orderId) {
-                    setTimeout(()=> resolve(orderId), 3000)
-                    // resolve(orderId);
-                }
+        //         const orderId = 172340;
+        //         if (orderId) {
+        //             setTimeout(()=> resolve(orderId), 3000)
+        //             // resolve(orderId);
+        //         }
 
-            })
+        //     })
 
-            return pr;
-        }
+        //     return pr;
+        // }
 
-        function validateOrder(cart) {
-            return false;
-        }
+        // function validateOrder(cart) {
+        //     return false;
+        // }
+
+        // async function asyncfunction() {
+        //     return 42;
+        // }
+
+        // const promise = asyncfunction();
+        // promise.then(data => {
+        //     console.log(data);
+        // })
+        
+        // console.log(asyncfunction());
+
+        // const p = new Promise((resolve, reject) => {
+        //     setTimeout(() => {
+        //         resolve("Promise resolved");
+        //     }, 40000);    
+
+        // })
+
+        // const p2 = new Promise((resolve, reject) => {
+        //     setTimeout(() => {
+        //         resolve("Promise resolved 2");
+        //     }, 30000);    
+
+        // })
+
+        // async function asyncfunction2() {
+        //     console.log("hello I'm done first from 1")
+        
+        //     const response = await p;
+        //     console.log(response);
+        //     console.log("await before promise")
+
+        //     const response2 = await p;
+        //     console.log(response2);
+        //     console.log("await before promise 2")
+
+        //     const response3 = await p2;
+        //     console.log(response3);
+        //     console.log("await before promise 3")
+
+        // }
+
+        // asyncfunction2();
+
+        // async function asyncfunction3() {
+        //     console.log("hello I'm done first from 2")                                                                                                                                                            
+
+        //     //1 seconds
+        //     const response3 = await p2;
+        //     console.log(response3);
+        //     console.log("await before promise 1 sec")
+
+        //     //3 seconds
+        //     const response = await p;
+        //     console.log(response);
+        //     console.log("await before promise 3 sec")
+
+        //     const response2 = await p;
+        //     console.log(response2);
+        //     console.log("await before promise double 3 sec")        
+
+        // }
+
+        // asyncfunction3();
+        // function handlePromise() {
+        //     p.then(data => console.log(data));
+        //     console.log("before Promise");
+        // }
+
+        // handlePromise();
+
+//Promise.all()
+        // const p1 = new Promise((resolve, reject) => {
+        //     setTimeout(() => {
+        //         resolve("Promise 1 resolved");
+        //     }, 3000);    
+
+        // })
+
+        // // const p2 = new Promise((resolve, reject) => {
+        // //     setTimeout(() => {
+        // //         resolve("Promise 2 resolved");
+        // //     }, 1000);    
+
+        // // })
+
+        // const p2 = new Promise((resolve, reject) => {
+        //     setTimeout(() => {
+        //         reject("Promise 2 rejected");
+        //     }, 1000);    
+
+        // })
+
+        // const p3 = new Promise((resolve, reject) => {
+        //     setTimeout(() => {
+        //         resolve("Promise 3 resolved");
+        //     }, 2000);    
+
+        // })
+
+        // Promise.all([p1, p2, p3]).then(data => {
+        //     console.log(data);
+        // }).catch(err => {
+        //     console.error(err);
+        // })
+
+//Promise.allSetteled()
+
+        const p1 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                reject("Promise 1 rejected");
+                // resolve("Promise 1 resolved");
+            }, 3000);    
+
+        })
+
+        // const p2 = new Promise((resolve, reject) => {
+        //     setTimeout(() => {
+        //         resolve("Promise 2 resolved");
+        //     }, 1000);    
+
+        // })
+
+        const p2 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                reject("Promise 2 rejected");
+                // resolve("Promise 2 resolved");
+            }, 1000);    
+
+        })
+
+        const p3 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                reject("Promise 3 rejected");
+                // resolve("Promise 3 resolved");
+            }, 2000);    
+
+        })
+
+        Promise.any([p1, p2, p3]).then(data => {
+            console.log(data);
+        }).catch(err => {
+            console.error(err.errors);
+        })
 
     </script>
 </body>
