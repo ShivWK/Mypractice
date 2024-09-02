@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="resp"></h1>
+    <script>
+        const resp = document.getElementById("resp");
+
+        const cart = ["shoes", "sandel", "pen"];
+
+        const promise = createOrder(cart);
+
+        promise.then(orderId => {
+            resp.innerText = orderId;
+            // console.log(orderId)
+            return orderId;
+        })
+        .catch(err => {
+            console.log(err.message)
+        })
+        .then(orderId => {
+            return proceedToPayment(orderId);
+        })
+        .then(data => {
+            resp.innerText = data;
+            // console.log(data);
+        })
+        .catch(err => resp.innerText = err);
+
+        function proceedToPayment(orderId) {
+            const pr = new Promise(function(resolve, reject) {
+                setTimeout(() => {
+                    resolve("payment successfull");
+                }, 2000)
+            })
+
+            return pr
+        }
+        
+        function createOrder(cart) {
+            const pr = new Promise(function(resolve, reject) {
+
+                //creating Order code
+                //validateOrder code
+                //getting orderId code
+
+                if (!validateOrder(cart)) {
+                    const err = new Error("Somthing went wrong");
+                    reject(err);
+                }
+
+                const orderId = 172340;
+                if (orderId) {
+                    setTimeout(()=> resolve(orderId), 3000)
+                    // resolve(orderId);
+                }
+
+            })
+
+            return pr;
+        }
+
+        function validateOrder(cart) {
+            return false;
+        }
+
+    </script>
+</body>
+</html>

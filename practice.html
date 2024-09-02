@@ -402,19 +402,48 @@
 
 //return array with unique elements
 
-function onlyUnique(arr) {
-    let arrResult = [];
+// function onlyUnique(arr) {
+//     let arrResult = [];
 
-    for (let i = 0; i < arr.length; i++) {
-        if (!arrResult.includes(arr[i])) {
-            arrResult.push(arr[i]);
+//     for (let i = 0; i < arr.length; i++) {
+//         if (!arrResult.includes(arr[i])) {
+//             arrResult.push(arr[i]);
+//         }
+//     }
+
+//     return arrResult;
+// }
+
+// console.log(onlyUnique(["hara", "shiv", "hara", "priya", "shiv", "priya", "hara"]));
+
+    //this is not optimaised in performance include needs to match the given one with each elements in the array.
+
+//Object from array
+
+    function objFromArray(arr) {
+        let newObj = {};
+
+        for (let i = 0; i < arr.length; i++) {
+            newObj[arr[i].id] = arr[i];
         }
-    }
 
-    return arrResult;
-}
+        return newObj
+    } 
 
-console.log(onlyUnique(["hara", "shiv", "hara", "priya", "shiv", "priya", "hara"]));
+    usersArray = [
+        {id: "John", name: "John Smith", age: 25},
+        {id: "ann", name: "ann smith", age: 24},
+        {id: "pete", name: "pete marry", age: 21}
+    ]
+
+    console.log(objFromArray(usersArray));
+
+    let newSecond = usersArray.reduce((acc, crr) => {
+        acc[crr.id] = crr
+        return acc;
+    }, {})
+
+    console.log(newSecond)
     </script> 
 </body>
 </html>

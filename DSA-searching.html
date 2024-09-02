@@ -735,68 +735,106 @@
 
     //Brute force
 
-    function smallestDivisor(arr, t) {
-        let result = Infinity;
-        let maxEle = arr[0];
+    // function smallestDivisor(arr, t) {
+    //     let result = Infinity;
+    //     let maxEle = arr[0];
 
-        for (let i = 0; i < arr.length; i++) {
-            if (arr[i] > maxEle) maxEle = arr[i];
-        }
+    //     for (let i = 0; i < arr.length; i++) {
+    //         if (arr[i] > maxEle) maxEle = arr[i];
+    //     }
 
         //Math.max() works on elements not on the so we need to give it individual elements separated with comma, for which we can use sprade operator. this will also take O(n) T.C but sprade operator creates a list of arguments from the array, especially for large arrays. This overhead is usually minor but worth noting, for very big array for loop is suitable.
         
         //maxEle = Math.max(...arr);
 
-        for (let i = 1; i <= maxEle; i++) {
-            let sum = 0;
+        // for (let i = 1; i <= maxEle; i++) {
+        //     let sum = 0;
 
-            for (let j = 0; j < arr.length; j++) {
-                sum += Math.ceil(arr[j]/i);
-            }
+        //     for (let j = 0; j < arr.length; j++) {
+        //         sum += Math.ceil(arr[j]/i);
+        //     }
 
-            if (sum <= t) {
-                result = Math.min(result, i);
-            }
-        }
+        //     if (sum <= t) {
+        //         result = Math.min(result, i);
+        //     }
+        // }
 
-        return result
-    }
+        // return result
+    // }
 
-    console.log(smallestDivisor([44,22,33,11,1], 5))
+    // console.log(smallestDivisor([44,22,33,11,1], 5))
         
     //Optimal Solution
 
-        function smallestDivisor2(arr, t) {
-            let maxEle = arr[0];
+    //     function smallestDivisor2(arr, t) {
+    //         let maxEle = arr[0];
 
-            for (let i = 0; i < arr.length; i++) {
-                if (arr[i] > maxEle) maxEle = arr[i];
+    //         for (let i = 0; i < arr.length; i++) {
+    //             if (arr[i] > maxEle) maxEle = arr[i];
+    //         }
+
+    //         let low = 1, high = maxEle;
+    //         let ans;
+
+    //         while (low <= high) {
+    //             let sum = 0;
+    //             let mid = Math.floor((low + high) / 2);
+
+    //             for (let i = 0; i < arr.length; i++) {
+    //                 sum += Math.ceil(arr[i]/mid);
+    //             }
+
+    //             if (sum > t) {
+    //                 low = mid + 1;
+    //             } else {
+    //                 ans = mid;
+    //                 high = mid - 1;
+    //             }
+    //         }
+
+    //         return ans;
+    //     }
+
+    // console.log(smallestDivisor2([44,22,33,11,1], 5))
+
+//Kth mising positvie
+
+    //Brute Force
+
+        function KthMissing(arr, n) {
+            let missingArray = [];
+
+            for (let i = 1; i <= arr[arr.length - 1]; i++) {
+                if (!arr.includes(i)) {
+                    missingArray.push(i);
+                }
             }
 
-            let low = 1, high = maxEle;
-            let ans;
-
-
-            while (low <= high) {
-                let sum = 0;
-                let mid = Math.floor((low + high) / 2);
-
-                for (let i = 0; i < arr.length; i++) {
-                    sum += Math.ceil(arr[i]/mid);
-                }
-
-                if (sum > t) {
-                    low = mid + 1;
-                } else {
-                    ans = mid;
-                    high = mid - 1;
-                }
-            }
-
-            return ans;
+            return missingArray[n - 1];
         }
 
-    console.log(smallestDivisor2([44,22,33,11,1], 5))
+        function KthMissing(arr, n) {
+            let missingArray = [];
+            let maxNumber = arr[arr.length - 1];  // The maximum number in the array
+            let i = 1;
+            
+            while (missingArray.length < n) {
+                if (!arr.includes(i)) {
+                    missingArray.push(i);
+                }
+                i++;
+            }
+
+            return missingArray[n - 1];
+        }
+
+        // Example usage:
+        const arr = [1, 2, 3, 4];
+        const k = 2;
+        console.log(KthMissing(arr, k));  // Output: 6
+
+
+        console.log(KthMissing([2, 3, 4, 7, 11], 4))
 
     </script>
 </body>
