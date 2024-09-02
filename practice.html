@@ -420,15 +420,15 @@
 
 //Object from array
 
-    function objFromArray(arr) {
-        let newObj = {};
+    // function objFromArray(arr) {
+    //     let newObj = {};
 
-        for (let i = 0; i < arr.length; i++) {
-            newObj[arr[i].id] = arr[i];
-        }
+    //     for (let i = 0; i < arr.length; i++) {
+    //         newObj[arr[i].id] = arr[i];
+    //     }
 
-        return newObj
-    } 
+    //     return newObj
+    // } 
 
     usersArray = [
         {id: "John", name: "John Smith", age: 25},
@@ -436,14 +436,21 @@
         {id: "pete", name: "pete marry", age: 21}
     ]
 
-    console.log(objFromArray(usersArray));
+    // console.log(objFromArray(usersArray));
 
-    let newSecond = usersArray.reduce((acc, crr) => {
-        acc[crr.id] = crr
-        return acc;
-    }, {})
+    // let newSecond = usersArray.reduce((acc, crr) => {
+    //     acc[crr.id] = crr
+    //     return acc;
+    // }, {})
 
-    console.log(newSecond)
+    // console.log(newSecond);
+
+//avg age from an array of objects
+
+    let avgAge = usersArray.reduce((sum , object) => sum + object.age, 0)/ usersArray.length;
+    console.log(avgAge);
+
+
     </script> 
 </body>
 </html>
