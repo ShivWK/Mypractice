@@ -255,8 +255,8 @@
 
         const p2 = new Promise((resolve, reject) => {
             setTimeout(() => {
-                // reject("Promise 2 rejected");
-                resolve("Promise 2 resolved");
+                reject("Promise 2 rejected");
+                // resolve("Promise 2 resolved");
             }, 1000);    
 
         })
@@ -264,56 +264,106 @@
         const p3 = new Promise((resolve, reject) => {
             setTimeout(() => {
                 resolve("Promise 3 resolved");
+                // reject("Promise 3 resolved");
             }, 2000);    
 
         })
 
-        Promise.myAll = function (promises) {
+        // Promise.myAll = function (promises) {
+        //         return new Promise((resolve, reject) => {
+        //                 let n = promises.length;
+        //                 let result = [];
+        //                 let promiseCount = 0;
+
+        //                 if (!Array.isArray(promises)) {
+        //                         return reject(new Error("myAll: undefined is not an iterable"))          
+        //                 } 
+                        
+        //                 if (n === 0) {
+        //                         return resolve([]);
+        //                 }
+
+        //                 promises.forEach((promise, index) =>  {
+                                
+        //                         promise
+        //                         .then(response => {
+        //                                 result[index] = response;
+        //                                 promiseCount++
+
+        //                                 if (promiseCount === n) {
+        //                                        return resolve(result)
+        //                                 }
+        //                         }).catch(error => {
+        //                                 return reject(error);
+        //                         })
+        //                 })
+        //         })
+        // }
+        
+        // const newPro = Promise.myAll([p1,p2,p3]);
+        // newPro.then(data => {
+        //     console.log(data);
+        // }).catch(err => {
+        //     console.error(err);
+        // })
+        // console.log(newPro);
+
+        //even if resolve or reject is called further code in the promise executer function will continue to execute so stop the  further code execution We have used return to return the control then n there
+
+//Polyfill of Promise.allSettled()
+         
+        Promise.myallSettled = function (promises) {
                 return new Promise((resolve, reject) => {
-                        let n = promises.length;
-                        let result = [];
-                        let promiseCount = 0;
 
                         if (!Array.isArray(promises)) {
-                                return reject(new Error("myAll: undefined is not an iterable"))          
-                        } 
+                                return reject(new Error("myallsettled: undefined is not an iterable"))          
+                        }
                         
+                        let n = promises.length;
+                        let results = [];
+                        let promiseCount = 0;
+        
                         if (n === 0) {
-                                return resolve([]);
+                                return resolve(results);
                         }
 
                         promises.forEach((promise, index) =>  {
                                 
                                 promise
                                 .then(response => {
-                                        result[index] = response;
-                                        promiseCount++
+                                        results[index] = {status : "fulfilled" , value : response};
+                                        promiseCount++;
 
                                         if (promiseCount === n) {
-                                               return resolve(result)
+                                               return resolve(results)
                                         }
                                 }).catch(error => {
-                                        return reject(error);
+                                        results[index] = {status : "rejected" , reason : error};
+                                        promiseCount++;
+
+                                        if (promiseCount === n) {
+                                               return resolve(results)
+                                        }
                                 })
                         })
                 })
         }
-        
-        const newPro = Promise.myAll([p1,p2,p3]);
+
+        const newPro = Promise.myallSettled([p1, p2, p3]);
         newPro.then(data => {
             console.log(data);
         }).catch(err => {
             console.error(err);
         })
+        console.log(newPro);
 
-        Promise.all([p1,p2,p3]).then(data => {
-            console.log(data);
-        }).catch(err => {
-            console.error(err);
-        })
+        // const newPro = Promise.allSettled([]);
+        // newPro.then(data => {
+        //     console.log(data);
+        // }).catch(err => {
+        //     console.error(err);
+        // })
 
-        //even if resolve or reject is called further code in the promise executer function will continue to execute so stop the  further code execution We have used return to return the control then n there
-         
 //JS interview questions
 
         // let name = "shiv";
