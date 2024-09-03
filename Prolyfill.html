@@ -154,17 +154,17 @@
 
 //call() polyfill
 
-        persion = {
-            name: "shivendra"
-        }
+        // persion = {
+        //     name: "shivendra"
+        // }
 
-        persion2 = {
-            name: "sahil"
-        }
+        // persion2 = {
+        //     name: "sahil"
+        // }
 
-        function foo(age, profession) {
-            console.log(`hi I'm ${this.name} and my age is ${age} and i'm a ${profession}`);
-        }
+        // function foo(age, profession) {
+        //     console.log(`hi I'm ${this.name} and my age is ${age} and i'm a ${profession}`);
+        // }
 
         // foo.call(24);
         // foo.call(persion2);
@@ -222,28 +222,98 @@
         
 //flat() polyfill
 
-        Array.prototype.myFlat = function(depth = 1) {
-            // Ensure depth is a number and defaults to 1
-            depth = isNaN(depth) ? 1 : Number(depth);
+        // Array.prototype.myFlat = function(depth = 1) {
+        //     // Ensure depth is a number and defaults to 1
+        //     depth = isNaN(depth) ? 1 : Number(depth);
 
-            const flatten = (arr, depth) => {
-            return arr.reduce((acc, val) => {
-                // If the value is an array and depth is greater than 0, recursively flatten
-                if (Array.isArray(val) && depth > 0) {
-                acc.push(...flatten(val, depth - 1));
-                } else {
-                acc.push(val);
-                }
-                return acc;
-            }, []);
-            };
+        //     const flatten = (arr, depth) => {
+        //     return arr.reduce((acc, val) => {
+        //         // If the value is an array and depth is greater than 0, recursively flatten
+        //         if (Array.isArray(val) && depth > 0) {
+        //         acc.push(...flatten(val, depth - 1));
+        //         } else {
+        //         acc.push(val);
+        //         }
+        //         return acc;
+        //     }, []);
+        //     };
 
-            return flatten(this, depth);
-        };
+        //     return flatten(this, depth);
+        // };
 
-        arr = [1,2,[3,4,[5,6,[7,8,[9]]]]] 
-        console.log(arr.myFlat(Infinity))
+        // arr = [1,2,[3,4,[5,6,[7,8,[9]]]]] 
+        // console.log(arr.myFlat(Infinity));
+
+//Promise.all()
+
+        const p1 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve("Promise 1 resolved");
+            }, 3000);    
+
+        })
+
+        const p2 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                // reject("Promise 2 rejected");
+                resolve("Promise 2 resolved");
+            }, 1000);    
+
+        })
+
+        const p3 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve("Promise 3 resolved");
+            }, 2000);    
+
+        })
+
+        Promise.myAll = function (promises) {
+                return new Promise((resolve, reject) => {
+                        let n = promises.length;
+                        let result = [];
+                        let promiseCount = 0;
+
+                        if (!Array.isArray(promises)) {
+                                return reject(new Error("myAll: undefined is not an iterable"))          
+                        } 
+                        
+                        if (n === 0) {
+                                return resolve([]);
+                        }
+
+                        promises.forEach((promise, index) =>  {
+                                
+                                promise
+                                .then(response => {
+                                        result[index] = response;
+                                        promiseCount++
+
+                                        if (promiseCount === n) {
+                                               return resolve(result)
+                                        }
+                                }).catch(error => {
+                                        return reject(error);
+                                })
+                        })
+                })
+        }
         
+        const newPro = Promise.myAll([p1,p2,p3]);
+        newPro.then(data => {
+            console.log(data);
+        }).catch(err => {
+            console.error(err);
+        })
+
+        Promise.all([p1,p2,p3]).then(data => {
+            console.log(data);
+        }).catch(err => {
+            console.error(err);
+        })
+
+        //even if resolve or reject is called further code in the promise executer function will continue to execute so stop the  further code execution We have used return to return the control then n there
+         
 //JS interview questions
 
         // let name = "shiv";

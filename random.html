@@ -140,46 +140,9 @@
         // handlePromise();
 
 //Promise.all()
-        // const p1 = new Promise((resolve, reject) => {
-        //     setTimeout(() => {
-        //         resolve("Promise 1 resolved");
-        //     }, 3000);    
-
-        // })
-
-        // // const p2 = new Promise((resolve, reject) => {
-        // //     setTimeout(() => {
-        // //         resolve("Promise 2 resolved");
-        // //     }, 1000);    
-
-        // // })
-
-        // const p2 = new Promise((resolve, reject) => {
-        //     setTimeout(() => {
-        //         reject("Promise 2 rejected");
-        //     }, 1000);    
-
-        // })
-
-        // const p3 = new Promise((resolve, reject) => {
-        //     setTimeout(() => {
-        //         resolve("Promise 3 resolved");
-        //     }, 2000);    
-
-        // })
-
-        // Promise.all([p1, p2, p3]).then(data => {
-        //     console.log(data);
-        // }).catch(err => {
-        //     console.error(err);
-        // })
-
-//Promise.allSetteled()
-
         const p1 = new Promise((resolve, reject) => {
             setTimeout(() => {
-                reject("Promise 1 rejected");
-                // resolve("Promise 1 resolved");
+                resolve("Promise 1 resolved");
             }, 3000);    
 
         })
@@ -193,25 +156,66 @@
 
         const p2 = new Promise((resolve, reject) => {
             setTimeout(() => {
-                reject("Promise 2 rejected");
-                // resolve("Promise 2 resolved");
+                // reject("Promise 2 rejected");
+                resolve("Promise 2 resolved");
             }, 1000);    
 
         })
 
         const p3 = new Promise((resolve, reject) => {
             setTimeout(() => {
-                reject("Promise 3 rejected");
-                // resolve("Promise 3 resolved");
+                resolve("Promise 3 resolved");
             }, 2000);    
 
         })
 
-        Promise.any([p1, p2, p3]).then(data => {
+        const newPro = Promise.all([]);
+        console.log(newPro);
+
+        newPro.then(data => {
             console.log(data);
         }).catch(err => {
-            console.error(err.errors);
+            console.error(err);
         })
+
+//Promise.allSetteled()
+
+        // const p1 = new Promise((resolve, reject) => {
+        //     setTimeout(() => {
+        //         reject("Promise 1 rejected");
+        //         // resolve("Promise 1 resolved");
+        //     }, 3000);    
+
+        // })
+
+        // const p2 = new Promise((resolve, reject) => {
+        //     setTimeout(() => {
+        //         resolve("Promise 2 resolved");
+        //     }, 1000);    
+
+        // })
+
+        // const p2 = new Promise((resolve, reject) => {
+        //     setTimeout(() => {
+        //         reject("Promise 2 rejected");
+        //         // resolve("Promise 2 resolved");
+        //     }, 1000);    
+
+        // })
+
+        // const p3 = new Promise((resolve, reject) => {
+        //     setTimeout(() => {
+        //         reject("Promise 3 rejected");
+        //         // resolve("Promise 3 resolved");
+        //     }, 2000);    
+
+        // })
+
+        // Promise.any([p1, p2, p3]).then(data => {
+        //     console.log(data);
+        // }).catch(err => {
+        //     console.error(err.errors);
+        // })
 
     </script>
 </body>
