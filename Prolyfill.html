@@ -284,169 +284,162 @@
         //         executer()
         // }
 
-//Promise.all()
+Promise.all()
 
-        // Promise.myAll = function (promises) {
-        //         return new Promise((resolve, reject) => {
-        //                 let n = promises.length;
-        //                 let result = [];
-        //                 let promiseCount = 0;
-
-        //                 if (!Array.isArray(promises)) {
-        //                        reject(new Error("myAll: undefined is not an iterable")) 
-        //                                 return          
-        //                 } 
-                        
-        //                 if (n === 0) {
-        //                        resolve([]);
-        //                                 return 
-        //                 }
-
-        //                 promises.forEach((promise, index) =>  {
+        Promise.myAll = function (promises) {
+                return new Promise((resolve, reject) => {
+                        let n = promises.length;
+                        let result = [];
+                        let promiseCount = 0;
+                        if (!Array.isArray(promises)) {
+                               reject(new Error("myAll: undefined is not an iterable")) 
+                                        return          
+                        }                    
+                        if (n === 0) {
+                               resolve([]);
+                                        return 
+                        }
+                        promises.forEach((promise, index) =>  {
                                 
-        //                         promise
-        //                         .then(response => {
-        //                                 result[index] = response;
-        //                                 promiseCount++
+                                promise
+                                .then(response => {
+                                        result[index] = response;
+                                        promiseCount++
 
-        //                                 if (promiseCount === n) {
-        //                                        resolve(result)
-        //                                         return 
-        //                                 }
-        //                         }).catch(error => {
-        //                                reject(error);
-        //                                 return 
-        //                         })
-        //                 })
-        //         })
-        // }
+                                        if (promiseCount === n) {
+                                               resolve(result)
+                                                return 
+                                        }
+                                }).catch(error => {
+                                       reject(error);
+                                        return 
+                                })
+                        })
+                })
+        }
         
-        // const newPro1 = Promise.myAll([p1,p2,p3]);
-        // newPro1.then(data => {
-        //     console.log(data);
-        // }).catch(err => {
-        //     console.error(err);
-        // })
-        // console.log(newPro1);
+        const newPro1 = Promise.myAll([p1,p2,p3]);
+        newPro1.then(data => {
+            console.log(data);
+        }).catch(err => {
+            console.error(err);
+        })
+        console.log(newPro1);
 
         //even if resolve or reject is called further code in the promise executer function will continue to execute so stop the  further code execution We have used return to return the control then n there
 
 //Polyfill of Promise.allSettled()
          
-        // Promise.myallSettled = function (promises) {
-        //         return new Promise((resolve, reject) => {
-
-        //                 if (!Array.isArray(promises)) {
-        //                        reject(new Error("myallsettled: undefined is not an iterable"))          
-                                // return 
-        //                 }
-                        
-        //                 let n = promises.length;
-        //                 let results = [];
-        //                 let promiseCount = 0;
+        Promise.myallSettled = function (promises) {
+                return new Promise((resolve, reject) => {
+                        if (!Array.isArray(promises)) {
+                               reject(new Error("myallsettled: undefined is not an iterable"))          
+                                return 
+                        }                       
+                        let n = promises.length;
+                        let results = [];
+                        let promiseCount = 0;
         
-        //                 if (n === 0) {
-        //                        resolve(results);
-                                        //return 
-        //                 }
-
-        //                 promises.forEach((promise, index) =>  {
+                        if (n === 0) {
+                               resolve(results);
+                                        return 
+                        }
+                        promises.forEach((promise, index) =>  {
                                 
-        //                         promise
-        //                         .then(response => {
-        //                                 results[index] = {status : "fulfilled" , value : response};
-        //                                 promiseCount++;
+                                promise
+                                .then(response => {
+                                        results[index] = {status : "fulfilled" , value : response};
+                                        promiseCount++;
 
-        //                                 if (promiseCount === n) {
-        //                                        resolve(results)
-         //                                       return ;
-        //                                 }
+                                        if (promiseCount === n) {
+                                               resolve(results)
+                                               return ;
+                                        }
 
-        //                         }).catch(error => {
-        //                                 results[index] = {status : "rejected" , reason : error};
-        //                                 promiseCount++;
+                                }).catch(error => {
+                                        results[index] = {status : "rejected" , reason : error};
+                                        promiseCount++;
 
-        //                                 if (promiseCount === n) {
-        //                                        resolve(results)
-                                                //return 
-        //                                 }
-        //                         })
-        //                 })
-        //         })
-        // }
-
-        // const newPro = Promise.myallSettled([p1, p2, p3]);
-        // newPro.then(data => {
-        //     console.log(data);
-        // }).catch(err => {
-        //     console.error(err);
-        // })
-        // console.log(newPro);
+                                        if (promiseCount === n) {
+                                               resolve(results)
+                                                return 
+                                        }
+                                })
+                        })
+                })
+        }
+        const newPro2 = Promise.myallSettled([p1, p2, p3]);
+        newPro.then(data => {
+            console.log(data);
+        }).catch(err => {
+            console.error(err);
+        })
+        console.log(newPro);
 
 //Promise.race()
 
-        // Promise.myRace = function (promises) {
-        //         return new Promise((resolve, reject) => {
-        //                 let n = promises.length;
+        Promise.myRace = function (promises) {
+                return new Promise((resolve, reject) => {
+                        let n = promises.length;
 
-        //                 if (!Array.isArray(promises)) {
-        //                         reject(new Error("myRace: undefined is not an iterable"));
-        //                         return;    
-        //                 } 
+                        if (!Array.isArray(promises)) {
+                                reject(new Error("myRace: undefined is not an iterable"));
+                                return;    
+                        } 
                         
-        //                 if (n === 0) {
-        //                         resolve();
-        //                         return;
-        //                 }
+                        if (n === 0) {
+                                resolve();
+                                return;
+                        }
 
-        //                 promises.forEach((promise, index) =>  {
+                        promises.forEach((promise, index) =>  {
                                 
-        //                       Promise.resolve(promise)
-        //                         .then(response => resolve(response))
-        //                         .catch(error => reject(error))
-        //                 })
-        //         })
-        // }
+                              Promise.resolve(promise)
+                                .then(response => resolve(response))
+                                .catch(error => reject(error))
+                        })
+                })
+        }
 
-        // const newPro = Promise.myRace([p1, p2, p3]);
-        // newPro.then(data => {
-        //     console.log(data);
-        // }).catch(err => {
-        //     console.error(err);
-        // })
-        // console.log(newPro);
+        const newPro3 = Promise.myRace([p1, p2, p3]);
+        newPro.then(data => {
+            console.log(data);
+        }).catch(err => {
+            console.error(err);
+        })
+        console.log(newPro);
 
 //Promise.any() 
 
-        // Promise.myAny = function (promises) {
-        //         return new Promise((resolve, reject) => {
-        //                 let n = promises.length;
+        Promise.myAny = function (promises) {
+                return new Promise((resolve, reject) => {
+                        let n = promises.length;
 
-        //                 if (!Array.isArray(promises)) {
-        //                         reject(new Error("myAny: undefined is not an iterable"));
-        //                         return;    
-        //                 } 
+                        if (!Array.isArray(promises)) {
+                                reject(new Error("myAny: undefined is not an iterable"));
+                                return;    
+                        } 
                         
-        //                 if (n === 0) {
-        //                         reject(new Error("AggregateError: All promises were rejected"));
-        //                         return;
-        //                 }
+                        if (n === 0) {
+                                reject(new Error("AggregateError: All promises were rejected"));
+                                return;
+                        }
 
-        //                 promises.forEach((promise, index) =>  {
+                        promises.forEach((promise, index) =>  {
                                 
-        //                       Promise.resolve(promise)
-        //                         .then(response => resolve(response))
-        //                         .catch(error => reject(error))
-        //                 })
-        //         })
-        // }
+                              Promise.resolve(promise)
+                                .then(response => resolve(response))
+                                .catch(error => reject(error))
+                        })
+                })
+        }
 
-        // const newPro = Promise.any([]);
-        // newPro.then(data => {
-        //     console.log(data);
-        // }).catch(err => {
-        //     console.error(err);
-        // })
+        const newPro4 = Promise.any([]);
+        newPro.then(data => {
+            console.log(data);
+        }).catch(err => {
+            console.error(err);
+        })
         // console.log(newPro);
 
         // const newPro2 = Promise.myAny([]);
