@@ -993,6 +993,32 @@
         }
 
         console.log(searchInMat1([[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,21,23,26,30]], 16))
+
+    //Better solution
+
+    function searchInMat2(arr, t) {
+                if (arr.length === 0) return [-1, -1];
+
+                for (let i = 0; i < arr.length; i++) {
+                    if (arr[i].length === 0) continue;
+
+                    let low = 0, high = arr[i].length - 1 
+                    if (arr[i][low] <= t && t <= arr[i][high]) {
+
+                        while (low <= high) {
+                            let mid = Math.floor((low + high) / 2);
+
+                            if (arr[i][mid] === t) return [i, mid];
+                            else if (arr[i][mid] > t) high = mid - 1;
+                            else low = mid + 1;
+                        }
+  
+                    }              
+                }
+                return [-1, -1];
+        }
+
+        console.log(searchInMat2([[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,21,23,26,30]], 16))
     </script>
 </body>
 </html>
