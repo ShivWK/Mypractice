@@ -6,43 +6,47 @@
     <title>Document</title>
 </head>
 <body>
-    <input type="text" onkeyup="debounce()"/>
-    <input type="text" onkeyup="throttle()"/>
+    <input type="text" onkeyup="debounce(event)" placeholder="Debouncing"/>
+    <input type="text" onkeyup="throttle(event)" placeholder="throttle"/>
     <script>
         //Debouncing by a search bar with auto suggestion API calls limitations
-        // let counter = 0;
-        // function getdata() {
-        //     counter++;
-        //     console.clear();
-        //     console.log(counter);
-        // }
+        let counter = 0;
+        function getdata(event) {
+            counter++;
+            console.clear();
+            console.log(counter);
+            console.log(event.target.value)
+        }
         
-        // const debounceHandler = (functionToCall, delay) => {
-        //     let timer;
-        //     return () => {
-        //         clearTimeout(timer);
-        //         timer = setTimeout(functionToCall, delay)
-        //     }
+        const debounceHandler = (functionToCall, delay) => {
+            let timer;
+            return (...args) => {
+                clearTimeout(timer);
+                timer = setTimeout(()=>functionToCall(...args), delay)
+            }
             
-        // }
+        }
 
-        // const debounce = debounceHandler(getdata, 400);
+        const debounce = debounceHandler(getdata, 800);
 
         let counter2 = 0;
 
-        function getData2() {
+        function getData2(event) {
             counter2++;
             console.clear();
             console.log(counter2);
+            console.log(event.target.value)
         }
 
         const throttleHandler = function(functionToCal, delay) {
             let isThrottle = true;
 
-            return () => {
+            return (...args) => {
+                // let context = this;
+                // let args = arguments;
 
                 if (isThrottle) {
-                    functionToCal();
+                    functionToCal(...args);
                     isThrottle = false;
                 }
 
@@ -54,6 +58,24 @@
         }
 
         const throttle = throttleHandler(getData2, 1000);
+
+        // let obj1 = {
+        //     name : "shivendra",
+        //     age : 25,
+
+        //     method() {
+        //         console.log(this.name);
+        //     }
+        // }
+
+        // obj1.method();
+
+        // let obj2 = {
+        //     name : "Ritik",
+        //     age : 22,
+        // }
+
+        // obj1.method.call(obj2)
 
     </script>
 </body>
