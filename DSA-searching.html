@@ -851,7 +851,44 @@
                [1, 1, 1, 1],
                [0, 0, 0, 0]]))
 
-   
+    //optimal solution
+        function maxOnes2(arr) {
+            if (arr.length === 0) return -1;
+
+            let maxCountOfOnes = 0;
+            let rowIndex = -1;
+
+            for (let i = 0; i < arr.length; i++) {
+                let sum = 0;
+
+                let low = 0, high = arr[i].length - 1;
+
+                while (low <= high) {
+                    let mid = Math.floor((low + high) / 2);
+
+                    if (arr[i][mid] === 1) {
+                        sum = arr[i].length - mid;
+                        high = mid - 1;            
+                    } else {
+                        low = mid + 1;
+                    }
+                    
+                    if (sum > maxCountOfOnes) {
+                        maxCountOfOnes = sum;
+                        rowIndex = i
+                    }
+                }     
+            }
+            return rowIndex;
+        }  
+        
+        console.log(maxOnes2([[0, 1, 1, 1],
+               [0, 0, 1, 1],
+               [1, 1, 1, 1],
+               [0, 0, 0, 0]]))
+
+
+
         
     </script>
 </body>
