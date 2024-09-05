@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" onkeyup="debounce()"/>
+    <input type="text" onkeyup="throttle()"/>
+    <script>
+        //Debouncing by a search bar with auto suggestion API calls limitations
+        // let counter = 0;
+        // function getdata() {
+        //     counter++;
+        //     console.clear();
+        //     console.log(counter);
+        // }
+        
+        // const debounceHandler = (functionToCall, delay) => {
+        //     let timer;
+        //     return () => {
+        //         clearTimeout(timer);
+        //         timer = setTimeout(functionToCall, delay)
+        //     }
+            
+        // }
+
+        // const debounce = debounceHandler(getdata, 400);
+
+        let counter2 = 0;
+
+        function getData2() {
+            counter2++;
+            console.clear();
+            console.log(counter2);
+        }
+
+        const throttleHandler = function(functionToCal, delay) {
+            let isThrottle = true;
+
+            return () => {
+
+                if (isThrottle) {
+                    functionToCal();
+                    isThrottle = false;
+                }
+
+                setTimeout(() => {
+                    isThrottle = true;
+                }, delay);
+
+            }
+        }
+
+        const throttle = throttleHandler(getData2, 1000);
+
+    </script>
+</body>
+</html>
