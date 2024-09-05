@@ -6,16 +6,20 @@
     <title>Document</title>
 </head>
 <body>
-    <input type="text" onkeyup="debounce(event)" placeholder="Debouncing"/>
-    <input type="text" onkeyup="throttle(event)" placeholder="throttle"/>
+    <input type="text" onkeyup="debounce(event.target.value)" placeholder="Debouncing"/>
+    <input id="mine" type="text" onkeyup="throttle(event.target.value, 'shiv')" placeholder="throttle"/>
     <script>
+        let obj = {name : "shivendra", age : 25}
+        let input = document.getElementById("mine");
+
         //Debouncing by a search bar with auto suggestion API calls limitations
         let counter = 0;
-        function getdata(event) {
+        function getdata(value) {
             counter++;
             console.clear();
-            console.log(counter);
-            console.log(event.target.value)
+            console.log("Debouncing "+counter);
+            console.log(value)
+            console.log(this)
         }
         
         const debounceHandler = (functionToCall, delay) => {
@@ -29,53 +33,67 @@
 
         const debounce = debounceHandler(getdata, 800);
 
+    //Throttling One way
+
         let counter2 = 0;
 
-        function getData2(event) {
+        function getData2(value, name) {
+            
             counter2++;
             console.clear();
-            console.log(counter2);
-            console.log(event.target.value)
+            console.log("throttle 1 "+counter2+" "+name);
+            console.log(value)
+            console.log(this.name);
         }
 
+        
         const throttleHandler = function(functionToCal, delay) {
             let isThrottle = true;
+            // let lastArgs = []
 
             return (...args) => {
-                // let context = this;
-                // let args = arguments;
+                // lastArgs = args
 
-                if (isThrottle) {
-                    functionToCal(...args);
+                if (!isThrottle) return;
+
+                // if (isThrottle) {
+                    functionToCal.apply(obj, args);
                     isThrottle = false;
-                }
+                // }
 
                 setTimeout(() => {
                     isThrottle = true;
                 }, delay);
-
             }
         }
 
         const throttle = throttleHandler(getData2, 1000);
 
-        // let obj1 = {
-        //     name : "shivendra",
-        //     age : 25,
+    //Throttle another way
 
-        //     method() {
-        //         console.log(this.name);
+        // let counter3 = 0;
+        // function getData2(event) {
+        //     counter3++;
+        //     console.clear();
+        //     console.log("throttle 2 "+counter3);
+        // }
+
+        // function throttleHandler2(func, delay) {
+        //     let timer = null;
+
+        //     return (...args) => {
+        //         if (timer) return;
+
+        //         timer = setTimeout(()=>{
+        //             func(...args);
+        //             timer = null;
+        //         }, delay)
         //     }
         // }
 
-        // obj1.method();
+        // const throttle2 = throttleHandler2(getData2, 1000);
 
-        // let obj2 = {
-        //     name : "Ritik",
-        //     age : 22,
-        // }
-
-        // obj1.method.call(obj2)
+        // document.addEventListener("mousemove", throttle2);
 
     </script>
 </body>
