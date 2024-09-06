@@ -550,10 +550,44 @@
     // console.log(n, h, w, cl);
 
     let {name, ...objRest} = obj;
-    console.log(name, objRest['height'], objRest['weight'], objRest['age'], objRest['address'])
+    console.log(name, objRest['height'], objRest['weight'], objRest['age'], objRest['address']);
 
-    ({name7, ...objRest2} = obj);
-    console.log(name, objRest['height'], objRest['weight'], objRest['age'], objRest['address'])
+    //Semicolon is important at the end of line of code before the below line
+    ({title, width} = {title : "shiv", width : 23})
+    console.log(title);
+
+    function minefunction({name = "shiv", age = 25, height = 6.10, address = "Prayagraj"}) {
+        console.log(name, age, height, address);
+    }
+
+    minefunction({}); //want all to get their default values
+
+    minefunction({
+        name : "sahil",
+        age : 25,
+        address : "Prayagraj"
+    })
+
+    let obj2 = {
+        name8 : "Shivendra Dwivedi",
+        size : {
+            weight : "65kg",
+            height : 6.10,
+        },
+        items : ["boll", "bat"],
+        extra : "I'm extra",
+    } 
+
+    let {
+        name8,
+        size : {
+            weight,
+            height
+        },
+        items : [item1, item2],
+    } = obj2;
+
+    console.log(name8, item1, weight)
     </script> ,
 </body>
-</html>,,
+</html>
