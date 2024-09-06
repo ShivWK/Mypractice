@@ -285,21 +285,21 @@
 
     //truncate the string
     
-        function truncateStr(str, maxLength) {
-            if (str.length > maxLength) {
-                return str.slice(0, maxLength - 1) + "...";
-            }
-        }
+        // function truncateStr(str, maxLength) {
+        //     if (str.length > maxLength) {
+        //         return str.slice(0, maxLength - 1) + "...";
+        //     }
+        // }
 
-        console.log(truncateStr("HiImShivendraDwivedi", 14));
+        // console.log(truncateStr("HiImShivendraDwivedi", 14));
 
     //Extract spesific
 
-        function money(str) {
-            return +str.slice(1);
-        }
+        // function money(str) {
+        //     return +str.slice(1);
+        // }
 
-        console.log(money("$123"));
+        // console.log(money("$123"));
         
 //Array Method
     //do backgrund-color to backgroundColor 
@@ -468,11 +468,11 @@
     //     return newObj
     // } 
 
-    usersArray = [
-        {id: "John", name: "John Smith", age: 25},
-        {id: "ann", name: "ann smith", age: 24},
-        {id: "pete", name: "pete marry", age: 21}
-    ]
+    // usersArray = [
+    //     {id: "John", name: "John Smith", age: 25},
+    //     {id: "ann", name: "ann smith", age: 24},
+    //     {id: "pete", name: "pete marry", age: 21}
+    // ]
 
     // console.log(objFromArray(usersArray));
 
@@ -485,10 +485,75 @@
 
 //avg age from an array of objects
 
-    let avgAge = usersArray.reduce((sum , object) => sum + object.age, 0) / usersArray.length;
-    console.log(avgAge);
+    // let avgAge = usersArray.reduce((sum , object) => sum + object.age, 0) / usersArray.length;
+    // console.log(avgAge);
 
+//Destructuring Assignmant
 
-    </script> 
+    //Array : Position matters
+
+    let myArray = ["shivendra"];
+
+    let [name0, age] = myArray
+    console.log(name0,age);
+
+    let [name2 = "sahil", age2 = 24] = myArray;
+    console.log(name2+" "+age2)
+
+    let mineArray = ["shiv", 25, '5.10 inch', '65kg', true];
+
+    let [name3, age3, , weight0, living ] = mineArray;
+    console.log(name3, age3, weight0, living);
+
+    let mySet = new Set(["shivendra", 25, 5.10, 65, "alive", "shivendra"]);
+
+    let [name4, age4, height0, , living2] = mySet;
+
+    console.log(name4, age4, height0, living2)
+
+    let [a, b, c, d] = "shiv";
+    console.log(a,b,c,d);
+
+    let user = {};
+    [user.name, user.age, user.height, user.weight, user.life_status] = mySet;
+    console.log(user);
+
+    let obj = {
+        name : "shivendra",
+        age : 25,
+        height : 5.10,
+        weight : '65Kg',
+        address : 'Prayagraj'
+    }
+
+    let myMap = new Map(Object.entries(obj));
+
+    // for (let [key , value] of Object.entries(obj)) {
+    //     console.log(key, value);
+    // }  
+    
+    for (let [key , value] of myMap) {
+        console.log(key, value);
+    } 
+    
+    let var1 = "Shiv", var2 = 25;
+    console.log(var1, var2);
+
+    [var1 , var2] = [var2, var1];
+    console.log(var1, var2);
+
+    let [name6, ...rest] = mineArray;
+    console.log(name6, rest[0], rest[1], rest[3]);
+
+    // let {name : n, height : h, weight : w, class : cl = prompt("class?")} = obj;
+
+    // console.log(n, h, w, cl);
+
+    let {name, ...objRest} = obj;
+    console.log(name, objRest['height'], objRest['weight'], objRest['age'], objRest['address'])
+
+    ({name7, ...objRest2} = obj);
+    console.log(name, objRest['height'], objRest['weight'], objRest['age'], objRest['address'])
+    </script> ,
 </body>
-</html>
+</html>,,
