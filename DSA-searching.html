@@ -7,7 +7,7 @@
 </head>
 <body>
     <script>
-        //Binary search algo example 
+//1 Binary search algo example 
 
     //Brute force
     //     function binarSearch1(arr, target) {
@@ -48,131 +48,131 @@
 
     //     console.log(binarySearch([2,5,8,9,10,15,16,20], 0, 7, 10))
 
-//Lower Bound finding 
+//2 Lower Bound finding 
 
     //Optimal solution
 
-    // function binarSearch1(arr, target) {
-        // let n = arr.length;
-        // if (n === 0) return -1;
-    
-        // let low = 0;
-        // let high = n - 1;
-        // let lowerBound = n;
-    
-        // while (low <= high) {
-        //     let mid = Math.floor((low + high) / 2);
-    
-        //     if (arr[mid] >= target) {
-        //         lowerBound = mid;
-        //         high = mid - 1;
-        //     }
-        //     else low = mid + 1;   
+        // function binarSearch1(arr, target) {
+            // let n = arr.length;
+            // if (n === 0) return -1;
+        
+            // let low = 0;
+            // let high = n - 1;
+            // let lowerBound = n;
+        
+            // while (low <= high) {
+            //     let mid = Math.floor((low + high) / 2);
+        
+            //     if (arr[mid] >= target) {
+            //         lowerBound = mid;
+            //         high = mid - 1;
+            //     }
+            //     else low = mid + 1;   
+            // }
+        
+            //     return lowerBound;
         // }
-    
-        //     return lowerBound;
-    // }
-    
-    // console.log(binarSearch1([2,5,8,9,10,15,16,20], 9));
-
-//Upper Bound 
-
-    // function upperBound(arr, x) {
-    //     let n = arr.length;
-    //     if (n === 0) return -1;
-
-    //     let low = 0;
-    //     let high = n - 1;
-    //     let upperBound = n;
         
-    //     while (low <= high) {
-    //         let mid = Math.floor((low + high) / 2);
+        // console.log(binarSearch1([2,5,8,9,10,15,16,20], 9));
 
-    //         if (arr[mid] > x) {
-    //             upperBound = mid;
-    //             high = mid - 1;
-    //         } else {
-    //             low = mid + 1
+//3 Upper Bound 
+
+        // function upperBound(arr, x) {
+        //     let n = arr.length;
+        //     if (n === 0) return -1;
+
+        //     let low = 0;
+        //     let high = n - 1;
+        //     let upperBound = n;
+            
+        //     while (low <= high) {
+        //         let mid = Math.floor((low + high) / 2);
+
+        //         if (arr[mid] > x) {
+        //             upperBound = mid;
+        //             high = mid - 1;
+        //         } else {
+        //             low = mid + 1
+        //         }
+        //     }
+        //     return upperBound;
+        // }
+
+        // console.log(upperBound([1, 4, 7, 8, 10], 7)) 
+        // console.log(upperBound([1, 4, 7, 8, 10], 10))
+
+//4 floor and ceil value simultaneously
+
+    //Brute Force
+
+    //     function floorCeil(arr, target) {
+    //         let n = arr.length;
+    //         if (n === 0) return -1;
+
+    //         let floor = -1, ceil = -1;
+    //         let low = 0, high = n - 1;
+
+    //         //floor largest but <= target
+    //         while (low <= high) {
+    //             let mid = Math.floor((low + high) / 2);
+    //             if (arr[mid] <= target) {
+    //                 floor = arr[mid];
+    //                 low = mid + 1;
+    //             } else {
+    //                 high = mid - 1;
+    //             }
     //         }
-    //     }
-    //     return upperBound;
-    // }
 
-    // console.log(upperBound([1, 4, 7, 8, 10], 7)) 
-    // console.log(upperBound([1, 4, 7, 8, 10], 10))
-
-//floor and ceil value simultaneously
-
-//Brute Force
-
-//     function floorCeil(arr, target) {
-//         let n = arr.length;
-//         if (n === 0) return -1;
-
-//         let floor = -1, ceil = -1;
-//         let low = 0, high = n - 1;
-
-//         //floor largest but <= target
-//         while (low <= high) {
-//             let mid = Math.floor((low + high) / 2);
-//             if (arr[mid] <= target) {
-//                 floor = arr[mid];
-//                 low = mid + 1;
-//             } else {
-//                 high = mid - 1;
-//             }
-//         }
-
-//         //Ceil smallest but >= target
-//         low = 0;
-//         high = n - 1;
-//         while (low <= high) {
-//             let mid = Math.floor((low + high) / 2);
-//             if (arr[mid] >= target) {
-//                 ceil = arr[mid];
-//                 high = mid - 1;
-//             } else {
-//                 low = mid + 1;
-//             }
-//         }
-        
-//         return [floor, ceil];
-//     }
-
-//     console.log(floorCeil([1, 2, 8, 10, 10, 12, 19], 5))
-
-// //Optimal Solution
-
-    // function floorCeil(arr, target) {
-    //     let n = arr.length;
-    //     if (n === 0) return [-1 , -1];
-
-    //     let floor = -1, ceil = -1;
-    //     let low = 0, high = n - 1;
-
-    // //floor largest but <= target
-    //     while (low <= high) {
-    //         let mid = Math.floor((low + high) / 2);
-
-    //         if (arr[mid] === target) {
-    //             floor = arr[mid];
-    //             ceil = arr[mid];
-
-    //             return [floor, ceil];
-    //         } else if (arr[mid] > target) {
-    //             ceil = arr[mid];
-    //             high = mid - 1;
-    //         } else {
-    //             floor = arr[mid];
-    //             low = mid + 1;
+    //         //Ceil smallest but >= target
+    //         low = 0;
+    //         high = n - 1;
+    //         while (low <= high) {
+    //             let mid = Math.floor((low + high) / 2);
+    //             if (arr[mid] >= target) {
+    //                 ceil = arr[mid];
+    //                 high = mid - 1;
+    //             } else {
+    //                 low = mid + 1;
+    //             }
     //         }
+            
+    //         return [floor, ceil];
     //     }
 
-    //     return [floor, ceil];
-    // }
-//     console.log(floorCeil([1, 2, 8, 10, 10, 12, 19], 5))
+    //     console.log(floorCeil([1, 2, 8, 10, 10, 12, 19], 5))
 
-//first and last occurance
+    //Optimal Solution
+
+        // function floorCeil(arr, target) {
+        //     let n = arr.length;
+        //     if (n === 0) return [-1 , -1];
+
+        //     let floor = -1, ceil = -1;
+        //     let low = 0, high = n - 1;
+
+        // //floor largest but <= target
+        //     while (low <= high) {
+        //         let mid = Math.floor((low + high) / 2);
+
+        //         if (arr[mid] === target) {
+        //             floor = arr[mid];
+        //             ceil = arr[mid];
+
+        //             return [floor, ceil];
+        //         } else if (arr[mid] > target) {
+        //             ceil = arr[mid];
+        //             high = mid - 1;
+        //         } else {
+        //             floor = arr[mid];
+        //             low = mid + 1;
+        //         }
+        //     }
+
+        //     return [floor, ceil];
+        // }
+    //     console.log(floorCeil([1, 2, 8, 10, 10, 12, 19], 5))
+
+//5 first and last occurance
 
     //Brute Force
 
@@ -197,7 +197,7 @@
 
     //     console.log(firstLast1([2,4,4,4,4,6,8,8,8,,13], 4));
 
-    //optimal solution
+    //optimal solution 1
 
     //     function firstLast2(arr, target) {
     //         let n = arr.length;
@@ -280,7 +280,7 @@
         // }   
         // console.log(firstLast3([2,4,4,4,4,6,8,8,8,13], 8));
 
-//Total occurance
+// 6 Total occurance
 
         //last occurance - first occurance
 
@@ -327,8 +327,7 @@
         // }   
         // console.log(firstLast3([2,4,4,4,4,4,8,8,8,13], 1));
 
-//Search in rotated sorted array
-//witout duplicates
+//7 Search in rotated sorted array witout duplicates
 
     //brute force
 
@@ -377,7 +376,7 @@
 
     // console.log(search1([1,3], 3))
 
-//Search in rotated sorted array with duplicates
+//8 Search in rotated sorted array with duplicates
 
     // function search(arr, x) {
     //     for (let i = 0; i < arr.length; i++) {
@@ -428,7 +427,7 @@
 
     //     console.log(search1([2,5,6,0,0,1,2], 0))
 
-//find minimum in rotated sorted array
+//9 find minimum in rotated sorted array
 
         // function minimum(arr) {
         //     if (arr.length === 0) return -1;
@@ -479,7 +478,7 @@
         // console.log(minimum([4,5,6,7,-2,0,1,2]))
         // console.log(minimum([]))
 
-//Finding how many times the array is rotated
+//10 Finding how many times the array is rotated
 
     //Brute force
 
@@ -541,82 +540,82 @@
 
     //     console.log(numberOfRotatios2([5,6,7,1,2,4]))
 
-//Minimum in Rotated sorted array
+//11 Minimum in Rotated sorted array
 
     //Brute Force
 
-    // function singlrElement(arr) {
-    //     let n = arr.length;
-    //     if (n === 0) return -1;
-    //     else if (n === 1) return arr[0];
-    //     else {
-    //         for (let i = 0; i < n; i++) {
-    //             if (i === 0) {
-    //                 if (arr[i] !== arr[i + 1]) return arr[i];
-    //             } else if (i === (n - 1)) {
-    //                 if (arr[i] !== arr[i - 1]) return arr[i];
-    //             } else {
-    //                 if (arr[i] !== arr[i - 1] && arr[i] !== arr[i + 1]) return arr[i];
-    //             }
-    //         }
-    //     }
+        // function singlrElement(arr) {
+        //     let n = arr.length;
+        //     if (n === 0) return -1;
+        //     else if (n === 1) return arr[0];
+        //     else {
+        //         for (let i = 0; i < n; i++) {
+        //             if (i === 0) {
+        //                 if (arr[i] !== arr[i + 1]) return arr[i];
+        //             } else if (i === (n - 1)) {
+        //                 if (arr[i] !== arr[i - 1]) return arr[i];
+        //             } else {
+        //                 if (arr[i] !== arr[i - 1] && arr[i] !== arr[i + 1]) return arr[i];
+        //             }
+        //         }
+        //     }
 
-    //     return -1;
-    // }
-    // console.log(singlrElement([1,1,2,2,3,4,4,5,5,6,6,7,7]));
-    // console.log(singlrElement([1,1,2,2,3,3,4,4,5,5,6,6,7,7]));
-    // console.log(singlrElement([5]));
-    // console.log(singlrElement([]));
+        //     return -1;
+        // }
+        // console.log(singlrElement([1,1,2,2,3,4,4,5,5,6,6,7,7]));
+        // console.log(singlrElement([1,1,2,2,3,3,4,4,5,5,6,6,7,7]));
+        // console.log(singlrElement([5]));
+        // console.log(singlrElement([]));
 
-    // //Optimal solution 
+    //Optimal solution 
 
-    // function singlrElement2(arr) {
-    //     let n = arr.length;
-    //     if (n === 0) return -1;
-    //     else if (n === 1) return arr[0];
+        // function singlrElement2(arr) {
+        //     let n = arr.length;
+        //     if (n === 0) return -1;
+        //     else if (n === 1) return arr[0];
 
-    //     if (arr[0] !== arr[1]) return arr[0];
-    //     else if (arr[n - 1] !== arr[n - 2]) return arr[n - 1];
-    //     else {
-    //         let low = 1, high = n - 2;
+        //     if (arr[0] !== arr[1]) return arr[0];
+        //     else if (arr[n - 1] !== arr[n - 2]) return arr[n - 1];
+        //     else {
+        //         let low = 1, high = n - 2;
 
-    //         while (low <= high) {
-    //             let mid = Math.floor((low + high) / 2);
+        //         while (low <= high) {
+        //             let mid = Math.floor((low + high) / 2);
 
-    //             if (arr[mid - 1] !== arr[mid] && arr[mid] !== arr[mid + 1]) return arr[mid];
-    //             else {
-    //                 if (mid % 2 == 0) {
-    //                     //Even mid , //even - odd = left
-    //                     //odd - even = right
-    //                     if (arr[mid] === arr[mid + 1]) {
-    //                         //even - odd case ,in left half, go right half
-    //                         low = mid + 1;
-    //                     } else {
-    //                         high = mid - 1;
-    //                     }
-    //                 } else {
-    //                     //mid is odd
-    //                     if (arr[mid] === arr[mid + 1]) {
-    //                         //odd - even case ,in right half, go to left half
-    //                         high = mid - 1;
-    //                     } else {
-    //                         //even - odd , in left half, go to the right half
-    //                         low = mid + 1;
-    //                     }
-    //                 }
-    //             }
-    //         }
-    //     }
+        //             if (arr[mid - 1] !== arr[mid] && arr[mid] !== arr[mid + 1]) return arr[mid];
+        //             else {
+        //                 if (mid % 2 == 0) {
+        //                     //Even mid , //even - odd = left
+        //                     //odd - even = right
+        //                     if (arr[mid] === arr[mid + 1]) {
+        //                         //even - odd case ,in left half, go right half
+        //                         low = mid + 1;
+        //                     } else {
+        //                         high = mid - 1;
+        //                     }
+        //                 } else {
+        //                     //mid is odd
+        //                     if (arr[mid] === arr[mid + 1]) {
+        //                         //odd - even case ,in right half, go to left half
+        //                         high = mid - 1;
+        //                     } else {
+        //                         //even - odd , in left half, go to the right half
+        //                         low = mid + 1;
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //     }
 
-    //     return -1;
-    // }
-    // console.log('')
-    // console.log(singlrElement2([1,1,2,2,3,4,4,5,5,6,6,7,7]));
-    // console.log(singlrElement2([1,1,2,2,3,3,4,4,5,5,6,6,7,7]));
-    // console.log(singlrElement2([5]));
-    // console.log(singlrElement2([]));
+        //     return -1;
+        // }
+        // console.log('')
+        // console.log(singlrElement2([1,1,2,2,3,4,4,5,5,6,6,7,7]));
+        // console.log(singlrElement2([1,1,2,2,3,3,4,4,5,5,6,6,7,7]));
+        // console.log(singlrElement2([5]));
+        // console.log(singlrElement2([]));
 
-//square root of the given integer
+//12 square root of the given integer
 
     //Brute force
 
@@ -657,50 +656,21 @@
 
         // console.log(sqrt2(1689623))
 
-//Nth root of give integer 
+//13 Nth root of give integer 
 
     //Brute force
 
-    // function  nthRoot(n, N) {
+        // function  nthRoot(n, N) {
 
-    //     for (let i = 1; i <= n; i++) {
-    //         let ans = 1;
-            
-    //         for (let j = 1; j <= N; j++) {
-    //             ans *= i;
-    //         }
-
-    //         if (ans === n) return i;
-    //         else if (ans > n) break;
-    //     }
-
-    //     return -1;
-    // }
-
-    // console.log(nthRoot(9, 3));
-    // console.log(nthRoot(9, 2));
-
-//Optimal solution
-
-        // function nthRoot(n, N) {
-        //     let low = 1, high = n;
-
-        //     function multiply(mid, N) {
+        //     for (let i = 1; i <= n; i++) {
         //         let ans = 1;
-        //         for (let i = 1; i <= N; i++) {
-        //             ans *= mid;
+                
+        //         for (let j = 1; j <= N; j++) {
+        //             ans *= i;
         //         }
-        //         return ans;
-        //     }
-            
-        //     while (low <= high) {
-        //         let mid = Math.floor((low + high) / 2);
-        //         // let root = multiply(mid, N)
-        //         let root = Math.pow(mid , N);
 
-        //         if (root === n) return mid;
-        //         else if (root > n) high = mid - 1;
-        //         else low = mid + 1;
+        //         if (ans === n) return i;
+        //         else if (ans > n) break;
         //     }
 
         //     return -1;
@@ -709,60 +679,89 @@
         // console.log(nthRoot(9, 3));
         // console.log(nthRoot(9, 2));
 
-        // console.log(" ");
+    //Optimal solution
 
-//Optimal 2
+            // function nthRoot(n, N) {
+            //     let low = 1, high = n;
 
-        // function nthRoot2(n, N) {
-        //     let low = 1, high = n;
-            
-        //     while (low <= high) {
-        //         let mid = Math.floor((low + high) / 2);
-        //         let root = Math.pow(mid , N);
+            //     function multiply(mid, N) {
+            //         let ans = 1;
+            //         for (let i = 1; i <= N; i++) {
+            //             ans *= mid;
+            //         }
+            //         return ans;
+            //     }
+                
+            //     while (low <= high) {
+            //         let mid = Math.floor((low + high) / 2);
+            //         // let root = multiply(mid, N)
+            //         let root = Math.pow(mid , N);
 
-        //         if (root === n) return mid;
-        //         else if (root > n) high = mid - 1;
-        //         else low = mid + 1;
-        //     }
+            //         if (root === n) return mid;
+            //         else if (root > n) high = mid - 1;
+            //         else low = mid + 1;
+            //     }
 
-        //     return -1;
-        // }
+            //     return -1;
+            // }
 
-        // console.log(nthRoot2(9, 3));
-        // console.log(nthRoot2(9, 2));
+            // console.log(nthRoot(9, 3));
+            // console.log(nthRoot(9, 2));
 
-//smallest divisor given a threshold
+            // console.log(" ");
+
+    //Optimal 2
+
+            // function nthRoot2(n, N) {
+            //     let low = 1, high = n;
+                
+            //     while (low <= high) {
+            //         let mid = Math.floor((low + high) / 2);
+            //         let root = Math.pow(mid , N);
+
+            //         if (root === n) return mid;
+            //         else if (root > n) high = mid - 1;
+            //         else low = mid + 1;
+            //     }
+
+            //     return -1;
+            // }
+
+            // console.log(nthRoot2(9, 3));
+            // console.log(nthRoot2(9, 2));
+
+//14 smallest divisor given a threshold
 
     //Brute force
 
-    // function smallestDivisor(arr, t) {
-    //     let result = Infinity;
-    //     let maxEle = arr[0];
+        // function smallestDivisor(arr, t) {
+        //     let result = Infinity;
+        //     let maxEle = arr[0];
 
-    //     for (let i = 0; i < arr.length; i++) {
-    //         if (arr[i] > maxEle) maxEle = arr[i];
-    //     }
-
-        //Math.max() works on elements not on the so we need to give it individual elements separated with comma, for which we can use sprade operator. this will also take O(n) T.C but sprade operator creates a list of arguments from the array, especially for large arrays. This overhead is usually minor but worth noting, for very big array for loop is suitable.
-        
-        //maxEle = Math.max(...arr);
-
-        // for (let i = 1; i <= maxEle; i++) {
-        //     let sum = 0;
-
-        //     for (let j = 0; j < arr.length; j++) {
-        //         sum += Math.ceil(arr[j]/i);
+        //     for (let i = 0; i < arr.length; i++) {
+        //         if (arr[i] > maxEle) maxEle = arr[i];
         //     }
 
-        //     if (sum <= t) {
-        //         result = Math.min(result, i);
-        //     }
+            //Math.max() works on elements not on the so we need to give it individual elements separated with comma, for which we can use sprade operator. this will also take O(n) T.C but sprade operator creates a list of arguments from the array, especially for large arrays. This overhead is usually minor but worth noting, for very big array for loop is suitable.
+            
+            //maxEle = Math.max(...arr);
+
+            // for (let i = 1; i <= maxEle; i++) {
+            //     let sum = 0;
+
+            //     for (let j = 0; j < arr.length; j++) {
+            //         sum += Math.ceil(arr[j]/i);
+            //     }
+
+            //     if (sum <= t) {
+            //         result = Math.min(result, i);
+            //     }
+            // }
+
+            // return result
         // }
 
-        // return result
-    // }
-
-    // console.log(smallestDivisor([44,22,33,11,1], 5))
+        // console.log(smallestDivisor([44,22,33,11,1], 5))
         
     //Optimal Solution
 
@@ -797,7 +796,7 @@
 
     // console.log(smallestDivisor2([44,22,33,11,1], 5))
 
-//Kth mising positvie
+//15 Kth mising positvie
 
     //Brute Force
 
@@ -819,7 +818,7 @@
 
         // console.log(KthMissing([1,3,4,9,10,13], 6))
 
-//Row with 1's 2D array
+//16 Row with 1's 2D array
 
     //Brute force
 
@@ -887,7 +886,7 @@
         //        [1, 1, 1, 1],
         //        [0, 0, 0, 0]]))
 
-//Search in 2D array
+//17 Search in 2D array
 
     //Brute force
 
@@ -952,27 +951,27 @@
 
     //Optimal Solution 2 flattened binary search   
         
-        function searchInMat3(arr, t) {
-                    if (arr.length === 0) return false;
+        // function searchInMat3(arr, t) {
+        //             if (arr.length === 0) return false;
 
-                    let n = arr.length, m = arr[0].length;
-                    let low = 0, high = n * m - 1;
+        //             let n = arr.length, m = arr[0].length;
+        //             let low = 0, high = n * m - 1;
                     
-                    while (low <= high) {
-                        let mid = Math.floor((low + high) / 2);
-                        let midValue = arr[Math.floor(mid / m)][mid % m];
+        //             while (low <= high) {
+        //                 let mid = Math.floor((low + high) / 2);
+        //                 let midValue = arr[Math.floor(mid / m)][mid % m];
 
-                        if (midValue === t) return true;
-                        else if (midValue > t) high = mid - 1;
-                        else low = mid + 1;
-                    }
+        //                 if (midValue === t) return true;
+        //                 else if (midValue > t) high = mid - 1;
+        //                 else low = mid + 1;
+        //             }
                     
-                    return false;
-            }
+        //             return false;
+        //     }
 
-        console.log(searchInMat3([[1,3,5,7],[10,11,16,20],[23,30,34,60]], 16))
+        // console.log(searchInMat3([[1,3,5,7],[10,11,16,20],[23,30,34,60]], 16))
         
-//Search in row and column wise sorted 2d array
+//18 Search in row and column wise sorted 2d array
 
         //brute force 
 
@@ -1023,8 +1022,23 @@
     //Optimal Solution
 
         function searchInMat(arr, t) {
+            if (arr.length === 0) return [-1, -1];
+            
+            let n = arr.length, m = arr[0].length;
+            let row = 0, col = m - 1;
 
+            while (row < n && col >= 0) {
+                let currenElement = arr[row][col];
+
+                if (currenElement === t) return [row, col];
+                else if (currenElement > t) col--;
+                else row++;
+            }
+
+            return [-1, -1];
         }
+
+        console.log(searchInMat([[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,21,23,26,30]], 16))
     </script>
 </body>
 </html>
