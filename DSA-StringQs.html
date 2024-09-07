@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strings</title>
+</head>
+<body>
+    <script>
+//string compression
+
+    //Brute force
+
+        // function stringCompression(str) {
+        //     if (str.length === 0) return '';
+
+        //     let n = str.length;
+        //     let result = '';
+        //     let count = 1;
+
+        //     for (let i = 0; i < n; i++) {
+        //         if (i === 0) result += str[i];
+        //         else if (str[i - 1] === str[i]) {
+        //             count++;
+        //         } else {
+        //             if (count > 0) result += count;
+        //             result += str[i];
+        //             count = 1;
+        //         }
+        //         if (i === (n - 1) && count > 0) result += count;
+        //     }
+        //     console.log(result)
+        //     return result;
+        // }
+
+        // console.log(stringCompression('zzzfgga'))
+
+    //If input is an array
+
+        function stringCompression(arr) {
+            if (arr.length === 0) return [];
+
+            let n = arr.length;
+            let count = 1;
+            let mainLength = 1;
+
+            for (let i = 1; i < n; i++) {
+
+                if (arr[i - 1] === arr[i]) {     
+                    count++;
+                } else {
+                    if (count > 1) {
+                        if (count >= 10) {
+                            arr[i - count + 1] = String(count)[0];
+                            arr[i - count + 1] = String(count)[1];
+
+                            arr[i - count + 2] = arr[i];
+                            mainLength += 2;
+                        }
+                        arr[i - count + 1] = String(count);
+                        arr[i - count + 2] = arr[i];
+                        mainLength += 2; 
+                        count = 1;
+                    } else {
+                        mainLength++;
+                        count = 1;
+                    }                 
+                }
+                if (i === n - 1) {
+                    if (count > 1) {
+                        arr[i - count + 2] = String(count);
+                        mainLength++;
+                    }
+                }
+                
+            }
+            arr.length = mainLength;
+            console.log(arr);
+            return arr;
+        }
+
+        console.log(stringCompression(["a","a","b","b","c","c","c"]))
+    </script>
+</body>
+</html>
