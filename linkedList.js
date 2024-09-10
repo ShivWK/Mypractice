@@ -19,7 +19,7 @@ class LinkedList {
     //To insert at the begining of the linked list 
 
     //Current head reference will be given to the next of newly created node and now this will become the head node
-    addFirst(data) {
+    addInStart(data) {
         const newFirstNode = new Node(data);
         newFirstNode.next = this.head;
         this.head= newFirstNode;
@@ -33,7 +33,7 @@ class LinkedList {
 
     // If the Linked list is empty that is head is null then we simply add this newLastNode to the head
 
-    addLast(data) {
+    addInLast(data) {
         const newLastNode = new Node(data);
        
         if(!this.head) {
@@ -78,13 +78,78 @@ class LinkedList {
         if (index >= 0 && index < this.size()) {
             const newBetweenNode = new Node(data);
 
-            //
+            //First we need to find the index, then give the reference of the node which is already present there to the next of newly created node , then give the reference of this newly created node to the node preset at i - 1 inedx
 
+            if (index === 0) {
+                newBetweenNode.next = this.head;
 
+                //reference dena is just like assigning the element to the next
+                this.head = newBetweenNode;  
+                return;   
+            } 
+                
+            let current = this.head;
+            for (let i = 0; i < index -1; i++) {
+                 current = current.next;
+            }
+
+            newBetweenNode.next = current.next;
+            current.next = newBetweenNode;
+        
         } else {
             console.log("Invalid Index");
             return;
         }
         
     }
+
+    removeFromTop() {
+        if (!this.head) return;
+        this.head = this.head.next;
+
+    }
+
+    removeFromLast() {
+        if (!this.head) return;
+    
+        let current = this.head;
+        while (current.next.next) {
+            current = current.next;
+        }
+
+        current.next = null;   
+    }
+
+    removeFromBetween(index) {
+        if (!this.head) return;
+        else if (index >=0 && index <this.size()) {
+            if (index === 0) {
+                this.head = this.head.next;
+                return;
+            }
+
+            let current = this.head;
+            for (let i = 0; i < index - 1; i++) {
+                current = current.next;
+            }
+    
+            current.index = current.index.index;
+        }  
+    }
+
+    print() {
+        let current = this.head;
+
+        while (current) {
+            console.log(current.data);
+            current = current.next;
+        }
+    }
 }
+
+const linkedList_1 = new LinkedList();
+linkedList_1.addInStart("shivendra");
+linkedList_1.addInStart(1);
+linkedList_1.addInStart(true);
+
+linkedList_1.print();
