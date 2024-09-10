@@ -11,6 +11,8 @@
 
     //Brute force
 
+    //If input is string
+
         // function stringCompression(str) {
         //     if (str.length === 0) return '';
 
@@ -29,7 +31,7 @@
         //         }
         //         if (i === (n - 1) && count > 0) result += count;
         //     }
-        //     console.log(result)
+        //     // console.log(result)
         //     return result;
         // }
 
@@ -37,49 +39,94 @@
 
     //If input is an array
 
-        function stringCompression(arr) {
+        //     function stringCompression(arr) {
+        //     if (arr.length === 0) return [];
+
+        //     let n = arr.length;
+        //     let count = 1;
+        //     let mainLength = 1;
+
+        //     for (let i = 1; i < n; i++) {
+        //         if (arr[i - 1] === arr[i]) {
+        //             count++;
+        //         } else {
+        //             if (count > 1) {
+        //                 let index = i - count;
+        //                 let strCount1 = count.toString();
+
+        //                 for (let j = 0; j < strCount1.length; j++) {
+        //                     arr[++index] = strCount1[j];
+        //                     mainLength++;
+        //                 }
+
+        //                 arr[++index] = arr[i];
+        //                 mainLength++;
+        //                 count = 1;
+        //             } else {
+        //                 mainLength++;
+        //                 count = 1;
+        //             }
+        //         }
+
+        //         // Handle the last sequence
+        //         if (i === n - 1) {
+        //             if (count > 1) {
+        //                 let index = i - count + 1;
+        //                 let strCount1 = count.toString();
+
+        //                 for (let j = 0; j < strCount1.length; j++) {
+        //                     arr[++index] = strCount1[j];
+        //                     mainLength++;
+        //                 }
+        //             }
+        //         }
+        //     }
+
+        //     arr.length = mainLength;
+        //     return arr;
+        // }
+
+        // console.log(stringCompression(["a","a","b","b","b","b","b","b","b","b","b","b","b","b","c","f","f","f"]))
+        // WRONG RESULT
+
+    //Optimal Approach
+
+        function compress(arr) {
             if (arr.length === 0) return [];
 
             let n = arr.length;
-            let count = 1;
-            let mainLength = 1;
+            let index = 0;
+            let i = 0;
 
-            for (let i = 1; i < n; i++) {
+            while (i < n) {
+                let count = 0, currentElement = arr[i];
 
-                if (arr[i - 1] === arr[i]) {     
-                    count++;
-                } else {
-                    if (count > 1) {
-                        if (count >= 10) {
-                            arr[i - count + 1] = String(count)[0];
-                            arr[i - count + 1] = String(count)[1];
-
-                            arr[i - count + 2] = arr[i];
-                            mainLength += 2;
-                        }
-                        arr[i - count + 1] = String(count);
-                        arr[i - count + 2] = arr[i];
-                        mainLength += 2; 
-                        count = 1;
-                    } else {
-                        mainLength++;
-                        count = 1;
-                    }                 
+                while (i < n && arr[i] === currentElement) {
+                        count++;
+                        i++;
                 }
-                if (i === n - 1) {
-                    if (count > 1) {
-                        arr[i - count + 2] = String(count);
-                        mainLength++;
+
+                arr[index] = currentElement;
+                index++;
+
+                if(count > 1) {
+                    let strCount = String(count);
+
+                    for (let char of strCount) {
+                        arr[index] = char;
+                        index++
                     }
-                }
+                }          
                 
             }
-            arr.length = mainLength;
-            console.log(arr);
+           
+            arr.length = index;
             return arr;
         }
 
-        console.log(stringCompression(["a","a","b","b","c","c","c"]))
+        console.log(compress(["a","a","b","b","b","b","b","b","b","b","b","b","b","b","c","c","c"]))
+
+        
     </script>
 </body>
 </html>

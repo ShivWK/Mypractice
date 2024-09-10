@@ -1021,24 +1021,24 @@
 
     //Optimal Solution
 
-        function searchInMat(arr, t) {
-            if (arr.length === 0) return [-1, -1];
+        // function searchInMat(arr, t) {
+        //     if (arr.length === 0) return [-1, -1];
             
-            let n = arr.length, m = arr[0].length;
-            let row = 0, col = m - 1;
+        //     let n = arr.length, m = arr[0].length;
+        //     let row = 0, col = m - 1;
 
-            while (row < n && col >= 0) {
-                let currenElement = arr[row][col];
+        //     while (row < n && col >= 0) {
+        //         let currenElement = arr[row][col];
 
-                if (currenElement === t) return [row, col];
-                else if (currenElement > t) col--;
-                else row++;
-            }
+        //         if (currenElement === t) return [row, col];
+        //         else if (currenElement > t) col--;
+        //         else row++;
+        //     }
 
-            return [-1, -1];
-        }
+        //     return [-1, -1];
+        // }
 
-        console.log(searchInMat([[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,21,23,26,30]], 16))
+        // console.log(searchInMat([[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,21,23,26,30]], 16))
     </script>
 </body>
 </html>
