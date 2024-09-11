@@ -592,31 +592,31 @@
 //JSON Methods
      
 
-        let myObject = {
-            name : "Shivendra",
-            age : 25,
-            show() {     
-                    console.log("Shivendra Dwivedi")    
-            },
-            mySymbol : "hello",
-            goal : 'millionair',
-            insideObj : {
-                name : "sahil",
-                new_age : 26,
-            },
-            date : new Date(), 
-            // toJSON() {
-            //     return {name : this.name};
-            // }
-        }
+        // let myObject = {
+        //     name : "Shivendra",
+        //     age : 25,
+        //     show() {     
+        //             console.log("Shivendra Dwivedi")    
+        //     },
+        //     mySymbol : "hello",
+        //     goal : 'millionair',
+        //     insideObj : {
+        //         name : "sahil",
+        //         new_age : 26,
+        //     },
+        //     date : new Date(), 
+        //     // toJSON() {
+        //     //     return {name : this.name};
+        //     // }
+        // }
 
-        let myObject2 = {
-            name: "Krishna",
-            age : 845545,
-            toJSON() {
-                return this.name
-            }
-        }
+        // let myObject2 = {
+        //     name: "Krishna",
+        //     age : 845545,
+        //     toJSON() {
+        //         return this.name
+        //     }
+        // }
 
         // myObject.dost = myObject2;
         // myObject2.dost = myObject
@@ -630,11 +630,50 @@
         //     return typeof value == 'function' ? value() : value;
         // }, 4))
 
-        let newObj = (JSON.parse((JSON.stringify(myObject, null, 2)), function(key, value) {
-            return key === "date" ? new Date(value) : value;
-        }))
+        // let newObj = (JSON.parse((JSON.stringify(myObject, null, 2)), function(key, value) {
+        //     return key === "date" ? new Date(value) : value;
+        // }))
 
-        console.log(newObj.date.getDate())
+        // console.log(newObj.date.getDate())
+
+//Object.* methods
+
+        // let obj = {
+        //     name : "shivendra",
+        //     age : 25,
+        //     address : "trivini Nagar"
+        // }
+        // let myMap = new Map(Object.entries(obj))
+
+        // console.log(myMap.keys(myMap))
+
+        // console.log(Object.keys(Object.fromEntries(myMap)))
+
+        let salaries = {
+            john : 100,
+            shiv : 190000,
+            priya : 54000,
+            riya : 58000,
+            mom : 18000,
+        }
+
+        function sumSalaries(obj) {
+            let sum = 0;
+
+            for (let value of Object.values(obj)) {
+                sum += value;
+            }
+
+            console.log(sum);
+        }
+
+        sumSalaries(salaries);
+
+        function numberOfProperties(obj) {
+            return Object.entries(obj);
+        }
+
+        console.log(numberOfProperties(salaries))
     </script> ,
 </body>
 </html>
