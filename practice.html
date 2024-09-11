@@ -492,102 +492,149 @@
 
     //Array : Position matters
 
-    let myArray = ["shivendra"];
+    // let myArray = ["shivendra"];
 
-    let [name0, age] = myArray
-    console.log(name0,age);
+    // let [name0, age] = myArray
+    // console.log(name0,age);
 
-    let [name2 = "sahil", age2 = 24] = myArray;
-    console.log(name2+" "+age2)
+    // let [name2 = "sahil", age2 = 24] = myArray;
+    // console.log(name2+" "+age2)
 
-    let mineArray = ["shiv", 25, '5.10 inch', '65kg', true];
+    // let mineArray = ["shiv", 25, '5.10 inch', '65kg', true];
 
-    let [name3, age3, , weight0, living ] = mineArray;
-    console.log(name3, age3, weight0, living);
+    // let [name3, age3, , weight0, living ] = mineArray;
+    // console.log(name3, age3, weight0, living);
 
-    let mySet = new Set(["shivendra", 25, 5.10, 65, "alive", "shivendra"]);
+    // let mySet = new Set(["shivendra", 25, 5.10, 65, "alive", "shivendra"]);
 
-    let [name4, age4, height0, , living2] = mySet;
+    // let [name4, age4, height0, , living2] = mySet;
 
-    console.log(name4, age4, height0, living2)
+    // console.log(name4, age4, height0, living2)
 
-    let [a, b, c, d] = "shiv";
-    console.log(a,b,c,d);
+    // let [a, b, c, d] = "shiv";
+    // console.log(a,b,c,d);
 
-    let user = {};
-    [user.name, user.age, user.height, user.weight, user.life_status] = mySet;
-    console.log(user);
+    // let user = {};
+    // [user.name, user.age, user.height, user.weight, user.life_status] = mySet;
+    // console.log(user);
 
-    let obj = {
-        name : "shivendra",
-        age : 25,
-        height : 5.10,
-        weight : '65Kg',
-        address : 'Prayagraj'
-    }
+    // let obj = {
+    //     name : "shivendra",
+    //     age : 25,
+    //     height : 5.10,
+    //     weight : '65Kg',
+    //     address : 'Prayagraj'
+    // }
 
-    let myMap = new Map(Object.entries(obj));
+    // let myMap = new Map(Object.entries(obj));
 
     // for (let [key , value] of Object.entries(obj)) {
     //     console.log(key, value);
     // }  
     
-    for (let [key , value] of myMap) {
-        console.log(key, value);
-    } 
+    // for (let [key , value] of myMap) {
+    //     console.log(key, value);
+    // } 
     
-    let var1 = "Shiv", var2 = 25;
-    console.log(var1, var2);
+    // let var1 = "Shiv", var2 = 25;
+    // console.log(var1, var2);
 
-    [var1 , var2] = [var2, var1];
-    console.log(var1, var2);
+    // [var1 , var2] = [var2, var1];
+    // console.log(var1, var2);
 
-    let [name6, ...rest] = mineArray;
-    console.log(name6, rest[0], rest[1], rest[3]);
+    // let [name6, ...rest] = mineArray;
+    // console.log(name6, rest[0], rest[1], rest[3]);
 
     // let {name : n, height : h, weight : w, class : cl = prompt("class?")} = obj;
 
     // console.log(n, h, w, cl);
 
-    let {name, ...objRest} = obj;
-    console.log(name, objRest['height'], objRest['weight'], objRest['age'], objRest['address']);
+    // let {name, ...objRest} = obj;
+    // console.log(name, objRest['height'], objRest['weight'], objRest['age'], objRest['address']);
 
-    //Semicolon is important at the end of line of code before the below line
-    ({title, width} = {title : "shiv", width : 23})
-    console.log(title);
+    // //Semicolon is important at the end of line of code before the below line
+    // ({title, width} = {title : "shiv", width : 23})
+    // console.log(title);
 
-    function minefunction({name = "shiv", age = 25, height = 6.10, address = "Prayagraj"}) {
-        console.log(name, age, height, address);
-    }
+    // function minefunction({name = "shiv", age = 25, height = 6.10, address = "Prayagraj"}) {
+    //     console.log(name, age, height, address);
+    // }
 
-    minefunction({}); //want all to get their default values
+    // minefunction({}); //want all to get their default values
 
-    minefunction({
-        name : "sahil",
-        age : 25,
-        address : "Prayagraj"
-    })
+    // minefunction({
+    //     name : "sahil",
+    //     age : 25,
+    //     address : "Prayagraj"
+    // })
 
-    let obj2 = {
-        name8 : "Shivendra Dwivedi",
-        size : {
-            weight : "65kg",
-            height : 6.10,
-        },
-        items : ["boll", "bat"],
-        extra : "I'm extra",
-    } 
+    // let obj2 = {
+    //     name8 : "Shivendra Dwivedi",
+    //     size : {
+    //         weight : "65kg",
+    //         height : 6.10,
+    //     },
+    //     items : ["boll", "bat"],
+    //     extra : "I'm extra",
+    // } 
 
-    let {
-        name8,
-        size : {
-            weight,
-            height
-        },
-        items : [item1, item2],
-    } = obj2;
+    // let {
+    //     name8,
+    //     size : {
+    //         weight,
+    //         height
+    //     },
+    //     items : [item1, item2],
+    // } = obj2;
 
-    console.log(name8, item1, weight)
+    // console.log(name8, item1, weight)
+
+//JSON Methods
+     
+
+        let myObject = {
+            name : "Shivendra",
+            age : 25,
+            show() {     
+                    console.log("Shivendra Dwivedi")    
+            },
+            mySymbol : "hello",
+            goal : 'millionair',
+            insideObj : {
+                name : "sahil",
+                new_age : 26,
+            },
+            date : new Date(), 
+            // toJSON() {
+            //     return {name : this.name};
+            // }
+        }
+
+        let myObject2 = {
+            name: "Krishna",
+            age : 845545,
+            toJSON() {
+                return this.name
+            }
+        }
+
+        // myObject.dost = myObject2;
+        // myObject2.dost = myObject
+        // console.log(JSON.stringify(myObject, function(key, value) {
+        //     console.log(key + ": " +  value);
+        //     return key == 'dost' ? undefined : typeof value == 'function' ? value() : value;
+        // }, 4))
+
+        // console.log(JSON.stringify(myObject, function(key, value) {
+        //     console.log(key + ": " +  value);
+        //     return typeof value == 'function' ? value() : value;
+        // }, 4))
+
+        let newObj = (JSON.parse((JSON.stringify(myObject, null, 2)), function(key, value) {
+            return key === "date" ? new Date(value) : value;
+        }))
+
+        console.log(newObj.date.getDate())
     </script> ,
 </body>
 </html>
