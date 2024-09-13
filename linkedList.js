@@ -107,13 +107,23 @@ class LinkedList {
     }
 
     removeFromTop() {
-        if (!this.head) return;
+        if (!this.head) return null;
         this.head = this.head.next;
 
+        //u can return the removed node data if required for that do this
+        // const remivedNode = this.head;
+        // this.head = this.head.next;
+        // return remivedNode
     }
 
     removeFromLast() {
-        if (!this.head) return;
+        if (!this.head) return null; // chsange
+
+        //has only one element
+        if (this.head.next === null) {
+            this.head = null;
+            return null;
+        }
     
         let current = this.head;
         while (current.next.next) {
@@ -121,10 +131,15 @@ class LinkedList {
         }
 
         current.next = null;   
+
+        //here also if u wanna return the removed node the do this
+        // const removedNode = current.next;
+        // current.next = null;
+        // return removedNode.data;
     }
 
     removeFrom(index) {
-        if (!this.head) return;
+        if (!this.head) return null;
         if (0 <= index && index < this.size()) {
             //here we cant take equality at size beecause that dont exist , we can add it but cant remove from there
 
@@ -155,25 +170,25 @@ class LinkedList {
     }
 }
 
-const link = new LinkedList()
+// const link = new LinkedList()
 
 // link.addAt(0, 25);
 
-function createrLinkedList(arr) {
-    const newLinkedList = new LinkedList();
+// function createrLinkedList(arr) {
+//     const newLinkedList = new LinkedList();
 
-    for (let i = 0; i < arr.length; i++) {
-        newLinkedList.addAt(i, arr[i])
-    }
+//     for (let i = 0; i < arr.length; i++) {
+//         newLinkedList.addAt(i, arr[i])
+//     }
     
-    newLinkedList.addAt(6, 25)
-    newLinkedList.removeFrom(7);
-    return newLinkedList;
-}
+//     newLinkedList.addAt(6, 25)
+//     newLinkedList.removeFrom(7);
+//     return newLinkedList;
+// }
 
 
 // console.log()
-console.log(createrLinkedList([1,3,5,8,7,6]).print())
+// console.log(createrLinkedList([1,3,5,8,7,6]).print())
 
 
 // class Mynode {
@@ -243,3 +258,28 @@ console.log(createrLinkedList([1,3,5,8,7,6]).print())
 //     }
 // }
 
+function removeByValue(head, value) {
+    if (!head) return null;
+
+    if (head.data == value) {
+        head = head.next;
+        return head;
+    }
+ 
+    let current = head;
+    
+    while (current) {
+        if (current.next.data === value) {
+            current.next = current.next.next;            
+            return head;
+        }
+
+        current = current.next;
+    }
+    
+    return head;
+}
+
+function insertByValue(head, value, nodeValue ) {
+    
+}
