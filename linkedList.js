@@ -242,3 +242,4 @@ console.log(createrLinkedList([1,3,5,8,7,6]).print())
 //         return newLinkedList;
 //     }
 // }
+
