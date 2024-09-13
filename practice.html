@@ -649,31 +649,182 @@
 
         // console.log(Object.keys(Object.fromEntries(myMap)))
 
-        let salaries = {
-            john : 100,
-            shiv : 190000,
-            priya : 54000,
-            riya : 58000,
-            mom : 18000,
+        // let salaries = {
+        //     john : 100,
+        //     shiv : 190000,
+        //     priya : 54000,
+        //     riya : 58000,
+        //     mom : 18000,
+        // }
+
+        // function sumSalaries(obj) {
+        //     let sum = 0;
+
+        //     for (let value of Object.values(obj)) {
+        //         sum += value;
+        //     }
+
+        //     console.log(sum);
+        // }
+
+        // sumSalaries(salaries);
+
+        // function numberOfProperties(obj) {
+        //     return Object.entries(obj);
+        // }
+
+        // console.log(numberOfProperties(salaries))
+
+    //Interview Questions Practice
+
+        // var length = 4;
+        // function myFunc() {
+        //     console.log(this.length);
+        // }
+
+        // let obj = {
+        //     length : 5,
+        //     myFunc() {
+        //         console.log(this.length);
+        //     }
+        // }
+
+        // obj.myFunc()
+
+        // let obj2 = {
+        //     name : "shivendra"
+        // }
+
+        // let obj3 = {
+        //     shivendra : "mu name"
+        // }
+        // console.log(obj3[obj2.name])
+
+        // var myObject = {
+        //     foo : 'bar',
+        //     func : function() {
+        //         let foo = 45;
+        //         var self = this;
+
+        //         console.log("outer this call"+ " " + this.foo);
+        //         console.log("outer self call"+ " " + self.foo);
+
+        //         (function(){
+        //             let self = {
+        //                 foo : "Shiv"
+        //             } 
+        //             console.log("inner this call"+ " " + this.foo);
+        //             console.log("inner self call"+" "+ self.foo)
+        //         })()
+                 
+        //     } 
+        // }
+        // console.log(myObject['foo']);
+        // myObject.func()
+
+        // const code = {
+        //     type : "web"
+        // };
+
+        // const reactJS = {
+        //     name : "JS",
+        //     web : true,
+        // }
+
+        // reactJS[code.type];
+        // reactJS[reactJS["type"]];
+        // code.type.web
+
+    //Book Rest Prameters and Spread Syntax
+
+        // function max(...args) { //Given rest parameter  
+        //     let max = Math.max(...args);//given spread syntax
+
+        //     return max;
+        // }
+
+        // console.log(max(2,4,5,8,9,8,8,4,5,6,8,7,5,6,8,7,4,2,3,9,9,3,5,9,15));
+
+        // function max(a, b, ...args) { //Given rest parameter with normal to capture after 2nd argument
+        //     let max = Math.max(...args);//given spread syntax
+
+        //     console.log(a, b);
+        //     return max;
+        // }
+
+        // console.log(max(2,4,5,8,9,8,8,4,5,6,8,7,5,6,8,7,4,2,3,9,9,3,5,9,15));
+
+        // function max() {  
+        //     let max = Math.max(...arguments);//used predefined array like iterable arguments object with spread syntax
+
+        //     return max;
+        // }
+
+        // console.log(max(2,4,5,8,9,8,8,4,5,6,8,7,5,6,8,7,4,2,3,9,9,3,5,9,15));
+
+        // function names() {
+        //     // console.log(arguments.map(data => console.log(data + "map"))) dont work
+
+        //     console.log(arguments.length);
+        //     console.log(arguments[1]);
+        //     console.log(arguments[0]);
+        //     console.log(arguments[2]);
+        // }
+
+        // names("shuvendra-1", "shivendra-2", "shivendra-3");
+        // names(2,5,8,7,9)
+
+        // function show() {
+        //     console.log(typeof arguments)
+
+        //     const mineFunction = () => {
+        //         console.log(2,5,...arguments);
+        //     }
+
+        //     mineFunction()
+        // }
+
+        // show(1,2,3,4,5,6,7,8,9)
+
+        function spreadToMerge() {
+            let array1 = [1,2,3,4,5,6,7];
+            let array2 = [8,9,10,11,12,13,14];
+
+            //Merging arrays by spread syntax.
+            let mergedArray = ['a','b','c','d', ...array1, ...array2];
+            console.log(JSON.parse(JSON.stringify(mergedArray)));
+
+            console.log(mergedArray);
         }
 
-        function sumSalaries(obj) {
-            let sum = 0;
+        spreadToMerge();
 
-            for (let value of Object.values(obj)) {
-                sum += value;
+        //Spread syntax on objects
+
+        function spreadOnObject() {
+            let obj1 = {
+                name : "shicendra",
+                age : 25
             }
 
-            console.log(sum);
+            let obj2 = {
+                address : "triveni nagar",
+                pincode : 211009,
+            }
+
+            let mergesObj = {...obj1, ...obj2}
+            console.log(mergesObj);
+
+            let obj3 = {...obj2};
+            console.log(obj2)
+            console.log(obj3)
+
+            console.log(obj3 === obj2);
+            console.log(JSON.stringify(obj3) === JSON.stringify(obj2));
+
         }
 
-        sumSalaries(salaries);
-
-        function numberOfProperties(obj) {
-            return Object.entries(obj);
-        }
-
-        console.log(numberOfProperties(salaries))
+        spreadOnObject()
     </script> ,
 </body>
 </html>

@@ -61,7 +61,8 @@ class LinkedList {
         let current = this.head;
         let counter = 0;
 
-        while (current.next) {
+        while (current) {
+            //we nned to count that one also which has null in its next because thet one also an element of the list, that's why we have current nor current.next in the condition
             counter++;
             current = current.next;
         }
@@ -70,12 +71,14 @@ class LinkedList {
     }
     //Adding at a specific position for this we will need the size of our linked list
 
-    addAt(data, index) {
+    addAt(index, data) {
         //Before doing anything we will check whether the given inedex is valid or not means it should be less than the size of the list and greater than or equal to 0.
 
         //Indexes are same here also like we have in arrays from 0 to size() - 1.
 
-        if (index >= 0 && index < this.size()) {
+        if (0 <= index && index <= this.size()) {
+//ham size tak le skate hain but size se jada hoga tab bich me undefined vacant hoga wo galat hoga so size included hai agr size 5 to index 0 - 4 means last me 5th index aa skta hai  but 6 nahi aa skta kuki 5th vacant reh jaega
+
             const newBetweenNode = new Node(data);
 
             //First we need to find the index, then give the reference of the node which is already present there to the next of newly created node , then give the reference of this newly created node to the node preset at i - 1 inedx
@@ -120,9 +123,11 @@ class LinkedList {
         current.next = null;   
     }
 
-    removeFromBetween(index) {
+    removeFrom(index) {
         if (!this.head) return;
-        else if (index >=0 && index <this.size()) {
+        if (0 <= index && index < this.size()) {
+            //here we cant take equality at size beecause that dont exist , we can add it but cant remove from there
+
             if (index === 0) {
                 this.head = this.head.next;
                 return;
@@ -133,8 +138,11 @@ class LinkedList {
                 current = current.next;
             }
     
-            current.index = current.index.index;
-        }  
+            current.next = current.next.next;
+        } else {
+            console.log("Invalid Index");
+            return;
+        }
     }
 
     print() {
@@ -147,9 +155,90 @@ class LinkedList {
     }
 }
 
-const linkedList_1 = new LinkedList();
-linkedList_1.addInStart("shivendra");
-linkedList_1.addInStart(1);
-linkedList_1.addInStart(true);
+const link = new LinkedList()
 
-linkedList_1.print();
+// link.addAt(0, 25);
+
+function createrLinkedList(arr) {
+    const newLinkedList = new LinkedList();
+
+    for (let i = 0; i < arr.length; i++) {
+        newLinkedList.addAt(i, arr[i])
+    }
+    
+    newLinkedList.addAt(6, 25)
+    newLinkedList.removeFrom(7);
+    return newLinkedList;
+}
+
+
+// console.log()
+console.log(createrLinkedList([1,3,5,8,7,6]).print())
+
+
+// class Mynode {
+//     constructor(data) {
+//         this.data = data;
+//         this.next = null;
+//     }
+// }
+
+// class LinkedList {
+//     constructor() {
+//         this.head =null;
+//     }
+    
+//     size(){
+//         let current = this.head;
+//         let counter = 0;
+
+//         while (current) {
+//             counter++;
+//             current = current.next;
+//         }
+
+//         return counter;
+//     }
+
+//     addAt(index, data) {
+
+//         if (0 <= index && index <= this.size()) {
+
+//             const newBetweenNode = new Mynode(data);
+
+//             if (index === 0) {
+//                 newBetweenNode.next = this.head;
+
+//                 this.head = newBetweenNode;  
+//                 return;   
+//             } 
+                
+//             let current = this.head;
+//             for (let i = 0; i < index -1; i++) {
+//                  current = current.next;
+//             }
+
+//             newBetweenNode.next = current.next;
+//             current.next = newBetweenNode;
+        
+//         } else {
+//             console.log("Invalid Index");
+//             return;
+//         }
+        
+//     }
+
+// }
+
+// class Solution {
+
+//     construct(arr) {
+//          const newLinkedList = new LinkedList();
+
+//             for (let i = 0; i < arr.length; i++) {
+//                 newLinkedList.addAt(i, arr[i])
+//             }
+
+//         return newLinkedList;
+//     }
+// }
