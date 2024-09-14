@@ -21,6 +21,7 @@ class LinkedList {
     //Current head reference will be given to the next of newly created node and now this will become the head node
     addInStart(data) {
         const newFirstNode = new Node(data);
+
         newFirstNode.next = this.head;
         this.head= newFirstNode;
     }
@@ -258,6 +259,20 @@ class LinkedList {
 //     }
 // }
 
+//Array to linked list 
+function arrayToLinkedList(arr) {
+    if (arr.length === 0) return null;
+            
+            const head = new Node(arr[0]);
+            let current = head;
+            
+            for (let i = 1 ; i < arr.length; i++) {
+                current.next = new Node(arr[i]);
+                current = current.next;
+            }
+            
+    return head;
+}
 function removeByValue(head, value) {
     if (!head) return null;
 
@@ -281,5 +296,74 @@ function removeByValue(head, value) {
 }
 
 function insertByValue(head, value, nodeValue ) {
-    
+    const newNode = new Node(nodeValue);
+
+    if (!head) {
+        head = newNode;
+        return head;
+    }
+
+    if (head.data === value) {
+        newNode.next = head;
+        haed = newNode;
+        return head;
+    }
+
+    let current = head;
+    let previous = null
+
+    while (current) {
+        if (current.data === value) {
+            newNode.next = current;
+            previous.next = newNode;
+            return head;
+        }
+        previous = current;
+        current = current.next;
+    }
+
+    return null
 }
+
+//If it is guarantied that it is not the head which is equal to the given node the
+
+function insertByValueNotHead(head, value, nodeValue ) {
+    const newNode = new Node(nodeValue);
+
+    if (!head) {
+        return head; //null
+    }
+
+    let current = head.next;
+    let previous = head;
+
+    while (current) {
+        if (current.data === value) {
+            newNode.next = current;
+            previous.next = newNode;
+            return head;
+        }
+        previous = current;
+        current = current.next;
+    }
+
+    return head;
+}
+
+const head = arrayToLinkedList([1,2,5,7,8,6,9,10]);
+insertByValueNotHead(head, 1, 11);
+
+function print(head) {
+    let current = head;
+    let result = '';
+
+    while (current) {
+        result += current.data + " -> ";
+        current = current.next;
+    }
+
+    result += null;
+    return result;
+}
+console.log(print(head));
+
