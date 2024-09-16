@@ -1,830 +1,1024 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <script>
-        //Object creatation by constructor function
-
-        // function User(name) {
-        //     this.name = name;
-        //     this.isAdmin = false;
-        // }
-  
-        // let mine = new User('shiv') ;
-        // console.log(mine.name);
-        // console.log(mine.isAdmin);
-
-    //Example of new.target use to save when new keyword is not used by the user     
-
-        // function User(name) {
-
-        //     if(!new.target) {
-        //         return new User(name);
-        //     }
-
-        //     this.name = name;
-        //     this.isAdmin = false;
-        // }
-
-    //imidiately called constructor function
-
-        // let mine = new function() {
-        //     this.name = "shivendra";
-        //     this.isAdmin = false; 
-        // }
-        // console.log(mine.name);
-        // console.log(mine.isAdmin);
-
-    //constructer function call without () paranthesis //not a good practice
-
-        // function User() {
-        //     this.name = "shivendra";
-        //     this.isAdmin = false;
-        // }
-  
-        // let mine = new User;
-        // console.log(mine.name);
-        // console.log(mine.isAdmin);
-
-    //constructer function with explicit return
-
-        // function User(name) {
-        //     this.name = name;
-        //     this.isAdmin = false;
-
-        //     // return { name : "Godzila"};
-        //     // return;
-        //     // return 2 + 3;
-        // }
-  
-        // let mine = new User("shivendra");
-        // console.log(mine.name);
-        // console.log(mine.isAdmin);
-    
-    //method in constructer function
-
-        // function User(name) {
-        //     this.name = name;
-        //     this.isAdmin = false;
-
-        //     this.sayHi = function() {
-        //         console.log("hi");
-        //     }
-        // }
-  
-        // let mine = new User("shivendra");
-        // console.log(mine.name);
-        // console.log(mine.isAdmin);
-        // console.log(mine.sayHi());
-
-    //Calculater constructer function
-
-        // function Calculater(){
-        
-        //     this.read = function() {
-        //         this.a = +prompt("give the first value a", '');
-        //         this.b = +prompt("give the second value b", '');
-        //     }
-
-        //     this.sum = function() {
-        //         return this.a + this.b;
-        //     }
-
-        //     this.multiply = function() {
-        //         return this.a * this.b;
-        //     }
-        // }
-
-        // let calc = new Calculater;
-        // calc.read();
-        // console.log("sum is :", calc.sum());
-        // console.log("product is : ",calc.multiply());
-
-    //Accumulator
-    
-        // function Accumulator(staringValue) {
-        //     this.value = staringValue;
+      //Object creatation by constructor function
 
-        //     this.read = function() {
-        //         this.value += +prompt("give the value :", 0);
-        //     };
-        // } 
-        
-        // let acc = new Accumulator(2);
-        // acc.read();
-        // alert(acc.value);
+      // function User(name) {
+      //     this.name = name;
+      //     this.isAdmin = false;
+      // }
 
-    //Two function one object, object created from two constructer functions can be equal
-        // let obj = {};
-        // function SameObjectA() { return obj;}
-        // function SameObjectB() { return obj;}
+      // let mine = new User('shiv') ;
+      // console.log(mine.name);
+      // console.log(mine.isAdmin);
 
-        // let user1 = new SameObjectA;
-        // let user2 = new SameObjectB;
+      //Example of new.target use to save when new keyword is not used by the user
 
-        // console.log(user1 === user2)
-        
-    //Controvercy   
-        // let obj = {};
-        // console.log(obj == "[object Object]");
+      // function User(name) {
 
-    //Symboll Practice
+      //     if(!new.target) {
+      //         return new User(name);
+      //     }
 
-    // let user = {
-    //     id : "shivendra"
-    // }
+      //     this.name = name;
+      //     this.isAdmin = false;
+      // }
 
-    // let id2 = Symbol("id2");
-    // user[id2] = "Dwivedi";
+      //imidiately called constructor function
 
-    // const simpleKey = Object.keys(user);
-    // const symbolKey = Object.getOwnPropertySymbols(user);
+      // let mine = new function() {
+      //     this.name = "shivendra";
+      //     this.isAdmin = false;
+      // }
+      // console.log(mine.name);
+      // console.log(mine.isAdmin);
 
-    // const keys = [...simpleKey, ...symbolKey];
+      //constructer function call without () paranthesis //not a good practice
 
-    // //dont use for..in loop here it's made to iterate over objects not on arrays instead use other like for..of
+      // function User() {
+      //     this.name = "shivendra";
+      //     this.isAdmin = false;
+      // }
 
-    // for(let key of keys) {
-    //     console.log(user[key]);
-    // }
+      // let mine = new User;
+      // console.log(mine.name);
+      // console.log(mine.isAdmin);
 
-    // let id1 = Symbol.for("id");
-    // let id2 = Symbol.for("id");
-    // let id3 = Symbol('id3');
+      //constructer function with explicit return
 
-    // console.log(id2 == id2);
-    // console.log(Symbol.keyFor(id1));
-    // console.log(Symbol.keyFor(id2))
-    // console.log(Symbol.keyFor(id3)) //undefined/
+      // function User(name) {
+      //     this.name = name;
+      //     this.isAdmin = false;
 
-//Objet to primitive conversion
+      //     // return { name : "Godzila"};
+      //     // return;
+      //     // return 2 + 3;
+      // }
 
-    // let obj = {
-    //     name : "shiv",
-    //     number : 52
-    // }
+      // let mine = new User("shivendra");
+      // console.log(mine.name);
+      // console.log(mine.isAdmin);
 
-    // let obj2 = {
+      //method in constructer function
 
-    // }
+      // function User(name) {
+      //     this.name = name;
+      //     this.isAdmin = false;
 
-    // console.log(Number(obj2));
+      //     this.sayHi = function() {
+      //         console.log("hi");
+      //     }
+      // }
 
-    // let obj = { name: "shiv", number: 52 };
-    // console.log(obj + 5);
-    //     let num = 33;
-    //     let result = +num.toString(2);
+      // let mine = new User("shivendra");
+      // console.log(mine.name);
+      // console.log(mine.isAdmin);
+      // console.log(mine.sayHi());
 
-    // console.log(result);
-    // console.log(typeof result)
+      //Calculater constructer function
 
-    // let str = `i love 
-    // my india`;
+      // function Calculater(){
 
-    // console.log(str);
+      //     this.read = function() {
+      //         this.a = +prompt("give the first value a", '');
+      //         this.b = +prompt("give the second value b", '');
+      //     }
 
-    // function sum(a, b) {
-    //     return a + b;
-    // }
+      //     this.sum = function() {
+      //         return this.a + this.b;
+      //     }
 
-    // alert(`1 + 2 = ${sum(1, 2)}`)
+      //     this.multiply = function() {
+      //         return this.a * this.b;
+      //     }
+      // }
 
-    // let guest = `Guests: 
-    //     John
-    //   \"Pete\"
-    //  \tMary
-    // `;
-    // console.log(guest);
+      // let calc = new Calculater;
+      // calc.read();
+      // console.log("sum is :", calc.sum());
+      // console.log("product is : ",calc.multiply());
 
-    // let guest2 = "Guests buddy Puter Mury";
+      //Accumulator
 
-    // console.log(guest2);
+      // function Accumulator(staringValue) {
+      //     this.value = staringValue;
 
-    // let str2 = "str\my";
+      //     this.read = function() {
+      //         this.value += +prompt("give the value :", 0);
+      //     };
+      // }
 
-    // console.log(guest2.lastIndexOf('u', 19))
-    
-    // let pos = guest2.lenght - 1;
+      // let acc = new Accumulator(2);
+      // acc.read();
+      // alert(acc.value);
 
-    // while(true) {
-    //     let result = guest2.lastIndexOf('u' , pos);
-    //     if (result === -1) {
-    //         break;
-    //     }
-    //     console.log(result);
+      //Two function one object, object created from two constructer functions can be equal
+      // let obj = {};
+      // function SameObjectA() { return obj;}
+      // function SameObjectB() { return obj;}
 
-    //     pos = result - 1;
-    // }
+      // let user1 = new SameObjectA;
+      // let user2 = new SameObjectB;
 
-    // pos = -1;
-    // while ((pos = guest2.indexOf('u', pos + 1)) !== -1) {
-    //     console.log(pos);
-    // }
-    // console.log(guest2.indexOf('Mury'));
+      // console.log(user1 === user2)
 
-    // let obj = {
-    //     name : "shivendra",
-    //     value : 500,
-    //     value2 : 200,
-    //     name2 : "dwivedi",
+      //Controvercy
+      // let obj = {};
+      // console.log(obj == "[object Object]");
 
-        // [Symbol.toPrimitive](hint) {
-        //     alert('hint :'+hint)
-        //     return hint === 'string' ? 'his name is ' + this.name : hint === 'number' ? this.value : '[object Object]';
-        // },
+      //Symboll Practice
 
-        // valueOf() {
-        //     return "Dwivedi";
-        // },
+      // let user = {
+      //     id : "shivendra"
+      // }
 
-        // toString() {
-        //     return this.name;
-        // }
-    // }
+      // let id2 = Symbol("id2");
+      // user[id2] = "Dwivedi";
 
-    // alert(obj);
-    // let sum = obj - 100;
-    // console.log(sum);
+      // const simpleKey = Object.keys(user);
+      // const symbolKey = Object.getOwnPropertySymbols(user);
 
-    // let obj = {
-    //     name : "shivendra",
-    //     value : 500,
-    //     value2 : 200,
-    //     name2 : "dwivedi",
+      // const keys = [...simpleKey, ...symbolKey];
 
-    //     valueOf() {
-    //         return this.name2;
-    //     }
-    // }
+      // //dont use for..in loop here it's made to iterate over objects not on arrays instead use other like for..of
 
-    // alert(obj);
+      // for(let key of keys) {
+      //     console.log(user[key]);
+      // }
 
-//string methods
+      // let id1 = Symbol.for("id");
+      // let id2 = Symbol.for("id");
+      // let id3 = Symbol('id3');
 
-    //uppercased first letter
+      // console.log(id2 == id2);
+      // console.log(Symbol.keyFor(id1));
+      // console.log(Symbol.keyFor(id2))
+      // console.log(Symbol.keyFor(id3)) //undefined/
 
-        // function upperCase(str){
-        //     return str[0].toUpperCase() + str.slice(1)
-        // }
+      //Objet to primitive conversion
 
-        // console.log(upperCase("shivendra"));
+      // let obj = {
+      //     name : "shiv",
+      //     number : 52
+      // }
 
-    //Check for spam
+      // let obj2 = {
 
-        // function checkForSpam(str) {
-        //     newStr = str.toLowerCase();
-        //     return newStr.includes('XXX') || newStr.includes('viagra');    
-        // } 
+      // }
 
-        // console.log(checkForSpam("DOn't buy Viagra for me"));
-        // console.log(checkForSpam("i dont know"));
+      // console.log(Number(obj2));
 
-    //truncate the string
-    
-        // function truncateStr(str, maxLength) {
-        //     if (str.length > maxLength) {
-        //         return str.slice(0, maxLength - 1) + "...";
-        //     }
-        // }
+      // let obj = { name: "shiv", number: 52 };
+      // console.log(obj + 5);
+      //     let num = 33;
+      //     let result = +num.toString(2);
 
-        // console.log(truncateStr("HiImShivendraDwivedi", 14));
+      // console.log(result);
+      // console.log(typeof result)
 
-    //Extract spesific
+      // let str = `i love
+      // my india`;
 
-        // function money(str) {
-        //     return +str.slice(1);
-        // }
+      // console.log(str);
 
-        // console.log(money("$123"));
-        
-//Array Method
-    //do backgrund-color to backgroundColor 
+      // function sum(a, b) {
+      //     return a + b;
+      // }
 
-        // function capitalize(word) {
-        //     let newArray = word.split('-');
-        //     let newStr = newArray.map((word, index) => index == 0 ? word : word[0].toUpperCase() + word.slice(1))
-        //     .join('');
+      // alert(`1 + 2 = ${sum(1, 2)}`)
 
-        //     return newStr;
-        // }
+      // let guest = `Guests:
+      //     John
+      //   \"Pete\"
+      //  \tMary
+      // `;
+      // console.log(guest);
 
-        // console.log(capitalize("background-color"));
-        // console.log(capitalize("list-style-type"));
+      // let guest2 = "Guests buddy Puter Mury";
 
-    //Make a function func(arr, a, b) to return elements which are >= a and <= b in an array
+      // console.log(guest2);
 
-        // function filters(arr, a, b) {
-        //     let newArray = arr.filter(element => (element >= a && element <= b))
-        //     return newArray;
-        // }
+      // let str2 = "str\my";
 
-        // console.log(filters([5, 3, 8, 1], 1, 4))
+      // console.log(guest2.lastIndexOf('u', 19))
 
-    //Do the above but in place
+      // let pos = guest2.lenght - 1;
 
-        // function inplaceChange(arr, a, b) {
-        //     let index = 0;
+      // while(true) {
+      //     let result = guest2.lastIndexOf('u' , pos);
+      //     if (result === -1) {
+      //         break;
+      //     }
+      //     console.log(result);
 
-        //     for (let i = 0; i < arr.length; i++) {
-        //         let value = arr[i];
+      //     pos = result - 1;
+      // }
 
-        //         if (value >= a && value <= b) {
-        //             arr[index] = value;
-        //             index++;
-        //         } 
-        //     }
+      // pos = -1;
+      // while ((pos = guest2.indexOf('u', pos + 1)) !== -1) {
+      //     console.log(pos);
+      // }
+      // console.log(guest2.indexOf('Mury'));
 
-        //     arr.length = index;
-        // }
+      // let obj = {
+      //     name : "shivendra",
+      //     value : 500,
+      //     value2 : 200,
+      //     name2 : "dwivedi",
 
-        //array ko chota karna hai ya katana hai to uski length chhoti kro 
+      // [Symbol.toPrimitive](hint) {
+      //     alert('hint :'+hint)
+      //     return hint === 'string' ? 'his name is ' + this.name : hint === 'number' ? this.value : '[object Object]';
+      // },
 
-        // let arr = [5, 3, 8, 1]
-        // inplaceChange(arr, 1, 4);
-        // console.log(arr);
+      // valueOf() {
+      //     return "Dwivedi";
+      // },
 
-        // function inplaceChange(arr, a, b) {
+      // toString() {
+      //     return this.name;
+      // }
+      // }
 
-        //     for (let i = 0; i < arr.length; i++) {
-        //         let value = arr[i];
+      // alert(obj);
+      // let sum = obj - 100;
+      // console.log(sum);
 
-        //         if (value <= a && value >= b) {
-        //             arr.splice(i, 1);
-        //             i--;
-        //         } 
-        //     }
-        // }
+      // let obj = {
+      //     name : "shivendra",
+      //     value : 500,
+      //     value2 : 200,
+      //     name2 : "dwivedi",
 
-//Calculater
+      //     valueOf() {
+      //         return this.name2;
+      //     }
+      // }
 
-        // function Calculater(task) {
-        //     this.method = {
-        //         "+" : (a, b) => a + b,
-        //         "-" : (a, b) => a - b,
-        //     }
+      // alert(obj);
 
-        //     this.calculater = function(task) {
-        //         let operation = task.split(" ");
+      //string methods
 
-        //         let a = Number(operation[0]);
-        //         //let a = +operation[0];
-        //         let op = (operation[1]);
-        //         let b = Number(operation[2]);
+      //uppercased first letter
 
-            // if (!this.method[op] || isNaN(a) || isNaN(b)) {
-            //     return NaN;
-            // }
+      // function upperCase(str){
+      //     return str[0].toUpperCase() + str.slice(1)
+      // }
 
-        //         return this.method[op](a, b);
-        //     }
+      // console.log(upperCase("shivendra"));
 
-        //     this.addMethod = function(name, func) {
-        //         this.method[name] = func;
-        //     }
-        // }
-        // const obj1 = new Calculater();
+      //Check for spam
 
-        // console.log(obj1.calculater("1 + 2"));
-        // obj1.addMethod("*", (a, b) => a * b)
-        // console.log(obj1.calculater("5 * 2"));
+      // function checkForSpam(str) {
+      //     newStr = str.toLowerCase();
+      //     return newStr.includes('XXX') || newStr.includes('viagra');
+      // }
 
-        // const obj2 = new Calculater();
+      // console.log(checkForSpam("DOn't buy Viagra for me"));
+      // console.log(checkForSpam("i dont know"));
 
-        //console.log(obj2.calculater("6 * 2"))
-        //each object have its unique methods in method object
+      //truncate the string
 
-//create an array from a property values in objects present in an array / map to names
+      // function truncateStr(str, maxLength) {
+      //     if (str.length > maxLength) {
+      //         return str.slice(0, maxLength - 1) + "...";
+      //     }
+      // }
 
-        // let objArray = [
-        //     {name : "shiv", age : 25},
-        //     {name : "sahil", age : 27},
-        //     {name : "ritik", age : 28},
-        // ]
+      // console.log(truncateStr("HiImShivendraDwivedi", 14));
 
-        // let arrayOfNames = objArray.map(data => data.name);
+      //Extract spesific
 
-        // console.log(arrayOfNames);
+      // function money(str) {
+      //     return +str.slice(1);
+      // }
 
-//map to objects
+      // console.log(money("$123"));
 
-        // let objArray = [
-        //     {name : "Shiv", surName : "Dwivedi", age : 25},
-        //     {name : "Sahil", surName : "Mishra", age : 27},
-        //     {name : "Ritik",  surName : "Pandit",  age : 28},
-        // ]
+      //Array Method
+      //do backgrund-color to backgroundColor
 
-        // let arrayOfObjects = objArray.map(data => (
-        //     {
-        //         fullName : data.name + " " + data.surName, 
-        //         id : data.age,
-        //     }
-        // ));
+      // function capitalize(word) {
+      //     let newArray = word.split('-');
+      //     let newStr = newArray.map((word, index) => index == 0 ? word : word[0].toUpperCase() + word.slice(1))
+      //     .join('');
 
-        // console.log(arrayOfObjects);
+      //     return newStr;
+      // }
 
-//sort users by age
+      // console.log(capitalize("background-color"));
+      // console.log(capitalize("list-style-type"));
 
-    // let usersArray = [
-    //     {name : "shivendra" , age : 25},
-    //     {name : "sahil", age : 26},
-    //     {name : "Ritik", age : 22},
-    // ]
+      //Make a function func(arr, a, b) to return elements which are >= a and <= b in an array
 
-    // usersArray.sort((a, b) => a.age - b.age);
+      // function filters(arr, a, b) {
+      //     let newArray = arr.filter(element => (element >= a && element <= b))
+      //     return newArray;
+      // }
 
-    // console.log(usersArray);
+      // console.log(filters([5, 3, 8, 1], 1, 4))
 
-//return array with unique elements
+      //Do the above but in place
 
-// function onlyUnique(arr) {
-//     let arrResult = [];
+      // function inplaceChange(arr, a, b) {
+      //     let index = 0;
 
-//     for (let i = 0; i < arr.length; i++) {
-//         if (!arrResult.includes(arr[i])) {
-//             arrResult.push(arr[i]);
-//         }
-//     }
+      //     for (let i = 0; i < arr.length; i++) {
+      //         let value = arr[i];
 
-//     return arrResult;
-// }
+      //         if (value >= a && value <= b) {
+      //             arr[index] = value;
+      //             index++;
+      //         }
+      //     }
 
-// console.log(onlyUnique(["hara", "shiv", "hara", "priya", "shiv", "priya", "hara"]));
+      //     arr.length = index;
+      // }
 
-    //this is not optimaised in performance include needs to match the given one with each elements in the array.
+      //array ko chota karna hai ya katana hai to uski length chhoti kro
 
-//Object from array
+      // let arr = [5, 3, 8, 1]
+      // inplaceChange(arr, 1, 4);
+      // console.log(arr);
 
-    // function objFromArray(arr) {
-    //     let newObj = {};
+      // function inplaceChange(arr, a, b) {
 
-    //     for (let i = 0; i < arr.length; i++) {
-    //         newObj[arr[i].id] = arr[i];
-    //     }
+      //     for (let i = 0; i < arr.length; i++) {
+      //         let value = arr[i];
 
-    //     return newObj
-    // } 
+      //         if (value <= a && value >= b) {
+      //             arr.splice(i, 1);
+      //             i--;
+      //         }
+      //     }
+      // }
 
-    // usersArray = [
-    //     {id: "John", name: "John Smith", age: 25},
-    //     {id: "ann", name: "ann smith", age: 24},
-    //     {id: "pete", name: "pete marry", age: 21}
-    // ]
+      //Calculater
 
-    // console.log(objFromArray(usersArray));
+      // function Calculater(task) {
+      //     this.method = {
+      //         "+" : (a, b) => a + b,
+      //         "-" : (a, b) => a - b,
+      //     }
 
-    // let newSecond = usersArray.reduce((acc, crr) => {
-    //     acc[crr.id] = crr
-    //     return acc;
-    // }, {})
+      //     this.calculater = function(task) {
+      //         let operation = task.split(" ");
 
-    // console.log(newSecond);
+      //         let a = Number(operation[0]);
+      //         //let a = +operation[0];
+      //         let op = (operation[1]);
+      //         let b = Number(operation[2]);
 
-//avg age from an array of objects
+      // if (!this.method[op] || isNaN(a) || isNaN(b)) {
+      //     return NaN;
+      // }
 
-    // let avgAge = usersArray.reduce((sum , object) => sum + object.age, 0) / usersArray.length;
-    // console.log(avgAge);
+      //         return this.method[op](a, b);
+      //     }
 
-//Destructuring Assignmant
+      //     this.addMethod = function(name, func) {
+      //         this.method[name] = func;
+      //     }
+      // }
+      // const obj1 = new Calculater();
 
-    //Array : Position matters
+      // console.log(obj1.calculater("1 + 2"));
+      // obj1.addMethod("*", (a, b) => a * b)
+      // console.log(obj1.calculater("5 * 2"));
 
-    // let myArray = ["shivendra"];
+      // const obj2 = new Calculater();
 
-    // let [name0, age] = myArray
-    // console.log(name0,age);
+      //console.log(obj2.calculater("6 * 2"))
+      //each object have its unique methods in method object
 
-    // let [name2 = "sahil", age2 = 24] = myArray;
-    // console.log(name2+" "+age2)
+      //create an array from a property values in objects present in an array / map to names
 
-    // let mineArray = ["shiv", 25, '5.10 inch', '65kg', true];
+      // let objArray = [
+      //     {name : "shiv", age : 25},
+      //     {name : "sahil", age : 27},
+      //     {name : "ritik", age : 28},
+      // ]
 
-    // let [name3, age3, , weight0, living ] = mineArray;
-    // console.log(name3, age3, weight0, living);
+      // let arrayOfNames = objArray.map(data => data.name);
 
-    // let mySet = new Set(["shivendra", 25, 5.10, 65, "alive", "shivendra"]);
+      // console.log(arrayOfNames);
 
-    // let [name4, age4, height0, , living2] = mySet;
+      //map to objects
 
-    // console.log(name4, age4, height0, living2)
+      // let objArray = [
+      //     {name : "Shiv", surName : "Dwivedi", age : 25},
+      //     {name : "Sahil", surName : "Mishra", age : 27},
+      //     {name : "Ritik",  surName : "Pandit",  age : 28},
+      // ]
 
-    // let [a, b, c, d] = "shiv";
-    // console.log(a,b,c,d);
+      // let arrayOfObjects = objArray.map(data => (
+      //     {
+      //         fullName : data.name + " " + data.surName,
+      //         id : data.age,
+      //     }
+      // ));
 
-    // let user = {};
-    // [user.name, user.age, user.height, user.weight, user.life_status] = mySet;
-    // console.log(user);
+      // console.log(arrayOfObjects);
 
-    // let obj = {
-    //     name : "shivendra",
-    //     age : 25,
-    //     height : 5.10,
-    //     weight : '65Kg',
-    //     address : 'Prayagraj'
-    // }
+      //sort users by age
 
-    // let myMap = new Map(Object.entries(obj));
+      // let usersArray = [
+      //     {name : "shivendra" , age : 25},
+      //     {name : "sahil", age : 26},
+      //     {name : "Ritik", age : 22},
+      // ]
 
-    // for (let [key , value] of Object.entries(obj)) {
-    //     console.log(key, value);
-    // }  
-    
-    // for (let [key , value] of myMap) {
-    //     console.log(key, value);
-    // } 
-    
-    // let var1 = "Shiv", var2 = 25;
-    // console.log(var1, var2);
+      // usersArray.sort((a, b) => a.age - b.age);
 
-    // [var1 , var2] = [var2, var1];
-    // console.log(var1, var2);
+      // console.log(usersArray);
 
-    // let [name6, ...rest] = mineArray;
-    // console.log(name6, rest[0], rest[1], rest[3]);
+      //return array with unique elements
 
-    // let {name : n, height : h, weight : w, class : cl = prompt("class?")} = obj;
+      // function onlyUnique(arr) {
+      //     let arrResult = [];
 
-    // console.log(n, h, w, cl);
+      //     for (let i = 0; i < arr.length; i++) {
+      //         if (!arrResult.includes(arr[i])) {
+      //             arrResult.push(arr[i]);
+      //         }
+      //     }
 
-    // let {name, ...objRest} = obj;
-    // console.log(name, objRest['height'], objRest['weight'], objRest['age'], objRest['address']);
+      //     return arrResult;
+      // }
 
-    // //Semicolon is important at the end of line of code before the below line
-    // ({title, width} = {title : "shiv", width : 23})
-    // console.log(title);
+      // console.log(onlyUnique(["hara", "shiv", "hara", "priya", "shiv", "priya", "hara"]));
 
-    // function minefunction({name = "shiv", age = 25, height = 6.10, address = "Prayagraj"}) {
-    //     console.log(name, age, height, address);
-    // }
+      //this is not optimaised in performance include needs to match the given one with each elements in the array.
 
-    // minefunction({}); //want all to get their default values
+      //Object from array
 
-    // minefunction({
-    //     name : "sahil",
-    //     age : 25,
-    //     address : "Prayagraj"
-    // })
+      // function objFromArray(arr) {
+      //     let newObj = {};
 
-    // let obj2 = {
-    //     name8 : "Shivendra Dwivedi",
-    //     size : {
-    //         weight : "65kg",
-    //         height : 6.10,
-    //     },
-    //     items : ["boll", "bat"],
-    //     extra : "I'm extra",
-    // } 
+      //     for (let i = 0; i < arr.length; i++) {
+      //         newObj[arr[i].id] = arr[i];
+      //     }
 
-    // let {
-    //     name8,
-    //     size : {
-    //         weight,
-    //         height
-    //     },
-    //     items : [item1, item2],
-    // } = obj2;
+      //     return newObj
+      // }
 
-    // console.log(name8, item1, weight)
+      // usersArray = [
+      //     {id: "John", name: "John Smith", age: 25},
+      //     {id: "ann", name: "ann smith", age: 24},
+      //     {id: "pete", name: "pete marry", age: 21}
+      // ]
 
-//JSON Methods
-     
+      // console.log(objFromArray(usersArray));
 
-        // let myObject = {
-        //     name : "Shivendra",
-        //     age : 25,
-        //     show() {     
-        //             console.log("Shivendra Dwivedi")    
-        //     },
-        //     mySymbol : "hello",
-        //     goal : 'millionair',
-        //     insideObj : {
-        //         name : "sahil",
-        //         new_age : 26,
-        //     },
-        //     date : new Date(), 
-        //     // toJSON() {
-        //     //     return {name : this.name};
-        //     // }
-        // }
+      // let newSecond = usersArray.reduce((acc, crr) => {
+      //     acc[crr.id] = crr
+      //     return acc;
+      // }, {})
 
-        // let myObject2 = {
-        //     name: "Krishna",
-        //     age : 845545,
-        //     toJSON() {
-        //         return this.name
-        //     }
-        // }
+      // console.log(newSecond);
 
-        // myObject.dost = myObject2;
-        // myObject2.dost = myObject
-        // console.log(JSON.stringify(myObject, function(key, value) {
-        //     console.log(key + ": " +  value);
-        //     return key == 'dost' ? undefined : typeof value == 'function' ? value() : value;
-        // }, 4))
+      //avg age from an array of objects
 
-        // console.log(JSON.stringify(myObject, function(key, value) {
-        //     console.log(key + ": " +  value);
-        //     return typeof value == 'function' ? value() : value;
-        // }, 4))
+      // let avgAge = usersArray.reduce((sum , object) => sum + object.age, 0) / usersArray.length;
+      // console.log(avgAge);
 
-        // let newObj = (JSON.parse((JSON.stringify(myObject, null, 2)), function(key, value) {
-        //     return key === "date" ? new Date(value) : value;
-        // }))
+      //Destructuring Assignmant
 
-        // console.log(newObj.date.getDate())
+      //Array : Position matters
 
-//Object.* methods
+      // let myArray = ["shivendra"];
 
-        // let obj = {
-        //     name : "shivendra",
-        //     age : 25,
-        //     address : "trivini Nagar"
-        // }
-        // let myMap = new Map(Object.entries(obj))
+      // let [name0, age] = myArray
+      // console.log(name0,age);
 
-        // console.log(myMap.keys(myMap))
+      // let [name2 = "sahil", age2 = 24] = myArray;
+      // console.log(name2+" "+age2)
 
-        // console.log(Object.keys(Object.fromEntries(myMap)))
+      // let mineArray = ["shiv", 25, '5.10 inch', '65kg', true];
 
-        // let salaries = {
-        //     john : 100,
-        //     shiv : 190000,
-        //     priya : 54000,
-        //     riya : 58000,
-        //     mom : 18000,
-        // }
+      // let [name3, age3, , weight0, living ] = mineArray;
+      // console.log(name3, age3, weight0, living);
 
-        // function sumSalaries(obj) {
-        //     let sum = 0;
+      // let mySet = new Set(["shivendra", 25, 5.10, 65, "alive", "shivendra"]);
 
-        //     for (let value of Object.values(obj)) {
-        //         sum += value;
-        //     }
+      // let [name4, age4, height0, , living2] = mySet;
 
-        //     console.log(sum);
-        // }
+      // console.log(name4, age4, height0, living2)
 
-        // sumSalaries(salaries);
+      // let [a, b, c, d] = "shiv";
+      // console.log(a,b,c,d);
 
-        // function numberOfProperties(obj) {
-        //     return Object.entries(obj);
-        // }
+      // let user = {};
+      // [user.name, user.age, user.height, user.weight, user.life_status] = mySet;
+      // console.log(user);
 
-        // console.log(numberOfProperties(salaries))
+      // let obj = {
+      //     name : "shivendra",
+      //     age : 25,
+      //     height : 5.10,
+      //     weight : '65Kg',
+      //     address : 'Prayagraj'
+      // }
 
-    //Interview Questions Practice
+      // let myMap = new Map(Object.entries(obj));
 
-        // var length = 4;
-        // function myFunc() {
-        //     console.log(this.length);
-        // }
+      // for (let [key , value] of Object.entries(obj)) {
+      //     console.log(key, value);
+      // }
 
-        // let obj = {
-        //     length : 5,
-        //     myFunc() {
-        //         console.log(this.length);
-        //     }
-        // }
+      // for (let [key , value] of myMap) {
+      //     console.log(key, value);
+      // }
 
-        // obj.myFunc()
+      // let var1 = "Shiv", var2 = 25;
+      // console.log(var1, var2);
 
-        // let obj2 = {
-        //     name : "shivendra"
-        // }
+      // [var1 , var2] = [var2, var1];
+      // console.log(var1, var2);
 
-        // let obj3 = {
-        //     shivendra : "mu name"
-        // }
-        // console.log(obj3[obj2.name])
+      // let [name6, ...rest] = mineArray;
+      // console.log(name6, rest[0], rest[1], rest[3]);
 
-        // var myObject = {
-        //     foo : 'bar',
-        //     func : function() {
-        //         let foo = 45;
-        //         var self = this;
+      // let {name : n, height : h, weight : w, class : cl = prompt("class?")} = obj;
 
-        //         console.log("outer this call"+ " " + this.foo);
-        //         console.log("outer self call"+ " " + self.foo);
+      // console.log(n, h, w, cl);
 
-        //         (function(){
-        //             let self = {
-        //                 foo : "Shiv"
-        //             } 
-        //             console.log("inner this call"+ " " + this.foo);
-        //             console.log("inner self call"+" "+ self.foo)
-        //         })()
-                 
-        //     } 
-        // }
-        // console.log(myObject['foo']);
-        // myObject.func()
+      // let {name, ...objRest} = obj;
+      // console.log(name, objRest['height'], objRest['weight'], objRest['age'], objRest['address']);
 
-        // const code = {
-        //     type : "web"
-        // };
+      // //Semicolon is important at the end of line of code before the below line
+      // ({title, width} = {title : "shiv", width : 23})
+      // console.log(title);
 
-        // const reactJS = {
-        //     name : "JS",
-        //     web : true,
-        // }
+      // function minefunction({name = "shiv", age = 25, height = 6.10, address = "Prayagraj"}) {
+      //     console.log(name, age, height, address);
+      // }
 
-        // reactJS[code.type];
-        // reactJS[reactJS["type"]];
-        // code.type.web
+      // minefunction({}); //want all to get their default values
 
-    //Book Rest Prameters and Spread Syntax
+      // minefunction({
+      //     name : "sahil",
+      //     age : 25,
+      //     address : "Prayagraj"
+      // })
 
-        // function max(...args) { //Given rest parameter  
-        //     let max = Math.max(...args);//given spread syntax
+      // let obj2 = {
+      //     name8 : "Shivendra Dwivedi",
+      //     size : {
+      //         weight : "65kg",
+      //         height : 6.10,
+      //     },
+      //     items : ["boll", "bat"],
+      //     extra : "I'm extra",
+      // }
 
-        //     return max;
-        // }
+      // let {
+      //     name8,
+      //     size : {
+      //         weight,
+      //         height
+      //     },
+      //     items : [item1, item2],
+      // } = obj2;
 
-        // console.log(max(2,4,5,8,9,8,8,4,5,6,8,7,5,6,8,7,4,2,3,9,9,3,5,9,15));
+      // console.log(name8, item1, weight)
 
-        // function max(a, b, ...args) { //Given rest parameter with normal to capture after 2nd argument
-        //     let max = Math.max(...args);//given spread syntax
+      //JSON Methods
 
-        //     console.log(a, b);
-        //     return max;
-        // }
+      // let myObject = {
+      //     name : "Shivendra",
+      //     age : 25,
+      //     show() {
+      //             console.log("Shivendra Dwivedi")
+      //     },
+      //     mySymbol : "hello",
+      //     goal : 'millionair',
+      //     insideObj : {
+      //         name : "sahil",
+      //         new_age : 26,
+      //     },
+      //     date : new Date(),
+      //     // toJSON() {
+      //     //     return {name : this.name};
+      //     // }
+      // }
 
-        // console.log(max(2,4,5,8,9,8,8,4,5,6,8,7,5,6,8,7,4,2,3,9,9,3,5,9,15));
+      // let myObject2 = {
+      //     name: "Krishna",
+      //     age : 845545,
+      //     toJSON() {
+      //         return this.name
+      //     }
+      // }
 
-        // function max() {  
-        //     let max = Math.max(...arguments);//used predefined array like iterable arguments object with spread syntax
+      // myObject.dost = myObject2;
+      // myObject2.dost = myObject
+      // console.log(JSON.stringify(myObject, function(key, value) {
+      //     console.log(key + ": " +  value);
+      //     return key == 'dost' ? undefined : typeof value == 'function' ? value() : value;
+      // }, 4))
 
-        //     return max;
-        // }
+      // console.log(JSON.stringify(myObject, function(key, value) {
+      //     console.log(key + ": " +  value);
+      //     return typeof value == 'function' ? value() : value;
+      // }, 4))
 
-        // console.log(max(2,4,5,8,9,8,8,4,5,6,8,7,5,6,8,7,4,2,3,9,9,3,5,9,15));
+      // let newObj = (JSON.parse((JSON.stringify(myObject, null, 2)), function(key, value) {
+      //     return key === "date" ? new Date(value) : value;
+      // }))
 
-        // function names() {
-        //     // console.log(arguments.map(data => console.log(data + "map"))) dont work
+      // console.log(newObj.date.getDate())
 
-        //     console.log(arguments.length);
-        //     console.log(arguments[1]);
-        //     console.log(arguments[0]);
-        //     console.log(arguments[2]);
-        // }
+      //Object.* methods
 
-        // names("shuvendra-1", "shivendra-2", "shivendra-3");
-        // names(2,5,8,7,9)
+      // let obj = {
+      //     name : "shivendra",
+      //     age : 25,
+      //     address : "trivini Nagar"
+      // }
+      // let myMap = new Map(Object.entries(obj))
 
-        // function show() {
-        //     console.log(typeof arguments)
+      // console.log(myMap.keys(myMap))
 
-        //     const mineFunction = () => {
-        //         console.log(2,5,...arguments);
-        //     }
+      // console.log(Object.keys(Object.fromEntries(myMap)))
 
-        //     mineFunction()
-        // }
+      // let salaries = {
+      //     john : 100,
+      //     shiv : 190000,
+      //     priya : 54000,
+      //     riya : 58000,
+      //     mom : 18000,
+      // }
 
-        // show(1,2,3,4,5,6,7,8,9)
+      // function sumSalaries(obj) {
+      //     let sum = 0;
 
-        function spreadToMerge() {
-            let array1 = [1,2,3,4,5,6,7];
-            let array2 = [8,9,10,11,12,13,14];
+      //     for (let value of Object.values(obj)) {
+      //         sum += value;
+      //     }
 
-            //Merging arrays by spread syntax.
-            let mergedArray = ['a','b','c','d', ...array1, ...array2];
-            console.log(JSON.parse(JSON.stringify(mergedArray)));
+      //     console.log(sum);
+      // }
 
-            console.log(mergedArray);
+      // sumSalaries(salaries);
+
+      // function numberOfProperties(obj) {
+      //     return Object.entries(obj);
+      // }
+
+      // console.log(numberOfProperties(salaries))
+
+      //Interview Questions Practice
+
+      // var length = 4;
+      // function myFunc() {
+      //     console.log(this.length);
+      // }
+
+      // let obj = {
+      //     length : 5,
+      //     myFunc() {
+      //         console.log(this.length);
+      //     }
+      // }
+
+      // obj.myFunc()
+
+      // let obj2 = {
+      //     name : "shivendra"
+      // }
+
+      // let obj3 = {
+      //     shivendra : "mu name"
+      // }
+      // console.log(obj3[obj2.name])
+
+      // var myObject = {
+      //     foo : 'bar',
+      //     func : function() {
+      //         let foo = 45;
+      //         var self = this;
+
+      //         console.log("outer this call"+ " " + this.foo);
+      //         console.log("outer self call"+ " " + self.foo);
+
+      //         (function(){
+      //             let self = {
+      //                 foo : "Shiv"
+      //             }
+      //             console.log("inner this call"+ " " + this.foo);
+      //             console.log("inner self call"+" "+ self.foo)
+      //         })()
+
+      //     }
+      // }
+      // console.log(myObject['foo']);
+      // myObject.func()
+
+      // const code = {
+      //     type : "web"
+      // };
+
+      // const reactJS = {
+      //     name : "JS",
+      //     web : true,
+      // }
+
+      // reactJS[code.type];
+      // reactJS[reactJS["type"]];
+      // code.type.web
+
+      //Book Rest Prameters and Spread Syntax
+
+      // function max(...args) { //Given rest parameter
+      //     let max = Math.max(...args);//given spread syntax
+
+      //     return max;
+      // }
+
+      // console.log(max(2,4,5,8,9,8,8,4,5,6,8,7,5,6,8,7,4,2,3,9,9,3,5,9,15));
+
+      // function max(a, b, ...args) { //Given rest parameter with normal to capture after 2nd argument
+      //     let max = Math.max(...args);//given spread syntax
+
+      //     console.log(a, b);
+      //     return max;
+      // }
+
+      // console.log(max(2,4,5,8,9,8,8,4,5,6,8,7,5,6,8,7,4,2,3,9,9,3,5,9,15));
+
+      // function max() {
+      //     let max = Math.max(...arguments);//used predefined array like iterable arguments object with spread syntax
+
+      //     return max;
+      // }
+
+      // console.log(max(2,4,5,8,9,8,8,4,5,6,8,7,5,6,8,7,4,2,3,9,9,3,5,9,15));
+
+      // function names() {
+      //     // console.log(arguments.map(data => console.log(data + "map"))) dont work
+
+      //     console.log(arguments.length);
+      //     console.log(arguments[1]);
+      //     console.log(arguments[0]);
+      //     console.log(arguments[2]);
+      // }
+
+      // names("shuvendra-1", "shivendra-2", "shivendra-3");
+      // names(2,5,8,7,9)
+
+      // function show() {
+      //     console.log(typeof arguments)
+
+      //     const mineFunction = () => {
+      //         console.log(2,5,...arguments);
+      //     }
+
+      //     mineFunction()
+      // }
+
+      // show(1,2,3,4,5,6,7,8,9)
+
+      // function spreadToMerge() {
+      //     let array1 = [1,2,3,4,5,6,7];
+      //     let array2 = [8,9,10,11,12,13,14];
+
+      //     //Merging arrays by spread syntax.
+      //     let mergedArray = ['a','b','c','d', ...array1, ...array2];
+      //     console.log(JSON.parse(JSON.stringify(mergedArray)));
+
+      //     console.log(mergedArray);
+      // }
+
+      // spreadToMerge();
+
+      //Spread syntax on objects
+
+      // function spreadOnObject() {
+      //     let obj1 = {
+      //         name : "shicendra",
+      //         age : 25
+      //     }
+
+      //     let obj2 = {
+      //         address : "triveni nagar",
+      //         pincode : 211009,
+      //     }
+
+      //     let mergesObj = {...obj1, ...obj2}
+      //     console.log(mergesObj);
+
+      //     let obj3 = {...obj2};
+      //     console.log(obj2)
+      //     console.log(obj3)
+
+      //     console.log(obj3 === obj2);
+      //     console.log(JSON.stringify(obj3) === JSON.stringify(obj2));
+
+      // }
+
+      // spreadOnObject()
+
+      //Variable scope, closure
+
+      // {
+      //     let marraige = "No";
+      //     console.log(marraige);
+      // }
+
+      // console.log(marraige);
+
+      // function outter() {
+      //     let name = "shivendra";
+
+      //     return function() {
+      //         console.log(name);
+      //     }
+      // }
+
+      // let inner = outter();
+      // inner(); //inner comes with its , outter, global lexical environment
+
+      // let name = "shivendra";
+
+      // function sayHi() {
+      //     console.log(name);
+      // }
+      // sayHi();
+
+      // name = "Dwivedi";
+
+      // function outter() {
+      //     let name = "Shivendra";
+
+      //     return  function() {
+      //         console.log(name);
+      //     }
+      // }
+
+      // // name = "Dwivedi";
+      // // console.log(name);
+      // //runs without error, how name is inside function
+
+      // let name = 'ritik';
+
+      // let work = outter();
+      // work();
+
+      // function makeCounter() {
+      //     let count = 0;
+
+      //     return function() {
+      //         return count++;
+      //     }
+      // }
+
+      //each call will make its own lexical environment and own copy of variables.
+
+      // let counter1 = makeCounter();
+      // let counter2 = makeCounter();
+
+      // console.log(counter1());
+      // console.log(counter1());
+
+      // console.log(counter2());
+      // console.log(counter2());
+
+      // function Counter() {
+      //     let count = 0;
+
+      //     this.up = function() {
+      //         return ++count;
+      //     };
+
+      //     this.down = function() {
+      //         return --count;
+      //     };
+      // }
+
+      // let counter1 = new Counter();
+
+      // console.log(counter1.up());
+      // console.log(counter1.count) //undefined
+
+      // let counter2 = new Counter();
+
+      // console.log(counter2.up());
+
+      // function sum(a) {
+      //     return function(b) {
+      //         return a + b;
+      //     }
+      // }
+
+      // console.log(sum(2)(4));
+
+      // let name = "shiv";
+
+      // function func() {
+      //     console.log(name);
+
+      //     let name = "Dwivedi";
+      // }
+
+      // func();
+
+      // function inBetwween(a, b) {
+      //     return function(c) {
+      //         return (a <= c && c <= b);
+      //     }
+      // }
+
+      // function inArray(arr) {
+
+      //     return function(a) {
+      //         for (let i = 0; i < arr.length; i++) {
+      //             if (a === arr[i]) return true;
+      //             else false;
+      //         }
+      //     }
+      // }
+
+      // let arrayTemp = [1,2,3,4,5,6,7,8,9,10,15,18,19,20,25];
+
+      // console.log(arrayTemp.filter(inBetwween(15, 24)));
+
+      // console.log(arrayTemp.filter(inArray([2,5,8,3,6,26,30])))
+
+      // let usersArray = [
+      //     {id: "John", name: "John", age: 25},
+      //     {id: "ann", name: "Ann", age: 24},
+      //     {id: "pete", name: "Pete", age: 21}
+      // ]
+
+      // function byField(field) {
+      //     return function(a, b) {
+      //         return (a[field] > b[field] ? 1 : -1);
+      //     }
+      // }
+
+      // let result = usersArray.sort(byField('age'))
+      // console.log(result)
+
+      function makeArmy() {
+        let shooters = [];
+
+        let i = 0;
+        while (i < 10) {
+          let j = i;
+          let shooter = function () {
+            console.log(j);
+          };
+
+          shooters.push(shooter);
+          i++;
         }
 
-        spreadToMerge();
+        return shooters;
+      }
 
-        //Spread syntax on objects
+      let army1 = makeArmy();
 
-        function spreadOnObject() {
-            let obj1 = {
-                name : "shicendra",
-                age : 25
-            }
+      army1[0]();
+      army1[1]();
 
-            let obj2 = {
-                address : "triveni nagar",
-                pincode : 211009,
-            }
+      function makeArmy() {
+        let shooters = [];
 
-            let mergesObj = {...obj1, ...obj2}
-            console.log(mergesObj);
-
-            let obj3 = {...obj2};
-            console.log(obj2)
-            console.log(obj3)
-
-            console.log(obj3 === obj2);
-            console.log(JSON.stringify(obj3) === JSON.stringify(obj2));
-
+        for (let i = 0; i < 10; i++) {
+          let shooter = function () {
+            // shooter function
+            console.log(i); // should print its number
+          };
+          shooters.push(shooter);
         }
 
-        spreadOnObject()
-    </script> ,
-</body>
+        //or
+        // let i = 0;
+        // while (i < 10) {
+        //   let j = i;
+        //   let shooter = function () {
+        //     console.log(j);
+        //   };
+
+        //   shooters.push(shooter);
+        //   i++;
+        // }
+
+        //both loops will give the same result
+        return shooters;
+      }
+
+      let army2 = makeArmy();
+      army2[0](); // Expected: 0, Actual: 10
+      army2[5](); // Expected: 5, Actual: 10
+    </script>
+    ,
+  </body>
 </html>
