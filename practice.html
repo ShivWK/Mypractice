@@ -734,7 +734,7 @@
       // reactJS[reactJS["type"]];
       // code.type.web
 
-      //Book Rest Prameters and Spread Syntax
+//Book Rest Prameters and Spread Syntax
 
       // function max(...args) { //Given rest parameter
       //     let max = Math.max(...args);//given spread syntax
@@ -825,7 +825,7 @@
 
       // spreadOnObject()
 
-      //Variable scope, closure
+//Variable scope, closure
 
       // {
       //     let marraige = "No";
@@ -966,38 +966,38 @@
       // let result = usersArray.sort(byField('age'))
       // console.log(result)
 
-      function makeArmy() {
-        let shooters = [];
+    //   function makeArmy() {
+    //     let shooters = [];
 
-        let i = 0;
-        while (i < 10) {
-          let j = i;
-          let shooter = function () {
-            console.log(j);
-          };
+    //     let i = 0;
+    //     while (i < 10) {
+    //       let j = i;
+    //       let shooter = function () {
+    //         console.log(j);
+    //       };
 
-          shooters.push(shooter);
-          i++;
-        }
+    //       shooters.push(shooter);
+    //       i++;
+    //     }
 
-        return shooters;
-      }
+    //     return shooters;
+    //   }
 
-      let army1 = makeArmy();
+    //   let army1 = makeArmy();
 
-      army1[0]();
-      army1[1]();
+    //   army1[0]();
+    //   army1[1]();
 
-      function makeArmy() {
-        let shooters = [];
+    //   function makeArmy() {
+    //     let shooters = [];
 
-        for (let i = 0; i < 10; i++) {
-          let shooter = function () {
-            // shooter function
-            console.log(i); // should print its number
-          };
-          shooters.push(shooter);
-        }
+    //     for (let i = 0; i < 10; i++) {
+    //       let shooter = function () {
+    //         // shooter function
+    //         console.log(i); // should print its number
+    //       };
+    //       shooters.push(shooter);
+    //     }
 
         //or
         // let i = 0;
@@ -1012,12 +1012,52 @@
         // }
 
         //both loops will give the same result
-        return shooters;
-      }
+    //     return shooters;
+    //   }
 
-      let army2 = makeArmy();
-      army2[0](); // Expected: 0, Actual: 10
-      army2[5](); // Expected: 5, Actual: 10
+    //   let army2 = makeArmy();
+    //   army2[0](); // Expected: 0, Actual: 10
+    //   army2[5](); // Expected: 5, Actual: 10
+
+//var keyword delaration
+
+        // if (true) {
+        //     var what = "shivendra"
+        // }
+
+        // console.log(what); //Shivendra
+
+        // function demi() {
+        //     var myname = "aaaaaaaaaaa";               
+        // }
+
+        // console.log(myname); //error
+
+        // (function() {
+        //     var newOne = "Dwivedi_1";
+            
+        //     console.log(newOne);
+        // })()
+ 
+        // console.log(newOne) //Error
+
+        // (function() {
+        //     var newOne = "Dwivedi_2";
+            
+        //     console.log(newOne);
+        // } ()); //wrong
+
+        // !function() {
+        //     var newOne = "Dwivedi_3";
+            
+        //     console.log(newOne);
+        // }();
+
+        // +function() {
+        //     var newOne = "Dwivedi_4";
+            
+        //     console.log(newOne);
+        // }()
     </script>
     ,
   </body>
