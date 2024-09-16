@@ -1085,6 +1085,76 @@
         // console.log(mineValue.name); // ReferenceError: mineValue is not defined
         // console.log(globalThis.mineValue.name); // "Shivendra"
 
+//Function Object , NFE
+
+        // function myNameFunction() {
+        //     console.log(myNameFunction.name)
+        // }
+        // myNameFunction()
+
+        // function mine(a,b,c) {
+        //     console.log(mine.length);
+        // }
+        // mine()
+
+        // function counter(){
+        //     counter.count++
+        // }
+        // counter.count = 0; //initial value
+
+        // counter()
+        // counter()
+        // counter()
+        // counter()
+
+        // console.log(counter.count);
+
+        // function closures() {
+        //     let count = 0;
+
+        //     function counter() {
+
+        //         counter.count++;
+        //         console.log(counter.count);
+        //     }
+
+        //     // counter.count = 0
+
+        //     counter.decrease = () => count--;
+
+        //     couner.set = value => count = value;
+
+        //     return counter;
+        // } 
+
+        // let mycounter = closures();
+        
+        // mycounter();
+
+        // let mycounter2 = closures();
+        // mycounter2()
+
+        // let mycounter3 = closures();
+        // mycounter3()
+        
+
+        // function sum(a) {
+        //   let currentSum = a;
+
+        //     function repeat(b) {
+        //         currentSum += b;
+        //         return repeat;
+        //     }
+
+        //     repeat.toString = () => {
+        //       return currentSum;
+        //     }
+ 
+        //     return repeat;
+        // }
+
+        // console.log(String(sum(1)(2)(3)(4)));
+        
     </script>
     ,
   </body>
