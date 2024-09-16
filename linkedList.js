@@ -273,86 +273,98 @@ function arrayToLinkedList(arr) {
             
     return head;
 }
-function removeByValue(head, value) {
-    if (!head) return null;
 
-    if (head.data == value) {
-        head = head.next;
-        return head;
-    }
+//removing by value when head is given
+
+// function removeByValue(head, value) {
+//     if (!head) return null;
+
+//     if (head.data == value) {
+//         head = head.next;
+//         return head;
+//     }
  
-    let current = head;
+//     let current = head;
     
-    while (current) {
-        if (current.next.data === value) {
-            current.next = current.next.next;            
-            return head;
-        }
+//     while (current) {
+//         if (current.next.data === value) {
+//             current.next = current.next.next;            
+//             return head;
+//         }
 
-        current = current.next;
-    }
+//         current = current.next;
+//     }
     
-    return head;
-}
+//     return head;
+// }
 
-function insertByValue(head, value, nodeValue ) {
-    const newNode = new Node(nodeValue);
+//remove by value when head is not given
+    // function removeByValueNoHead(nodeValue) {
+    //     nodeValue.data = nodeValue.next.data;
+    //     nodeValue.next = nodeValue.next.next;
+    // }
 
-    if (!head) {
-        head = newNode;
-        return head;
-    }
 
-    if (head.data === value) {
-        newNode.next = head;
-        haed = newNode;
-        return head;
-    }
+//inserting before the given value
+    // function insertByValue(head, value, nodeValue ) {
+    //     const newNode = new Node(nodeValue);
 
-    let current = head;
-    let previous = null
+    //     if (!head) {
+    //         head = newNode;
+    //         return head;
+    //     }
 
-    while (current) {
-        if (current.data === value) {
-            newNode.next = current;
-            previous.next = newNode;
-            return head;
-        }
-        previous = current;
-        current = current.next;
-    }
+    //     if (head.data === value) {
+    //         newNode.next = head;
+    //         haed = newNode;
+    //         return head;
+    //     }
 
-    return null
-}
+    //     let current = head;
+    //     let previous = null
 
-//If it is guarantied that it is not the head which is equal to the given node the
+    //     while (current) {
+    //         if (current.data === value) {
+    //             newNode.next = current;
+    //             previous.next = newNode;
+    //             return head;
+    //         }
+    //         previous = current;
+    //         current = current.next;
+    //     }    
 
-function insertByValueNotHead(head, value, nodeValue ) {
-    const newNode = new Node(nodeValue);
+    //     return null
+    // }
 
-    if (!head) {
-        return head; //null
-    }
+//If it is guarantied that head is not equal to the given node the
 
-    let current = head.next;
-    let previous = head;
+        // function insertByValueNotHead(head, value, nodeValue ) {
+        //     const newNode = new Node(nodeValue);
 
-    while (current) {
-        if (current.data === value) {
-            newNode.next = current;
-            previous.next = newNode;
-            return head;
-        }
-        previous = current;
-        current = current.next;
-    }
+        //     if (!head) {
+        //         return head; //null
+        //     }
 
-    return head;
-}
+        //     let current = head.next;
+        //     let previous = head;
 
-const head = arrayToLinkedList([1,2,5,7,8,6,9,10]);
-insertByValueNotHead(head, 1, 11);
+        //     while (current) {
+        //         if (current.data === value) {
+        //             newNode.next = current;
+        //             previous.next = newNode;
+        //             return head;
+        //         }
+        //         previous = current;
+        //         current = current.next;
+        //     }
 
+        //     return head;
+        // }
+
+        // const head = arrayToLinkedList([1,2,5,7,8,6,9,10]);
+        // insertByValueNotHead(head, 1, 11);
+
+//custom print
 function print(head) {
     let current = head;
     let result = '';
@@ -365,5 +377,45 @@ function print(head) {
     result += null;
     return result;
 }
-console.log(print(head));
+// console.log(print(head));
+
+//Adding two numbers
+
+    let linkedList_01 = arrayToLinkedList([2,4,3])
+    let linkedList_02 = arrayToLinkedList([5,6,4])
+
+    function addTwoLinkedList(head1, head2) {
+        let list_01 = head1, list_02 = head2;
+        let dummyNode = new Node(-1);
+        let current = dummyNode;
+        let carry = 0;
+
+        while (list_01 !== null || list_02 !== null) {
+              let sum = carry;
+
+              if (list_01) sum += list_01.data;
+              if (list_02) sum += list_02.data;
+
+              let newNode = new Node(sum % 10);
+              carry = Math.floor(sum / 10);
+
+              current.next = newNode; //dummy node ke next pe newNode dal diya
+              current = newNode; //current ko age badha diya ab current newNodeko point krta hai to agli node newNode ki next pe jaega
+
+              if (list_01) list_01 = list_01.next;
+              if (list_02) list_02 = list_02.next;
+        }
+
+        if (carry) {
+            let carryNode = new Node(carry);
+            current.next = carryNode;
+        }
+
+        return dummyNode.next;
+    }
+
+    let sumLinkedList = addTwoLinkedList(linkedList_01, linkedList_02);
+
+    console.log(print(sumLinkedList));
+
 
