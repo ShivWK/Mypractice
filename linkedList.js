@@ -381,41 +381,79 @@ function print(head) {
 
 //Adding two numbers
 
-    let linkedList_01 = arrayToLinkedList([2,4,3])
-    let linkedList_02 = arrayToLinkedList([5,6,4])
+    // let linkedList_01 = arrayToLinkedList([2,4,3])
+    // let linkedList_02 = arrayToLinkedList([5,6,4])
 
-    function addTwoLinkedList(head1, head2) {
-        let list_01 = head1, list_02 = head2;
-        let dummyNode = new Node(-1);
-        let current = dummyNode;
-        let carry = 0;
+    // function addTwoLinkedList(head1, head2) {
+    //     let list_01 = head1, list_02 = head2;
+    //     let dummyNode = new Node(-1);
+    //     let current = dummyNode;
+    //     let carry = 0;
 
-        while (list_01 !== null || list_02 !== null) {
-              let sum = carry;
+    //     while (list_01 !== null || list_02 !== null) {
+    //           let sum = carry;
 
-              if (list_01) sum += list_01.data;
-              if (list_02) sum += list_02.data;
+    //           if (list_01) sum += list_01.data;
+    //           if (list_02) sum += list_02.data;
 
-              let newNode = new Node(sum % 10);
-              carry = Math.floor(sum / 10);
+    //           let newNode = new Node(sum % 10);
+    //           carry = Math.floor(sum / 10);
 
-              current.next = newNode; //dummy node ke next pe newNode dal diya
-              current = newNode; //current ko age badha diya ab current newNodeko point krta hai to agli node newNode ki next pe jaega
+    //           current.next = newNode; //dummy node ke next pe newNode dal diya
+    //           current = newNode; //current ko age badha diya ab current newNodeko point krta hai to agli node newNode ki next pe jaega
 
-              if (list_01) list_01 = list_01.next;
-              if (list_02) list_02 = list_02.next;
+    //           if (list_01) list_01 = list_01.next;
+    //           if (list_02) list_02 = list_02.next;
+    //     }
+
+    //     if (carry) {
+    //         let carryNode = new Node(carry);
+    //         current.next = carryNode;
+    //     }
+
+    //     return dummyNode.next;
+    // }
+
+    // let sumLinkedList = addTwoLinkedList(linkedList_01, linkedList_02);
+
+    // console.log(print(sumLinkedList));
+
+
+//Even and odd linked List
+
+    //Brute force
+    let evenOddListHead = arrayToLinkedList([1,2,3,4,5,6,7,8,9])
+
+    function evenOddList(head) {
+        if(!head || !head.next) return head;
+
+        let arr = [];
+        let current = head;
+
+        while (current && current.next) {
+            arr.push(current.data);
+            current = current.next.next;
         }
 
-        if (carry) {
-            let carryNode = new Node(carry);
-            current.next = carryNode;
+        if (current) arr.push(current.data); 
+
+        current = head.next;
+        while (current && current.next) {
+            arr.push(current.data);
+            current = current.next.next;
+        }
+        if (current) arr.push(current.data);
+
+        current = head;
+        let i = 0;
+
+        while (current) {
+            current.data = arr[i];
+            current = current.next;
+            i++;
         }
 
-        return dummyNode.next;
-    }
+        return head;
+    } 
 
-    let sumLinkedList = addTwoLinkedList(linkedList_01, linkedList_02);
-
-    console.log(print(sumLinkedList));
-
-
+    console.log(print(evenOddList(evenOddListHead)));
