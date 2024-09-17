@@ -422,38 +422,60 @@ function print(head) {
 //Even and odd linked List
 
     //Brute force
-    let evenOddListHead = arrayToLinkedList([1,2,3,4,5,6,7,8,9])
+        let evenOddListHead = arrayToLinkedList([1,2,3,4,5,6,7,8,9])
 
-    function evenOddList(head) {
-        if(!head || !head.next) return head;
+        // function evenOddList(head) {
+        //     if(!head || !head.next) return head;
 
-        let arr = [];
-        let current = head;
+        //     let arr = [];
+        //     let current = head;
 
-        while (current && current.next) {
-            arr.push(current.data);
-            current = current.next.next;
+        //     while (current && current.next) {
+        //         arr.push(current.data);
+        //         current = current.next.next;
+        //     }
+
+        //     if (current) arr.push(current.data); 
+
+        //     current = head.next;
+        //     while (current && current.next) {
+        //         arr.push(current.data);
+        //         current = current.next.next;
+        //     }
+        //     if (current) arr.push(current.data);
+
+        //     current = head;
+        //     let i = 0;
+
+        //     while (current) {
+        //         current.data = arr[i];
+        //         current = current.next;
+        //         i++;
+        //     }
+
+        //     return head;
+        // } 
+
+        // console.log(print(evenOddList(evenOddListHead)));
+
+    //Optimal solution
+
+        function evenOddListOptimal(head) {
+            if (!head || !head.next) return head;
+
+            let odd = head, even = head.next, evenHead = head.next;
+
+            while (even && even.next) {
+                odd.next = odd.next.next;
+                even.next = even.next.next;
+
+                odd = odd.next;
+                even = even.next;
+            }
+
+            odd.next = evenHead;
+
+            return head;
         }
-
-        if (current) arr.push(current.data); 
-
-        current = head.next;
-        while (current && current.next) {
-            arr.push(current.data);
-            current = current.next.next;
-        }
-        if (current) arr.push(current.data);
-
-        current = head;
-        let i = 0;
-
-        while (current) {
-            current.data = arr[i];
-            current = current.next;
-            i++;
-        }
-
-        return head;
-    } 
-
-    console.log(print(evenOddList(evenOddListHead)));
+    
+    console.log(print(evenOddListOptimal(evenOddListHead)));
