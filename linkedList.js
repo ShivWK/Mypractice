@@ -422,7 +422,7 @@ function print(head) {
 //Even and odd linked List
 
     //Brute force
-        let evenOddListHead = arrayToLinkedList([1,2,3,4,5,6,7,8,9])
+        // let evenOddListHead = arrayToLinkedList([1,2,3,4,5,6,7,8,9])
 
         // function evenOddList(head) {
         //     if(!head || !head.next) return head;
@@ -460,22 +460,64 @@ function print(head) {
 
     //Optimal solution
 
-        function evenOddListOptimal(head) {
-            if (!head || !head.next) return head;
+    //     function evenOddListOptimal(head) {
+    //         if (!head || !head.next) return head;
 
-            let odd = head, even = head.next, evenHead = head.next;
+    //         let odd = head, even = head.next, evenHead = head.next;
 
-            while (even && even.next) {
-                odd.next = odd.next.next;
-                even.next = even.next.next;
+    //         while (even && even.next) {
+    //             odd.next = odd.next.next;
+    //             even.next = even.next.next;
 
-                odd = odd.next;
-                even = even.next;
+    //             odd = odd.next;
+    //             even = even.next;
+    //         }
+
+    //         odd.next = evenHead;
+
+    //         return head;
+    //     }
+    
+    // console.log(print(evenOddListOptimal(evenOddListHead)));
+
+//Sorting a linked list having 0's , 1's, 2's
+
+    //Brute force
+
+        function sortTheList(head) {
+            if (!head || !head.next) return head;  
+
+            let current = head;
+            let zeros = 0, ones = 0, twos = 0;
+            
+            while (current) {
+                if (current.data === 0) zeros++;
+                else if (current.data === 1) ones++;
+                else twos++; 
+
+                current = current.next;
             }
 
-            odd.next = evenHead;
+            current = head;
+            while (current) {
+                if (zeros) {
+                    current.data = 0;
+                    zeros--;
+                } else if (ones) {
+                    current.data = 1;
+                    ones--;
+                } else {
+                    current.data = 2;
+                    twos--;
+                }
 
+                current = current.next;
+            }
+            
             return head;
         }
-    
-    console.log(print(evenOddListOptimal(evenOddListHead)));
+
+        let zerosOnesTwosList = arrayToLinkedList([1,2,0,1,1,2,1,0,2,1,0,0,0,2])
+
+        console.log(print(sortTheList(zerosOnesTwosList)));
+
