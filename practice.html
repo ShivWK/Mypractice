@@ -1156,33 +1156,33 @@
         // console.log(String(sum(1)(2)(3)(4)));
 
       //NFE
-        let i = 0;
+        // let i = 0;
 
-        let sayHi = function func() {
-          if (i == 5) return;
-          console.log('hello');
-          i++;
-          func(); //if someone reassigns the function to some other variable then also recursion will work.
-        }
+        // let sayHi = function func() {
+        //   if (i == 5) return;
+        //   console.log('hello');
+        //   i++;
+        //   func(); //if someone reassigns the function to some other variable then also recursion will work.
+        // }
         // sayHi();
 
-        let bye = sayHi;
-        sayHi = null;
-        bye();
+        // let bye = sayHi;
+        // sayHi = null;
+        // bye();
 
-        let j = 0;
-        let sayHi2 = function func() {
-          if (j == 5) return;
-          console.log('hello2');
-          j++;
-          sayHi2(); //if someone reassigns the function to some other variable then it won't work.
-        }
-        // sayHi2();
+        // let j = 0;
+        // let sayHi2 = function func() {
+        //   if (j == 5) return;
+        //   console.log('hello2');
+        //   j++;
+        //   sayHi2(); //if someone reassigns the function to some other variable then it won't work.
+        // }
+        // // sayHi2();
 
-        let welcome = sayHi2;
-        sayHi2 = null;
+        // let welcome = sayHi2;
+        // sayHi2 = null;
 
-        welcome();
+        // welcome();
 
 //new Function syntax
 
@@ -1273,8 +1273,88 @@
 
       // console.log(object.method(4));
       // console.log(object.method(4));
-//
+
+//setInterval VS nested setTimeout
       
+    // setInterval(() => {
+    // console.log("hi")
+    // }, 3000);
+
+    let jest = function(){
+      console.log("hi 2");
+    }
+
+    // setTimeout(function func(){
+    //     jest() 
+    //   setTimeout(func, 1000);
+    // },1000)
+
+    // let start = Date.now();
+    // let timer = [];
+
+    // setTimeout(function func(){ 
+    //   jest()
+    //  setTimeout(func);
+    // })
+
+    // function numbers(a, b) {
+    //   let initialValue = a;
+
+    //   let timer = setInterval(()=> {
+    //     if (initialValue <= b) {
+    //       console.log(initialValue++);
+    //     } else {
+    //       clearInterval(timer);
+    //     }
+    //   },1000)
+    // }
+
+    // numbers(4, 8);
+
+    // function numbers2(a, b) {
+    //   let initialValue = a;
+
+    //   setTimeout(function func() {
+    //     console.log(initialValue++);
+
+    //     if (initialValue <= b) {
+    //       setTimeout(func, 1000)
+    //     } 
+    //   },1000)
+    // }
+
+    // numbers2(9, 18);
+
+    //To remove the Initial delay
+    
+    function noInitialDelay(a, d) {
+      let start = a;
+
+      function func() {
+        console.log(start);
+        start++;
+        if (start > d) clearInterval(timer);
+      }
+
+      let timer = setInterval(func,100)
+      func();
+    }
+
+    noInitialDelay(1, 10)
+
+    function noInitialDelay(start, d) {
+      // Log the current value
+      console.log(start);
+
+      // Check if the current value is less than or equal to the target value (d)
+      if (start <= d) {
+        // Use setTimeout to recursively call noInitialDelay with an incremented start
+        setTimeout(() => noInitialDelay(start + 1, d), 1000); // Pass the incremented start
+      }
+    }
+
+    // Initial call to the function with starting value 1 and target value 10
+    noInitialDelay(1, 10);
 
 
     </script>
