@@ -1154,7 +1154,129 @@
         // }
 
         // console.log(String(sum(1)(2)(3)(4)));
-        
+
+      //NFE
+        let i = 0;
+
+        let sayHi = function func() {
+          if (i == 5) return;
+          console.log('hello');
+          i++;
+          func(); //if someone reassigns the function to some other variable then also recursion will work.
+        }
+        // sayHi();
+
+        let bye = sayHi;
+        sayHi = null;
+        bye();
+
+        let j = 0;
+        let sayHi2 = function func() {
+          if (j == 5) return;
+          console.log('hello2');
+          j++;
+          sayHi2(); //if someone reassigns the function to some other variable then it won't work.
+        }
+        // sayHi2();
+
+        let welcome = sayHi2;
+        sayHi2 = null;
+
+        welcome();
+
+//new Function syntax
+
+      // let newFunctionSum = new Function('a', 'b', 'return a + b');
+      // console.log(newFunctionSum(2, 5));
+
+      // let cosoleFunction = new Function('console.log("Millionaire Shivendra")')
+      // cosoleFunction();
+
+      // let func = console.log("independent");
+
+      // let dynamicFunc = new Function(func);
+      // dynamicFunc()
+
+      // function newFunctionClosure() {
+      //   let nameMine = "Shivendra Dwivedi";
+
+      //   let newFunction = new Function('console.log(nameMine)');
+
+      //   return newFunction;
+      // }        
+      // //functions created by "new Function" are not closure
+
+      // let nameMine = "bahar"
+      // let returnedClosure = newFunctionClosure();
+
+      // returnedClosure();
+
+      // newFunctionClosure()();
+
+//Decorators and Forwarding , call/apply
+
+      //Caching
+      
+      // function square(a) {
+      //   return a**2;
+      // }
+
+      // function caching(func) {
+      //   let myMap = new Map();
+
+      //   return function(a) {
+      //     if (myMap.has(a)) {
+      //       console.log("cached")
+      //       return myMap.get(a);
+      //     }
+
+      //     console.log("not cached");
+      //     let result = func(a);
+
+      //     myMap.set(a, result);
+      //     return result;
+      //   };
+      // }
+      
+      // square = caching(square);
+
+      // console.log(square(4));
+      // console.log(square(4));
+
+      ////////////////////////////////////////////////Caching for Object's method
+
+      // let object = {
+      //   name : "Shivendra Dwivedi",
+      //   method(a) {
+      //     return this.name + a;
+      //   }
+      // }
+
+      // function caching(func) {
+      //   let myMap = new Map();
+
+      //   return function(a) {
+      //     if (myMap.has(a)) {
+      //       console.log("cached")
+      //       return myMap.get(a);
+      //     }
+
+      //     console.log("not cached");
+      //     let result = func.call(this, a);
+
+      //     myMap.set(a, result);
+      //     return result;
+      //   };
+      // }
+      
+      // object.method = caching(object.method);
+
+      // console.log(object.method(4));
+      // console.log(object.method(4));
+//
+      
+
+
     </script>
     ,
   </body>
