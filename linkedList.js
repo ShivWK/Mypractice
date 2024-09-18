@@ -484,40 +484,78 @@ function print(head) {
 
     //Brute force
 
-        function sortTheList(head) {
-            if (!head || !head.next) return head;  
+        // function sortTheList(head) {
+        //     if (!head || !head.next) return head;  
 
-            let current = head;
-            let zeros = 0, ones = 0, twos = 0;
+        //     let current = head;
+        //     let zeros = 0, ones = 0, twos = 0;
             
-            while (current) {
-                if (current.data === 0) zeros++;
-                else if (current.data === 1) ones++;
-                else twos++; 
+        //     while (current) {
+        //         if (current.data === 0) zeros++;
+        //         else if (current.data === 1) ones++;
+        //         else twos++; 
 
-                current = current.next;
+        //         current = current.next;
+        //     }
+
+        //     current = head;
+        //     while (current) {
+        //         if (zeros) {
+        //             current.data = 0;
+        //             zeros--;
+        //         } else if (ones) {
+        //             current.data = 1;
+        //             ones--;
+        //         } else {
+        //             current.data = 2;
+        //             twos--;
+        //         }
+
+        //         current = current.next;
+        //     }
+            
+        //     return head;
+        // }
+
+        // let zerosOnesTwosList = arrayToLinkedList([1,2,1,1,2,1,2,1,2])
+
+        // console.log(print(sortTheList(zerosOnesTwosList)));
+    
+    //Optimal Solution
+
+    function sortTheListOptimal(head) {
+        if (!head || !head.next) return head;
+
+        let current = head;
+        let zeroHead = new Node(-1), oneHead = new Node(-1), twoHead = new Node(-1);
+        let zero = zeroHead, one = oneHead, two = twoHead;
+
+        while (current) {
+            if (current.data === 0) {
+                zero.next = current; //Old zero ke next pe current diya 
+                zero = current; //zero ko age badhaya.
+            } else if (current.data === 1) {
+                one.next = current;
+                one = current;
+            } else {
+                two.next = current;
+                two = current;
             }
 
-            current = head;
-            while (current) {
-                if (zeros) {
-                    current.data = 0;
-                    zeros--;
-                } else if (ones) {
-                    current.data = 1;
-                    ones--;
-                } else {
-                    current.data = 2;
-                    twos--;
-                }
-
-                current = current.next;
-            }
-            
-            return head;
+            current = current.next;
         }
 
-        let zerosOnesTwosList = arrayToLinkedList([1,2,0,1,1,2,1,0,2,1,0,0,0,2])
+        zero.next = (oneHead.next) ? oneHead.next : twoHead.next;
+        one.next = twoHead.next;
+        two.next = null;
 
-        console.log(print(sortTheList(zerosOnesTwosList)));
+        let newHead = zeroHead.next;
 
+        return newHead
+    }
+
+    console.log(print(sortTheListOptimal(zerosOnesTwosList)));
+
+    //T.C = O(n) not exactly but yaeh , doing one link change at a time and loop iterates till the end of the list
+    //S.C = O(1) While linking nodes we are using the same old nodes, not creating new nodes.
+    //the dummy nodes will take constant space as they wont grow with input size
