@@ -564,67 +564,91 @@ function print(head) {
 
     //Brute force
 
-    function removeFromLast(head, n) {
-        if (!head) return head;
+    // function removeFromLast(head, n) {
+    //     if (!head) return head;
 
-        if (n == 1 && !head.next) {
-            head = null;
-            return head;
-        }
+    //     if (n == 1 && !head.next) {
+    //         head = null;
+    //         return head;
+    //     }
 
-        let current = head, size = 0;
-        while (current) {
-            size++;
+    //     let current = head, size = 0;
+    //     while (current) {
+    //         size++;
 
-            current = current.next;
-        }
+    //         current = current.next;
+    //     }
 
-        if (n === size) return head.next;
+    //     if (n === size) return head.next;
 
-        current = head;
-        let nthNodeTobeFound = size - n;
-        while (current) {
-            nthNodeTobeFound--;
+    //     current = head;
+    //     let nthNodeTobeFound = size - n;
+    //     while (current) {
+    //         nthNodeTobeFound--;
             
-            if (nthNodeTobeFound === 0) break;
-            current = current.next;
-        }
+    //         if (nthNodeTobeFound === 0) break;
+    //         current = current.next;
+    //     }
 
-        current.next = current.next.next;
-        return head;
-    }
+    //     current.next = current.next.next;
+    //     return head;
+    // }
 
-    let listToRemoveFormLast = arrayToLinkedList([1,2,5,8,3,9,4,6])
-    // console.log(print(listToRemoveFormLast));
-    console.log(print(removeFromLast(listToRemoveFormLast, 8)));
+    // let listToRemoveFormLast = arrayToLinkedList([1,2,5,8,3,9,4,6])
+    // console.log(print(removeFromLast(listToRemoveFormLast, 8)));
 
     //Optimal solution
 
-    function removeFromLast2(head, n) {
-        if (!head) return head;
+    // function removeFromLast2(head, n) {
+    //     if (!head) return head;
 
-        if (n == 1 && !head.next) {
-            head = null;
-            return head;
+    //     if (n == 1 && !head.next) {
+    //         head = null;
+    //         return head;
+    //     }
+
+    //     let fast = head, slow;
+    //     for (let i = 0; i < n; i++) {
+    //         fast = fast.next;
+    //     }
+
+    //     if (fast === null) return head.next;
+    //     slow = head;
+
+    //     while (fast.next) {
+    //         slow = slow.next;
+    //         fast = fast.next;
+    //     }
+
+    //     slow.next = slow.next.next;
+    //     return head;
+    // }
+
+    // let listToRemoveFormLast2 = arrayToLinkedList([1,2,3,4,5,6,7,8])
+    // console.log(print(removeFromLast2(listToRemoveFormLast2, 8)));
+
+//Reverse the LinkedList
+
+    //Brute force
+    function reverseTheList(head) {
+        if (!head || !head.next) return head;
+
+        let current = head;
+        let stack = [];
+
+        while (current) {
+            stack.push(current.data);
+            current = current.next;
         }
 
-        let fast = head, slow;
-        for (let i = 0; i < n; i++) {
-            fast = fast.next;
+        current = head;
+        while (current) {
+            current.data = stack.pop();
+            current = current.next;
         }
 
-        if (fast === null) return head.next;
-        slow = head;
-
-        while (fast.next) {
-            slow = slow.next;
-            fast = fast.next;
-        }
-
-        slow.next = slow.next.next;
         return head;
     }
 
-    let listToRemoveFormLast2 = arrayToLinkedList([1,2,3,4,5,6,7,8])
-    console.log(print(listToRemoveFormLast2));
-    console.log(print(removeFromLast2(listToRemoveFormLast2, 8)));
+    let reversalList = arrayToLinkedList([1,2,3,4,5,6,7,8,9]);
+    console.log(print(reverseTheList(reversalList)));
