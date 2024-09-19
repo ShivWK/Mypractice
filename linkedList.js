@@ -523,39 +523,77 @@ function print(head) {
     
     //Optimal Solution
 
-    function sortTheListOptimal(head) {
-        if (!head || !head.next) return head;
+    // function sortTheListOptimal(head) {
+    //     if (!head || !head.next) return head;
 
-        let current = head;
-        let zeroHead = new Node(-1), oneHead = new Node(-1), twoHead = new Node(-1);
-        let zero = zeroHead, one = oneHead, two = twoHead;
+    //     let current = head;
+    //     let zeroHead = new Node(-1), oneHead = new Node(-1), twoHead = new Node(-1);
+    //     let zero = zeroHead, one = oneHead, two = twoHead;
 
+    //     while (current) {
+    //         if (current.data === 0) {
+    //             zero.next = current; //Old zero ke next pe current diya 
+    //             zero = current; //zero ko age badhaya.
+    //         } else if (current.data === 1) {
+    //             one.next = current;
+    //             one = current;
+    //         } else {
+    //             two.next = current;
+    //             two = current;
+    //         }
+
+    //         current = current.next;
+    //     }
+
+    //     zero.next = (oneHead.next) ? oneHead.next : twoHead.next;
+    //     one.next = twoHead.next;
+    //     two.next = null;
+
+    //     let newHead = zeroHead.next;
+
+    //     return newHead
+    // }
+
+    // console.log(print(sortTheListOptimal(zerosOnesTwosList)));
+
+    //T.C = O(n) not exactly but yaeh , doing one link change at a time and loop iterates till the end of the list
+    //S.C = O(1) While linking nodes we are using the same old nodes, not creating new nodes.
+    //the dummy nodes will take constant space as they wont grow with input size.
+
+//Remove the given nth node from the end
+
+    //Brute force
+
+    function removeFromLast(head, n) {
+        if (!head) return head;
+
+        if (n == 1 && !head.next) {
+            head = null;
+            return head;
+        }
+
+        let current = head, size = 0;
         while (current) {
-            if (current.data === 0) {
-                zero.next = current; //Old zero ke next pe current diya 
-                zero = current; //zero ko age badhaya.
-            } else if (current.data === 1) {
-                one.next = current;
-                one = current;
-            } else {
-                two.next = current;
-                two = current;
-            }
+            size++;
 
             current = current.next;
         }
 
-        zero.next = (oneHead.next) ? oneHead.next : twoHead.next;
-        one.next = twoHead.next;
-        two.next = null;
+        if (n === size) return head.next;
 
-        let newHead = zeroHead.next;
+        current = head;
+        let nthNodeTobeFound = size - n;
+        while (current) {
+            nthNodeTobeFound--;
+            
+            if (nthNodeTobeFound === 0) break;
+            current = current.next;
+        }
 
-        return newHead
+        current.next = current.next.next;
+        return head;
     }
 
-    console.log(print(sortTheListOptimal(zerosOnesTwosList)));
-
-    //T.C = O(n) not exactly but yaeh , doing one link change at a time and loop iterates till the end of the list
-    //S.C = O(1) While linking nodes we are using the same old nodes, not creating new nodes.
-    //the dummy nodes will take constant space as they wont grow with input size
+    let listToRemoveFormLast = arrayToLinkedList([1,2,5,8,3,9,4,6])
+    console.log(print(listToRemoveFormLast));
+    console.log(print(removeFromLast(listToRemoveFormLast, 8)));
