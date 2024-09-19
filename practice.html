@@ -1274,15 +1274,60 @@
       // console.log(object.method(4));
       // console.log(object.method(4));
 
+      //Caching with multiple arguments
+
+      let obj = {
+        add(a,b,c) {
+         return (a + b + c);
+        }
+      }
+
+      function cacher(func, hash) {
+        let myMap = new Map();
+
+        return function(...args) {
+
+
+          let key = hash(args.sort((a,b) => a - b));
+
+          if (myMap.has(key)) {
+            console.log("cached");
+            return myMap.get(key);
+          }
+          
+          let result = func(...arguments);
+          myMap.set(key, result);
+          console.log("not cashed");
+
+          return result;
+        }
+      }
+
+      function hash(args) {
+        return args[0]+","+args[1]+','+args[2];
+      }
+
+      obj.add = cacher(obj.add, hash);
+
+      console.log(obj.add(1,2,3));
+      console.log(obj.add(1,3,2));
+
+
+   
+      // obj.add(1,3,2);
+
+      // console.log(hash([1,2,3]))
+
+
 //setInterval VS nested setTimeout
       
     // setInterval(() => {
     // console.log("hi")
     // }, 3000);
 
-    let jest = function(){
-      console.log("hi 2");
-    }
+    // let jest = function(){
+    //   console.log("hi 2");
+    // }
 
     // setTimeout(function func(){
     //     jest() 
@@ -1327,35 +1372,36 @@
 
     //To remove the Initial delay
     
-    function noInitialDelay(a, d) {
-      let start = a;
+    // function noInitialDelay(a, d) {
+    //   let start = a;
 
-      function func() {
-        console.log(start);
-        start++;
-        if (start > d) clearInterval(timer);
-      }
+    //   function func() {
+    //     console.log(start);
+    //     start++;
+    //     if (start > d) clearInterval(timer);
+    //   }
 
-      let timer = setInterval(func,100)
-      func();
-    }
+    //   let timer = setInterval(func,100)
+    //   func();
+    // }
 
-    noInitialDelay(1, 10)
+    // noInitialDelay(1, 10)
 
-    function noInitialDelay(start, d) {
+    // function noInitialDelay(start, d) {
       // Log the current value
-      console.log(start);
+      // console.log(start);
 
       // Check if the current value is less than or equal to the target value (d)
-      if (start <= d) {
+      // if (start <= d) {
         // Use setTimeout to recursively call noInitialDelay with an incremented start
-        setTimeout(() => noInitialDelay(start + 1, d), 1000); // Pass the incremented start
-      }
-    }
+        // setTimeout(() => noInitialDelay(start + 1, d), 1000); // Pass the incremented start
+      // }
+    //}
 
     // Initial call to the function with starting value 1 and target value 10
-    noInitialDelay(1, 10);
+    //noInitialDelay(1, 10);
 
+    //
 
     </script>
     ,
