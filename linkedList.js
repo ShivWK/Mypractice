@@ -595,5 +595,36 @@ function print(head) {
     }
 
     let listToRemoveFormLast = arrayToLinkedList([1,2,5,8,3,9,4,6])
-    console.log(print(listToRemoveFormLast));
+    // console.log(print(listToRemoveFormLast));
     console.log(print(removeFromLast(listToRemoveFormLast, 8)));
+
+    //Optimal solution
+
+    function removeFromLast2(head, n) {
+        if (!head) return head;
+
+        if (n == 1 && !head.next) {
+            head = null;
+            return head;
+        }
+
+        let fast = head, slow;
+        for (let i = 0; i < n; i++) {
+            fast = fast.next;
+        }
+
+        if (fast === null) return head.next;
+        slow = head;
+
+        while (fast.next) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+
+        slow.next = slow.next.next;
+        return head;
+    }
+
+    let listToRemoveFormLast2 = arrayToLinkedList([1,2,3,4,5,6,7,8])
+    console.log(print(listToRemoveFormLast2));
+    console.log(print(removeFromLast2(listToRemoveFormLast2, 8)));
