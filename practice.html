@@ -1277,8 +1277,13 @@
       //Caching with multiple arguments
 
       let obj = {
-        add(a,b,c) {
-         return (a + b + c);
+        add(...args) {
+          let sum = 0;
+          for (let i = 0; i < args.length; i++) {
+            sum += args[i];
+          }
+
+          return sum;
         }
       }
 
@@ -1288,14 +1293,14 @@
         return function(...args) {
 
 
-          let key = hash(args.sort((a,b) => a - b));
+          let key = hash([...args].sort((a,b) => a - b));
 
           if (myMap.has(key)) {
             console.log("cached");
             return myMap.get(key);
           }
           
-          let result = func(...arguments);
+          let result = func(...args);
           myMap.set(key, result);
           console.log("not cashed");
 
@@ -1304,16 +1309,16 @@
       }
 
       function hash(args) {
-        return args[0]+","+args[1]+','+args[2];
+        return [].join.call(args) //generalised it to work for any number of arguments.
       }
 
       obj.add = cacher(obj.add, hash);
 
       console.log(obj.add(1,2,3));
-      console.log(obj.add(1,3,2));
+      console.log(obj.add(1,3,2,4));
+      console.log(obj.add(1,3,2,4));
 
 
-   
       // obj.add(1,3,2);
 
       // console.log(hash([1,2,3]))

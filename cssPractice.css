@@ -26,6 +26,31 @@ input:checked {
     box-shadow: 0 0 0 3px;
 }
 
-input[type = "email"]:invalid {
-    color : red;
+input[type = "radio"]:invalid {
+    box-shadow: 0 0 0 3px;
 }
+
+.second-div::first-letter {
+    color : greenyellow;
+}
+
+div:empty {
+    border : 2px solid red;
+}
+
+#line::first-line {
+    color : blue;
+}
+
+div::selection {
+    color : goldenrod
+}
+
+#line::before {
+    content : "Shivendra "
+}
+
+#line::after {
+    content : " Dwivedi"
+}
+
