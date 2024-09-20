@@ -1320,33 +1320,51 @@
 
       //Spy decorator takes recode of passed argues
 
-      function work(a, b) {
-        console.log(a, b);
-      }
+      // function work(a, b) {
+      //   console.log(a, b);
+      // }
 
-      function spy(func) {
-        function wrapper(...args) {
-            wrapper.calls.push(args); //complete array is pushed
-            func(...args);
+      // function spy(func) {
+      //   function wrapper(...args) {
+      //       wrapper.calls.push(args); //complete array is pushed
+      //       func(...args);
+      //   }
+
+      //   wrapper.calls = []; //initialising the property;
+
+      //   return wrapper
+      // }
+
+      // work = spy(work);
+      // work(1,2);
+      // work(3,4);
+      // work(5,6);
+      // work(7,8);
+      // work(9,10);
+      // work(11,12);
+
+
+      // for (let argues of work.calls) {
+      //   console.log(argues);
+      // }
+
+      //Decorater to call the function after the given ms time
+
+      function display(str) {
+        console.log(str);
+      }
+      
+      function wrapper(func, delay) {
+        return function(...args) {
+          let thisContext = this;
+          setTimeout(function() {
+            func.apply(thisContext, args);
+          }, delay)
         }
-
-        wrapper.calls = []; //initialising the property;
-
-        return wrapper
       }
 
-      work = spy(work);
-      work(1,2);
-      work(3,4);
-      work(5,6);
-      work(7,8);
-      work(9,10);
-      work(11,12);
-
-
-      for (let argues of work.calls) {
-        console.log(argues);
-      }
+      display = wrapper(display, 3000);
+      display("shivendra");
 
 //setInterval VS nested setTimeout
       
