@@ -630,25 +630,46 @@ function print(head) {
 //Reverse the LinkedList
 
     //Brute force
-    function reverseTheList(head) {
+    // function reverseTheList(head) {
+    //     if (!head || !head.next) return head;
+
+    //     let current = head;
+    //     let stack = [];
+
+    //     while (current) {
+    //         stack.push(current.data);
+    //         current = current.next;
+    //     }
+
+    //     current = head;
+    //     while (current) {
+    //         current.data = stack.pop();
+    //         current = current.next;
+    //     }
+
+    //     return head;
+    // }
+
+    // let reversalList = arrayToLinkedList([1,2,3,4,5,6,7,8,9]);
+    // console.log(print(reverseTheList(reversalList)));
+
+    //Optimal solution
+
+    function reverseTheLinks(head) {
         if (!head || !head.next) return head;
 
-        let current = head;
-        let stack = [];
+        let current = head, prev = null;
 
         while (current) {
-            stack.push(current.data);
-            current = current.next;
+            let front = current.next;
+            current.next = prev;
+            prev = current;
+            current = front;
         }
 
-        current = head;
-        while (current) {
-            current.data = stack.pop();
-            current = current.next;
-        }
-
-        return head;
+        return prev;
     }
 
     let reversalList = arrayToLinkedList([1,2,3,4,5,6,7,8,9]);
-    console.log(print(reverseTheList(reversalList)));
+    console.log(print(reversalList))
+    console.log(print(reverseTheLinks(reversalList)));
