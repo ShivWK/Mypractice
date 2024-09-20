@@ -1276,53 +1276,77 @@
 
       //Caching with multiple arguments
 
-      let obj = {
-        add(...args) {
-          let sum = 0;
-          for (let i = 0; i < args.length; i++) {
-            sum += args[i];
-          }
+      // let obj = {
+      //   add(...args) {
+      //     let sum = 0;
+      //     for (let i = 0; i < args.length; i++) {
+      //       sum += args[i];
+      //     }
 
-          return sum;
-        }
-      }
+      //     return sum;
+      //   }
+      // }
 
-      function cacher(func, hash) {
-        let myMap = new Map();
+      // function cacher(func, hash) {
+      //   let myMap = new Map();
 
-        return function(...args) {
+      //   return function(...args) {
 
 
-          let key = hash([...args].sort((a,b) => a - b));
+      //     let key = hash([...args].sort((a,b) => a - b));
 
-          if (myMap.has(key)) {
-            console.log("cached");
-            return myMap.get(key);
-          }
+      //     if (myMap.has(key)) {
+      //       console.log("cached");
+      //       return myMap.get(key);
+      //     }
           
-          let result = func(...args);
-          myMap.set(key, result);
-          console.log("not cashed");
+      //     let result = func(...args);
+      //     myMap.set(key, result);
+      //     console.log("not cashed");
 
-          return result;
+      //     return result;
+      //   }
+      // }
+
+      // function hash(args) {
+      //   return [].join.call(args) //generalised it to work for any number of arguments.
+      // }
+
+      // obj.add = cacher(obj.add, hash);
+
+      // console.log(obj.add(1,2,3));
+      // console.log(obj.add(1,3,2,4));
+      // console.log(obj.add(1,3,2,4));
+
+      //Spy decorator takes recode of passed argues
+
+      function work(a, b) {
+        console.log(a, b);
+      }
+
+      function spy(func) {
+        function wrapper(...args) {
+            wrapper.calls.push(args); //complete array is pushed
+            func(...args);
         }
+
+        wrapper.calls = []; //initialising the property;
+
+        return wrapper
       }
 
-      function hash(args) {
-        return [].join.call(args) //generalised it to work for any number of arguments.
+      work = spy(work);
+      work(1,2);
+      work(3,4);
+      work(5,6);
+      work(7,8);
+      work(9,10);
+      work(11,12);
+
+
+      for (let argues of work.calls) {
+        console.log(argues);
       }
-
-      obj.add = cacher(obj.add, hash);
-
-      console.log(obj.add(1,2,3));
-      console.log(obj.add(1,3,2,4));
-      console.log(obj.add(1,3,2,4));
-
-
-      // obj.add(1,3,2);
-
-      // console.log(hash([1,2,3]))
-
 
 //setInterval VS nested setTimeout
       
