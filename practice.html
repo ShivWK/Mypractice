@@ -1612,23 +1612,23 @@
       }
     } 
 
-    let obj_flags = Object.getOwnPropertyDescriptor(flagsObj, 'name');
-    console.log(obj_flags);
+    // let obj_flags = Object.getOwnPropertyDescriptor(flagsObj, 'name');
+    // console.log(obj_flags);
 
-    Object.defineProperty(flagsObj, 'age', {
-      value : 26,
-      writable : true,
-      configurable : false,
-      // enumerable : true,
-    });
+    // Object.defineProperty(flagsObj, 'age', {
+    //   value : 26,
+    //   writable : true,
+    //   configurable : false,
+    //   // enumerable : true,
+    // });
 
-    Object.defineProperty(flagsObj, 'age', {
-      writable : false,
-    });
-    delete flagsObj.age;
-    for (let key in flagsObj) {
-      console.log(flagsObj[key]);
-    }
+    // Object.defineProperty(flagsObj, 'age', {
+    //   writable : false,
+    // });
+    // delete flagsObj.age;
+    // for (let key in flagsObj) {
+    //   console.log(flagsObj[key]);
+    // }
 
     let newObj = Object.defineProperties(flagsObj, {
       name2 : {value : "Ritk"},
@@ -1639,11 +1639,28 @@
 
     console.log(Object.getOwnPropertyDescriptors(clone));
 
-    clone.show = function() {
-      console.log("altered log")
-    };
+    Object.preventExtensions(clone);
 
-    clone.show()
+    Object.defineProperty(clone, 'name', {
+      writable : false,
+    })
+    console.log(Object.getOwnPropertyDescriptors(clone));
+ 
+
+
+    // clone.show = function() {
+    //   console.log("altered log")
+    // };
+
+    // clone['baskar'] = "han thik hai";
+    // delete clone.name2
+
+    // clone.show()
+
+    // console.log(Object.isExtensible(clone));
+    // console.log(Object.isFrozen(clone));
+    // console.log(Object.isSealed(clone));
+
     </script>
     
   </body>
