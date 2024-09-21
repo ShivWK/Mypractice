@@ -1585,22 +1585,65 @@
     // //or
     // askPassword(user.login.bind(user, true), user.login.bind(user, false));
 
-    function askPassword(ok, fail) {
-      let password = prompt("password", '');
-      if (password === "rock") ok(true);
-      else fail(false);
-    }
+    // function askPassword(ok, fail) {
+    //   let password = prompt("password", '');
+    //   if (password === "rock") ok(true);
+    //   else fail(false);
+    // }
 
-    let user = {
+    // let user = {
+    //   name : "shivendra",
+
+    //   login(result) {
+    //     (result) ? console.log(this.name+" "+"logedIn") : console.log(this.name+" "+"failed to login");
+    //   }
+    // }
+
+    // askPassword((re) => user.login(re), (re) => user.login(re));
+
+    //Property flags and descriptors
+    "use strict"
+
+    let flagsObj = {
       name : "shivendra",
-
-      login(result) {
-        (result) ? console.log(this.name+" "+"logedIn") : console.log(this.name+" "+"failed to login");
+      age : 25,
+      show() {
+        console.log(this.name);
       }
+    } 
+
+    let obj_flags = Object.getOwnPropertyDescriptor(flagsObj, 'name');
+    console.log(obj_flags);
+
+    Object.defineProperty(flagsObj, 'age', {
+      value : 26,
+      writable : true,
+      configurable : false,
+      // enumerable : true,
+    });
+
+    Object.defineProperty(flagsObj, 'age', {
+      writable : false,
+    });
+    delete flagsObj.age;
+    for (let key in flagsObj) {
+      console.log(flagsObj[key]);
     }
 
-    askPassword((re) => user.login(re), (re) => user.login(re));
+    let newObj = Object.defineProperties(flagsObj, {
+      name2 : {value : "Ritk"},
+      address : {value : "Naini, Prayagraj"},
+    });
 
+    let clone = Object.defineProperties({}, Object.getOwnPropertyDescriptors(flagsObj))
+
+    console.log(Object.getOwnPropertyDescriptors(clone));
+
+    clone.show = function() {
+      console.log("altered log")
+    };
+
+    clone.show()
     </script>
     
   </body>
