@@ -655,21 +655,99 @@ function print(head) {
 
     //Optimal solution
 
-    function reverseTheLinks(head) {
+    // function reverseTheLinks(head) {
+    //     if (!head || !head.next) return head;
+
+    //     let current = head, prev = null;
+
+    //     while (current) {
+    //         let front = current.next;
+    //         current.next = prev;
+    //         prev = current;
+    //         current = front;
+    //     }
+
+    //     return prev;
+    // }
+
+    // let reversalList = arrayToLinkedList([1,2,3,4,5,6,7,8,9]);
+    // console.log(print(reversalList))
+    // console.log(print(reverseTheLinks(reversalList)));
+
+//Mid node finding
+
+    //Brute Force
+
+    function findMid(head) {
         if (!head || !head.next) return head;
 
-        let current = head, prev = null;
-
+        let current = head, size = 0;
         while (current) {
-            let front = current.next;
-            current.next = prev;
-            prev = current;
-            current = front;
+            size++;
+            current = current.next;
         }
 
-        return prev;
+        let midAt = Math.floor(size/2) + 1;
+        current = head;
+
+        while (current) {    
+            if (--midAt === 0) break;
+            current = current.next
+        }
+        
+        return current;
     }
 
-    let reversalList = arrayToLinkedList([1,2,3,4,5,6,7,8,9]);
-    console.log(print(reversalList))
-    console.log(print(reverseTheLinks(reversalList)));
+    let midList = arrayToLinkedList([1,2,3,4,5])
+    console.log(findMid(midList).data);
+
+    //Optimal solution
+
+    function findMidOptimal(head) {
+        if (!head || !head.next) return head;
+
+        let fast = head, slow = head;
+
+        while (fast && fast.next) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        return slow;
+    }
+
+    let midList2 = arrayToLinkedList([1,2,3,4,5])
+    console.log(findMidOptimal(midList2).data);
+
+
+//Is palindrom or not
+
+    //Brute force
+
+    // function isPalindrom(head) {
+    //     if (!head || !head.next) return true;
+
+    //     let myStack = [], current = head;
+
+    //     while (current) {
+    //         myStack.push(current.data);
+    //         current = current.next;
+    //     }
+
+    //     current = head;
+    //     while (current) {
+    //         if (current.data === myStack.pop()) return true;
+
+    //             current = current.next;
+    //             return false;         
+    //     }
+    // }
+
+    // let palindromList = arrayToLinkedList([1,2,3,3,2,1]);
+    // console.log(isPalindrom(palindromList));
+    // let notPalindromList = arrayToLinkedList([1,2,3,4,5,6]);
+    // console.log(isPalindrom(notPalindromList));
+
+    //Optimal Solution
+
+    
