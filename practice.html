@@ -1489,82 +1489,118 @@
 
     //Bound variand, bind()
 
-    let user =  {
-      firstName : "Shivendra",
+    // let user =  {
+    //   firstName : "Shivendra",
       
-    }
+    // }
 
-    function sayHi() {
-        console.log("hello"+" "+this.firstName);
-      }
-    let boundVariant = sayHi.bind(user);
+    // function sayHi() {
+    //     console.log("hello"+" "+this.firstName);
+    //   }
+    // let boundVariant = sayHi.bind(user);
 
-    console.log(boundVariant);
-    boundVariant();
+    // console.log(boundVariant);
+    // boundVariant();
 
-    let user2 = {
-      LastName : "Dwivedi",
-      sayHi() {
-        console.log("hi"+" "+this.LastName);
-      },
-      basKar() {
-        console.log("Bas kar bhai ab khudse pyar krna shikh");
-      }
-    }
+    // let user2 = {
+    //   LastName : "Dwivedi",
+    //   sayHi() {
+    //     console.log("hi"+" "+this.LastName);
+    //   },
+    //   basKar() {
+    //     console.log("Bas kar bhai ab khudse pyar krna shikh");
+    //   }
+    // }
 
-    for (let key in user2) {
-      if (typeof user2[key] === "function") {
-        user2[key] = user2[key].bind(user2);
-      }
-    }
+    // for (let key in user2) {
+    //   if (typeof user2[key] === "function") {
+    //     user2[key] = user2[key].bind(user2);
+    //   }
+    // }
 
-    user2.sayHi()
+    // user2.sayHi()
 
-    function add(a, b) {
-      return a + b;
-    }
+    // function add(a, b) {
+    //   return a + b;
+    // }
 
-    let partial = add.bind(null, 2);
+    // let partial = add.bind(null, 2);
 
-    console.log(partial(5));
+    // console.log(partial(5));
 
     // Custom partial function without context
 
-    function customPartial(func, ...fixedArgs) {
-      return function(...args) {
-        return func(...fixedArgs, ...args);
-      }
-    }
+    // function customPartial(func, ...fixedArgs) {
+    //   return function(...args) {
+    //     return func(...fixedArgs, ...args);
+    //   }
+    // }
 
-    let newPartial = customPartial(add, 5);
-    console.log(newPartial(7));
+    // let newPartial = customPartial(add, 5);
+    // console.log(newPartial(7));
 
-    function user() {
-      console.log(this.name);
-    }
+    // function user() {
+    //   console.log(this.name);
+    // }
 
-    let boundVersion = user.bind({name : "Shivendra"}).bind({name : "Dwivedi"}); //second binding will not happan, while creation of the bound Variant function remembers the context and arguments(if given) given in first binding, second binding cant change this.
-    boundVersion();
+    // let boundVersion = user.bind({name : "Shivendra"}).bind({name : "Dwivedi"}); //second binding will not happan, while creation of the bound Variant function remembers the context and arguments(if given) given in first binding, second binding cant change this.
+    // boundVersion();
+
+    // function askPassword(ok, fail) {
+    //   let password = prompt("password", '');
+    //   if (password == "rockstar") ok();
+    //   else fail();
+    // }
+
+    // let user = {
+    //   name : "shivendra",
+
+    //   loginOk() {
+    //     console.log(this.name+" "+"logedIn");
+    //   },
+
+    //   failLogin() {
+    //     console.log(this.name+" "+"failed to login");
+    //   }
+    // }
+
+    // askPassword(() => user.loginOk(), () => user.failLogin());
+
+    // function askPassword(ok, fail) {
+    //   let password = prompt("password", '');
+    //   if (password == "rockstar") ok();
+    //   else fail();
+    // }
+
+    // let user = {
+    //   name : "shivendra",
+
+    //   login(result) {
+    //     (result) ? console.log(this.name+" "+"logedIn") : console.log(this.name+" "+"failed to login");
+    //   },
+
+    // }
+
+    // askPassword(() => user.login(true), () => user.login(false));
+    // //or
+    // askPassword(user.login.bind(user, true), user.login.bind(user, false));
 
     function askPassword(ok, fail) {
       let password = prompt("password", '');
-      if (password == "rockstar") ok();
-      else fail();
+      if (password === "rock") ok(true);
+      else fail(false);
     }
 
     let user = {
       name : "shivendra",
 
-      loginOk() {
-        console.log(this.name+" "+"logedIn");
-      },
-
-      failLogin() {
-        console.log(this.name+" "+"failed to login");
+      login(result) {
+        (result) ? console.log(this.name+" "+"logedIn") : console.log(this.name+" "+"failed to login");
       }
     }
 
-    askPassword(() => user.loginOk(), () => user.failLogin());
+    askPassword((re) => user.login(re), (re) => user.login(re));
+
     </script>
     
   </body>
