@@ -1450,43 +1450,122 @@
 
     //infinite currying
 
-    function add(a) {
-      let sum = a;
+    // function add(a) {
+    //   let sum = a;
 
-      return function again(b) {
-        if (b !== undefined) {
-          sum += b;
-          return again;
-        }
+    //   return function again(b) {
+    //     if (b !== undefined) {
+    //       sum += b;
+    //       return again;
+    //     }
 
-        return sum;
+    //     return sum;
+    //   }
+    // }
+
+    // console.log(add(1)(2)(3)(4)(5)(6)(0)())
+
+    // let obj = {
+    //   total : 0,
+
+    //   add(a) {
+    //     this.total += a;
+    //     return this;
+    //   },
+
+    //   subtract(b) {
+    //     this.total -= b;
+    //     return this;
+    //   },
+
+    //   multiply(c) {
+    //     this.total *= c;
+    //     return this;
+    //   },
+    // }
+
+    // const result = obj.add(10).multiply(5).subtract(30).add(20);
+    // console.log(result.total);
+
+    //Bound variand, bind()
+
+    let user =  {
+      firstName : "Shivendra",
+      
+    }
+
+    function sayHi() {
+        console.log("hello"+" "+this.firstName);
+      }
+    let boundVariant = sayHi.bind(user);
+
+    console.log(boundVariant);
+    boundVariant();
+
+    let user2 = {
+      LastName : "Dwivedi",
+      sayHi() {
+        console.log("hi"+" "+this.LastName);
+      },
+      basKar() {
+        console.log("Bas kar bhai ab khudse pyar krna shikh");
       }
     }
 
-    console.log(add(1)(2)(3)(4)(5)(6)(0)())
-
-    let obj = {
-      total : 0,
-
-      add(a) {
-        this.total += a;
-        return this;
-      },
-
-      subtract(b) {
-        this.total -= b;
-        return this;
-      },
-
-      multiply(c) {
-        this.total *= c;
-        return this;
-      },
+    for (let key in user2) {
+      if (typeof user2[key] === "function") {
+        user2[key] = user2[key].bind(user2);
+      }
     }
 
-    const result = obj.add(10).multiply(5).subtract(30).add(20);
-    console.log(result.total);
+    user2.sayHi()
+
+    function add(a, b) {
+      return a + b;
+    }
+
+    let partial = add.bind(null, 2);
+
+    console.log(partial(5));
+
+    // Custom partial function without context
+
+    function customPartial(func, ...fixedArgs) {
+      return function(...args) {
+        return func(...fixedArgs, ...args);
+      }
+    }
+
+    let newPartial = customPartial(add, 5);
+    console.log(newPartial(7));
+
+    function user() {
+      console.log(this.name);
+    }
+
+    let boundVersion = user.bind({name : "Shivendra"}).bind({name : "Dwivedi"}); //second binding will not happan, while creation of the bound Variant function remembers the context and arguments(if given) given in first binding, second binding cant change this.
+    boundVersion();
+
+    function askPassword(ok, fail) {
+      let password = prompt("password", '');
+      if (password == "rockstar") ok();
+      else fail();
+    }
+
+    let user = {
+      name : "shivendra",
+
+      loginOk() {
+        console.log(this.name+" "+"logedIn");
+      },
+
+      failLogin() {
+        console.log(this.name+" "+"failed to login");
+      }
+    }
+
+    askPassword(() => user.loginOk(), () => user.failLogin());
     </script>
-    ,
+    
   </body>
 </html>
