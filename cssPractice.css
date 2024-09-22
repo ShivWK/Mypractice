@@ -1,56 +1,118 @@
-nav li a{
-    color : black;
-    text-decoration: none;
+nav li a {
+  color: black;
+  text-decoration: none;
 }
 
-[class *= 'Birds' i]{
-    color : rgb(8, 160, 187);
+[class*="Birds" i] {
+  color: rgb(8, 160, 187);
 }
 
 button:hover {
-    color : goldenrod;
+  color: goldenrod;
 }
 
 a:active {
-    color : green;
+  color: green;
 }
 
 a:hover {
-    text-decoration: none;
+  text-decoration: none;
 }
 a:visited {
-    color : yellow;
+  color: yellow;
 }
 
 input:checked {
-    box-shadow: 0 0 0 3px;
+  box-shadow: 0 0 0 3px;
 }
 
-input[type = "radio"]:invalid {
-    box-shadow: 0 0 0 3px;
+input[type="radio"]:invalid {
+  box-shadow: 0 0 0 3px;
 }
 
 .second-div::first-letter {
-    color : greenyellow;
+  color: greenyellow;
 }
 
 div:empty {
-    border : 2px solid red;
+  border: 2px solid red;
 }
 
 #line::first-line {
-    color : blue;
+  color: blue;
 }
 
 div::selection {
-    color : goldenrod
+  color: goldenrod;
 }
 
 #line::before {
-    content : "Shivendra "
+  content: "Shivendra ";
 }
 
 #line::after {
-    content : " Dwivedi"
+  content: " Dwivedi";
+}
+body {
+  /* background-image: url("assets/WebChatter\ Logo.png"), url("assets/jessica-weiller-LmVSKeDy6EA-unsplash.jpg");
+  background-size: 50% 100%;
+  background-attachment: local;
+  /* background-color: grey; */
+  /* background-repeat: no-repeat; */
+  /* background-position: 0% 0%, 100% 0%; */ 
 }
 
+#myBox {
+  box-sizing: border-box;
+  height: 200px;
+  width: 30%;
+  border: 5px groove grey;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  overflow: auto;
+  /* padding: 10px; */
+  /* background-image: url('assets/audiocover.jpg'); */
+  /* background-color: red; */
+  /* background-size: auto; */
+  /* background-repeat: no-repeat; */
+  /* background-attachment: local; */
+  /* background-origin: content-box; */
+  /* background-clip: content-box; */
+}
+
+img {
+  width : 100%;
+  object-fit: cover;
+  max-width: 400px;
+  min-width: 200px;
+}
+
+#inlineBlock {
+  display: inline-block;
+  border: 2px solid transparent;
+  height: 200px;
+  width: 100px;
+  padding: 10px;
+  margin: 5px;
+}
+
+/* p {
+  font-size: 100px;
+  font-weight: 800;
+  color: transparent;
+  background-clip: text;
+  background-image: url("assets/jessica-weiller-LmVSKeDy6EA-unsplash.jpg");
+  background-size: contain;
+} */
+
+#grand-parent {
+  font-size: 32px;
+}
+#parent {
+  font-size: 16px;
+}
+#child {
+  font-size: 1em;
+}

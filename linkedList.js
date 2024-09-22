@@ -766,7 +766,7 @@ function print(head) {
             let front = current.next;
             current.next = prev;
             prev = current;
-            current = front
+            current = front;
         }
 
         //matching
