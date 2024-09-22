@@ -1487,7 +1487,7 @@
     // const result = obj.add(10).multiply(5).subtract(30).add(20);
     // console.log(result.total);
 
-    //Bound variand, bind()
+//Bound variand, bind()
 
     // let user =  {
     //   firstName : "Shivendra",
@@ -1601,16 +1601,16 @@
 
     // askPassword((re) => user.login(re), (re) => user.login(re));
 
-    //Property flags and descriptors
-    "use strict"
+//Property flags and descriptors
+    // "use strict"
 
-    let flagsObj = {
-      name : "shivendra",
-      age : 25,
-      show() {
-        console.log(this.name);
-      }
-    } 
+    // let flagsObj = {
+    //   name : "shivendra",
+    //   age : 25,
+    //   show() {
+    //     console.log(this.name);
+    //   }
+    // } 
 
     // let obj_flags = Object.getOwnPropertyDescriptor(flagsObj, 'name');
     // console.log(obj_flags);
@@ -1630,21 +1630,21 @@
     //   console.log(flagsObj[key]);
     // }
 
-    let newObj = Object.defineProperties(flagsObj, {
-      name2 : {value : "Ritk"},
-      address : {value : "Naini, Prayagraj"},
-    });
+    // let newObj = Object.defineProperties(flagsObj, {
+    //   name2 : {value : "Ritk"},
+    //   address : {value : "Naini, Prayagraj"},
+    // });
 
-    let clone = Object.defineProperties({}, Object.getOwnPropertyDescriptors(flagsObj))
+    // let clone = Object.defineProperties({}, Object.getOwnPropertyDescriptors(flagsObj))
 
-    console.log(Object.getOwnPropertyDescriptors(clone));
+    // console.log(Object.getOwnPropertyDescriptors(clone));
 
-    Object.preventExtensions(clone);
+    // Object.preventExtensions(clone);
 
-    Object.defineProperty(clone, 'name', {
-      writable : false,
-    })
-    console.log(Object.getOwnPropertyDescriptors(clone));
+    // Object.defineProperty(clone, 'name', {
+    //   writable : false,
+    // })
+    // console.log(Object.getOwnPropertyDescriptors(clone));
  
 
 
@@ -1660,6 +1660,105 @@
     // console.log(Object.isExtensible(clone));
     // console.log(Object.isFrozen(clone));
     // console.log(Object.isSealed(clone));
+
+//Property getters and setters
+
+      // let users = {
+      //   Fname : "Shivendra",
+      //   Lname : "Dwivedi",
+
+      //   get fullName() {
+      //     return this.Fname + " " + this.Lname;
+      //   },
+
+      //   set fullName(value) {
+      //     [this.Fname, this.Lname] = value.split(" ");
+      //   }
+      // }
+
+      // console.log(users.fullName);
+      // users.fullName = "Ritik Mishra";
+      // console.log(users.fullName)
+
+      // console.log(Object.getOwnPropertyDescriptor(users, fullname));
+
+//Prototype
+
+      let animal = {
+        sleeps : true,
+        eats : true,
+        flys : false,
+      }
+
+      let rabbit = {
+        runs : "faster",
+        looks : "cute",
+        show() {
+          console.log(this.runs);
+        }
+      }
+
+      rabbit.__proto__ = animal;
+
+      // console.log(rabbit.__proto__);
+      // console.log(rabbit.eats);
+      // console.log(animal.__proto__);
+
+      let rabbit2 = {
+        bread : "boni",
+        color : "white",
+        // runs : "medium",
+        __proto__ : rabbit,
+      }
+
+      for (let key in rabbit2) {
+        let isOwn = rabbit2.hasOwnProperty(key);
+
+        if (isOwn) {
+          console.log("Own property: "+ rabbit2[key]);
+        } else {
+          if (typeof rabbit2[key] === 'function') {
+             console.log("inherited function: ");
+             rabbit2[key]();
+          } else {
+            console.log("Inherited property: ");
+            rabbit2[key];
+          }
+      }
+    }
+  
+      // console.log(rabbit2.show());
+
+      // rabbit2.show = function() {
+      //   console.log("rabbit2");
+      // }
+
+      // console.log(rabbit.show());
+
+      // Object.setPrototypeOf(rabbit2, rabbit);
+
+      // console.log(rabbit2.__proto__);
+      // console.log(rabbit2.sleeps);
+
+      // for (let key of Object.keys(rabbit2)) {
+      //   console.log(rabbit2[key]);
+      // }
+      // console.log("-------------");
+      // for (let key in rabbit2) {
+      //   console.log(rabbit2[key]);
+      // }
+      
+      // console.log(Object.getPrototypeOf(rabbit2));
+
+//F.prtotype
+
+      function F() {
+        this.name = "Shivendra";
+        
+      }
+ 
+
+
 
     </script>
     
