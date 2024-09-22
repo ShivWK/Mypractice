@@ -678,46 +678,46 @@ function print(head) {
 
     //Brute Force
 
-    function findMid(head) {
-        if (!head || !head.next) return head;
+    // function findMid(head) {
+    //     if (!head || !head.next) return head;
 
-        let current = head, size = 0;
-        while (current) {
-            size++;
-            current = current.next;
-        }
+    //     let current = head, size = 0;
+    //     while (current) {
+    //         size++;
+    //         current = current.next;
+    //     }
 
-        let midAt = Math.floor(size/2) + 1;
-        current = head;
+    //     let midAt = Math.floor(size/2) + 1;
+    //     current = head;
 
-        while (current) {    
-            if (--midAt === 0) break;
-            current = current.next
-        }
+    //     while (current) {    
+    //         if (--midAt === 0) break;
+    //         current = current.next
+    //     }
         
-        return current;
-    }
+    //     return current;
+    // }
 
-    let midList = arrayToLinkedList([1,2,3,4,5])
-    console.log(findMid(midList).data);
+    // let midList = arrayToLinkedList([1,2,3,4,5])
+    // console.log(findMid(midList).data);
 
     //Optimal solution
 
-    function findMidOptimal(head) {
-        if (!head || !head.next) return head;
+    // function findMidOptimal(head) {
+    //     if (!head || !head.next) return head;
 
-        let fast = head, slow = head;
+    //     let fast = head, slow = head;
 
-        while (fast && fast.next) {
-            slow = slow.next;
-            fast = fast.next.next;
-        }
+    //     while (fast && fast.next) {
+    //         slow = slow.next;
+    //         fast = fast.next.next;
+    //     }
 
-        return slow;
-    }
+    //     return slow;
+    // }
 
-    let midList2 = arrayToLinkedList([1,2,3,4,5])
-    console.log(findMidOptimal(midList2).data);
+    // let midList2 = arrayToLinkedList([1,2,3,4,5])
+    // console.log(findMidOptimal(midList2).data);
 
 
 //Is palindrom or not
@@ -750,4 +750,58 @@ function print(head) {
 
     //Optimal Solution
 
-    
+    function isPalindromOptimal(head) {
+        if (!head || !head.next) return true;
+
+        //finding mid
+        let slow = head, fast = head;
+        while (fast.next && fast.next.next) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        //Reversing the second half
+        let current = slow.next, prev = null;
+        while (current) {
+            let front = current.next;
+            current.next = prev;
+            prev = current;
+            current = front
+        }
+
+        //matching
+        let first = head, second = prev;
+        while (second) {
+            if (first.data !== second.data) {
+
+                //Reversing again before return
+                current = prev; 
+                let prev2 = null;
+                while (current) {
+                    let front = current.next;
+                    current.next = prev2;
+                    prev2 = current;
+                    current = front;
+                } 
+                return false;
+            }
+            first = first.next;
+            second = second.next;
+        }
+
+        //Reversing again before return
+        current = prev, prev = null;
+        while (current) {
+            let front = current.next;
+            current.next = prev;
+            prev = current;
+            current = front;
+        } 
+        return true;
+
+    }
+
+    let palindromList = arrayToLinkedList([1,2,3,2,1])
+    let notPalindromList = arrayToLinkedList([1,2,3,4,5])
+
+    console.log(isPalindromOptimal(notPalindromList));
