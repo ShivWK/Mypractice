@@ -1752,31 +1752,73 @@
 
 //F.prtotype
 
-      let animal = {
-        Lname : "Dwivedii"
-      }
+      // let animal = {
+      //   Lname : "Dwivedii"
+      // }
 
-      function F() {
-        this.name = "Shivendra";
-        this.show = function() {
-          console.log(this.name);
-        }
-      }
+      // function F() {
+      //   this.name = "Shivendra";
+      //   this.show = function() {
+      //     console.log(this.name);
+      //   }
+      // }
  
-      F.prototype = animal;
+      // F.prototype = animal;
 
-      let newObject = new F();
-      console.log(newObject.name)
-      console.log(newObject)
-      newObject['name'] = "Ritik";
-      // console.log(newObject.__proto__.constructor
-      newObject.show()
+      // let newObject = new F();
+      // console.log(newObject.name)
+      // console.log(newObject)
+      // newObject['name'] = "Ritik";
+      // // console.log(newObject.__proto__.constructor
+      // newObject.show()
 
-      let newObject2 = new newObject.__proto__.constructor();
+      // let newObject2 = new newObject.__proto__.constructor();
 
-      console.log(newObject2);
+      // console.log(newObject2);
 
+//Native prototypes
 
+      let obj = {};
+      // console.log(obj.__proto__ === Object.prototype);
+      // console.log(obj.toString === Object.prototype.toString);
+      // console.log(obj.toString === obj.__proto__.toString);
+
+      let arr = [];
+      // console.dir(arr)
+      // console.log(arr.__proto__.__proto__ === Object.prototype);
+      let num = 25;
+      // console.log(num.__proto__.__proto__ === Object.prototype);
+      let str = '';
+      // console.log(str.__proto__.__proto__ === Object.prototype);
+      // console.log(str.__proto__.__proto__.__proto__);
+
+      // console.log(undefined.toString()) //No wrapper is provided to null and undefined
+
+      // Object.prototype.show = function() {
+      //   for (let key in this) {
+      //     console.log(this[key]);
+      //   }
+      // }
+
+      // let obj2 = {
+      //   name : "shivendra",
+      //   age : 25,
+      // }
+
+      // obj2.show();
+
+      let obj3 = {
+        0 : "shivendra",
+        1 : 25,
+        2 : "triveni Nagar Naini Prayagraj",
+        length : 3
+      }
+
+      // obj3.join = Array.prototype.join;
+      // console.log(obj3.join(","));
+
+      obj3.sort = Array.prototype.sort;
+      console.log(obj3.sort());
 
     </script>
     
