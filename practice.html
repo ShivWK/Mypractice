@@ -1778,17 +1778,17 @@
 
 //Native prototypes
 
-      let obj = {};
+      // let obj = {};
       // console.log(obj.__proto__ === Object.prototype);
       // console.log(obj.toString === Object.prototype.toString);
       // console.log(obj.toString === obj.__proto__.toString);
 
-      let arr = [];
+      // let arr = [];
       // console.dir(arr)
       // console.log(arr.__proto__.__proto__ === Object.prototype);
-      let num = 25;
+      // let num = 25;
       // console.log(num.__proto__.__proto__ === Object.prototype);
-      let str = '';
+      // let str = '';
       // console.log(str.__proto__.__proto__ === Object.prototype);
       // console.log(str.__proto__.__proto__.__proto__);
 
@@ -1807,19 +1807,107 @@
 
       // obj2.show();
 
-      let obj3 = {
-        0 : "shivendra",
-        1 : 25,
-        2 : "triveni Nagar Naini Prayagraj",
-        length : 3
-      }
+      // let obj3 = {
+      //   0 : "shivendra",
+      //   1 : 25,
+      //   2 : "triveni Nagar Naini Prayagraj",
+      //   length : 3
+      // }
 
       // obj3.join = Array.prototype.join;
       // console.log(obj3.join(","));
 
-      obj3.sort = Array.prototype.sort;
-      console.log(obj3.sort());
+      // obj3.sort = Array.prototype.sort;
+      // console.log(obj3.sort());
 
+      // Function.prototype.deffer = function(ms) {
+      //   setTimeout(this, ms)
+      // }
+
+      // function show() {
+      //   console.log("Shivendra Dwivedi");
+      // }
+
+      // show.deffer(3000);
+
+    //Task -2
+      // Function.prototype.defer = function(ms) {
+      //   let func = this;
+
+      //   return function(...args) {
+      //     setTimeout(() => {
+      //       func.apply(this, args)
+      //     }, ms)
+      //   }
+      // }
+
+      // function add(a, b) {
+      //   console.log(a + b);
+      // }
+
+      // add.defer(3000)(4, 5);
+
+
+//Prototype method , Objects without __proto__
+
+      // let animal = { 
+      //   name : "Mai doggy",
+      //   age : 15,
+      // }
+
+      // let newObject = Object.create(animal, {
+      //   class : {
+      //     value :"UKG",
+      //     writable : true,
+      //     configurable : true,
+      //     enumerable : true,
+      //   },
+      //   address : {
+      //     value :"koi bhi Sadak",
+      //     writable : true,
+      //     configurable : true,
+      //     enumerable : true,
+      //   }
+      // })
+
+      // console.log(Object.getOwnPropertyDescriptors(newObject));
+      // console.log(Object.getPrototypeOf(newObject));
+
+      // let clone = Object.create(Object.getPrototypeOf(newObject), Object.getOwnPropertyDescriptors(newObject));
+      // console.log(Object.getOwnPropertyDescriptors(clone))
+
+      // console.dir(clone)
+
+      // let simpleObject = {}
+      // console.dir(simpleObject)
+
+      // let object = {};
+
+      // object.__proto__ = "string";
+
+      // console.log(object.__proto__)
+
+      // // let object2 = Object.create(null);
+      // let object2 = {__proto__ : null};
+
+
+      // let key = prompt("what's the key", "__proto__")
+      // object2[key]  = "Shivendra";
+      // console.log(String(object2.__proto__));
+
+    //task - 1
+
+      let dictionary = Object.create(null);
+
+      dictionary.apple = "Apple";
+      dictionary.__proto__ = "test";
+
+      dictionary.toString = function() {
+        return Object.keys(this);
+      }
+
+      console.log(dictionary.toString());
+      // alert(dictionary);
     </script>
     
   </body>
