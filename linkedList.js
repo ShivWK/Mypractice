@@ -805,3 +805,60 @@ function print(head) {
     // let notPalindromList = arrayToLinkedList([1,2,3,4,5])
 
     // console.log(isPalindromOptimal(notPalindromList));
+
+//Add 1 to a number represented by linkedList
+
+    //brute force
+
+        function addOne(head) {
+            if (!head) return null;
+
+            let current = head, prev = null;
+            while (current) {
+                let front = current.next;
+                current.next = prev;
+                prev = current;
+                current = front;
+            }
+
+            let newHead = prev;
+
+            current = newHead;
+            let carry = 1;
+
+            while (current) {
+                let sum = current.data + carry;
+
+                if (sum < 10) {
+                    current.data = sum;
+                    carry = 0;
+                    break;
+                } else {
+                    current.data = 0;
+                    carry = 1;
+                }
+
+                current = current.next;
+            }
+
+            current = newHead, prev = null;
+            while (current) {
+                let front = current.next;
+                current.next = prev;
+                prev = current;
+                current = front;
+            }
+
+            newHead = prev;
+
+            if (carry !== 0) {
+                let carryNode = new Node(carry);
+                carryNode.next = newHead;
+                newHead = carryNode;
+            }
+
+            return newHead
+        }
+
+        let additionList = arrayToLinkedList([1, 3, 4, 5, 8, 5, 8, 3])
+        console.log(print(addOne(additionList)));
