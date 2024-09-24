@@ -1,118 +1,233 @@
-nav li a {
-  color: black;
+* {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  padding-block: 1em;
+  background-color: #f8f8f8;
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 12em;
+}
+
+.site-title {
+  text-align: center;
+}
+
+header div h1{
+  font-family: 'Lora', serif;
+  color: #143774;
+  margin-bottom: 2px;
+  font-size: 2em;
+}
+
+header div p {
+  font-family: 'Ubuntu', serif;
+  font-weight: bold;
+  font-size: 1rem;
+  color: #1792D2;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  margin-block: 2em;
+  align-items: center;
+}
+
+ul {
+  display: flex;
+  list-style: none;
+  justify-content: space-between;
+}
+
+nav ul li{
+  font-family: 'Ubuntu', serif;
+  font-weight: bold;
+  color: #707070;
+  margin : 0 0 0 2em;
+}
+
+.nav-links {
   text-decoration: none;
+  text-align: center;
 }
 
-[class*="Birds" i] {
-  color: rgb(8, 160, 187);
+.nav-links:hover, .nav-links:focus {
+  color: #1792D2;
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
-button:hover {
-  color: goldenrod;
+.main {
+  margin: 2em 12em 0;
+  display: flex;
+  justify-content: space-between;
 }
 
-a:active {
-  color: green;
+main {
+  width : 72%;
 }
 
-a:hover {
-  text-decoration: none;
-}
-a:visited {
-  color: yellow;
+aside {
+  width : 22%;
 }
 
-input:checked {
-  box-shadow: 0 0 0 3px;
-}
-
-input[type="radio"]:invalid {
-  box-shadow: 0 0 0 3px;
-}
-
-.second-div::first-letter {
-  color: greenyellow;
-}
-
-div:empty {
-  border: 2px solid red;
-}
-
-#line::first-line {
-  color: blue;
-}
-
-div::selection {
-  color: goldenrod;
-}
-
-#line::before {
-  content: "Shivendra ";
-}
-
-#line::after {
-  content: " Dwivedi";
-}
-body {
-  /* background-image: url("assets/WebChatter\ Logo.png"), url("assets/jessica-weiller-LmVSKeDy6EA-unsplash.jpg");
-  background-size: 50% 100%;
-  background-attachment: local;
-  /* background-color: grey; */
-  /* background-repeat: no-repeat; */
-  /* background-position: 0% 0%, 100% 0%; */ 
-}
-
-#myBox {
-  box-sizing: border-box;
-  height: 200px;
-  width: 30%;
-  border: 5px groove grey;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateY(-50%) translateX(-50%);
-  overflow: auto;
-  /* padding: 10px; */
-  /* background-image: url('assets/audiocover.jpg'); */
-  /* background-color: red; */
-  /* background-size: auto; */
-  /* background-repeat: no-repeat; */
-  /* background-attachment: local; */
-  /* background-origin: content-box; */
-  /* background-clip: content-box; */
-}
-
-img {
+.fetured-image {
   width : 100%;
+  max-height : 250px;
   object-fit: cover;
-  max-width: 400px;
-  min-width: 200px;
 }
 
-#inlineBlock {
-  display: inline-block;
-  border: 2px solid transparent;
+.sidebar-widget {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 20px solid #EBEBEB;
+  padding: 1em;
+  row-gap: 1em;
+  margin-bottom: 2em;
+}
+
+.article-info {
+  color: #707070;
+  font-size: 0.8em;
+  margin: 0.5em 0;
+}
+
+.article-title {
+  margin: 0.5em 0;
+  color: #143774;
+  font-family: 'lora' , serif;
+}
+
+.article-body {
+  margin-bottom: 1em;
+}
+
+.article-ruler {
+  margin: 1em 0;
+}
+
+.article-read-more {
+  text-decoration: none;
+  color: #1792D2;
+  font-size: 0.8em;
+  font-family: 'Ubuntu' , serif;
+  font-weight: bold;
+  /* instead of bold keywords go for numbers in font-wiegth because diff browsers may have different values for different keywords */
+}
+
+.article-read-more:hover,
+.article-read-more:focus {
+  text-decoration: underline;
+  color: #143774;
+  text-underline-offset: 2px;
+}
+
+.article-recent {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2em;
+}
+
+.article-recent-left {
+  width: 23%;
+}
+
+.article-recent-image {
+  width: 100%;
   height: 200px;
-  width: 100px;
-  padding: 10px;
-  margin: 5px;
+  object-fit: cover;
 }
 
-/* p {
-  font-size: 100px;
-  font-weight: 800;
-  color: transparent;
-  background-clip: text;
-  background-image: url("assets/jessica-weiller-LmVSKeDy6EA-unsplash.jpg");
-  background-size: contain;
-} */
+.article-recent-right {
+  width: 72%;
+}
+.widget-title {
+  font-size: 1.2em;
+  color: #143774;
+  font-family: 'Ubuntu', serif;
+  font-weight: bold;
+}
 
-#grand-parent {
-  font-size: 32px;
-}
-#parent {
-  font-size: 16px;
-}
-#child {
+.widget-post-title {
+  color: #143774;
   font-size: 1em;
+}
+
+.widget-post-image {
+  width: 100%;
+  margin: .5em 0;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  /* align-items: ceter; */
+  justify-content: center;
+  background-color: #143774;
+  padding: 2em;
+  margin-top: 2em;
+}
+.footer-heading {
+  color: #FFFFFF;
+  font-weight: bold;
+  text-align: center;
+}
+
+.footer-text {
+  color: #FFFFFF;
+  text-align: center;
+}
+
+@media (max-width: 1000px) {
+  .main {
+    margin: 1em 2em 0;
+  }
+  .container {
+    flex-direction: column;
+    margin: 0 3em;
+  }
+
+  nav ul li {
+    margin: 0 2em;
+  }
+}
+
+@media (max-width: 760px) {
+  .main, .article-recent{
+    flex-direction: column;
+  }
+
+  main , aside, .article-recent-left, .article-recent-right {
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav ul li {
+    margin: 0.5em 2em;
+  }
+
+  .site-title p{
+    font-size: 12px;
+  }
+
+  .site-title h1{
+    font-size: 1.5em;
+  }
+
 }
