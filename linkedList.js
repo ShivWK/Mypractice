@@ -810,55 +810,89 @@ function print(head) {
 
     //brute force
 
-        function addOne(head) {
+        // function addOne(head) {
+        //     if (!head) return null;
+
+        //     let current = head, prev = null;
+        //     while (current) {
+        //         let front = current.next;
+        //         current.next = prev;
+        //         prev = current;
+        //         current = front;
+        //     }
+
+        //     let newHead = prev;
+
+        //     current = newHead;
+        //     let carry = 1;
+
+        //     while (current) {
+        //         let sum = current.data + carry;
+
+        //         if (sum < 10) {
+        //             current.data = sum;
+        //             carry = 0;
+        //             break;
+        //         } else {
+        //             current.data = 0;
+        //             carry = 1;
+        //         }
+
+        //         current = current.next;
+        //     }
+
+        //     current = newHead, prev = null;
+        //     while (current) {
+        //         let front = current.next;
+        //         current.next = prev;
+        //         prev = current;
+        //         current = front;
+        //     }
+
+        //     newHead = prev;
+
+        //     if (carry !== 0) {
+        //         let carryNode = new Node(carry);
+        //         carryNode.next = newHead;
+        //         newHead = carryNode;
+        //     }
+
+        //     return newHead
+        // }
+
+        // let additionList = arrayToLinkedList([1, 3, 4, 5, 8, 5, 8, 3])
+        // console.log(print(addOne(additionList)));
+
+    //Optimal Solution
+
+        function helper(node) { 
+            if (node === null) return 1;
+
+            let carry = helper(node.next)
+
+            let sum = node.data + carry;
+            if (sum < 10) {
+                node.data = sum;
+                return 0;
+            } else {
+                node.data = 0;
+                return 1;
+            }
+        }
+
+        function addOneOptimal(head) {
             if (!head) return null;
 
-            let current = head, prev = null;
-            while (current) {
-                let front = current.next;
-                current.next = prev;
-                prev = current;
-                current = front;
-            }
-
-            let newHead = prev;
-
-            current = newHead;
-            let carry = 1;
-
-            while (current) {
-                let sum = current.data + carry;
-
-                if (sum < 10) {
-                    current.data = sum;
-                    carry = 0;
-                    break;
-                } else {
-                    current.data = 0;
-                    carry = 1;
-                }
-
-                current = current.next;
-            }
-
-            current = newHead, prev = null;
-            while (current) {
-                let front = current.next;
-                current.next = prev;
-                prev = current;
-                current = front;
-            }
-
-            newHead = prev;
+            let carry = helper(head);
 
             if (carry !== 0) {
                 let carryNode = new Node(carry);
-                carryNode.next = newHead;
-                newHead = carryNode;
-            }
-
-            return newHead
+                carryNode.next = head;
+                head = carryNode;
+            } 
+            
+            return head;
         }
 
-        let additionList = arrayToLinkedList([1, 3, 4, 5, 8, 5, 8, 3])
-        console.log(print(addOne(additionList)));
+        let additionList = arrayToLinkedList([9,9,9,9])
+        console.log(print(addOneOptimal(additionList)));
