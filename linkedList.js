@@ -750,58 +750,58 @@ function print(head) {
 
     //Optimal Solution
 
-    function isPalindromOptimal(head) {
-        if (!head || !head.next) return true;
+    // function isPalindromOptimal(head) {
+    //     if (!head || !head.next) return true;
 
-        //finding mid
-        let slow = head, fast = head;
-        while (fast.next && fast.next.next) {
-            slow = slow.next;
-            fast = fast.next.next;
-        }
+    //     //finding mid
+    //     let slow = head, fast = head;
+    //     while (fast.next && fast.next.next) {
+    //         slow = slow.next;
+    //         fast = fast.next.next;
+    //     }
 
-        //Reversing the second half
-        let current = slow.next, prev = null;
-        while (current) {
-            let front = current.next;
-            current.next = prev;
-            prev = current;
-            current = front;
-        }
+    //     //Reversing the second half
+    //     let current = slow.next, prev = null;
+    //     while (current) {
+    //         let front = current.next;
+    //         current.next = prev;
+    //         prev = current;
+    //         current = front;
+    //     }
 
-        //matching
-        let first = head, second = prev;
-        while (second) {
-            if (first.data !== second.data) {
+    //     //matching
+    //     let first = head, second = prev;
+    //     while (second) {
+    //         if (first.data !== second.data) {
 
-                //Reversing again before return
-                current = prev; 
-                let prev2 = null;
-                while (current) {
-                    let front = current.next;
-                    current.next = prev2;
-                    prev2 = current;
-                    current = front;
-                } 
-                return false;
-            }
-            first = first.next;
-            second = second.next;
-        }
+    //             //Reversing again before return
+    //             current = prev; 
+    //             let prev2 = null;
+    //             while (current) {
+    //                 let front = current.next;
+    //                 current.next = prev2;
+    //                 prev2 = current;
+    //                 current = front;
+    //             } 
+    //             return false;
+    //         }
+    //         first = first.next;
+    //         second = second.next;
+    //     }
 
-        //Reversing again before return
-        current = prev, prev = null;
-        while (current) {
-            let front = current.next;
-            current.next = prev;
-            prev = current;
-            current = front;
-        } 
-        return true;
+    //     //Reversing again before return
+    //     current = prev, prev = null;
+    //     while (current) {
+    //         let front = current.next;
+    //         current.next = prev;
+    //         prev = current;
+    //         current = front;
+    //     } 
+    //     return true;
 
-    }
+    // }
 
-    let palindromList = arrayToLinkedList([1,2,3,2,1])
-    let notPalindromList = arrayToLinkedList([1,2,3,4,5])
+    // let palindromList = arrayToLinkedList([1,2,3,2,1])
+    // let notPalindromList = arrayToLinkedList([1,2,3,4,5])
 
-    console.log(isPalindromOptimal(notPalindromList));
+    // console.log(isPalindromOptimal(notPalindromList));
