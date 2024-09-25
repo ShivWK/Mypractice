@@ -125,7 +125,7 @@ p {
   font-size: 0.8em;
   font-family: 'Ubuntu' , serif;
   font-weight: bold;
-  /* instead of bold keywords go for numbers in font-wiegth because diff browsers may have different values for different keywords */
+  /* instead of bold keywords go for numbers for font-wiegth because diff browsers may have different values for different keywords */
 }
 
 .article-read-more:hover,
@@ -179,12 +179,12 @@ p {
 footer {
   display: flex;
   flex-direction: column;
-  /* align-items: ceter; */
   justify-content: center;
   background-color: #143774;
   padding: 2em;
   margin-top: 2em;
 }
+
 .footer-heading {
   color: #FFFFFF;
   font-weight: bold;
