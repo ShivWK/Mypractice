@@ -865,34 +865,54 @@ function print(head) {
 
     //Optimal Solution
 
-        function helper(node) { 
-            if (node === null) return 1;
+        // function helper(node) { 
+        //     if (node === null) return 1;
 
-            let carry = helper(node.next)
+        //     let carry = helper(node.next)
 
-            let sum = node.data + carry;
-            if (sum < 10) {
-                node.data = sum;
-                return 0;
-            } else {
-                node.data = 0;
-                return 1;
-            }
-        }
+        //     let sum = node.data + carry;
+        //     if (sum < 10) {
+        //         node.data = sum;
+        //         return 0;
+        //     } else {
+        //         node.data = 0;
+        //         return 1;
+        //     }
+        // }
 
-        function addOneOptimal(head) {
-            if (!head) return null;
+        // function addOneOptimal(head) {
+        //     if (!head) return null;
 
-            let carry = helper(head);
+        //     let carry = helper(head);
 
-            if (carry !== 0) {
-                let carryNode = new Node(carry);
-                carryNode.next = head;
-                head = carryNode;
-            } 
+        //     if (carry !== 0) {
+        //         let carryNode = new Node(carry);
+        //         carryNode.next = head;
+        //         head = carryNode;
+        //     } 
             
-            return head;
-        }
+        //     return head;
+        // }
 
-        let additionList = arrayToLinkedList([9,9,9,9])
-        console.log(print(addOneOptimal(additionList)));
+        // let additionList = arrayToLinkedList([9,9,9,9])
+        // console.log(print(addOneOptimal(additionList)));
+
+//Detect the loop in the linked list
+
+    //Brute force
+
+        function isLoopThere(head) {
+            if (!head) return false;
+            
+            let myMap = new Map();
+            let current = head;
+
+            while (current) {
+                if (myMap.has(current)) return true;
+
+                myMap.set(current, 1);
+                current = current.next;
+            }
+
+            return false;
+        }
