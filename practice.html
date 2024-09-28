@@ -1915,20 +1915,141 @@
 
     //Task - 2
 
-      function Rabbit(name) {
-        this.name = name;
-      }
 
-      Rabbit.prototype.sayHi = function() {
-        console.log(this.name);
-      }
 
-      let rabbit = new Rabbit("Rabbit");
+      // function Rabbit(name) {
+      //   this.name = name;
+      // }
 
-      rabbit.sayHi();
-      rabbit.__proto__.sayHi();
-      console.log(Object.getPrototypeOf(rabbit));
-      Rabbit.prototype.sayHi()
+      // Rabbit.prototype.sayHi = function() {
+      //   console.log(this.name);
+      // }
+
+      // let rabbit = new Rabbit("Rabbit");
+
+      // rabbit.sayHi();
+      // rabbit.__proto__.sayHi();
+      // console.log(Object.getPrototypeOf(rabbit));
+      // Rabbit.prototype.sayHi()
+
+//Clesses in javaScript
+
+    //class and object
+      
+      // class One {
+      //   constructor(name) {
+      //     this.name = name;
+      //     this.age = 25;
+      //   }
+
+      //   show() {
+      //     console.log(this.name +" "+ this.age);
+      //   }
+      // }
+
+      // const obj = new One("shivendra");
+      // obj.show();
+
+      // console.log(One);
+      // console.log(One.prototype)
+      // console.log(obj.__proto__);
+      // console.log(typeof One);
+      // console.log(typeof obj);
+      // console.log(One === One.prototype.constructor)
+      // console.log(One.prototype.show);
+      // comsole.log(One);
+
+      // let user = class {
+      //   constructor(name) {
+      //     this.name
+      //   }
+
+      //   show() {
+      //     console.log(name);
+      //   }
+      // }
+
+    //class expression
+
+      // let age = 29;
+      // let user2 = class Myclass {
+      //   constructor(name) {
+      //     this.name = name;
+      //     this.age = 25;
+      //   }
+
+      //   show() {
+      //     console.log(this.name);
+      //     console.log(age);
+      //     console.log(Myclass);
+      //   }
+      // }
+
+      // const obj = new user2("Dwivedi");
+      // obj.show()
+      // console.log(Myclass);
+
+    //Returning the class
+
+      // function makeClass() {
+      //   return class {
+      //     sayHi() {
+      //       console.log("dynamic class");
+      //     }
+      //   }
+      // }
+
+      // let MyClass = makeClass();
+      // (new MyClass).sayHi();
+
+    //getters and setters
+
+      // class User {
+      //   constructor(name = "shivendra") {
+      //     this.name = name;
+      //   }
+
+      //   get name() {
+      //     return this._name;
+      //   }
+
+      //   set name(value) {
+      //     if (value.length < 5) {
+      //       alert ("too short vale");
+      //       return;
+      //     }
+          
+      //     this._name = value;
+      //   }
+      //  }
+
+      //  let user = new User("Dwivedi");
+      //  console.log(user.name);
+
+    //Computed name
+
+      // class Computed {
+      //   ["say" + "Hi"]() {
+      //     console.log("hi ji");
+      //   }
+      // } 
+      
+      // let obj = new Computed();
+      // obj.sayHi()
+
+    //class fields
+
+      class NewFields {
+        name = "new field";
+        lname = "Dwivedi";
+
+        show() {
+          console.log(name + " " + lname);
+        }
+      } 
+
+      let obj = new NewFields();
+      console.log(obj);
       
     </script>
     
