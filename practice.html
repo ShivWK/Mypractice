@@ -2039,18 +2039,73 @@
 
     //class fields
 
-      class NewFields {
-        name = "new field";
-        lname = "Dwivedi";
+      // class NewFields {
+      //   name = prompt("what is your first name" , "Shivendra");
+      //   lname = "Dwivedi";
 
-        show() {
-          console.log(name + " " + lname);
-        }
-      } 
+      //   show() {
+      //     console.log(name + " " + lname);
+      //   }
+      // } 
 
-      let obj = new NewFields();
-      console.log(obj);
+      // let obj = new NewFields();
+      // console.log(obj);
+
+    //Lossing in the class methods
+
+      // class LoosThis {
+      //   Name = "shivendra";
+      //   Lname = "Dwivedi";
+
+      //   show() {
+      //     console.log(this.Name + " " + this.Lname);
+      //   }
+
+      // }
+
+      // let object = new LoosThis();
+      // setTimeout(object.show, 1500); //undefined
+
+      // setTimeout(() => {object.show()}, 1500); 
       
+      // setTimeout(object.show.bind(object), 3000); 
+
+      // setTimeout(object.show.call(object), 3000); //Immidiately called dispite the delay
+
+      //Another methiod
+        // class NewLoosThis {
+
+        //   constructor() {
+        //     this.name = "shivendra";
+        //     this.age = 25;
+        //     // this.age = 22;
+        //     this.show = this.show.bind(this);
+        //   }
+
+        //   show() {
+        //     console.log(this.name + " " + this.age)
+        //   }
+        // }
+
+        // let object2 = new NewLoosThis();
+
+        // setTimeout(object2.show, 1000);
+
+      //Another way
+
+        class Loosthis {
+          name = "shivendra";
+          age = 25;
+
+          //Bound function
+          show = () => {
+            console.log(this.name + " " + this.age);
+          }
+        }
+
+        let object3 = new Loosthis();
+        object3.show();
+
     </script>
     
   </body>
