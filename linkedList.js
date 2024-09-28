@@ -901,35 +901,62 @@ function print(head) {
 
     //Brute force
 
-        function isLoopThere(head) {
-            if (!head) return false;
+        // function isLoopThere(head) {
+        //     if (!head) return false;
             
-            let myMap = new Map();
-            let current = head;
+        //     let myMap = new Map();
+        //     let current = head;
 
-            while (current) {
-                if (myMap.has(current)) return true;
+        //     while (current) {
+        //         if (myMap.has(current)) return true;
 
-                myMap.set(current, 1);
-                current = current.next;
-            }
+        //         myMap.set(current, 1);
+        //         current = current.next;
+        //     }
 
-            return false;
-        }
+        //     return false;
+        // }
 
     //Optimal solution
 
-        function isLoopThereOptimal() {
-            if (!head) return false;
+        // function isLoopThereOptimal() {
+        //     if (!head) return false;
 
-            let slow = head, fast = head;
+        //     let slow = head, fast = head;
 
-            while (fast !== null && fast.next !== null) {
-                slow = slow.next;
-                fast = fast.next.next;
+        //     while (fast !== null && fast.next !== null) {
+        //         slow = slow.next;
+        //         fast = fast.next.next;
 
-                if (slow === fast) return true
+        //         if (slow === fast) return true
+        //     }
+
+        //     return false;
+        // }
+
+//Length of the loop in the list
+
+    //Brute force
+
+        function isLoopThere(head) {
+            if (!head) return 0;
+            
+            let myMap = new Map();
+            let current = head;
+            let count = 0;
+
+            while (current) {
+                count++;
+
+                if (myMap.has(current)) {
+                    return count - myMap.get(current);
+                }
+
+                myMap.set(current, count);
+                current = current.next;
             }
 
-            return false;
+            return 0;
         }
+
+    //Optimal
