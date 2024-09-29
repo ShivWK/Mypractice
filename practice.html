@@ -2244,24 +2244,85 @@
 
     //Overriding
 
-      class Rabbit extends Animal {
-        hide() {
-          console.log(this.name + " hides!");
-        }
+      // class Rabbit extends Animal {
+      //   hide() {
+      //     console.log(this.name + " hides!");
+      //   }
         
-        stop() {
-          super.stop();
+      //   stop() {
+      //     super.stop();
 
-          console.log("Hides");
-          this.hide();
+      //     console.log("Hides");
+      //     this.hide();
+      //   }
+
+      // }
+
+      // let rabbit = new Rabbit("My cat");
+      // rabbit.stop();
+
+    //Arrow function and super keyword
+
+      // class Rabbit extends Animal {
+      //   sayHi() {
+      //     setTimeout(() => super.stop(), 1000);
+      //   }
+      // }
+
+      // let object = new Rabbit("My dog1");
+      // object.stop();
+
+      // class Rabbit2 extends Animal {
+      //   sayHi() {
+      //     setTimeout(function() { super.stop()}, 1000);
+      //   }
+      // }
+
+      // let object2 = new Rabbit2("My dog2");
+      // object.stop();
+
+    //Intializing parent class constructor first
+
+      class Rabbit extends Animal {
+        constructor(len, name) {
+          super(name)
+          this.length = len;
+        }
+
+        show() {
+          console.log(this.length);
         }
 
       }
 
-      let rabbit = new Rabbit("My cat");
-      rabbit.stop();
+      let newObject = new Rabbit(25, "Shivendra");
+      newObject.show(); 
+      newObject.stop()
 
-    //Arrow function and super keyword
+    //fields overriding
+
+      class Animal1 {
+        name = 'animal';
+
+        constructor() {
+          console.log(this.name);
+        }
+      }
+
+      class Dwi extends Animal1{
+        name = "Rabbit";
+
+        constructor() {
+          super();
+          console.log(this.name)
+        }
+      }
+
+      // let obj = new Animal1();
+      let obj2 = new Dwi();
+
+
+
 
      </script>
     
