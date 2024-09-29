@@ -2051,7 +2051,7 @@
       // let obj = new NewFields();
       // console.log(obj);
 
-    //Lossing in the class methods
+    //Lossing this in the class methods
 
       // class LoosThis {
       //   Name = "shivendra";
@@ -2073,8 +2073,8 @@
       // setTimeout(object.show.call(object), 3000); //Immidiately called dispite the delay
 
       //Another methiod
+        
         // class NewLoosThis {
-
         //   constructor() {
         //     this.name = "shivendra";
         //     this.age = 25;
@@ -2093,20 +2093,102 @@
 
       //Another way
 
-        class Loosthis {
-          name = "shivendra";
-          age = 25;
+        // class Loosthis {
+        //   name = "shivendra";
+        //   age = 25;
 
-          //Bound function
-          show = () => {
-            console.log(this.name + " " + this.age);
+        //   //Bound function
+        //   show = () => {
+        //     console.log(this.name + " " + this.age);
+        //   }
+        // }
+
+        // let object3 = new Loosthis();
+        // object3.show();
+
+      //task - 1
+
+        functional style
+
+        function Clock1({ template }) {
+  
+          let timer;
+
+          function render() {
+            let date = new Date();
+
+            let hours = date.getHours();
+            if (hours < 10) hours = '0' + hours;
+
+            let mins = date.getMinutes();
+            if (mins < 10) mins = '0' + mins;
+
+            let secs = date.getSeconds();
+            if (secs < 10) secs = '0' + secs;
+
+            let output = template
+              .replace('h', hours)
+              .replace('m', mins)
+              .replace('s', secs);
+
+            console.log(output);
           }
+
+          this.stop = function() {
+            clearInterval(timer);
+          };
+
+          this.start = function() {
+            render();
+            timer = setInterval(render, 1000);
+          };
+
         }
 
-        let object3 = new Loosthis();
-        object3.show();
+        let clock = new Clock1({template: 'h:m:s'});
+        clock.start();
 
-    </script>
+        //Class syntax
+        class Clock2
+        {
+          constructor({ template }) {
+            this.template = template;
+          }
+
+          render() {
+            let date = new Date();
+
+            let hours = date.getHours();
+            if (hours < 10) hours = '0' + hours;
+
+            let mins = date.getMinutes();
+            if (mins < 10) mins = '0' + mins;
+
+            let seconds = date.getSeconds();
+            if (seconds < 10) seconds = '0' + seconds;
+
+            let output = this.template
+                        .replace('h', hours)
+                        .replace('m', mins)
+                        .replace('s', seconds);
+
+            console.log(output);
+          }
+
+          stop() {
+            clearInterval(timer);
+          }
+
+          start() {
+            this.render();
+            this.timer = setInterval(() => this.render(), 1000)
+          }
+        }
+        
+        let clockObj = new Clock2({template : 'h:m:s'});
+        clockObj.start();
+
+     </script>
     
   </body>
 </html>
