@@ -2108,86 +2108,125 @@
 
       //task - 1
 
-        functional style
+        //functional style
 
-        function Clock1({ template }) {
+        // function Clock1({ template }) {
   
-          let timer;
+        //   let timer;
 
-          function render() {
-            let date = new Date();
+        //   function render() {
+        //     let date = new Date();
 
-            let hours = date.getHours();
-            if (hours < 10) hours = '0' + hours;
+        //     let hours = date.getHours();
+        //     if (hours < 10) hours = '0' + hours;
 
-            let mins = date.getMinutes();
-            if (mins < 10) mins = '0' + mins;
+        //     let mins = date.getMinutes();
+        //     if (mins < 10) mins = '0' + mins;
 
-            let secs = date.getSeconds();
-            if (secs < 10) secs = '0' + secs;
+        //     let secs = date.getSeconds();
+        //     if (secs < 10) secs = '0' + secs;
 
-            let output = template
-              .replace('h', hours)
-              .replace('m', mins)
-              .replace('s', secs);
+        //     let output = template
+        //       .replace('h', hours)
+        //       .replace('m', mins)
+        //       .replace('s', secs);
 
-            console.log(output);
-          }
+        //     console.log(output);
+        //   }
 
-          this.stop = function() {
-            clearInterval(timer);
-          };
+        //   this.stop = function() {
+        //     clearInterval(timer);
+        //   };
 
-          this.start = function() {
-            render();
-            timer = setInterval(render, 1000);
-          };
+        //   this.start = function() {
+        //     render();
+        //     timer = setInterval(render, 1000);
+        //   };
 
-        }
+        // }
 
-        let clock = new Clock1({template: 'h:m:s'});
-        clock.start();
+        // let clock = new Clock1({template: 'h:m:s'});
+        // clock.start();
 
-        //Class syntax
-        class Clock2
-        {
-          constructor({ template }) {
-            this.template = template;
-          }
+      //Class syntax
+        // class Clock2
+        // {
+        //   constructor({ template }) {
+        //     this.template = template;
+        //   }
 
-          render() {
-            let date = new Date();
+        //   render() {
+        //     let date = new Date();
 
-            let hours = date.getHours();
-            if (hours < 10) hours = '0' + hours;
+        //     let hours = date.getHours();
+        //     if (hours < 10) hours = '0' + hours;
 
-            let mins = date.getMinutes();
-            if (mins < 10) mins = '0' + mins;
+        //     let mins = date.getMinutes();
+        //     if (mins < 10) mins = '0' + mins;
 
-            let seconds = date.getSeconds();
-            if (seconds < 10) seconds = '0' + seconds;
+        //     let seconds = date.getSeconds();
+        //     if (seconds < 10) seconds = '0' + seconds;
 
-            let output = this.template
-                        .replace('h', hours)
-                        .replace('m', mins)
-                        .replace('s', seconds);
+        //     let output = this.template
+        //                 .replace('h', hours)
+        //                 .replace('m', mins)
+        //                 .replace('s', seconds);
 
-            console.log(output);
-          }
+        //     console.log(output);
+        //   }
 
-          stop() {
-            clearInterval(timer);
-          }
+        //   stop() {
+        //     clearInterval(timer);
+        //   }
 
-          start() {
-            this.render();
-            this.timer = setInterval(() => this.render(), 1000)
-          }
-        }
+        //   start() {
+        //     this.render();
+        //     this.timer = setInterval(() => this.render(), 1000)
+        //   }
+        // }
         
-        let clockObj = new Clock2({template : 'h:m:s'});
-        clockObj.start();
+        // let clockObj = new Clock2({template : 'h:m:s'});
+        // clockObj.start();
 
+//Class inheritance
+
+      //extends
+
+      class Animal {
+        constructor(name) {
+          this.speed = 0;
+          this.name = name;
+        }
+
+        run(speed) {
+          this.speed = speed;
+          console.log(this.name + "runs with speed " + this.speed + "km/h");
+        }
+
+        stop() {
+          this.speed = 0;
+          console.log(this.name + " stands still");
+        }
+      }
+
+      let animal = new Animal("My animal");
+      
+      class Child extends Animal {
+
+        //dont have any constructor so parent class constructor will be used
+        hide() {
+          console.log("method from child class");
+        }
+
+      }
+
+      let childObject = new Child("My Hourse");
+      childObject.stop();
+
+      console.log(Child.prototype.__proto__ === Animal.prototype) //true
+      console.log(childObject.__proto__.__proto__ === Animal.prototype) //true
+
+      
      </script>
     
   </body>
