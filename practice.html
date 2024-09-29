@@ -2204,29 +2204,65 @@
         }
 
         stop() {
-          this.speed = 0;
           console.log(this.name + " stands still");
         }
       }
 
-      let animal = new Animal("My animal");
+      // let animal = new Animal("My animal");
       
-      class Child extends Animal {
+      // class Child extends Animal {
 
-        //dont have any constructor so parent class constructor will be used
+      //   //dont have any constructor so parent class constructor will be used
+      //   hide() {
+      //     console.log("method from child class");
+      //   }
+
+      // }
+
+      // let childObject = new Child("My Hourse");
+      // childObject.stop();
+
+      // console.log(Child.prototype.__proto__ === Animal.prototype) //true
+      // console.log(childObject.__proto__.__proto__ === Animal.prototype) //true
+
+    //Extending any expression
+
+      // function f(str) {
+      //   return class {
+      //     sayHi() {
+      //       console.log(str);
+      //     }
+      //   }
+      // }
+
+      // class New extends f("Hello") {
+
+      // }
+
+      // let obj = new New();
+      // obj.sayHi();
+
+    //Overriding
+
+      class Rabbit extends Animal {
         hide() {
-          console.log("method from child class");
+          console.log(this.name + " hides!");
+        }
+        
+        stop() {
+          super.stop();
+
+          console.log("Hides");
+          this.hide();
         }
 
       }
 
-      let childObject = new Child("My Hourse");
-      childObject.stop();
+      let rabbit = new Rabbit("My cat");
+      rabbit.stop();
 
-      console.log(Child.prototype.__proto__ === Animal.prototype) //true
-      console.log(childObject.__proto__.__proto__ === Animal.prototype) //true
+    //Arrow function and super keyword
 
-      
      </script>
     
   </body>
