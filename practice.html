@@ -2343,28 +2343,55 @@
 
     //super keyword 
 
-      let animal = {
-        name : "Animal",
-        eat() {
-          console.log(this.name);
-        }
-      }
+      // let animal = {
+      //   name : "Animal",
+      //   eat() {
+      //     console.log(this.name);
+      //   }
+      // }
 
-      let rabbit = {
-        __proto__ : animal,
-        eat() {
-          this.__proto__.eat.call(this);
-        }
-      }
+      // let rabbit = {
+      //   __proto__ : animal,
+      //   eat() {
+      //     this.__proto__.eat.call(this);
+      //   }
+      // }
       
-      let longEars = {
-        __proto__ : rabbit,
-        eat() {
-          this.__proto__.eat.call(this);
-        }
-      }
+      // let longEars = {
+      //   __proto__ : rabbit,
+      //   eat() {
+      //     this.__proto__.eat.call(this);
+      //   }
+      // }
 
       //longEars.eat();
+
+      // let animal1 = {
+      //   name : "Animal",
+      //   eat() {
+      //     console.log(this.name);
+      //   }
+      // }
+
+      // let rabbit1 = {
+      //   __proto__ : animal1,
+      //   name : "Shivendra",
+      //   eat() {
+      //     super.eat();
+      //   }
+      // }
+      
+      // let longEars1 = {
+      //   __proto__ : rabbit1,
+      //   name : "Dwivedi",
+      //   eat() {
+      //     super.eat();
+      //   }
+      // }
+
+      // longEars1.eat();
+
+      //Methods are not free
 
       let animal1 = {
         name : "Animal",
@@ -2380,16 +2407,38 @@
           super.eat();
         }
       }
-      
-      let longEars1 = {
-        __proto__ : rabbit1,
-        name : "Dwivedi",
+
+      let human = {
+        name : "Human",
         eat() {
+          console.log("Human");
+        }
+      }
+
+      let man = {
+        name : "shivendra",
+        eat : rabbit1.eat, 
+      }
+
+      man.eat() //calls Animal1's eat method not of human. 
+
+      //methods not function properties
+      
+      let animal2 = {
+        eat : function() {
+          console.log("new");
+        }
+      } 
+
+      let rabbit2 = {
+        eat : function() {
           super.eat();
         }
       }
 
-      longEars1.eat();
+      rabbit2.eat(); //super keyword unexpected here
+
+
      </script>
     
   </body>
