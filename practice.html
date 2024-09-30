@@ -2323,26 +2323,73 @@
 
     //Methods overriding , they will be taken from prototype chain and child class will come first in the chain
 
-      class Parent {
-        name = "Shivendra";
-         show() {
-          console.log(this.name);
-         }
-      }
+      // class Parent {
+      //   name = "Shivendra";
+      //    show() {
+      //     console.log(this.name);
+      //    }
+      // }
 
-      class Child extends Parent {
-        name = "Dwivedi";
+      // class Child extends Parent {
+      //   name = "Dwivedi";
 
-        show() {
+      //   show() {
+      //     console.log(this.name);
+      //   }
+      // }
+
+      // let obj = new Child();
+      // obj.show();
+
+    //super keyword 
+
+      let animal = {
+        name : "Animal",
+        eat() {
           console.log(this.name);
         }
       }
 
-      let obj = new Child();
-      obj.show();
+      let rabbit = {
+        __proto__ : animal,
+        eat() {
+          this.__proto__.eat.call(this);
+        }
+      }
+      
+      let longEars = {
+        __proto__ : rabbit,
+        eat() {
+          this.__proto__.eat.call(this);
+        }
+      }
 
-    //
+      //longEars.eat();
 
+      let animal1 = {
+        name : "Animal",
+        eat() {
+          console.log(this.name);
+        }
+      }
+
+      let rabbit1 = {
+        __proto__ : animal1,
+        name : "Shivendra",
+        eat() {
+          super.eat();
+        }
+      }
+      
+      let longEars1 = {
+        __proto__ : rabbit1,
+        name : "Dwivedi",
+        eat() {
+          super.eat();
+        }
+      }
+
+      longEars1.eat();
      </script>
     
   </body>
