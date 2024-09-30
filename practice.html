@@ -2283,46 +2283,65 @@
 
     //Intializing parent class constructor first
 
-      class Rabbit extends Animal {
-        constructor(len, name) {
-          super(name)
-          this.length = len;
-        }
+      // class Rabbit extends Animal {
+      //   constructor(len, name) {
+      //     super(name)
+      //     this.length = len;
+      //   }
 
-        show() {
-          console.log(this.length);
-        }
+      //   show() {
+      //     console.log(this.length);
+      //   }
 
-      }
+      // }
 
-      let newObject = new Rabbit(25, "Shivendra");
-      newObject.show(); 
-      newObject.stop()
+      // let newObject = new Rabbit(25, "Shivendra");
+      // newObject.show(); 
+      // newObject.stop()
 
     //fields overriding
 
-      class Animal1 {
-        name = 'animal';
+      // class Animal1 {
+      //   name = 'animal';
 
-        constructor() {
+      //   constructor() {
+      //     console.log(this.name);
+      //   }
+      // }
+
+      // class Dwi extends Animal1{
+      //   name = "Rabbit";
+
+      //   constructor() {
+      //     super();
+      //     console.log(this.name)
+      //   }
+      // }
+
+      // let obj = new Animal1();
+      // let obj2 = new Dwi();
+
+    //Methods overriding , they will be taken from prototype chain and child class will come first in the chain
+
+      class Parent {
+        name = "Shivendra";
+         show() {
+          console.log(this.name);
+         }
+      }
+
+      class Child extends Parent {
+        name = "Dwivedi";
+
+        show() {
           console.log(this.name);
         }
       }
 
-      class Dwi extends Animal1{
-        name = "Rabbit";
+      let obj = new Child();
+      obj.show();
 
-        constructor() {
-          super();
-          console.log(this.name)
-        }
-      }
-
-      // let obj = new Animal1();
-      let obj2 = new Dwi();
-
-
-
+    //
 
      </script>
     
