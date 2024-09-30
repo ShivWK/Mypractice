@@ -938,25 +938,124 @@ function print(head) {
 
     //Brute force
 
-        function isLoopThere(head) {
-            if (!head) return 0;
+        // function isLoopThere(head) {
+        //     if (!head) return 0;
             
+        //     let myMap = new Map();
+        //     let current = head, count = 0;
+
+        //     while (current) {
+        //         count++;
+
+        //         if (myMap.has(current)) {
+        //             return count - myMap.get(current);
+        //         }
+
+        //         myMap.set(current, count);
+        //         current = current.next;
+        //     }
+
+        //     return 0;
+        // }
+
+    //Optimal
+
+        // function findLength(slow, fast) {
+        //     let count = 1;
+        //     fast = fast.next;
+
+        //     while (fast !== slow) {
+        //         count++;
+        //         fast = fast.next
+        //     }
+
+        //     return count;
+        // }
+
+        // function isLoopThereOptimal() {
+        //     if (!head) return 0;
+
+        //     let slow = head, fast = head;
+
+        //     while (fast !== null && fast.next !== null) {
+        //         slow = slow.next;
+        //         fast = fast.next.next;
+
+        //         if (slow === fast) return findLength(slow, fast)
+        //     }
+
+        //     return 0;
+        // }
+
+//Finding intersection point in the linked list
+
+    //Brute force
+
+        function intersectionInList(head1, head2) {
+            if (!head1 || !head2) return null;
+
             let myMap = new Map();
-            let current = head;
-            let count = 0;
+            let current = head1;
 
             while (current) {
-                count++;
+                myMap.set(current, 1);
 
-                if (myMap.has(current)) {
-                    return count - myMap.get(current);
-                }
-
-                myMap.set(current, count);
+                current = current.next;
+            }
+            
+            current = head2;
+            while (current) {
+                if (myMap.has(current)) return current;
+                
                 current = current.next;
             }
 
-            return 0;
+            return null;
         }
 
-    //Optimal
+    //Better Solution
+
+        function collisionPoint(h1, h2, d) {
+            // let current = h2;
+            while (d) {
+                d--;
+                h2 = h2.next;
+            }
+
+            let current1 = h1, current2 = h2;
+
+            while (current1) {
+                if (current1 === current2) return current1;
+
+                current1 = current1.next;
+                current2 = current2.next;
+            }
+
+            return null;
+        }
+
+        function intersectionOfList(head1, head2) {
+            if (!head1 || !head2) return null;
+
+            let current = head1;
+            let size1 = 0, size2 = 0;
+
+            while (current) {
+                size1++;
+
+                current = current.next;
+            }
+
+            current = head2;
+            while (current) {
+                size2++;
+
+                current = current.next;
+            }
+
+            if (size1 < size2) {
+                return collisionPoint(head1, head2, (size2 - size1));
+            } else {
+                return collisionPoint(head2, head1, (size1 - size2));
+            }
+        }
