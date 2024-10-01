@@ -991,71 +991,92 @@ function print(head) {
 
     //Brute force
 
-        function intersectionInList(head1, head2) {
-            if (!head1 || !head2) return null;
+        // function intersectionInList(head1, head2) {
+        //     if (!head1 || !head2) return null;
 
-            let myMap = new Map();
-            let current = head1;
+        //     let myMap = new Map();
+        //     let current = head1;
 
-            while (current) {
-                myMap.set(current, 1);
+        //     while (current) {
+        //         myMap.set(current, 1);
 
-                current = current.next;
-            }
+        //         current = current.next;
+        //     }
             
-            current = head2;
-            while (current) {
-                if (myMap.has(current)) return current;
+        //     current = head2;
+        //     while (current) {
+        //         if (myMap.has(current)) return current;
                 
-                current = current.next;
-            }
+        //         current = current.next;
+        //     }
 
-            return null;
-        }
+        //     return null;
+        // }
 
     //Better Solution
 
-        function collisionPoint(h1, h2, d) {
-            // let current = h2;
-            while (d) {
-                d--;
-                h2 = h2.next;
-            }
+        // function collisionPoint(h1, h2, d) {
+        //     while (d) {
+        //         d--;
+        //         h2 = h2.next;
+        //     }
 
-            let current1 = h1, current2 = h2;
+        //     let current1 = h1, current2 = h2;
 
-            while (current1) {
-                if (current1 === current2) return current1;
+        //     while (current1) {
+        //         if (current1 === current2) return current1;
 
-                current1 = current1.next;
-                current2 = current2.next;
-            }
+        //         current1 = current1.next;
+        //         current2 = current2.next;
+        //     }
 
-            return null;
-        }
+        //     return null;
+        // }
 
-        function intersectionOfList(head1, head2) {
+        // function intersectionOfList(head1, head2) {
+        //     if (!head1 || !head2) return null;
+
+        //     let current = head1;
+        //     let size1 = 0, size2 = 0;
+
+        //     while (current) {
+        //         size1++;
+
+        //         current = current.next;
+        //     }
+
+        //     current = head2;
+        //     while (current) {
+        //         size2++;
+
+        //         current = current.next;
+        //     }
+
+        //     if (size1 < size2) {
+        //         return collisionPoint(head1, head2, (size2 - size1));
+        //     } else {
+        //         return collisionPoint(head2, head1, (size1 - size2));
+        //     }
+        // }
+
+    //Optimal solution
+
+        function intersectionOptimal(head1, head2) {
             if (!head1 || !head2) return null;
 
-            let current = head1;
-            let size1 = 0, size2 = 0;
+            let current1 = head1, current2 = head2;
 
-            while (current) {
-                size1++;
+            while (current1 !== current2) {
+                current1 = current1.next;
+                current2 = current2.next;
 
-                current = current.next;
+                if (current1 === current2) return current1;
+                if (current1 === null) {
+                    current1 = head2;
+                } else if (current2 === null) {
+                    current2 = head1;
+                } 
             }
 
-            current = head2;
-            while (current) {
-                size2++;
-
-                current = current.next;
-            }
-
-            if (size1 < size2) {
-                return collisionPoint(head1, head2, (size2 - size1));
-            } else {
-                return collisionPoint(head2, head1, (size1 - size2));
-            }
+            return current1;
         }
