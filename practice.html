@@ -2192,21 +2192,21 @@
 
       //extends
 
-      class Animal {
-        constructor(name) {
-          this.speed = 0;
-          this.name = name;
-        }
+      // class Animal {
+      //   constructor(name) {
+      //     this.speed = 0;
+      //     this.name = name;
+      //   }
 
-        run(speed) {
-          this.speed = speed;
-          console.log(this.name + "runs with speed " + this.speed + "km/h");
-        }
+      //   run(speed) {
+      //     this.speed = speed;
+      //     console.log(this.name + "runs with speed " + this.speed + "km/h");
+      //   }
 
-        stop() {
-          console.log(this.name + " stands still");
-        }
-      }
+      //   stop() {
+      //     console.log(this.name + " stands still");
+      //   }
+      // }
 
       // let animal = new Animal("My animal");
       
@@ -2325,10 +2325,12 @@
 
       // class Parent {
       //   name = "Shivendra";
-      //    show() {
+      //   static show() {
       //     console.log(this.name);
       //    }
       // }
+
+      // Parent.show();
 
       // class Child extends Parent {
       //   name = "Dwivedi";
@@ -2393,53 +2395,109 @@
 
       //Methods are not free
 
-      let animal1 = {
-        name : "Animal",
-        eat() {
-          console.log(this.name);
-        }
-      }
+      // let animal1 = {
+      //   name : "Animal",
+      //   eat() {
+      //     console.log(this.name);
+      //   }
+      // }
 
-      let rabbit1 = {
-        __proto__ : animal1,
-        name : "Shivendra",
-        eat() {
-          super.eat();
-        }
-      }
+      // let rabbit1 = {
+      //   __proto__ : animal1,
+      //   name : "Shivendra",
+      //   eat() {
+      //     super.eat();
+      //   }
+      // }
 
-      let human = {
-        name : "Human",
-        eat() {
-          console.log("Human");
-        }
-      }
+      // let human = {
+      //   name : "Human",
+      //   eat() {
+      //     console.log("Human");
+      //   }
+      // }
 
-      let man = {
-        name : "shivendra",
-        eat : rabbit1.eat, 
-      }
+      // let man = {
+      //   name : "shivendra",
+      //   eat : rabbit1.eat, 
+      // }
 
-      man.eat() //calls Animal1's eat method not of human. 
+      // man.eat() //calls Animal1's eat method not of human. 
 
       //methods not function properties
       
-      let animal2 = {
-        eat : function() {
-          console.log("new");
+      // let animal2 = {
+      //   eat : function() {
+      //     console.log("new");
+      //   }
+      // } 
+
+      // let rabbit2 = {
+      //   eat : function() {
+      //     super.eat();
+      //   }
+      // }
+
+      // rabbit2.eat(); //super keyword unexpected here
+
+      //task 2
+
+      class Clock {
+        constructor({ template }) {
+          this.template = template;
+        }
+
+        render() {
+          let date = new Date();
+
+          let hours = date.getHours();
+          if (hours < 10) hours = "0" + hours;
+
+          let mins = date.getMinutes();
+          if (mins < 10) mins = '0' + mins;
+
+          let secs = date.getSeconds();
+          if (secs < 10) secs = '0' + secs;
+
+          let output = this.template
+                      .replace('h', hours)
+                      .replace('m', mins)
+                      .replace('s', secs);
+              
+          console.log(output);
+        }
+
+        stop() {
+          clearInterval(this.timer);
+        }
+
+        start() {
+          this.render();
+          this.timer = setInterval(() => this.render(), 1000);
         }
       } 
 
-      let rabbit2 = {
-        eat : function() {
-          super.eat();
+      // let clockObj = new Clock({template : 'h:m:s'});
+      // clockObj.start();
+
+      // setTimeout(() => clockObj.stop(), 3000)
+
+      class ExtendedClock extends Clock {
+        constructor({ template }, precision = 1000) {
+          super({ template });
+          this.precision = precision;
+        }
+
+        start() {
+          this.render();
+          this.timer = setInterval(() => this.render(), this.precision);
         }
       }
 
-      rabbit2.eat(); //super keyword unexpected here
-
-
-     </script>
+      let extClockObj = new ExtendedClock({ template : 'h:m:s' }, 2000);
+      extClockObj.start();
+      
+      </script>
     
   </body>
 </html>
