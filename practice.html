@@ -2442,61 +2442,153 @@
 
       //task 2
 
-      class Clock {
-        constructor({ template }) {
-          this.template = template;
-        }
+      // class Clock {
+      //   constructor({ template }) {
+      //     this.template = template;
+      //   }
 
-        render() {
-          let date = new Date();
+      //   render() {
+      //     let date = new Date();
 
-          let hours = date.getHours();
-          if (hours < 10) hours = "0" + hours;
+      //     let hours = date.getHours();
+      //     if (hours < 10) hours = "0" + hours;
 
-          let mins = date.getMinutes();
-          if (mins < 10) mins = '0' + mins;
+      //     let mins = date.getMinutes();
+      //     if (mins < 10) mins = '0' + mins;
 
-          let secs = date.getSeconds();
-          if (secs < 10) secs = '0' + secs;
+      //     let secs = date.getSeconds();
+      //     if (secs < 10) secs = '0' + secs;
 
-          let output = this.template
-                      .replace('h', hours)
-                      .replace('m', mins)
-                      .replace('s', secs);
+      //     let output = this.template
+      //                 .replace('h', hours)
+      //                 .replace('m', mins)
+      //                 .replace('s', secs);
               
-          console.log(output);
-        }
+      //     console.log(output);
+      //   }
 
-        stop() {
-          clearInterval(this.timer);
-        }
+      //   stop() {
+      //     clearInterval(this.timer);
+      //   }
 
-        start() {
-          this.render();
-          this.timer = setInterval(() => this.render(), 1000);
-        }
-      } 
+      //   start() {
+      //     this.render();
+      //     this.timer = setInterval(() => this.render(), 1000);
+      //   }
+      // } 
 
       // let clockObj = new Clock({template : 'h:m:s'});
       // clockObj.start();
 
       // setTimeout(() => clockObj.stop(), 3000)
 
-      class ExtendedClock extends Clock {
-        constructor({ template }, precision = 1000) {
-          super({ template });
-          this.precision = precision;
+      // class ExtendedClock extends Clock {
+      //   constructor({ template }, precision = 1000) {
+      //     super({ template });
+      //     this.precision = precision;
+      //   }
+
+      //   start() {
+      //     this.render();
+      //     this.timer = setInterval(() => this.render(), this.precision);
+      //   }
+      // }
+
+      // let extClockObj = new ExtendedClock({ template : 'h:m:s' }, 2000);
+      // extClockObj.start();
+
+//Static Methods and Properties
+
+      // class User {
+      //   static staticMethod() {
+      //     console.log(this === User);
+      //   }
+      // }
+
+      // User.staticMethod();
+
+      // class User2 {}
+      // User2.staticMethod = function() {
+      //   console.log(this === User2);
+      // }
+
+      // User2.staticMethod();
+      // User2.persion = "Shivendra";
+
+      // User2.persion;
+
+      // let obj = new User2();
+      // obj.persion;
+
+      // class DateCompare {
+      //   constructor(title, date) {
+      //     this.title = title;
+      //     this.date = date;
+      //   }
+
+      //   static compare(Object1, Object2) {
+      //     return Object1.date - Object2.date;
+      //     console.log('compare called');
+      //   }
+      // }
+
+      // let article = [
+      //   new DateCompare("HTML", new Date(2019, 1, 1)),
+      //   new DateCompare('CSS', new Date(2019, 0, 1)),
+      //   new DateCompare('JavaScript', new Date(2019, 11, 1)),
+      // ];
+
+      //gere we are creating article by giving a conrtent and date
+
+      // console.log(article);
+
+      // article.sort(DateCompare.compare);
+
+      // console.log(article);
+
+      //now we will create article w/o passing anything
+
+      class Article {
+        constructor(titile, date) {
+          this.titile = titile;
+          this.date = date;
         }
 
-        start() {
-          this.render();
-          this.timer = setInterval(() => this.render(), this.precision);
+        static createToday() {
+          return new this("empty", new Date());
         }
       }
 
-      let extClockObj = new ExtendedClock({ template : 'h:m:s' }, 2000);
-      extClockObj.start();
-      
+      let article1 = Article.createToday();
+      console.log(article1.titile);
+
+      //Static Inheritance
+
+      class Inherit {
+        static persion = "shivendra";
+
+        show() {
+          console.log(Inherit.persion);
+        }
+        
+        static show1() {
+          console.log(Inherit.persion);
+        }
+      }
+
+      class Extended extends Inherit {
+        show() {
+          console.log(Extended.persion);
+        }
+
+        static show1() {
+          console.log(this.persion);
+        }
+      }
+      let object = new Extended();
+      object.show();
+      // Extended.show();
+
       </script>
     
   </body>
