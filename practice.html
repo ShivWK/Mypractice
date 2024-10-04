@@ -2590,28 +2590,71 @@
       // Extended.show();
 
       //Task
-      class Man {
-        constructor(name) {
-          this.name = name;
+      // class Man {
+      //   constructor(name) {
+      //     this.name = name;
+      //   }
+      // }
+
+      // let object = new Man();
+      // console.log(object.hasOwnProperty('name'));
+      // console.log(Man.__proto__);
+
+      // class Man2 extends Object {
+      //   constructor(name) {
+      //     super();
+      //     this.name = name;
+      //   }
+      // }
+
+      // let object2 = new Man2();
+      // console.log(Man2.hasOwnProperty('name'));
+      // // console.log(Man2.__proto__);
+
+      // console.log(Object.__proto__ === Function.prototype);
+
+//Private and protected properties and methods
+
+      //Public
+
+        class encapsulation {
+          _waterLevel = 0;
+
+          constructor(power) {
+            this._power = power;
+            console.log(this._power);
+          }
         }
-      }
 
-      let object = new Man();
-      console.log(object.hasOwnProperty('name'));
-      console.log(Man.__proto__);
+        let object = new encapsulation(100);
+        object._waterLevel = 50;
+        console.log(object._waterLevel);
 
-      class Man2 extends Object {
-        constructor(name) {
-          super();
-          this.name = name;
+      //Protected
+
+        class encapsulation2 {
+          _waterLevel = 0;
+
+          set waterLevel(value) {
+            if (value < 0) value = 0;
+            this._waterLevel = value;
+          } 
+          
+          get waterLevel() {
+            return this._waterLevel;
+          }
+
+          constructor(power) {
+            this._power = power;
+            console.log(this._power);
+          }
         }
-      }
+      
+        let object2 = new encapsulation2(55);
+        object2.waterLevel = -50;
+        console.log(object2.waterLevel);
 
-      let object2 = new Man2();
-      console.log(Man2.hasOwnProperty('name'));
-      // console.log(Man2.__proto__);
-
-      console.log(Object.__proto__ === Function.prototype);
+      //private
 
       </script>
     
