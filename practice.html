@@ -2684,6 +2684,25 @@
 
 //class checking instanceof
 
+        // class Animal {
+        //   category = 'land';
+        //   sleep = 'yes';
+        //   eat = 'yes';
+
+        //   show() {
+        //     console.log(this.category);
+        //   }
+        // }
+
+        // class Rabbit extends Animal{
+        //   category = 'bhaganta';
+
+        // }
+
+        // let obj = new Rabbit();
+        // console.log(obj instanceof Animal) //true as obj.__proto__.__proto__ === Animal.prototype
+
+      //Overriding instanceof behavior
         class Animal {
           category = 'land';
           sleep = 'yes';
@@ -2697,13 +2716,17 @@
         class Rabbit extends Animal{
           category = 'bhaganta';
 
+          static [Symbol.hasInstance](obj) {
+            if (obj.canEat) return true;
+          }
+
         }
 
-        let obj = new Rabbit();
+        let obj = { canEat : true};
+        console.log(obj instanceof Rabbit);
 
-        console.log(obj instanceof Animal) //true as obj.__proto__.__proto__ === Animal.prototype
 
-        
+
 
       </script>
     
