@@ -2617,44 +2617,70 @@
 
       //Public
 
-        class encapsulation {
-          _waterLevel = 0;
+        // class encapsulation {
+        //   _waterLevel = 0;
 
-          constructor(power) {
-            this._power = power;
-            console.log(this._power);
-          }
-        }
+        //   constructor(power) {
+        //     this._power = power;
+        //     console.log(this._power);
+        //   }
+        // }
 
-        let object = new encapsulation(100);
-        object._waterLevel = 50;
-        console.log(object._waterLevel);
+        // let object = new encapsulation(100);
+        // object._waterLevel = 50;
+        // console.log(object._waterLevel);
 
       //Protected
 
-        class encapsulation2 {
-          _waterLevel = 0;
+        // class encapsulation2 {
+        //   _waterLevel = 0;
 
-          set waterLevel(value) {
-            if (value < 0) value = 0;
-            this._waterLevel = value;
-          } 
+        //   set waterLevel(value) {
+        //     if (value < 0) value = 0;
+        //     this._waterLevel = value;
+        //   } 
           
-          get waterLevel() {
-            return this._waterLevel;
-          }
+        //   get waterLevel() {
+        //     return this._waterLevel;
+        //   }
 
-          constructor(power) {
-            this._power = power;
-            console.log(this._power);
-          }
-        }
+        //   constructor(power) {
+        //     this._power = power;
+        //     console.log(this._power);
+        //   }
+        // }
       
-        let object2 = new encapsulation2(55);
-        object2.waterLevel = -50;
-        console.log(object2.waterLevel);
+        // let object2 = new encapsulation2(55);
+        // object2.waterLevel = -50;
+        // console.log(object2.waterLevel);
 
       //private
+
+        class encapsulation3 {
+          #name = "Shivendra";
+          age = 25;
+          static gender = 'male';
+
+          set name(value) {
+            if (value.length < 4) value = "none";
+            this.#name = value;
+          }
+
+          show() {
+            let field = 'name';
+            console.log(this['age']);
+            console.log(this['#name']); //no match
+          }
+
+          get name() {
+            return this.#name;
+          }
+        }
+
+        let object3 = new encapsulation3();
+        object3.name = "Dwivedi";
+        console.log(object3.name);
+        object3.show();
 
       </script>
     
