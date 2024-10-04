@@ -2548,46 +2548,70 @@
 
       //now we will create article w/o passing anything
 
-      class Article {
-        constructor(titile, date) {
-          this.titile = titile;
-          this.date = date;
-        }
+      // class Article {
+      //   constructor(titile, date) {
+      //     this.titile = titile;
+      //     this.date = date;
+      //   }
 
-        static createToday() {
-          return new this("empty", new Date());
-        }
-      }
+      //   static createToday() {
+      //     return new this("empty", new Date());
+      //   }
+      // }
 
-      let article1 = Article.createToday();
-      console.log(article1.titile);
+      // let article1 = Article.createToday();
+      // console.log(article1.titile);
 
       //Static Inheritance
 
-      class Inherit {
-        static persion = "shivendra";
+      // class Inherit {
+      //   static persion = "shivendra";
 
-        show() {
-          console.log(Inherit.persion);
-        }
+      //   show() {
+      //     console.log(Inherit.persion);
+      //   }
         
-        static show1() {
-          console.log(Inherit.persion);
-        }
-      }
+      //   static show1() {
+      //     console.log(Inherit.persion);
+      //   }
+      // }
 
-      class Extended extends Inherit {
-        show() {
-          console.log(Extended.persion);
-        }
+      // class Extended extends Inherit {
+      //   show() {
+      //     console.log(Extended.persion);
+      //   }
 
-        static show1() {
-          console.log(this.persion);
-        }
-      }
-      let object = new Extended();
-      object.show();
+      //   static show1() {
+      //     console.log(this.persion);
+      //   }
+      // }
+      // let object = new Extended();
+      // object.show();
       // Extended.show();
+
+      //Task
+      class Man {
+        constructor(name) {
+          this.name = name;
+        }
+      }
+
+      let object = new Man();
+      console.log(object.hasOwnProperty('name'));
+      console.log(Man.__proto__);
+
+      class Man2 extends Object {
+        constructor(name) {
+          super();
+          this.name = name;
+        }
+      }
+
+      let object2 = new Man2();
+      console.log(Man2.hasOwnProperty('name'));
+      // console.log(Man2.__proto__);
+
+      console.log(Object.__proto__ === Function.prototype);
 
       </script>
     
