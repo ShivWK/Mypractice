@@ -2725,29 +2725,47 @@
         // let obj = { canEat : true};
         // console.log(obj instanceof Rabbit);
 
-      //obj.isPrototypeOf()
+    //obj.isPrototypeOf()
 
-      class Animal {
-          category = 'land';
-          sleep = 'yes';
-          eat = 'yes';
+      // class Animal {
+      //     category = 'land';
+      //     sleep = 'yes';
+      //     eat = 'yes';
 
-          show() {
-            console.log(this.category);
-          }
-        }
+      //     show() {
+      //       console.log(this.category);
+      //     }
+      //   }
 
-        class Rabbit extends Animal{
-          category = 'bhaganta';
+      //   class Rabbit extends Animal{
+      //     category = 'bhaganta';
 
-        }
+      //   }
 
-        let obj = new Rabbit();
-        console.log(Rabbit.prototype.isPrototypeOf(obj))
-        // console.log("shivendra");
+      //   let obj = new Rabbit();
+      //   console.log(Rabbit.prototype.isPrototypeOf(obj))
+      // console.log("shivendra");
 
-        
+    //Object.prototype.toString
 
+      let obj = {};
+      console.log(obj.toString());
+      console.log(Object.prototype.toString.call(obj));
+
+      let arr = [];
+      console.log(Object.prototype.toString.call(arr));
+
+      let var1 = null;
+      let var2 = undefined;
+      let var3 = "Shivedra";
+      console.log(Object.prototype.toString.call(var1));
+      console.log(Object.prototype.toString.call(var2));
+      console.log(Object.prototype.toString.call(var3));
+
+      let functionToString = Object.prototype.toString;
+      console.log(functionToString.call(alert));
+
+      
 
       </script>
     
