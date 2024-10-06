@@ -2874,19 +2874,44 @@
 
     //Finally block
 
-      let user = '{"age" : "shivendra"}'
+      // let user = '{"age" : "shivendra"}'
 
-      try {
-        let obj = JSON.parse(user);
-        if (!obj.name) {
-          throw new SyntaxError("error");
+      // try {
+      //   let obj = JSON.parse(user);
+      //   if (!obj.name) {
+      //     throw new SyntaxError("error");
+      //   }
+      // } catch (err) {
+      //   console.log(err.message);
+      // } finally {
+      //   console.log('called');
+      // }
+
+    //finally...return 
+
+      function funct() {
+        try {
+          return 1;
+        } catch(err) {
+
+        } finally {
+          console.log("worked after return");
         }
-      } catch (err) {
-        console.log(err.message);
-      } finally {
-        console.log('called');
       }
+      funct();
 
+      console.log("hi outside");
+
+    //Try..finally
+
+      function tryFinally() {
+        try {
+          lllllll();
+        } finally {
+          console.log("without catch block");
+        }
+      }
+      tryFinally();
     </script>
     
   </body>
