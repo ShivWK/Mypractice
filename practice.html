@@ -2755,37 +2755,98 @@
       // let arr = [];
       // console.log(Object.prototype.toString.call(arr));
 
-      let var1 = null;
-      let var2 = undefined;
-      let var3 = "Shivedra";
-      console.log({}.toString.call(var1));
-      console.log({}.toString.call(var2));
-      console.log({}.toString.call(var3));
+      // let var1 = null;
+      // let var2 = undefined;
+      // let var3 = "Shivedra";
+      // console.log({}.toString.call(var1));
+      // console.log({}.toString.call(var2));
+      // console.log({}.toString.call(var3));
 
-      console.log(var3.toString.call(var3));
+      // console.log(var3.toString.call(var3));
 
       // let functionToString = Object.prototype.toString;
       // console.log(functionToString.call(alert));
 
     //Symbol.toStringTag 
 
-      let user = {
-        [Symbol.toStringTag] : "User",
+      // let user = {
+      //   [Symbol.toStringTag] : "User",
+      // }
+
+      // console.log(Object.prototype.toString.call(user));
+      // console.log(user.toString());
+
+      // class User {
+      //   name = "shivendra";
+      // }
+
+      // let obj = new User();
+
+      // console.log({}.toString.call(obj));
+
+//Error handling try...catching
+
+      function show(){
+        try {
+          lalala;
+        } catch(err) {
+          console.log("Caught");
+        }
       }
 
-      console.log(Object.prototype.toString.call(user));
-      console.log(user.toString());
+      show();
 
-      class User {
-        name = "shivendra";
+    setTimeout
+ 
+      function show(){
+          try {
+            setTimeout(() => {
+              try {
+                lala;a;
+              } catch {
+                console.log("cought inside");
+              }    
+            }, 1000)
+          } catch(err) {
+            console.log("Caught");
+          }
+        }
+
+      show();
+
+    Error properties
+
+      let json = '{ bad : json}';
+
+      try {
+        let user = JSON.parse(json);
+        alert( user.name);
+      } catch(err) {
+        console.log("error in json");
+        console.log(err.name);
+        console.log(err.message)
       }
 
-      let obj = new User();
+    throw opearator
 
-      console.log({}.toString.call(obj));
+      let mine = '{"age" : 25}';
 
+      try {
+        let object = JSON.parse(mine);
+
+        if (!object.name) {
+          throw new SyntaxError("hai hi nahi to milega kahan se");
+        }
+      } catch(err) {
+        console.log(err.name);
+        console.log(err.message);
+      }
       
-      </script>
+    //
+
+
+
+    </script>
     
   </body>
 </html>
