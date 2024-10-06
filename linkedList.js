@@ -1113,21 +1113,47 @@ function print(head) {
 
             // let listToDeleteMiddle1 = arrayToLinkedList([1,3,4,7,1,2,6]);
             // console.log(print(deleteBrute(listToDeleteMiddle1)));
+    
+    //Optimal solution
 
-            function deleteOptimal(head) {
-                if (!head || !head.next) return null;
+            // function deleteOptimal(head) {
+            //     if (!head || !head.next) return null;
 
-                let slow = head, fast = head.next.next;
-                while (fast && fast.next) {
-                    slow = slow.next;
-                    fast = fast.next.next;                    
-                }
+            //     let slow = head, fast = head.next.next;
+            //     while (fast && fast.next) {
+            //         slow = slow.next;
+            //         fast = fast.next.next;                    
+            //     }
 
-                slow.next = slow.next.next;
+            //     slow.next = slow.next.next;
 
-                return head;
+            //     return head;
 
+            // }
+
+            // let listToDeleteMiddle = arrayToLinkedList([1,3,4,7,1,2,6]);
+            // console.log(print(deleteOptimal(listToDeleteMiddle)));
+
+//Find the start point of the loop in the linked list
+
+    //Brute Force
+
+        function startPointOfLoop() {
+            if (!head || !head.next) return null;
+
+            let myMap = new Map();
+            let current = head;
+
+            while (current) {
+                if (myMap.has(current)) return current;
+
+                myMap.set(current, 1);
+                current = current.next;
             }
 
-            let listToDeleteMiddle = arrayToLinkedList([1,3,4,7,1,2,6]);
-            console.log(print(deleteOptimal(listToDeleteMiddle)));
+            return null;
+        }
+
+    //Optimal solution
+
+       
