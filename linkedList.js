@@ -1061,22 +1061,73 @@ function print(head) {
 
     //Optimal solution
 
-        function intersectionOptimal(head1, head2) {
-            if (!head1 || !head2) return null;
+        // function intersectionOptimal(head1, head2) {
+        //     if (!head1 || !head2) return null;
 
-            let current1 = head1, current2 = head2;
+        //     let current1 = head1, current2 = head2;
 
-            while (current1 !== current2) {
-                current1 = current1.next;
-                current2 = current2.next;
+        //     while (current1 !== current2) {
+        //         current1 = current1.next;
+        //         current2 = current2.next;
 
-                if (current1 === current2) return current1;
-                if (current1 === null) {
-                    current1 = head2;
-                } else if (current2 === null) {
-                    current2 = head1;
-                } 
+        //         if (current1 === current2) return current1;
+        //         if (current1 === null) {
+        //             current1 = head2;
+        //         } else if (current2 === null) {
+        //             current2 = head1;
+        //         } 
+        //     }
+
+        //     return current1;
+        // }
+
+//Delete middle node
+
+        //Brute force
+
+            // function deleteBrute(head) {
+            //     if (!head || !head.next) return null;
+
+            //     let size = 0, current = head;
+            //     while (current) {
+            //         size++;
+            //         current = current.next;
+            //     }
+
+            //     let requiredNode = Math.floor(size/2);
+
+            //     current = head;
+            //     while (current) {
+            //         requiredNode--;
+
+            //         if (requiredNode === 0) {
+            //             current.next = current.next.next;
+            //             break;
+            //         }
+
+            //         current = current.next;
+            //     }
+
+            //     return head;
+            // }
+
+            // let listToDeleteMiddle1 = arrayToLinkedList([1,3,4,7,1,2,6]);
+            // console.log(print(deleteBrute(listToDeleteMiddle1)));
+
+            function deleteOptimal(head) {
+                if (!head || !head.next) return null;
+
+                let slow = head, fast = head.next.next;
+                while (fast && fast.next) {
+                    slow = slow.next;
+                    fast = fast.next.next;                    
+                }
+
+                slow.next = slow.next.next;
+
+                return head;
+
             }
 
-            return current1;
-        }
+            let listToDeleteMiddle = arrayToLinkedList([1,3,4,7,1,2,6]);
+            console.log(print(deleteOptimal(listToDeleteMiddle)));
