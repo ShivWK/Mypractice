@@ -2748,25 +2748,43 @@
 
     //Object.prototype.toString
 
-      let obj = {};
-      console.log(obj.toString());
-      console.log(Object.prototype.toString.call(obj));
+      // let obj = {};
+      // console.log(obj.toString());
+      // console.log(Object.prototype.toString.call(obj));
 
-      let arr = [];
-      console.log(Object.prototype.toString.call(arr));
+      // let arr = [];
+      // console.log(Object.prototype.toString.call(arr));
 
       let var1 = null;
       let var2 = undefined;
       let var3 = "Shivedra";
-      console.log(Object.prototype.toString.call(var1));
-      console.log(Object.prototype.toString.call(var2));
-      console.log(Object.prototype.toString.call(var3));
+      console.log({}.toString.call(var1));
+      console.log({}.toString.call(var2));
+      console.log({}.toString.call(var3));
 
-      let functionToString = Object.prototype.toString;
-      console.log(functionToString.call(alert));
+      console.log(var3.toString.call(var3));
+
+      // let functionToString = Object.prototype.toString;
+      // console.log(functionToString.call(alert));
+
+    //Symbol.toStringTag 
+
+      let user = {
+        [Symbol.toStringTag] : "User",
+      }
+
+      console.log(Object.prototype.toString.call(user));
+      console.log(user.toString());
+
+      class User {
+        name = "shivendra";
+      }
+
+      let obj = new User();
+
+      console.log({}.toString.call(obj));
 
       
-
       </script>
     
   </body>
