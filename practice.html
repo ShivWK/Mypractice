@@ -2844,37 +2844,48 @@
       
     //Rethrowing Error
 
-    function inner() {
-      let json = '{"age" : 25}';
+//     function inner() {
+//       let json = '{"age" : 25}';
+//       try {
+//         let user = JSON.parse(json);
+
+//         if (!user.name) {
+//           throw new SyntaxError("Nahi hai");
+//         }
+
+//         blablablab();
+
+//         console.log(user.name);
+//       } catch (err) {
+//         if (err instanceof SyntaxError) {
+//           console.log(err.message)
+//         }
+//         else {
+//           throw err;
+//         }
+//       }
+//     }
+
+//     try {
+//       inner();
+//     } catch(err) {
+//       console.log(err.message);
+//     }
+
+    //Finally block
+
+      let user = '{"age" : "shivendra"}'
+
       try {
-        let user = JSON.parse(json);
-
-        if (!user.name) {
-          throw new SyntaxError("Nahi hai");
+        let obj = JSON.parse(user);
+        if (!obj.name) {
+          throw new SyntaxError("error");
         }
-
-        blablablab();
-
-        console.log(user.name);
       } catch (err) {
-        if (err instanceof SyntaxError) {
-          console.log(err.message)
-        }
-        else {
-          throw err;
-        }
+        console.log(err.message);
+      } finally {
+        console.log('called');
       }
-    }
-
-    try {
-      inner();
-    } catch(err) {
-      console.log(err.message);
-    }
-
-      
-
-
 
     </script>
     
