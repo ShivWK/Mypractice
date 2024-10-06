@@ -1138,27 +1138,27 @@ function print(head) {
 
     //Brute Force
 
-        function startPointOfLoop() {
-            if (!head || !head.next) return null;
+        // function startPointOfLoop() {
+        //     if (!head || !head.next) return null;
 
-            let myMap = new Map();
-            let current = head;
+        //     let myMap = new Map();
+        //     let current = head;
 
-            while (current) {
-                if (myMap.has(current)) return current;
+        //     while (current) {
+        //         if (myMap.has(current)) return current;
 
-                myMap.set(current, 1);
-                current = current.next;
-            }
+        //         myMap.set(current, 1);
+        //         current = current.next;
+        //     }
 
-            return null;
-        }
+        //     return null;
+        // }
 
     //Optimal solution
 
     function startPointOfLoopOptimal() {
         if (!head || !head.next) return null;
-
+s
         let slow = head, fast = head;
 
         while (fast && fast.next) {

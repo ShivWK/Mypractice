@@ -176,6 +176,16 @@ p {
   margin: .5em 0;
 }
 
+.widget-recent-post {
+  border-bottom: 1px solid black;
+  padding-bottom: 1em;
+}
+
+.widget-recent-post:last-child {
+  border: none;
+  padding-bottom : unset;
+}
+
 footer {
   display: flex;
   flex-direction: column;
@@ -198,7 +208,7 @@ footer {
 
 @media (max-width: 1005px) {
   .main {
-    margin: 1em 2em 0;
+    margin: 1em 4em 0;
   }
   .container {
     flex-direction: column;
