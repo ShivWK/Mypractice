@@ -1217,38 +1217,73 @@ function print(head) {
 
     //Brute force
 
-        function listMerger(head1, head2) {
+        // function listMerger(head1, head2) {
+        //     if (!head1 && !head2) return head1;
+
+        //     let midArray = [], current = head1;
+
+        //     while (current) {
+        //         midArray.push(current.data);
+
+        //         current = current.next;
+        //     }
+
+        //     current = head2;
+        //     while (current) {
+        //         midArray.push(current.data);
+
+        //         current = current.next;
+        //     }
+
+        //     midArray.sort((a,b) => a - b);
+
+        //     let head = new Node(midArray[0])
+        //     current = head;
+
+        //     for (let i = 1; i < midArray.length; i++) {
+        //         current.next = new Node(midArray[i]);
+        //         current = current.next;
+        //     }
+
+        //     return head;
+        // }
+
+        // let listOne = arrayToLinkedList([2,4,6,8,10,12,14]);
+        // let listTwo = arrayToLinkedList([1,3,5,7,9,11,13]);
+
+        // console.log(print(listMerger(listOne, listTwo)))
+
+    //Optimal solution
+
+        function listMerger2(head1, head2) {
             if (!head1 && !head2) return head1;
 
-            let midArray = [], current = head1;
+            let temp1 = head1, temp2 = head2;
+            let dummyNode = new Node(-1);
+            let current = dummyNode;
 
-            while (current) {
-                midArray.push(current.data);
+            while (temp1 && temp2) {
+                if (temp1.data < temp2.data) {
+                    current.next = temp1;
+                    temp1 = temp1.next;
+                } else {
+                    current.next = temp2;
+                    temp2 = temp2.next;
+                }
 
                 current = current.next;
             }
 
-            current = head2;
-            while (current) {
-                midArray.push(current.data);
-
-                current = current.next;
+            if (temp1) {
+                current.next = temp1;
+            } else {
+                current.next = temp2;
             }
 
-            midArray.sort((a,b) => a - b);
-
-            let head = new Node(midArray[0])
-            current = head;
-
-            for (let i = 1; i < midArray.length; i++) {
-                current.next = new Node(midArray[i]);
-                current = current.next;
-            }
-
-            return head;
+            return dummyNode.next;
         }
 
         let listOne = arrayToLinkedList([2,4,6,8,10,12,14]);
         let listTwo = arrayToLinkedList([1,3,5,7,9,11,13]);
 
-        console.log(print(listMerger(listOne, listTwo)))
+        console.log(print(listMerger2(listOne, listTwo)));
