@@ -1255,35 +1255,35 @@ function print(head) {
 
     //Optimal solution
 
-        function listMerger2(head1, head2) {
-            if (!head1 && !head2) return head1;
+        // function listMerger2(head1, head2) {
+        //     if (!head1 && !head2) return head1;
 
-            let temp1 = head1, temp2 = head2;
-            let dummyNode = new Node(-1);
-            let current = dummyNode;
+        //     let temp1 = head1, temp2 = head2;
+        //     let dummyNode = new Node(-1);
+        //     let current = dummyNode;
 
-            while (temp1 && temp2) {
-                if (temp1.data < temp2.data) {
-                    current.next = temp1;
-                    temp1 = temp1.next;
-                } else {
-                    current.next = temp2;
-                    temp2 = temp2.next;
-                }
+        //     while (temp1 && temp2) {
+        //         if (temp1.data < temp2.data) {
+        //             current.next = temp1;
+        //             temp1 = temp1.next;
+        //         } else {
+        //             current.next = temp2;
+        //             temp2 = temp2.next;
+        //         }
 
-                current = current.next;
-            }
+        //         current = current.next;
+        //     }
 
-            if (temp1) {
-                current.next = temp1;
-            } else {
-                current.next = temp2;
-            }
+        //     if (temp1) {
+        //         current.next = temp1;
+        //     } else {
+        //         current.next = temp2;
+        //     }
 
-            return dummyNode.next;
-        }
+        //     return dummyNode.next;
+        // }
 
-        let listOne = arrayToLinkedList([2,4,6,8,10,12,14]);
-        let listTwo = arrayToLinkedList([1,3,5,7,9,11,13]);
+        // let listOne = arrayToLinkedList([2,4,6,8,10,12,14]);
+        // let listTwo = arrayToLinkedList([1,3,5,7,9,11,13]);
 
-        console.log(print(listMerger2(listOne, listTwo)));
+        // console.log(print(listMerger2(listOne, listTwo)));

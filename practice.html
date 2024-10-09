@@ -2889,29 +2889,42 @@
 
     //finally...return 
 
-      function funct() {
-        try {
-          return 1;
-        } catch(err) {
+      // function funct() {
+      //   try {
+      //     return 1;
+      //   } catch(err) {
 
-        } finally {
-          console.log("worked after return");
-        }
-      }
-      funct();
+      //   } finally {
+      //     console.log("worked after return");
+      //   }
+      // }
+      // funct();
 
-      console.log("hi outside");
+      // console.log("hi outside");
 
     //Try..finally
 
-      function tryFinally() {
-        try {
-          lllllll();
-        } finally {
-          console.log("without catch block");
-        }
-      }
-      tryFinally();
+      // function tryFinally() {
+      //   try {
+      //     lllllll();
+      //   } finally {
+      //     console.log("without catch block");
+      //   }
+      // }
+      // tryFinally();
+
+// global catch
+
+    window.onerror - function(message, url, loine, col, error) {
+      console.log(message + " " + "at" + "ff " + line + ":" + col + "of" + url);
+    }
+
+    function readData() {
+      badfunc();
+    }
+
+    readData();
+      
     </script>
     
   </body>
