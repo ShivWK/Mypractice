@@ -1156,26 +1156,60 @@ function print(head) {
 
     //Optimal solution
 
-    function startPointOfLoopOptimal() {
-        if (!head || !head.next) return null;
-s
-        let slow = head, fast = head;
+    // function startPointOfLoopOptimal() {
+    //     if (!head || !head.next) return null;
 
-        while (fast && fast.next) {
-            slow = slow.next;
-            fast = fast.next.next;
+    //     let slow = head, fast = head;
 
-            if (slow === fast) {
-                slow = head;
+    //     while (fast && fast.next) {
+    //         slow = slow.next;
+    //         fast = fast.next.next;
 
-                while (slow !== fast) {
-                    slow = slow.next;
-                    fast = fast.next
-                }
+    //         if (slow === fast) {
+    //             slow = head;
 
-                return slow;
+    //             while (slow !== fast) {
+    //                 slow = slow.next;
+    //                 fast = fast.next
+    //             }
+
+    //             return slow;
+    //         }
+    //     }
+
+    //     return null
+    // }
+
+//Sort the array
+
+    //Brute force
+
+        function sortTheList(head) {
+            if (!head || !head.next) return head;
+
+            let current = head, midArray = [];
+
+            while (current) {
+                midArray.push(current.data);
+
+                current = current.next;
             }
+
+            midArray.sort((a,b) => a - b);
+
+            current = head; 
+            let i = 0;
+            while (current) {
+                if (current.data !== midArray[i]) {
+                    current.data = midArray[i];
+                }
+                i++;
+                current = current.next;
+             }
+
+             return head;
         }
 
-        return null
-    }
+    let newArrayLinkedList = arrayToLinkedList([2,5,8,4,6,1,3,7]);
+    console.log(print(sortTheList(newArrayLinkedList)));
+
