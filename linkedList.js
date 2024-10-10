@@ -1180,39 +1180,6 @@ function print(head) {
     //     return null
     // }
 
-//Sort the array
-
-    //Brute force
-
-    //     function sortTheList(head) {
-    //         if (!head || !head.next) return head;
-
-    //         let current = head, midArray = [];
-
-    //         while (current) {
-    //             midArray.push(current.data);
-
-    //             current = current.next;
-    //         }
-
-    //         midArray.sort((a,b) => a - b);
-
-    //         current = head; 
-    //         let i = 0;
-    //         while (current) {
-    //             if (current.data !== midArray[i]) {
-    //                 current.data = midArray[i];
-    //             }
-    //             i++;
-    //             current = current.next;
-    //          }
-
-    //          return head;
-    //     }
-
-    // let newArrayLinkedList = arrayToLinkedList([2,5,8,4,6,1,3,7]);
-    // console.log(print(sortTheList(newArrayLinkedList)));
-
 //Merge twio sorted lists
 
     //Brute force
@@ -1255,35 +1222,103 @@ function print(head) {
 
     //Optimal solution
 
-        // function listMerger2(head1, head2) {
-        //     if (!head1 && !head2) return head1;
+        function listMerger2(head1, head2) {
+            if (!head1 && !head2) return head1;
 
-        //     let temp1 = head1, temp2 = head2;
-        //     let dummyNode = new Node(-1);
-        //     let current = dummyNode;
+            let temp1 = head1, temp2 = head2;
+            let dummyNode = new Node(-1);
+            let current = dummyNode;
 
-        //     while (temp1 && temp2) {
-        //         if (temp1.data < temp2.data) {
-        //             current.next = temp1;
-        //             temp1 = temp1.next;
-        //         } else {
-        //             current.next = temp2;
-        //             temp2 = temp2.next;
-        //         }
+            while (temp1 && temp2) {
+                if (temp1.data < temp2.data) {
+                    current.next = temp1;
+                    temp1 = temp1.next;
+                } else {
+                    current.next = temp2;
+                    temp2 = temp2.next;
+                }
 
-        //         current = current.next;
-        //     }
+                current = current.next;
+            }
 
-        //     if (temp1) {
-        //         current.next = temp1;
-        //     } else {
-        //         current.next = temp2;
-        //     }
+            if (temp1) {
+                current.next = temp1;
+            } else {
+                current.next = temp2;
+            }
 
-        //     return dummyNode.next;
-        // }
+            return dummyNode.next;
+        }
 
         // let listOne = arrayToLinkedList([2,4,6,8,10,12,14]);
         // let listTwo = arrayToLinkedList([1,3,5,7,9,11,13]);
 
         // console.log(print(listMerger2(listOne, listTwo)));
+
+
+//Sort the array
+
+    // Brute force
+
+        function sortTheList(head) {
+            if (!head || !head.next) return head;
+
+            let current = head, midArray = [];
+
+            while (current) {
+                midArray.push(current.data);
+
+                current = current.next;
+            }
+
+            midArray.sort((a,b) => a - b);
+
+            current = head; 
+            let i = 0;
+            while (current) {
+                if (current.data !== midArray[i]) {
+                    current.data = midArray[i];
+                }
+                i++;
+                current = current.next;
+             }
+
+             return head;
+        }
+
+        let newArrayLinkedList = arrayToLinkedList([2,5,8,4,6,1,3,7]);
+        console.log(print(sortTheList(newArrayLinkedList)));
+
+    //Optimal Solution
+
+        function findMid(head) {
+            if (!head || !head.next) return head;
+
+            let fast = head.next, slow = head;
+
+            while (fast && fast.next) {
+                slow = slow.next;
+                fast = fast.next.next;
+            }
+
+            return slow;
+        }
+
+        function sortTheListOptimal(head) {
+
+            if (!head || !head.next) return head;
+
+            let mid = findMid(head);
+            let leftHead = head;
+            let rightHead = mid.next;
+            mid.next = null;
+
+            leftHead = sortTheListOptimal(leftHead);
+            rightHead = sortTheListOptimal(rightHead);
+
+            return listMerger2(leftHead, rightHead)
+        }
+
+        let newArrayLinkedList2 = arrayToLinkedList([2,5,8,4,6,1,3,7]);
+        console.log(print(sortTheListOptimal(newArrayLinkedList2)));
+
