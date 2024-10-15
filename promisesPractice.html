@@ -64,34 +64,63 @@
 
 //Promise
 
-        let promise = new Promise(function(resolve, reject) {
-            setTimeout(() => {
-                resolve("Its Done");
-                reject("failed"); //ignored
-                resolve("Not failed"); //ignored
+        // let promise = new Promise(function(resolve, reject) {
+        //     setTimeout(() => {
+        //         resolve("Its Done");
+        //         reject("failed"); //ignored
+        //         resolve("Not failed"); //ignored
+        //     })
+        // })
+
+        // promise.then(data => {
+        //     console.log(data);
+        // })
+
+        // promise.then(data => {
+        //     console.log(data);
+        // }, err => {
+        //         console.log(err)
+        // })
+
+        // promise.finally(() => {
+        //     console.log("cleaned");
+        //     // return  "hoo";
+        //     throw new Error("Holu hi");
+        // })
+        
+        // promise.catch(err => {
+        //     console.log(err);
+        // })
+
+//loadScript by promises
+
+        function loadScript(src) {
+            return new Promise(function(resolve, reject) {
+                let script = document.createElement('script');
+                script.src = src;
+
+                script.onload = () => resolve(script);
+                script.onerror = () => reject(new Error("script load error for "+src));
+
+                document.head.append(script);
             })
-        })
+        }
 
-        promise.then(data => {
-            console.log(data);
+        let promise = loadScript('./script1.js');
+        promise.then(() => {
+            console.log("script 1 loaded");
+            return loadScript('./script2.js')
         })
-
-        promise.then(data => {
-            console.log(data);
-        }, err => {
-                console.log(err)
+        .then(() => {
+            console.log("script 2 loaded");
+            return loadScript('./script3.js')
         })
-        
-        promise.catch(err => {
-            console.log(err);
+        .then(() => {
+            console.log("script 3 loaded")
         })
-
-        promise.finally(() => {
-            console.log("cleaned");
+        .catch(err => {
+            console.error(err.message);
         })
-        
-
-
     </script>
 </body>
 </html>
