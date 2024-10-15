@@ -135,30 +135,40 @@
 
     //Error handling in promises
 
-        new Promise((resolve, reject) => {
-            // throw new Error("new error hun mai");
-            resolve(2)
-        })
-        .catch(err => {
-            if (err instanceof URIError) {
-                console.log(err);
-            } else {
-                alert("Can't handle the error");
+        // new Promise((resolve, reject) => {
+        //     // throw new Error("new error hun mai");
+        //     resolve(2)
+        // })
+        // .catch(err => {
+        //     if (err instanceof URIError) {
+        //         console.log(err);
+        //     } else {
+        //         alert("Can't handle the error");
                 
-                throw err;
-            }
-        })
-        .then (data => {
-            console.log(data);
-            return data; // if i dont return then the further then in the chain will get undefined.
-        })
-        .catch(err => {
-            alert(err);
-        })
-        .then (data => {
-            console.log(data);
-        })
+        //         throw err;
+        //     }
+        // })
+        // .then (data => {
+        //     console.log(data);
+        //     return data; // if i dont return then the further then in the chain will get undefined.
+        // })
+        // .catch(err => {
+        //     alert(err);
+        // })
+        // .then (data => {
+        //     console.log(data);
+        // })
     
+    //Unhandled rejection
+
+        new Promise((resolve, reject) => {
+            reject(new Error("failled"));
+        }) 
+
+        window.addEventListener('unhandledrejection', (event) => {
+            console.log(event.promise);
+            console.log(event.reason);
+        })
 
     </script>
 </body>
