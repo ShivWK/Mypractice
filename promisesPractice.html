@@ -94,33 +94,72 @@
 
 //loadScript by promises
 
-        function loadScript(src) {
-            return new Promise(function(resolve, reject) {
-                let script = document.createElement('script');
-                script.src = src;
+        // function loadScript(src) {
+        //     return new Promise(function(resolve, reject) {
+        //         let script = document.createElement('script');
+        //         script.src = src;
 
-                script.onload = () => resolve(script);
-                script.onerror = () => reject(new Error("script load error for "+src));
+        //         script.onload = () => resolve(script);
+        //         script.onerror = () => reject(new Error("script load error for "+src));
 
-                document.head.append(script);
-            })
-        }
+        //         document.head.append(script);
+        //     })
+        // }
 
-        let promise = loadScript('./script1.js');
-        promise.then(() => {
-            console.log("script 1 loaded");
-            return loadScript('./script2.js')
-        })
-        .then(() => {
-            console.log("script 2 loaded");
-            return loadScript('./script3.js')
-        })
-        .then(() => {
-            console.log("script 3 loaded")
+        // let promise = loadScript('./script1.js');
+        // promise.then(() => {
+        //     return loadScript('./script2.js')
+        // })
+        // .then(() => {
+        //     return loadScript('./script3.js')
+        // })
+        // .then(() => {
+        //     show1();
+        //     show2();
+        //     show3();
+        // })
+        // .catch(err => {
+        //     console.error(err.message);
+        // })
+
+        // loadScript('./script1.js').then(script => {
+        //     loadScript('./script2.js').then(script => {
+        //         loadScript('./script3.js').then(() => {
+        //             console.log("next question");
+        //             show1();
+        //             show2();
+        //             show3();
+        //         })
+        //     })
+        // })
+
+    //Error handling in promises
+
+        new Promise((resolve, reject) => {
+            // throw new Error("new error hun mai");
+            resolve(2)
         })
         .catch(err => {
-            console.error(err.message);
+            if (err instanceof URIError) {
+                console.log(err);
+            } else {
+                alert("Can't handle the error");
+                
+                throw err;
+            }
         })
+        .then (data => {
+            console.log(data);
+            return data; // if i dont return then the further then in the chain will get undefined.
+        })
+        .catch(err => {
+            alert(err);
+        })
+        .then (data => {
+            console.log(data);
+        })
+    
+
     </script>
 </body>
 </html>
