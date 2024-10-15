@@ -7,14 +7,16 @@
 </head>
 <body>
     <script>
-        function loadScript(src, callback) {
-            let script = document.createElement('script');
-            script.src = src;
 
-            script.onload = () => callback(null, script);
-            script.onerror = () => callback(new Error("script not loaded"));
-            document.head.append(script);
-        }
+//Callback
+        // function loadScript(src, callback) {
+        //     let script = document.createElement('script');
+        //     script.src = src;
+
+        //     script.onload = () => callback(null, script);
+        //     script.onerror = () => callback(new Error("script not loaded"));
+        //     document.head.append(script);
+        // }
 
         // loadScript('./script1.js', ()=> {
         //     setTimeout(() => {
@@ -34,31 +36,61 @@
         //     })
         // })
         
-        loadScript('./script1.js', step1);
+        // loadScript('./script1.js', step1);
 
-        function step1(error, script) {
-            if (error) {
-                console.log(error.message + " in step 1");
-            } else {
-                loadScript('./script2.js', step2);
-            }
-        }
+        // function step1(error, script) {
+        //     if (error) {
+        //         console.log(error.message + " in step 1");
+        //     } else {
+        //         loadScript('./script2.js', step2);
+        //     }
+        // }
 
-        function step2(error, script) {
-            if (error) {
-                console.log(error.message + " in step 2");
-            } else {
-                loadScript('./script3.js', step3);
-            }
-        }
+        // function step2(error, script) {
+        //     if (error) {
+        //         console.log(error.message + " in step 2");
+        //     } else {
+        //         loadScript('./script3.js', step3);
+        //     }
+        // }
 
-        function step3(error, script) {
-            if (error) {
-                console.log(error.message + " in step 3");
-            } else {
-                console.log("done")
-            }
-        }
+        // function step3(error, script) {
+        //     if (error) {
+        //         console.log(error.message + " in step 3");
+        //     } else {
+        //         console.log("done")
+        //     }
+        // }
+
+//Promise
+
+        let promise = new Promise(function(resolve, reject) {
+            setTimeout(() => {
+                resolve("Its Done");
+                reject("failed"); //ignored
+                resolve("Not failed"); //ignored
+            })
+        })
+
+        promise.then(data => {
+            console.log(data);
+        })
+
+        promise.then(data => {
+            console.log(data);
+        }, err => {
+                console.log(err)
+        })
+        
+        promise.catch(err => {
+            console.log(err);
+        })
+
+        promise.finally(() => {
+            console.log("cleaned");
+        })
+        
+
 
     </script>
 </body>
