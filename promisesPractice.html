@@ -161,15 +161,44 @@
     
     //Unhandled rejection
 
-        new Promise((resolve, reject) => {
-            reject(new Error("failled"));
-        }) 
+        // new Promise((resolve, reject) => {
+        //     reject(new Error("failled"));
+        // }) 
 
-        window.addEventListener('unhandledrejection', (event) => {
-            console.log(event.promise);
-            console.log(event.reason);
+        // window.addEventListener('unhandledrejection', (event) => {
+        //     console.log(event.promise);
+        //     console.log(event.reason);
+        // })
+
+    //Promise.resolve, Promise.reject
+
+        // let myMap = new Map();
+
+        // function loadScript(url) {
+        //     if (myMap.has(url)) {
+        //         return Promise.resolve(myMap.get(url));
+        //     }
+
+        //     return fetch(url)
+        //             .then(responce => responce.text())
+        //             .then(text => {
+        //                 myMap.set(url , text);
+        //                 return text;
+        //             })
+        // }
+
+        // loadScript('./script1.js').then(data => console.log(data));
+
+        function rejectedPromises() {
+            return Promise.reject(new Error("Failled ji"));
+        }
+
+        rejectedPromises().then(data => {
+            console.log(data);
         })
-
+        .catch(err => {
+            console.log(err.message);
+        })
     </script>
 </body>
 </html>
