@@ -52,53 +52,53 @@ class Stack {
 // stack.push(15);
 // stack.print();
 
-class Queue {
-    constructor() {
-        this.queue = [];
-    }
+// class Queue {
+//     constructor() {
+//         this.queue = [];
+//     }
 
-    //in JS there is no limit to the size of an array so we dont have any restriction of size.
+//     //in JS there is no limit to the size of an array so we dont have any restriction of size.
 
-    enqueue(element) {
-        this.queue.push(element);
-    }
+//     enqueue(element) {
+//         this.queue.push(element);
+//     }
 
-    dequeue() {
-        if (this.isEmpty()) {
-            return "Underflow, cannot perform dequeue.";
-        }
+//     dequeue() {
+//         if (this.isEmpty()) {
+//             return "Underflow, cannot perform dequeue.";
+//         }
 
-        return this.queue.shift();
-    }
+//         return this.queue.shift();
+//     }
 
-    isEmpty() {
-        return this.queue.length === 0;
-    }
+//     isEmpty() {
+//         return this.queue.length === 0;
+//     }
 
-    front() {
-        if (this.isEmpty()) {
-            return "NO element in the queue."
-        }
+//     front() {
+//         if (this.isEmpty()) {
+//             return "NO element in the queue."
+//         }
 
-        return this.queue[0];
-    }
+//         return this.queue[0];
+//     }
 
-    size() {
-        return this.queue.length;
-    }
+//     size() {
+//         return this.queue.length;
+//     }
 
-    print() {
-        let result = '';
+//     print() {
+//         let result = '';
 
-        for (let i = 0; i < this.size(); i++) {
-            result += i === this.size() - 1 ? this.queue[i] : this.queue[i] + ", ";
-        }
+//         for (let i = 0; i < this.size(); i++) {
+//             result += i === this.size() - 1 ? this.queue[i] : this.queue[i] + ", ";
+//         }
 
-        return result;
-    }
-}
+//         return result;
+//     }
+// }
 
-let queue = new Queue();
+// let queue = new Queue();
 
 // queue.enqueue(11);
 // queue.enqueue(12);
@@ -106,7 +106,38 @@ let queue = new Queue();
 // queue.enqueue(14);
 // queue.enqueue(15);
 
-console.log(queue.print());
-console.log(queue.dequeue());
-console.log(queue.front());
+// console.log(queue.print());
+// console.log(queue.dequeue());
+// console.log(queue.front());
 
+function balancedParenthesis(str) {
+    let stack = new Stack()
+
+    for (let i = 0; i < str.length; i++) {
+        if (str[i] === "(" || str[i] === "{" || str[i] === "[") {
+
+            stack.push(str[i]);
+        } else {
+            let popped = stack.pop();
+
+            if (popped === "stack is empty") {
+                return false;
+            }
+
+            if (
+                (str[i] === ")" && popped !== "(") || 
+                (str[i] === "}" && popped !== "{") || 
+                (str[i] === "]" && popped !== "[")
+                ) 
+                {
+                return false;
+            } 
+             
+        }
+    }
+
+    return stack.isEmpty();
+}
+
+console.log(balancedParenthesis("(){[()]}"));
+console.log(balancedParenthesis("]["));
