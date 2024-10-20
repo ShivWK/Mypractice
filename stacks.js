@@ -155,7 +155,7 @@ class Stack {
 
     //infix to postfix conversion
     
-    function convertion(str) {
+    function infixToPostfix(str) {
         let ans = '', i = 0;
         let stack1 = new Stack();
         let n = str.length;
@@ -191,4 +191,69 @@ class Stack {
         return ans;
     }
 
-    console.log(convertion("a+b*(c^d-c)"));
+    // console.log(convertion("a+b*(c^d-c)"));
+
+    function reverse(str) {
+        let ans = '';
+
+        for (let i = str.length - 1; i >= 0; i--) {
+            if (str[i] === "(") {
+                ans += ")";
+            } else if (str[i] === ")") {
+                ans += "(";
+            } else {
+                ans += str[i];
+            }
+        }
+
+        return ans;
+    }
+
+    function infixToPrefix(str) {
+        let ans = '', i = 0;
+        let stack1 = new Stack();
+        let n = str.length;
+
+        str = reverse(str);
+
+        while (i < n) {
+            if (str[i] >= "A" && str[i] <= "Z" || str[i] >= "a" && str[i] <= 'z' || str[i] >= '0' && str[i] <= '9') {
+                ans += str[i];
+
+            } else if (str[i] == '(' ) {
+                stack1.push(str[i]);
+
+            } else if (str[i] == ')') {
+                while (!stack1.isEmpty() && stack1.peek() !== "(") {
+                    ans += stack1.pop();
+
+                }
+                stack1.pop(); //poping the opening bracket too.
+            } else {
+                if (str[i] === '^') {
+                    while (!stack1.isEmpty() && priority(stack1.peek()) >= priority(str[i])) {
+                        ans += stack1.pop();
+                    }
+
+                } else {
+                    while (!stack1.isEmpty() && priority(stack1.peek()) > priority(str[i])) {
+                        ans += stack1.pop();
+    
+                    }
+                }
+                
+                stack1.push(str[i]);
+            }
+
+            i++;
+        }
+
+        while (!stack1.isEmpty()) {
+            ans += stack1.pop();
+        }
+        ans = reverse(ans);
+
+        return ans;
+    }
+
+    console.log(infixToPrefix('(A*B)+(C*D)'));
