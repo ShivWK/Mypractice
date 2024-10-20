@@ -110,34 +110,85 @@ class Stack {
 // console.log(queue.dequeue());
 // console.log(queue.front());
 
-function balancedParenthesis(str) {
-    let stack = new Stack()
+//Balanced String
 
-    for (let i = 0; i < str.length; i++) {
-        if (str[i] === "(" || str[i] === "{" || str[i] === "[") {
+        // function balancedParenthesis(str) {
+        //     let stack = new Stack()
 
-            stack.push(str[i]);
-        } else {
-            let popped = stack.pop();
+        //     for (let i = 0; i < str.length; i++) {
+        //         if (str[i] === "(" || str[i] === "{" || str[i] === "[") {
 
-            if (popped === "stack is empty") {
-                return false;
-            }
+        //             stack.push(str[i]);
+        //         } else {
+        //             let popped = stack.pop();
 
-            if (
-                (str[i] === ")" && popped !== "(") || 
-                (str[i] === "}" && popped !== "{") || 
-                (str[i] === "]" && popped !== "[")
-                ) 
-                {
-                return false;
-            } 
-             
-        }
+        //             if (popped === "stack is empty") {
+        //                 return false;
+        //             }
+
+        //             if (
+        //                 (str[i] === ")" && popped !== "(") || 
+        //                 (str[i] === "}" && popped !== "{") || 
+        //                 (str[i] === "]" && popped !== "[")
+        //                 ) 
+        //                 {
+        //                 return false;
+        //             } 
+                    
+        //         }
+        //     }
+
+        //     return stack.isEmpty();
+        // }
+
+        // console.log(balancedParenthesis("(){[()]}"));
+        // console.log(balancedParenthesis("]["));
+
+//expression convertions
+
+    function priority(str) {
+        if (str === "^") return 3;
+        else if (str === "*" || str === "/") return 2;
+        else if (str === "+" || str === "-") return 1;
+        else return -1;
     }
 
-    return stack.isEmpty();
-}
+    //infix to postfix conversion
+    
+    function convertion(str) {
+        let ans = '', i = 0;
+        let stack1 = new Stack();
+        let n = str.length;
 
-console.log(balancedParenthesis("(){[()]}"));
-console.log(balancedParenthesis("]["));
+        while (i < n) {
+            if (str[i] >= "A" && str[i] <= "Z" || str[i] >= "a" && str[i] <= 'z' || str[i] >= '0' && str[i] <= '9') {
+                ans += str[i];
+
+            } else if (str[i] == '(' ) {
+                stack1.push(str[i]);
+
+            } else if (str[i] == ')') {
+                while (!stack1.isEmpty() && stack1.peek() !== "(") {
+                    ans += stack1.pop();
+
+                }
+                stack1.pop();
+            } else {
+                while (!stack1.isEmpty() && priority(stack1.peek()) >= priority(str[i])) {
+                    ans += stack1.pop();
+
+                }
+                stack1.push(str[i]);
+            }
+
+            i++;
+        }
+
+        while (!stack1.isEmpty()) {
+            ans += stack1.pop();
+        }
+
+        return ans;
+    }
+
+    console.log(convertion("a+b*(c^d-c)"));
