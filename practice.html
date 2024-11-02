@@ -2970,14 +2970,22 @@
 
     //Is everything is object in javascript
 
-      const age = 25;
-      const str = "JS";
-      const isValid = true;
+      // const age = 25;
+      // const str = "JS";
+      // const isValid = true;
 
-      // console.log(null.toString());
-      console.log(isValid.toString());
-      console.log(str.toLowerCase());
+      // // console.log(null.toString());
+      // console.log(isValid.toString());
+      // console.log(str.toLowerCase());
 
+    //reduceRight
+
+      const str = "a.b.c.d.e";
+
+      console.log(str.split(".").reduceRight((acc, curr) => (
+        {[curr] : acc}
+      ))
+)
     </script>
     
   </body>
