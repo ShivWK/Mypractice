@@ -189,16 +189,44 @@
 
         // loadScript('./script1.js').then(data => console.log(data));
 
-        function rejectedPromises() {
-            return Promise.reject(new Error("Failled ji"));
+        // function rejectedPromises() {
+        //     return Promise.reject(new Error("Failled ji"));
+        // }
+
+        // rejectedPromises().then(data => {
+        //     console.log(data);
+        // })
+        // .catch(err => {
+        //     console.log(err.message);
+        // })
+
+    //async awzit
+
+        // let mine = async function() {
+        //     return Promise.resolve(1);
+        // }
+
+        // mine().then(data => {
+        //     console.log("Hi");
+        // })
+
+        async function loadJson(url) {
+            let response = await fetch('https://dummyjson.com/products/1');
+
+            if (response.status === 200) {
+                let json = await response.json();
+                return json;
+            }
+
+            throw new Error("not found");
         }
 
-        rejectedPromises().then(data => {
+        loadJson('./script1.js')
+        .then(data => {
             console.log(data);
-        })
-        .catch(err => {
-            console.log(err.message);
-        })
+        }, err => {
+            console.log(err.meassage);
+        });
     </script>
 </body>
 </html>

@@ -2915,16 +2915,69 @@
 
 // global catch
 
-    window.onerror - function(message, url, loine, col, error) {
-      console.log(message + " " + "at" + "ff " + line + ":" + col + "of" + url);
-    }
+    // window.onerror - function(message, url, loine, col, error) {
+    //   console.log(message + " " + "at" + "ff " + line + ":" + col + "of" + url);
+    // }
 
-    function readData() {
-      badfunc();
-    }
+    // function readData() {
+    //   badfunc();
+    // }
 
-    readData();
+    // readData();
+  
+  //FED master JS serie qoestions
       
+      // function taskReducer(state, action) {
+      //   switch (action.type) {
+      //     case "added" : {
+      //       return [
+      //         ...state,
+      //         {
+      //           id : action.id,
+      //           text : action.text,
+      //           done : false,
+      //         }
+      //       ]
+      //     }
+
+      //     case "changed" : {
+      //       return state.map(task => {
+      //         if (task.id === action.taskId) {
+      //           return action.task;
+      //         } 
+
+      //         return task;
+      //       })
+      //     }
+
+      //     case 'delete' : {
+      //       return state.filter(task => task.id !== action.taskId);
+      //     }
+
+      //     default : {
+      //       throw new Error("Unknown action");
+      //     }
+      //   }
+      // }
+
+      // const initialState = [
+      //   {id : 5, task : "excercise", done : false},
+      //   {id : 6, task : "excercise", done : false},
+      //   {id : 7, task : "excercise", done : false}
+      // ]
+
+      // const [task, dispatch] = useReducer(taskReducer, initialState);
+
+    //Is everything is object in javascript
+
+      const age = 25;
+      const str = "JS";
+      const isValid = true;
+
+      // console.log(null.toString());
+      console.log(isValid.toString());
+      console.log(str.toLowerCase());
+
     </script>
     
   </body>

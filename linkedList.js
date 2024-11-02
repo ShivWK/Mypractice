@@ -1241,12 +1241,9 @@ function print(head) {
                 current = current.next;
             }
 
-            if (temp1) {
-                current.next = temp1;
-            } else {
-                current.next = temp2;
-            }
-
+            if (temp1) current.next = temp1;
+            else current.next = temp2;
+            
             return dummyNode.next;
         }
 
@@ -1286,17 +1283,17 @@ function print(head) {
              return head;
         }
 
-        let newArrayLinkedList = arrayToLinkedList([2,5,8,4,6,1,3,7]);
-        console.log(print(sortTheList(newArrayLinkedList)));
+        // let newArrayLinkedList = arrayToLinkedList([2,5,8,4,6,1,3,7]);
+        // console.log(print(sortTheList(newArrayLinkedList)));
 
-    //Optimal Solution
+    //Optimal Solution 
 
         function findMid(head) {
             if (!head || !head.next) return head;
 
-            let fast = head.next, slow = head;
+            let fast = head, slow = head;
 
-            while (fast && fast.next) {
+            while (fast.next && fast.next.next) {
                 slow = slow.next;
                 fast = fast.next.next;
             }
@@ -1319,6 +1316,6 @@ function print(head) {
             return listMerger2(leftHead, rightHead)
         }
 
-        let newArrayLinkedList2 = arrayToLinkedList([2,5,8,4,6,1,3,7]);
+        let newArrayLinkedList2 = arrayToLinkedList([4,2,1,3]);
         console.log(print(sortTheListOptimal(newArrayLinkedList2)));
 
