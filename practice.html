@@ -6,6 +6,8 @@
     <title>Document</title>
   </head>
   <body>
+    <div id="menu">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, incidunt.</div>
+    <a href="#">Link</a>
     <script>
       //Object creatation by constructor function
 
@@ -2968,6 +2970,22 @@
 
       // const [task, dispatch] = useReducer(taskReducer, initialState);
 
+    //Generator function example
+
+        // function* generatorFn(i) {
+        //         console.log("A");
+        //         yield i;
+        //         console.log("B");
+        //         yield 2;
+        //         // return 3;
+        //     }
+
+        //     const gen = generatorFn(5);
+
+        //     // console.log(gen);
+        //     console.log(gen.next());
+        //     console.log(gen.next());
+
     //Is everything is object in javascript
 
       // const age = 25;
@@ -2980,12 +2998,43 @@
 
     //reduceRight
 
-      const str = "a.b.c.d.e";
+      // const str = "a.b.c.d.e";
 
-      console.log(str.split(".").reduceRight((acc, curr) => (
-        {[curr] : acc}
-      ))
-)
+      // console.log(str.split(".").reduceRight((acc, curr) => (
+      //         {[curr] : acc}
+      //       ))
+      // )
+
+    //DOM
+
+      let html = document.documentElement;
+      console.log(html);
+
+      let body = document.body;
+      console.log(body);
+
+      let head = document.head;
+      console.log(head);
+
+      let bodyChildren = document.childNodes;
+      console.log(bodyChildren);
+
+      let bodyFirstChild = document.body.firstChild;
+      console.log(bodyFirstChild);
+
+      let bodyLastChild = document.body.lastChild;
+      console.log(bodyLastChild);
+
+      let bodyAsParent = document.body.parentNode;
+      console.log(bodyAsParent);
+
+      let bodisNextSibling = document.head.nextSibling;
+      console.log(bodisNextSibling);
+
+      let bodisPreviousSibling = document.body.previousSibling;
+      console.log(bodisPreviousSibling);
+
+      
     </script>
     
   </body>
