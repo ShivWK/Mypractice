@@ -8,6 +8,27 @@
   <body>
     <div id="menu">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, incidunt.</div>
     <a href="#">Link</a>
+    <table id="table">
+      <thead>
+        <caption>My Table</caption>
+      </thead>
+      <tbody>
+        <tr>
+          <td>one</td>
+          <td>two</td>
+        </tr>
+        <tr>
+          <td>three</td>
+          <td>foure</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td>five</td>
+          <td>Six</td>
+        </tr>
+      </tfoot>
+    </table>
     <script>
       //Object creatation by constructor function
 
@@ -3007,34 +3028,47 @@
 
     //DOM
 
-      let html = document.documentElement;
-      console.log(html);
+      // let html = document.documentElement;
+      // console.log(html);
 
-      let body = document.body;
-      console.log(body);
+      // let body = document.body;
+      // console.log(body);
 
-      let head = document.head;
-      console.log(head);
+      // let head = document.head;
+      // console.log(head);
 
-      let bodyChildren = document.childNodes;
-      console.log(bodyChildren);
+      // let bodyChildren = document.childNodes;
+      // console.log(bodyChildren);
 
-      let bodyFirstChild = document.body.firstChild;
-      console.log(bodyFirstChild);
+      // let bodyFirstChild = document.body.firstChild;
+      // console.log(bodyFirstChild);
 
-      let bodyLastChild = document.body.lastChild;
-      console.log(bodyLastChild);
+      // let bodyLastChild = document.body.lastChild;
+      // console.log(bodyLastChild);
 
-      let bodyAsParent = document.body.parentNode;
-      console.log(bodyAsParent);
+      // let bodyAsParent = document.body.parentNode;
+      // console.log(bodyAsParent);
 
-      let bodisNextSibling = document.head.nextSibling;
-      console.log(bodisNextSibling);
+      // let bodisNextSibling = document.head.nextSibling;
+      // console.log(bodisNextSibling);
 
-      let bodisPreviousSibling = document.body.previousSibling;
-      console.log(bodisPreviousSibling);
+      // let bodisPreviousSibling = document.body.previousSibling;
+      // console.log(bodisPreviousSibling);
 
+      let parentOfHtml1 = document.documentElement.parentNode;
+      console.log(parentOfHtml1);
+
+      let parentOfHtml2 = document.documentElement.parentElement;
+      console.log(parentOfHtml2);
+
+    //Table specific properties
       
+      console.log(table.rows);
+      console.log(table.tBodies);
+      console.log(table.tHead);
+      console.log(table.tFoot);
+      console.log(table.caption)
+  
     </script>
     
   </body>
