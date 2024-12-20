@@ -6,7 +6,6 @@
     <title>Document</title>
   </head>
   <body>
-    <div id="menu">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, incidunt.</div>
     <a href="#">Link</a>
     <table id="table">
       <thead>
@@ -29,6 +28,15 @@
         </tr>
       </tfoot>
     </table>
+
+    <input type="text" name="myinput">
+
+    <div id="table2">
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo harum, praesentium magnam ducimus culpa accusantium eveniet sunt sit tempora sed.
+      <div id="menu">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, incidunt.</div>
+
+   </div>
+
     <script>
       //Object creatation by constructor function
 
@@ -3070,8 +3078,16 @@
       // console.log(table.caption);
       // console.log(table.rows[0].cells[0]);
 
-      
+    //Acccesing just with Id
 
+      document.getElementById('menu').style.color = "red"; //For readability dont directly use id, because it will make confusing that from where that id came, so use getElementById() method.
+
+      let table1 = document.getElementById("menu").closest("#table2").style.color = "green";
+      console.log(document.getElementsByTagName("table"));
+      console.log(document.getElementsByName("myinput"));
+      
+      let divEle = document.getElementById("menu");     
+      console.log(divEle.matches('div[id="menu"]'));
   
     </script>
     
