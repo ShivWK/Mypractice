@@ -6,7 +6,7 @@
     <title>Document</title>
   </head>
   <body>
-    <a href="#">Link</a>
+    <a href="#jjjjjjj" data-nameJi = "Shivedra" id="linkji">Link</a>
     <table id="table">
       <thead>
         <caption>My Table</caption>
@@ -31,11 +31,7 @@
 
     <input type="text" name="myinput">
 
-    <div id="table2">
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo harum, praesentium magnam ducimus culpa accusantium eveniet sunt sit tempora sed.
       <div id="menu">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, incidunt.</div>
-
-   </div>
 
     <script>
       //Object creatation by constructor function
@@ -3080,16 +3076,79 @@
 
     //Acccesing just with Id
 
-      document.getElementById('menu').style.color = "red"; //For readability dont directly use id, because it will make confusing that from where that id came, so use getElementById() method.
+      // document.getElementById('menu').style.color = "red"; //For readability dont directly use id, because it will make confusing that from where that id came, so use getElementById() method.
 
-      let table1 = document.getElementById("menu").closest("#table2").style.color = "green";
-      console.log(document.getElementsByTagName("table"));
-      console.log(document.getElementsByName("myinput"));
+      // let table1 = document.getElementById("menu").closest("#table2").style.color = "green";
+      // console.log(document.getElementsByTagName("table"));
+      // console.log(document.getElementsByName("myinput"));
       
-      let divEle = document.getElementById("menu");     
-      console.log(divEle.matches('div[id="menu"]'));
-  
+      // let divEle = document.getElementById("menu");     
+      // console.log(divEle.matches('div[id="menu"]'));
+
+    //Node Properties
+
+      // let bodyEle = document.body;
+      // console.log(bodyEle.firstChild.nodeType);
+
+      // console.log(document.nodeType);
+
+      // console.log(bodyEle.nodeType);
+
+      // console.log(bodyEle.firstChild.nodeName);
+
+      // console.log(document.nodeName);
+
+      // console.log(bodyEle.tagName);
+
+      let ele = document.getElementById("menu")
+
+      console.log(document.getElementById("menu"));
+      
+      document.getElementById("menu").outerHTML = "<p>Hi I'm Shivendra Dwivedi</p>"
+
+      // console.log(ele.outerHTML);
+
+      // ele.hidden = true;
+
+      // console.log(document.body.firstChild.nodeValue);
+
+      // let anchor = document.getElementsByTagName('a')[0];
+      // console.log(anchor.id)
+
+    //Attributes and properties
+
+      document.body.myself = {
+        name : "Shivendra",
+        age : 25,
+        gender : "Male"
+      }
+
+      document.body.self = function() {
+        alert(this.nodeName);
+      }
+
+      // document.body.self();
+
+      console.log(document.body.myself.name);
+
+      console.log(document.getElementsByTagName('a')[0].id)
+      console.log(document.getElementsByTagName('a')[0].id)
+
+      //custom attribute
+      console.log(document.getElementsByTagName('a')[0].dataset.nameji);
+
+      let aEle = document.getElementsByTagName('a')[0];
+
+      for (let attr of aEle.attributes) {
+        console.log(attr.name , "=", attr.value)
+      }
+
+      console.log(aEle.getAttribute('id'));
+      aEle.setAttribute("hi", "han ho bola");
+      console.log(aEle.getAttribute("hi"));
+
+      
     </script>
-    
+    <!-- last child comment node -->
   </body>
 </html>
