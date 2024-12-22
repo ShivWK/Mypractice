@@ -4,9 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      .myNewElement {
+        color : red;
+        font-style: italic;
+      }
+    </style>
   </head>
   <body>
-    <a href="#jjjjjjj" data-nameJi = "Shivedra" id="linkji">Link</a>
+    <a href="#jjjjjjj" data-nameJi = "Shivedra" >Link</a>
     <table id="table">
       <thead>
         <caption>My Table</caption>
@@ -29,9 +35,12 @@
       </tfoot>
     </table>
 
-    <input type="text" name="myinput">
+    <input type="text" order-state-canceled = "true" data-name = "shivendra" name="myinput">
 
-      <div id="menu">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, incidunt.</div>
+    <div id="menu">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, incidunt.</div>
+    <input type="text">
+
+
 
     <script>
       //Object creatation by constructor function
@@ -3100,11 +3109,11 @@
 
       // console.log(bodyEle.tagName);
 
-      let ele = document.getElementById("menu")
+      // let ele = document.getElementById("menu")
 
-      console.log(document.getElementById("menu"));
+      // console.log(document.getElementById("menu"));
       
-      document.getElementById("menu").outerHTML = "<p>Hi I'm Shivendra Dwivedi</p>"
+      // document.getElementById("menu").outerHTML = "<p>Hi I'm Shivendra Dwivedi</p>"
 
       // console.log(ele.outerHTML);
 
@@ -3117,35 +3126,91 @@
 
     //Attributes and properties
 
-      document.body.myself = {
-        name : "Shivendra",
-        age : 25,
-        gender : "Male"
-      }
+      // document.body.myself = {
+      //   name : "Shivendra",
+      //   age : 25,
+      //   gender : "Male"
+      // }
 
-      document.body.self = function() {
-        alert(this.nodeName);
-      }
+      // document.body.self = function() {
+      //   alert(this.nodeName);
+      // }
 
       // document.body.self();
 
-      console.log(document.body.myself.name);
+      // console.log(document.body.myself.name);
 
-      console.log(document.getElementsByTagName('a')[0].id)
-      console.log(document.getElementsByTagName('a')[0].id)
+      // console.log(document.getElementsByTagName('a')[0].id)
+      // console.log(document.getElementsByTagName('a')[0].id)
 
-      //custom attribute
-      console.log(document.getElementsByTagName('a')[0].dataset.nameji);
+      // //custom attribute
+      // console.log(document.getElementsByTagName('a')[0].dataset.nameji);
 
-      let aEle = document.getElementsByTagName('a')[0];
+      // let aEle = document.getElementsByTagName('a')[0];
 
-      for (let attr of aEle.attributes) {
-        console.log(attr.name , "=", attr.value)
-      }
+      // for (let attr of aEle.attributes) {
+      //   console.log(attr.name , "=", attr.value)
+      // }
 
-      console.log(aEle.getAttribute('id'));
-      aEle.setAttribute("hi", "han ho bola");
-      console.log(aEle.getAttribute("hi"));
+      // console.log(aEle.getAttribute('id'));
+      // aEle.setAttribute("hi", "han ho bola");
+      // console.log(aEle.getAttribute("hi"));
+
+      // console.log(aEle.hasAttribute("id"));
+      // console.log(aEle.removeAttribute("nameji"));
+
+      // aEle.setAttribute("id", "text");
+
+      // console.log(aEle.id);
+
+      // aEle.id = "new";
+
+      // console.log(aEle.getAttribute("id"));
+
+      // let inpu = document.getElementsByTagName("input")[0];
+
+      // inpu.setAttribute("value", "hi");
+
+      // console.log(inpu.value);
+
+      // inpu.value = "hello";
+      // console.log(inpu.getAttribute("value"));
+
+      //custom attributes
+
+      // console.log(inpu.getAttribute("order-state-canceled"));
+
+      // inpu.setAttribute('order-state-canceled', "false");
+
+      // console.log(inpu.getAttribute("order-state-canceled"));
+
+      //dataset attributes
+
+      // console.log(inpu.dataset.name);
+
+      // let inpuEle = document.querySelector("[data-name]")
+      // console.log(inpuEle.dataset.name);
+
+      // console.log(inpuEle.matches("input[order-state-canceled]"))
+
+      
+        let div =  document.getElementById("menu");
+        let newEle = document.createElement("h1");
+        newEle.innerHTML = "<h1>here I'm</h1>";
+        newEle.className = "myNewElement";
+        div.append(newEle);
+        div.prepend(newEle);
+        div.before(newEle);
+        div.after(newEle);
+        div.replaceWith(newEle)
+
+
+
+
+
+
+
+
 
       
     </script>
