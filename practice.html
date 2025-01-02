@@ -53,6 +53,43 @@
 
     <div id="tree"></div>
 
+    <ul>
+      <li>Animals
+        <ul>
+          <li>Mammals
+            <ul>
+              <li>Cows</li>
+              <li>Donkeys</li>
+              <li>Dogs</li>
+              <li>Tigers</li>
+            </ul>
+          </li>
+          <li>Other
+            <ul>
+              <li>Snakes</li>
+              <li>Birds</li>
+              <li>Lizards</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Fishes
+        <ul>
+          <li>Aquarium
+            <ul>
+              <li>Guppy</li>
+              <li>Angelfish</li>
+            </ul>
+          </li>
+          <li>Sea
+            <ul>
+              <li>Sea trout</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
     <script>
       //Object creatation by constructor function
 
@@ -3315,70 +3352,88 @@
       // Question 5
 
       // Method 1
-      function createTree(container, obj){
-        function createList(obj) {
+    //   function createTree(container, obj){
+    //     if (Object.keys(obj).length = 0) return;
 
-          let html = "<ul>";
 
-            for (let key in obj) {
-              html += `<li>${key}${createList(obj[key])}</li>`;
-            }
-            html += "</ul>";
-            return html === "<ul></ul>" ? '' : html;
+    //     function createList(obj) {
 
-          }
+    //       let html = "<ul>";
 
-          container.innerHTML = createList(obj)
-      }
+    //         for (let key in obj) {
+    //           html += `<li>${key}${createList(obj[key])}</li>`;
+    //         }
+    //         html += "</ul>";
+    //         return html === "<ul></ul>" ? '' : html;
 
-      let data = {
-      "Fish": {
-        "trout": {},
-        "salmon": {}
-      },
+    //       }
 
-      "Tree": {
-        "Huge": {
-          "sequoia": {},
-          "oak": {}
-        },
-        "Flowering": {
-          "apple tree": {},
-          "magnolia": {}
-        }
-      }
-    };
+    //       container.innerHTML = createList(obj)
+    //   }
 
-    createTree(document.getElementById("tree"), data);
+    //   let data = {
+    //   "Fish": {
+    //     "trout": {},
+    //     "salmon": {}
+    //   },
 
-    // Method 2
+    //   "Tree": {
+    //     "Huge": {
+    //       "sequoia": {},
+    //       "oak": {}
+    //     },
+    //     "Flowering": {
+    //       "apple tree": {},
+    //       "magnolia": {}
+    //     }
+    //   }
+    // };
 
-      function createTree2(container, data) {
-        function createList2(data) {
-          let ul = document.createElement("ul");
+    // createTree(document.getElementById("tree"), data);
 
-          for (let key in data) {
-            let li = document.createElement("li");
-            li.textContent = key;
+    // // Method 2
 
-            let nestedData = createList2(data[key]);
+    //   function createTree2(container, data) {
+    //     if (Object.keys(data).length = 0) return;
 
-            if (nestedData) {
-              li.appendChild(nestedData);
-            }
+    //     function createList2(data) {
+    //       let ul = document.createElement("ul");
 
-            ul.appendChild(li);
-          }
+    //       for (let key in data) {
+    //         let li = document.createElement("li");
+    //         li.textContent = key;
 
-          return ul.children.length > 0 ? ul : null;
-        }
+    //         let nestedData = createList2(data[key]);
 
-        let tree = createList2(data);
-        if (tree) container.appendChild(tree);
-      } 
+    //         if (nestedData) {
+    //           li.appendChild(nestedData);
+    //         }
 
-      createTree2(document.getElementById("tree"), data);
-      
+    //         ul.appendChild(li);
+    //       }
+
+    //       return ul.children.length > 0 ? ul : null;
+    //     }
+
+    //     let tree = createList2(data);
+    //     if (tree) container.appendChild(tree);
+    //   } 
+
+    //   createTree2(document.getElementById("tree"), data);
+
+    // Question 6
+
+    let lis = document.getElementsByTagName("li");
+
+    for (let li of lis) {
+      let nestedLis = li.getElementsByTagName('li').length;
+
+      if (!nestedLis) continue;
+
+      li.firstChild.data += `[${nestedLis}]`;
+    }
+
+    
     </script>
   </body>
 </html>
