@@ -51,6 +51,8 @@
       </tr>
     </table> -->
 
+    <div id="tree"></div>
+
     <script>
       //Object creatation by constructor function
 
@@ -3292,24 +3294,61 @@
 
       // Question 4 Creating a dynamic list
 
-      function creteList() {
-        let ul  = document.createElement("ul");
+      // function creteList() {
+      //   let ul  = document.createElement("ul");
 
-        while (true) {
-          let inputData = prompt("Enter li content");
+      //   while (true) {
+      //     let inputData = prompt("Enter li content");
 
-          if (!inputData) break;
+      //     if (!inputData) break;
 
-          let li = document.createElement("li");
-          li.innerText = inputData;
-          ul.append(li);
-        }
-        document.body.append(ul);
+      //     let li = document.createElement("li");
+      //     li.innerText = inputData;
+      //     ul.append(li);
+      //   }
+
+      //   document.body.append(ul);
+      // }
+
+      // creteList();
+      
+      // Question 5
+      function createTree(container, obj){
+        function createList(obj) {
+
+          let html = "<ul>";
+
+            for (let key in obj) {
+              html += `<li>${key}${createList(obj[key])}</li>`;
+            }
+            html += "</ul>";
+            return html === "<ul></ul>" ? '' : html;
+
+          }
+
+          container.innerHTML = createList(obj)
       }
 
-      creteList();
-      
+      let data = {
+      "Fish": {
+        "trout": {},
+        "salmon": {}
+      },
 
+      "Tree": {
+        "Huge": {
+          "sequoia": {},
+          "oak": {}
+        },
+        "Flowering": {
+          "apple tree": {},
+          "magnolia": {}
+        }
+      }
+    };
+
+    createTree(document.getElementById("tree"), data);
+      
     </script>
   </body>
 </html>
