@@ -3300,14 +3300,11 @@
 
           if (!inputData) break;
 
-          let li2 = document.createElement("li");
-          li2.innerText = inputData;
-          ul.append(li2);
+          let li = document.createElement("li");
+          li.innerText = inputData;
+          ul.append(li);
         }
-
-        document.body.append(document.createElement("h1").innerText = "Create List");
         document.body.append(ul);
-
       }
 
       creteList();
