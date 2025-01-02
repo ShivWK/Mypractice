@@ -37,10 +37,10 @@
 
     <input type="text" order-state-canceled = "true" data-name = "shivendra" name="myinput">
 
-    <div id="menu">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, incidunt.</div>
+    <div id="menu">Lorem ipsum dolor sit amet <strong>consectetur adipisicing elit </strong>Accusantium, incidunt.</div>
     <input type="text">
 
-
+    <ul id = "ul"></ul>
 
     <script>
       //Object creatation by constructor function
@@ -3193,27 +3193,87 @@
 
       // console.log(inpuEle.matches("input[order-state-canceled]"))
 
-      
+      //NOt done
+
         let div =  document.getElementById("menu");
         let newEle = document.createElement("h1");
         newEle.innerHTML = "<h1>here I'm</h1>";
         newEle.className = "myNewElement";
-        div.append(newEle);
-        div.prepend(newEle);
-        div.before(newEle);
-        div.after(newEle);
-        div.replaceWith(newEle)
+        // div.append(newEle);
+        // div.prepend(newEle);
+        // div.before(newEle);
+        // div.after(newEle);
+        // div.replaceWith(newEle)
 
+        // div.append("<h1>Shivendra</h1>");
+        // div.insertAdjacentHTML("afterend", "<h1>Shivendra</h1>");
+      
+        // div.insertAdjacentText("beforeend", "hi shivendra")
+        // div.insertAdjacentElement("beforebegin", newEle);
 
+        // setTimeout(() => (newEle.remove()), 1000);
 
+        // let div2 = menu.cloneNode(true);
 
+        // div2.querySelector('strong').innerText="hi there I'm shivendra ";
 
+        // document.body.append(div2);
 
+        // function getListContent() {
+        //   let fragment = new DocumentFragment();
 
+        //   for (let i = 1; i <= 5; i++) {
+        //     let li = document.createElement('li');
 
+        //     li.append(i);
+        //     fragment.append(li);
+        //   }
 
+        //   return fragment;
+        // }
+
+        // ul.append(getListContent());
+
+        //Same with arrays
+
+        // function getListContent() {
+        //   let fragment = [];
+
+        //   for (let i = 1; i <= 5; i++) {
+        //     let li = document.createElement('li');
+
+        //     li.append(i);
+        //     fragment.push(li);
+        //   }
+
+        //   return fragment;
+        // }
+
+        // ul.append(...getListContent());
+
+        // document.write("gone")
+
+        // setTimeout(() => (document.write("gone"), 1000));
+
+        function clear1(ele) {
+          ele.innerHTML = "";
+        }
+
+        function clear2(ele) {
+          while (ele.firstChild) {
+            ele.firstChild.remove();
+          }
+        }
+
+        function clear3(ele) {
+          for (let i = 0; i < ele.childNodes.length; i++) {
+            ele.childNodes[i].remove();
+          }
+        }
+
+        clear1(div);
+        console.log(div.childNodes);
       
     </script>
-    <!-- last child comment node -->
   </body>
 </html>
