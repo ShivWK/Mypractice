@@ -3313,6 +3313,8 @@
       // creteList();
       
       // Question 5
+
+      // Method 1
       function createTree(container, obj){
         function createList(obj) {
 
@@ -3348,6 +3350,34 @@
     };
 
     createTree(document.getElementById("tree"), data);
+
+    // Method 2
+
+      function createTree2(container, data) {
+        function createList2(data) {
+          let ul = document.createElement("ul");
+
+          for (let key in data) {
+            let li = document.createElement("li");
+            li.textContent = key;
+
+            let nestedData = createList2(data[key]);
+
+            if (nestedData) {
+              li.appendChild(nestedData);
+            }
+
+            ul.appendChild(li);
+          }
+
+          return ul.children.length > 0 ? ul : null;
+        }
+
+        let tree = createList2(data);
+        if (tree) container.appendChild(tree);
+      } 
+
+      createTree2(document.getElementById("tree"), data);
       
     </script>
   </body>
