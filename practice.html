@@ -12,7 +12,7 @@
     </style>
   </head>
   <body>
-    <a href="#jjjjjjj" data-nameJi = "Shivedra" >Link</a>
+    <!-- <a href="#jjjjjjj" data-nameJi = "Shivedra" >Link</a>
     <table id="table">
       <thead>
         <caption>My Table</caption>
@@ -41,6 +41,15 @@
     <input type="text">
 
     <ul id = "ul"></ul>
+
+    <table id="newTable">
+      aaaaaaaaaaa
+
+      <tr>
+        <td>hi</td>
+        hello
+      </tr>
+    </table> -->
 
     <script>
       //Object creatation by constructor function
@@ -3255,25 +3264,55 @@
 
         // setTimeout(() => (document.write("gone"), 1000));
 
-        function clear1(ele) {
-          ele.innerHTML = "";
-        }
+      // Question 2
 
-        function clear2(ele) {
-          while (ele.firstChild) {
-            ele.firstChild.remove();
-          }
-        }
+        // function clear1(ele) {
+        //   ele.innerHTML = "";
+        // }
 
-        function clear3(ele) {
-          for (let i = 0; i < ele.childNodes.length; i++) {
-            ele.childNodes[i].remove();
-          }
-        }
+        // function clear2(ele) {
+        //   while (ele.firstChild) {
+        //     ele.firstChild.remove();
+        //   }
+        // }
 
-        clear1(div);
-        console.log(div.childNodes);
+        // function clear3(ele) {
+        //   for (let i = 0; i < ele.childNodes.length; i++) {
+        //     ele.childNodes[i].remove();
+        //   }
+        // }
+
+        // clear1(div);
+        // console.log(div.childNodes);
+
+      //Question 3
       
+        // alert(newTable);
+        // newTable.remove();
+
+      // Question 4 Creating a dynamic list
+
+      function creteList() {
+        let ul  = document.createElement("ul");
+
+        while (true) {
+          let inputData = prompt("Enter li content");
+
+          if (!inputData) break;
+
+          let li2 = document.createElement("li");
+          li2.innerText = inputData;
+          ul.append(li2);
+        }
+
+        document.body.append(document.createElement("h1").innerText = "Create List");
+        document.body.append(ul);
+
+      }
+
+      creteList();
+      
+
     </script>
   </body>
 </html>
