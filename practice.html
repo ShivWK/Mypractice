@@ -3,15 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="refresh" content="5"/>
     <title>Document</title>
     <style>
       .myNewElement {
         color : red;
         font-style: italic;
       }
+      .class1 {
+        color : red
+      }
+      .class2 {
+        color : blue;
+        font-style: italic;
+      }
+
+      .class3 {
+        color : yellow;
+      }
+
+      .class4 {
+        color : orange;
+      }
     </style>
   </head>
   <body>
+    <p id="para">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis, vel!</p>
+    <button id="btn" onClick="clickHandler()">Click me</button>
+    <button id="btn2" onClick="clickHandler2()">Click to remove</button>
+
+    <marquee behavior="slide" scrolldelay="2000" loop="2"  width="100%" height="30%" direction="right" bgcolor="red" scrollamount="10" direction="left">Hi I'm floating there</marquee>
+
     <!-- <a href="#jjjjjjj" data-nameJi = "Shivedra" >Link</a>
     <table id="table">
       <thead>
@@ -51,7 +73,7 @@
       </tr>
     </table> -->
 
-    <div id="tree"></div>
+    <!-- <div id="tree"></div>
 
     <ul>
       <li>Animals
@@ -88,7 +110,7 @@
           </li>
         </ul>
       </li>
-    </ul>
+    </ul> -->
 
     <script>
       //Object creatation by constructor function
@@ -3423,17 +3445,36 @@
 
     // Question 6
 
-    let lis = document.getElementsByTagName("li");
+    // let lis = document.getElementsByTagName("li");
 
-    for (let li of lis) {
-      let nestedLis = li.getElementsByTagName('li').length;
+    // for (let li of lis) {
+    //   let nestedLis = li.getElementsByTagName('li').length;
 
-      if (!nestedLis) continue;
+    //   if (!nestedLis) continue;
 
-      li.firstChild.data += `[${nestedLis}]`;
-    }
+    //   li.firstChild.data += `[${nestedLis}]`;
+    // }
 
+    // Question 8 to be continued
+
+    //Styles And classes practice
+
+      // para.className = "class1";
+
+      para.classList.add("class2")
+
+      function clickHandler() {
+        para.classList.toggle("class3")
+      console.log(para.classList)
+
+      }
     
+      function clickHandler2() {
+        para.className = "class2";
+      console.log(para.classList)
+        console.log(para.classList.contains('class2'));
+      }
+
     </script>
   </body>
 </html>
