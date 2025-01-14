@@ -3531,15 +3531,30 @@
       // console.log(childDiv.offsetHeight);
       // console.log(childDiv.offsetWidth);
 
+//Regex Expression
+
       let regexDiv = document.getElementById("regex");
       let str = regexDiv.innerText;
 
-      let result = str.match(/(still)/i);
-      console.log(result);
-      console.log(result.index);
-      console.log(result.input);
-      console.log(result[0] , ": match");
-      console.log(result[1], ": group");
+    //match mathod
+
+      // let result = str.match(/(still)/i);
+      // console.log(result);
+      // console.log(result.index);
+      // console.log(result.input);
+      // console.log(result[0] , ": match");
+      // console.log(result[1], ": group");
+
+    //replace method
+
+      console.log(str.replace(/still/i, "not still"));
+      console.log(str.replace(/still/i, "$& not still"));
+      console.log(str.replace(/(still)/i, "$$"));
+
+    //test method
+
+
+
       
     </script>
   </body>
