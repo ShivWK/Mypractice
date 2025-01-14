@@ -3582,9 +3582,11 @@
       let multilines = multiple.innerText;
       console.log(multilines.match(/^\d/gm));
 
-      let str = "1st place : A\n 2nd place : B\n 3rd place : C";
-      console.log(str.match(/\d/gm));
-      console.log(str.match(/\w$/gm))
+      let str = "1st place : A\n2nd place : B\n3rd place : C";
+      console.log(str.match(/^\d/gm));
+      console.log(str.match(/\w$/gm));
+
+
 
     </script>
   </body>
