@@ -3552,12 +3552,26 @@
       // console.log(str.replace(/(still)/i, "$$"));
 
     //test method
-      let reg = /still/
-      console.log(reg.test(str));
+      // let reg = /still/
+      // console.log(reg.test(str));
 
+    //start ^ and end $
+      let str2 = "Mary had a little lamb";
+      // console.log(/^Mary/.test(str2));
+      // console.log(/little/.test(str2));
+      // console.log(/lamb$/.test(str2));
 
+      let reg = /^Mary.*lamb$/;
+      let reg2 = /^Mary lamb$/;
+      let str3 = "Mary i have nothing to give you";
+      let str4 = "Mary i have something to give you lamb";
+      let str5 = "Mary lamb"
+      console.log(reg.test(str3));
+      console.log(reg.test(str4));
+      console.log(reg.test(str5));
 
-      
+    //
+
     </script>
   </body>
 </html>
