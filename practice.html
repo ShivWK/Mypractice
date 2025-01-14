@@ -3547,11 +3547,13 @@
 
     //replace method
 
-      console.log(str.replace(/still/i, "not still"));
-      console.log(str.replace(/still/i, "$& not still"));
-      console.log(str.replace(/(still)/i, "$$"));
+      // console.log(str.replace(/still/i, "not still"));
+      // console.log(str.replace(/still/i, "$& not still"));
+      // console.log(str.replace(/(still)/i, "$$"));
 
     //test method
+      let reg = /still/
+      console.log(reg.test(str));
 
 
 
