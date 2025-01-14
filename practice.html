@@ -116,7 +116,13 @@
       </li>
     </ul> -->
 
-    <div id="regex">we are still alive but they dont want to live</div>
+    <!-- <div id="regex">we are still alive but they dont want to live</div> -->
+
+    <div id="hi">
+      1st place: winner.
+      2nd place: middle.
+      3rd place: Ab kya bolen.
+    </div>
 
     <script>
       //Object creatation by constructor function
@@ -3534,7 +3540,7 @@
 //Regex Expression
 
       let regexDiv = document.getElementById("regex");
-      let str = regexDiv.innerText;
+      // let str = regexDiv.innerText;
 
     //match mathod
 
@@ -3556,21 +3562,29 @@
       // console.log(reg.test(str));
 
     //start ^ and end $
-      let str2 = "Mary had a little lamb";
+      // let str2 = "Mary had a little lamb";
       // console.log(/^Mary/.test(str2));
       // console.log(/little/.test(str2));
       // console.log(/lamb$/.test(str2));
 
-      let reg = /^Mary.*lamb$/;
-      let reg2 = /^Mary lamb$/;
-      let str3 = "Mary i have nothing to give you";
-      let str4 = "Mary i have something to give you lamb";
-      let str5 = "Mary lamb"
-      console.log(reg.test(str3));
-      console.log(reg.test(str4));
-      console.log(reg.test(str5));
+      // let reg = /^Mary.*lamb$/;
+      // let reg2 = /^Mary lamb$/;
+      // let str3 = "Mary i have nothing to give you";
+      // let str4 = "Mary i have something to give you lamb";
+      // let str5 = "Mary lamb"
+      // console.log(reg.test(str3));
+      // console.log(reg.test(str4));
+      // console.log(reg.test(str5));
 
-    //
+    // Searching at start and end
+
+      let multiple = document.getElementById("hi");
+      let multilines = multiple.innerText;
+      console.log(multilines.match(/^\d/gm));
+
+      let str = "1st place : A\n 2nd place : B\n 3rd place : C";
+      console.log(str.match(/\d/gm));
+      console.log(str.match(/\w$/gm))
 
     </script>
   </body>
