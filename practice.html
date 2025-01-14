@@ -116,6 +116,8 @@
       </li>
     </ul> -->
 
+    <div id="regex">we are still alive but they dont want to live</div>
+
     <script>
       //Object creatation by constructor function
 
@@ -3269,10 +3271,10 @@
 
       //NOt done
 
-        let div =  document.getElementById("menu");
-        let newEle = document.createElement("h1");
-        newEle.innerHTML = "<h1>here I'm</h1>";
-        newEle.className = "myNewElement";
+        // let div =  document.getElementById("menu");
+        // let newEle = document.createElement("h1");
+        // newEle.innerHTML = "<h1>here I'm</h1>";
+        // newEle.className = "myNewElement";
         // div.append(newEle);
         // div.prepend(newEle);
         // div.before(newEle);
@@ -3500,22 +3502,45 @@
 
       // console.log(getComputedStyle(para).paddingTop);
 
-      function showNotification(top = 0, right = 0, className, html) {
-        let div = document.createElement("div");
-        div.className = "notification";
+      // function showNotification(top = 0, right = 0, className, html) {
+      //   let div = document.createElement("div");
+      //   div.className = "notification";
 
-        div.style.position = "absolute";
-        div.style.top = top + "px";
-        div.style.right = right + "px";
-        div.style.border = "2px solid black";
-        div.innerHTML = html;
+      //   div.style.position = "absolute";
+      //   div.style.top = top + "px";
+      //   div.style.right = right + "px";
+      //   div.style.border = "2px solid black";
+      //   div.innerHTML = html;
 
-        if (className) div.classList.add(className);
-        document.body.append(div);
-        setTimeout(() => div.remove(), 1500);
-      }
+      //   if (className) div.classList.add(className);
+      //   document.body.append(div);
+      //   setTimeout(() => div.remove(), 1500);
+      // }
 
-      showNotification(10, 10, "window", "<h1>Hi I'm Shivendra Dwivedi</h1>");
+      // showNotification(10, 10, "window", "<h1>Hi I'm Shivendra Dwivedi</h1>");
+
+      // let parentDiv = document.createElement('div');
+      // let childDiv = document.createElement("div");
+      // parentDiv.append(childDiv);
+
+      // console.log(childDiv.offsetWidth);
+      // console.log(childDiv.offsetHeight);
+      // console.log(childDiv.offsetWidth);
+      // document.body.append(parentDiv);
+      // console.log(childDiv.offsetWidth);
+      // console.log(childDiv.offsetHeight);
+      // console.log(childDiv.offsetWidth);
+
+      let regexDiv = document.getElementById("regex");
+      let str = regexDiv.innerText;
+
+      let result = str.match(/(still)/i);
+      console.log(result);
+      console.log(result.index);
+      console.log(result.input);
+      console.log(result[0] , ": match");
+      console.log(result[1], ": group");
+      
     </script>
   </body>
 </html>
