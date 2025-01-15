@@ -3578,13 +3578,23 @@
 
     // Searching at start and end
 
-      let multiple = document.getElementById("hi");
-      let multilines = multiple.innerText;
-      console.log(multilines.match(/^\d/gm));
+      // let multiple = document.getElementById("hi");
+      // let multilines = multiple.innerText;
+      // console.log(multilines.match(/^\d/gm));
+      // let str = "1st place : A\n2nd place : B\n3rd place : C";
+      // console.log(str.match(/^\d/gm));
+      // console.log(str.match(/\w$/gm));
 
-      let str = "1st place : A\n2nd place : B\n3rd place : C";
-      console.log(str.match(/^\d/gm));
-      console.log(str.match(/\w$/gm));
+    //new RegExp
+
+      let regex = new RegExp("\\d\\.\\d");
+      console.log("Shivendra 5.10 inch".match(regex));
+      
+      let regex2 = new RegExp("\\w*/\\d*");
+      console.log("SHivendra/5".match(regex2))
+    
+
+
 
 
 
