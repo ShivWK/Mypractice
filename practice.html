@@ -159,6 +159,8 @@
       </select>
     </form>
 
+    <div id="mybox2" style="border: 2px solid black; height: 100px; overflow: auto;" onclick="cliclme(event)">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem, dolor. Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, iusto. Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum reprehenderit qui vero a! Explicabo error necessitatibus unde. Nihil architecto sed illo iste quos tempore dolorem, ea, officia aliquid voluptatibus explicabo repellat, animi debitis consequuntur nobis sapiente molestias suscipit distinctio eligendi delectus ratione adipisci quibusdam nesciunt aperiam! Quis, eius enim? Reprehenderit officiis quasi impedit ducimus ratione incidunt animi! Est impedit beatae quibusdam laborum tempora possimus nesciunt veniam nihil delectus, fuga excepturi totam voluptatum natus saepe ipsam illum voluptatibus, iusto corporis dignissimos explicabo eligendi magnam? Voluptatum asperiores provident dignissimos itaque ipsam reiciendis, recusandae officia minima, odit modi reprehenderit nulla assumenda consectetur tempora.</div>
+
     <script>
       //Object creatation by constructor function
 
@@ -3613,35 +3615,33 @@
       //   boxSize.scrollIntoView(false);
       // } 
 
-      function windowHeight() {
-        console.log(
-          Math.max(
-            document.body.scrollHeight, 
-            document.documentElement.scrollHeight, 
-            document.body.offsetHeight, 
-            document.documentElement.offsetHeight, 
-            document.body.clientHeight, 
-            document.documentElement.clientHeight
-         )
-        );
-      }
-      windowHeight();
+      // function windowHeight() {
+      //   console.log(
+      //     Math.max(
+      //       document.body.scrollHeight, 
+      //       document.documentElement.scrollHeight, 
+      //       document.body.offsetHeight, 
+      //       document.documentElement.offsetHeight, 
+      //       document.body.clientHeight, 
+      //       document.documentElement.clientHeight
+      //    )
+      //   );
+      // }
+      // windowHeight();
 
-      console.log(document.body.scrollHeight);
-      console.log(document.documentElement.scrollHeight);
-      console.log(document.body.offsetHeight);
-      console.log(document.documentElement.offsetHeight);
-      console.log(document.body.clientHeight);
-      console.log(document.documentElement.clientHeight);
-      console.log("\n");
-      console.log(document.body.scrollWidth);
-      console.log(document.body.offsetWidth);
-      console.log(document.body.clientWidth);
-      console.log(document.documentElement.scrollWidth);
-      console.log(document.documentElement.offsetWidth);
-      console.log(document.documentElement.clientWidth);
-
-
+      // console.log(document.body.scrollHeight);
+      // console.log(document.documentElement.scrollHeight);
+      // console.log(document.body.offsetHeight);
+      // console.log(document.documentElement.offsetHeight);
+      // console.log(document.body.clientHeight);
+      // console.log(document.documentElement.clientHeight);
+      // console.log("\n");
+      // console.log(document.body.scrollWidth);
+      // console.log(document.body.offsetWidth);
+      // console.log(document.body.clientWidth);
+      // console.log(document.documentElement.scrollWidth);
+      // console.log(document.documentElement.offsetWidth);
+      // console.log(document.documentElement.clientWidth);
 
 //Regex Expression
 
@@ -3703,11 +3703,39 @@
 
       // console.log("John and Sohn".match(/[js]ohn/gi));
 
-      
+//Events
+      // document.addEventListener("contextmenu", () => {
+      //   console.log("right clicked")
+      // });
 
+      // function cliclme(event) {
+      //   console.log(event.type);
+      //   console.log(this);
+      // }
 
+      mybox2.onclick = null;
 
+      function clicked() {
+        console.log("clicked")
+      }
 
+      mybox2.addEventListener("click", clicked, {
+        once : false,
+        capture : false,
+        passive : false
+      })
+
+      mybox2.onscroll = function() {
+        console.log('scrolled');
+        console.log(this);
+
+      }
+
+      setTimeout(()=> {
+        mybox2.removeEventListener("click" , clicked)
+      }, 3000)
+
+      // mybox2.onscroll = null;
     </script>
   </body>
 </html>
