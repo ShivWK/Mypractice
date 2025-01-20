@@ -53,7 +53,73 @@
         // stack.push(15);
         // stack.print();
 
-//Queue using arrays
+        class StackImp {
+            constructor(size = 0) {
+                this.top = -1;
+                this.stack = []
+                this.maxSize = size;
+            }
+
+            push(ele) {
+                if (this.maxSize != 0) {
+                    
+                    if (this.top >= this.maxSize - 1) {
+                        alert("Stack is full");
+                    } else {
+                        this.top += 1;
+                        this.stack[this.top] = ele;
+                    }
+
+                } else {
+                    this.top += 1;
+                    this.stack[this.top] = ele;
+                }
+            }
+
+            pop() {
+                if (this.top == -1) {
+                    alert("Stack is empty");
+                    return null;
+                } else {
+                    const poppedElement = this.stack[this.top];
+                    this.top -= 1;
+                    return poppedElement;
+                }
+            }
+
+            peek() {
+                if (this.top == -1) {
+                    alert("Stack is empty");
+                    return null;
+                } else {
+                    return this.stack[this.top];
+                }
+            }
+
+            size() {
+                if (this.top === -1) {
+                    return 0;
+                } else {
+                    return this.top + 1;
+                }
+            }
+        } 
+        
+        let myNewStack = new StackImp();
+        myNewStack.push(12);
+        myNewStack.push(13);
+        myNewStack.push(14);
+        myNewStack.push(15);
+        myNewStack.push(16);
+
+        console.log(myNewStack.peek());
+        console.log(myNewStack.size());
+        console.log(myNewStack.pop());
+        console.log(myNewStack.peek());
+        console.log(myNewStack.size());
+
+
+//Queue useing arrays
 
         class Queue {
             constructor() {
@@ -108,6 +174,8 @@
         // console.log(queue.print());
         // console.log(queue.dequeue());
         // console.log(queue.front());
+
+
 
 //Balanced Prarenthesis
 
@@ -257,5 +325,5 @@
             return ans;
         }
 
-        console.log(infixToPrefix('(A*B)+(C*D)'));
+       // console.log(infixToPrefix('(A*B)+(C*D)'));
 
