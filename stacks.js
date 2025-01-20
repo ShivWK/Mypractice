@@ -105,18 +105,18 @@
             }
         } 
         
-        let myNewStack = new StackImp();
-        myNewStack.push(12);
-        myNewStack.push(13);
-        myNewStack.push(14);
-        myNewStack.push(15);
-        myNewStack.push(16);
+        // let myNewStack = new StackImp();
+        // myNewStack.push(12);
+        // myNewStack.push(13);
+        // myNewStack.push(14);
+        // myNewStack.push(15);
+        // myNewStack.push(16);
 
-        console.log(myNewStack.peek());
-        console.log(myNewStack.size());
-        console.log(myNewStack.pop());
-        console.log(myNewStack.peek());
-        console.log(myNewStack.size());
+        // console.log(myNewStack.peek());
+        // console.log(myNewStack.size());
+        // console.log(myNewStack.pop());
+        // console.log(myNewStack.peek());
+        // console.log(myNewStack.size());
 
 
 //Queue useing arrays
@@ -174,6 +174,130 @@
         // console.log(queue.print());
         // console.log(queue.dequeue());
         // console.log(queue.front());
+
+        class QueueImp {
+            constructor(size = 0) {
+                this.maxSise = size;
+                this.queue = [];
+                this.start = -1;
+                this.end = -1;
+                if (this.maxSise > 0) {
+                    this.currentSize = 0;
+                }
+            }
+
+            push(ele) {
+                if (this.maxSise !== 0) {
+
+                    //bounded case
+                    if (this.currentSize >= this.maxSise) {
+                        return "Queue is full";
+                    }
+                    if (this.currentSize === 0) {
+                        this.start = 0;
+                        this.end = 0;
+                    } else {
+                        this.end = (this.end + 1) % this.maxSise;
+                    }
+
+                    this.queue[this.end] = ele;
+                    this.currentSize++;
+                    return "ELement Added";
+                    
+                } else {
+                    if (this.start == -1 && this.end == -1) {
+                        this.start = 0;
+                        this.end = 0;
+                    } else {
+                        this.end++;
+                    }
+                    this.queue[this.end] = ele;
+                    return "Element Added"
+                }
+            }
+
+            pop() {
+                if (this.maxSise !== 0) {
+
+                    //Bounded case
+                    if (this.currentSize === 0) {
+                        return "Queue is empty";
+                    } 
+
+                    const poppedElement = this.queue[this.start];
+
+                    if (this.start === this.end) {
+                        this.start = -1;
+                        this.end = -1;
+                    } else {
+                        this.start = (this.start + 1) % this.maxSise;
+                    }
+ 
+                    this.currentSize--;
+                    return poppedElement; 
+                    
+                } else {
+                    if (this.start === -1 && this.end === -1) {
+                        return "Queue is empty";
+                    }
+                    const poppedElement = this.queue[this.start];
+                    this.start = this.start + 1;
+
+                    if (this.start > this.end) {
+                        this.start = -1;
+                        this.end = -1;
+                    }
+
+                    return poppedElement;
+                }
+            }
+
+            peek() {
+                if (this.start === -1 && this.end === -1) {
+                    return "Queue is empty";
+                } 
+
+                return this.queue[this.start];
+            }
+
+            size() {
+                if (this.start === -1 && this.end === -1) {
+                    return "queue is empty";
+                }
+
+                if (this.maxSise !== 0) {
+                    return this.currentSize;
+                }
+
+                return this.end - this.start + 1;
+            }
+        }
+
+
+        let myQueue = new QueueImp();
+
+        console.log(myQueue.push(11));
+        console.log(myQueue.push(12));
+        console.log(myQueue.size());
+        console.log(myQueue.pop());
+        console.log(myQueue.pop());
+        console.log(myQueue.pop());
+
+        console.log(myQueue.size());
+
+        // let myQueue2 = new QueueImp(4);
+
+        // console.log(myQueue2.push(11));
+        // console.log(myQueue2.push(12));
+        // console.log(myQueue2.push(13));
+        // console.log(myQueue2.push(14));
+        // console.log(myQueue2.push(15));
+
+        // console.log(myQueue2.size());
+        // console.log(myQueue2.pop());
+        // console.log(myQueue2.pop());
+        // console.log(myQueue2.size());
+
 
 
 
