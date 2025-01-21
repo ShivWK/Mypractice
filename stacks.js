@@ -52,6 +52,8 @@
         // stack.push(14);
         // stack.push(15);
         // stack.print();
+    
+    //New Stack Array implementation
 
         class StackImp {
             constructor(size = 0) {
@@ -175,6 +177,8 @@
         // console.log(queue.dequeue());
         // console.log(queue.front());
 
+    //New Queue array implementation
+
         class QueueImp {
             constructor(size = 0) {
                 this.maxSise = size;
@@ -226,9 +230,13 @@
 
                     const poppedElement = this.queue[this.start];
 
+                    //confusion : Yahan pehele hamne start position se element pop kara liya means ab start age jaega previus element ko chhodke kuki tabhi wo popped mana jaega n to phirse access ho jaega to start ka age badhana jarurui hai. 
+                    //Agr start end ki position pe hai ar hamne wahan se element pop kiya means ab koi element nahi hai queue me , queue khali hai to hme queue ko reset karna padega i.e., start and end both at -1;
+                    
                     if (this.start === this.end) {
                         this.start = -1;
                         this.end = -1;
+
                     } else {
                         this.start = (this.start + 1) % this.maxSise;
                     }
