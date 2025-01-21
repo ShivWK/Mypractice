@@ -159,7 +159,9 @@
       </select>
     </form>
 
-    <div id="mybox2" style="border: 2px solid black; height: 100px; overflow: auto;" onclick="cliclme(event)">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem, dolor. Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, iusto. Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum reprehenderit qui vero a! Explicabo error necessitatibus unde. Nihil architecto sed illo iste quos tempore dolorem, ea, officia aliquid voluptatibus explicabo repellat, animi debitis consequuntur nobis sapiente molestias suscipit distinctio eligendi delectus ratione adipisci quibusdam nesciunt aperiam! Quis, eius enim? Reprehenderit officiis quasi impedit ducimus ratione incidunt animi! Est impedit beatae quibusdam laborum tempora possimus nesciunt veniam nihil delectus, fuga excepturi totam voluptatum natus saepe ipsam illum voluptatibus, iusto corporis dignissimos explicabo eligendi magnam? Voluptatum asperiores provident dignissimos itaque ipsam reiciendis, recusandae officia minima, odit modi reprehenderit nulla assumenda consectetur tempora.</div>
+    <div id="mybox2" style="border: 2px solid black; height: 100px; overflow: auto;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem, dolor. Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, iusto. Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum reprehenderit qui vero a! Explicabo error necessitatibus unde. Nihil architecto sed illo iste quos tempore dolorem, ea, officia aliquid voluptatibus explicabo repellat, animi debitis consequuntur nobis sapiente molestias suscipit distinctio eligendi delectus ratione adipisci quibusdam nesciunt aperiam! Quis, eius enim? Reprehenderit officiis quasi impedit ducimus ratione incidunt animi! Est impedit beatae quibusdam laborum tempora possimus nesciunt veniam nihil delectus, fuga excepturi totam voluptatum natus saepe ipsam illum voluptatibus, iusto corporis dignissimos explicabo eligendi magnam? Voluptatum asperiores provident dignissimos itaque ipsam reiciendis, recusandae officia minima, odit modi reprehenderit nulla assumenda consectetur tempora.</div>
+
+    <div id="mybox3" style="border: 2px solid black;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, beatae.</div>
 
     <script>
       //Object creatation by constructor function
@@ -3713,27 +3715,102 @@
       //   console.log(this);
       // }
 
-      mybox2.onclick = null;
+      // mybox2.onclick = null;
 
-      function clicked() {
-        console.log("clicked")
-      }
+      // function clicked() {
+      //   console.log("clicked")
+      // }
 
-      mybox2.addEventListener("click", clicked, {
-        once : false,
-        capture : false,
-        passive : false
+      // mybox2.addEventListener("click", clicked, {
+      //   once : false,
+      //   capture : false,
+      //   passive : false
+      // })
+
+      // mybox2.onscroll = function() {
+      //   console.log('scrolled');
+      //   console.log(this);
+
+      // }
+
+      // setTimeout(()=> {
+      //   mybox2.removeEventListener("click" , clicked)
+      // }, 3000)
+
+    //multiple events on one single element
+      // mybox2.addEventListener("click" , () => {
+      //   console.log("thanks");
+      // })
+
+      // mybox2.addEventListener("click" , () => {
+      //   console.log("thanks again!");
+      // })
+
+      document.addEventListener("DOMContentLoaded" , () => {
+          console.log("loaded");
       })
 
-      mybox2.onscroll = function() {
-        console.log('scrolled');
-        console.log(this);
-
+      mybox2.onclick = function(event) {
+        console.log(event.type);
+        console.log(event.target);
+        console.log(event.currentTarget);
+        console.log(event.clientX, event.clientY);
       }
 
-      setTimeout(()=> {
-        mybox2.removeEventListener("click" , clicked)
-      }, 3000)
+      let object = {
+        handleEvent(event) {
+          alert(event.target);
+        } 
+      }
+
+      class Menu {
+        handleEvent(event) {
+            switch(event.type) {
+              case "mousedown" : {
+                console.log("mousedown");
+                break;
+              }
+
+              case "mouseup" : {
+                console.log("mouseUp");
+                break;
+              }
+              
+              case "mousemove" : {
+                console.log("mousemove");
+                break;
+              }
+
+              case "click" : {
+                console.log("click");
+                break;
+              }
+
+              default : {
+                console.log("unknown event")
+                break;
+              }
+
+            }
+        }
+      }
+
+      mybox3.style.width = '30%';
+      mybox3.style.height = '200px';
+      mybox3.style.marginTop = '2%';
+
+
+      let eventHandlers = new Menu();
+      mybox3.addEventListener("click" , eventHandlers);
+      mybox3.addEventListener("mousedown" , eventHandlers);
+      mybox3.addEventListener("mouseup" , eventHandlers);
+      mybox3.addEventListener("mousemove" , eventHandlers);
+      
+
+
+
+
+ 
 
       // mybox2.onscroll = null;
     </script>
