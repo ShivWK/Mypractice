@@ -44,6 +44,48 @@
         box-sizing: border-box;
         margin-bottom:500px;
       }
+
+      /* .outer {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        border: 2px solid black;
+        padding: 2%;
+        display: flex;
+        align-items: center;
+      } */
+
+      .caro {
+        position: absolute;
+        height: 150px;
+        width: 301px;
+        border: 2px solid black;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        margin: auto;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        /* padding: 1%; */
+      }
+
+      .imgContainer{
+        list-style: none;
+        /* border: 2px solid black; */
+        display: flex;
+        padding: 0;
+        transition: transform 0.5s ease-in-out;
+      }
+
+      .images {
+        border: 2px solid black;
+        border-radius: 5%;
+        height: 100px;
+        width: 100px;
+        display: inline-block;    
+      }
     </style>
   </head>
   <body>
@@ -159,9 +201,28 @@
       </select>
     </form>
 
-    <div id="mybox2" style="border: 2px solid black; height: 100px; overflow: auto;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem, dolor. Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, iusto. Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum reprehenderit qui vero a! Explicabo error necessitatibus unde. Nihil architecto sed illo iste quos tempore dolorem, ea, officia aliquid voluptatibus explicabo repellat, animi debitis consequuntur nobis sapiente molestias suscipit distinctio eligendi delectus ratione adipisci quibusdam nesciunt aperiam! Quis, eius enim? Reprehenderit officiis quasi impedit ducimus ratione incidunt animi! Est impedit beatae quibusdam laborum tempora possimus nesciunt veniam nihil delectus, fuga excepturi totam voluptatum natus saepe ipsam illum voluptatibus, iusto corporis dignissimos explicabo eligendi magnam? Voluptatum asperiores provident dignissimos itaque ipsam reiciendis, recusandae officia minima, odit modi reprehenderit nulla assumenda consectetur tempora.</div>
+    <!-- <div id="mybox2" style="border: 2px solid black; height: 100px; overflow: auto;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem, dolor. Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, iusto. Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum reprehenderit qui vero a! Explicabo error necessitatibus unde. Nihil architecto sed illo iste quos tempore dolorem, ea, officia aliquid voluptatibus explicabo repellat, animi debitis consequuntur nobis sapiente molestias suscipit distinctio eligendi delectus ratione adipisci quibusdam nesciunt aperiam! Quis, eius enim? Reprehenderit officiis quasi impedit ducimus ratione incidunt animi! Est impedit beatae quibusdam laborum tempora possimus nesciunt veniam nihil delectus, fuga excepturi totam voluptatum natus saepe ipsam illum voluptatibus, iusto corporis dignissimos explicabo eligendi magnam? Voluptatum asperiores provident dignissimos itaque ipsam reiciendis, recusandae officia minima, odit modi reprehenderit nulla assumenda consectetur tempora.</div> -->
 
-    <div id="mybox3" style="border: 2px solid black;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, beatae.</div>
+    <!-- <div id="mybox3" style="border: 2px solid black;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, beatae.</div> -->
+
+    <button id="leftBtn">left</button>
+        <button id="rightBtn">right</button>
+
+      <div class="caro">
+        <ul class="imgContainer">
+          <li class="images">1</li>
+          <li class="images">2</li>
+          <li class="images">3</li>
+          <li class="images">4</li>
+          <li class="images">5</li>
+          <li class="images">6</li>
+          <li class="images">7</li>
+          <li class="images">8</li>
+          <li class="images">9</li>
+          <li class="images">10</li>
+        </ul>
+        
+      </div>
 
     <script>
       //Object creatation by constructor function
@@ -3705,7 +3766,7 @@
 
       // console.log("John and Sohn".match(/[js]ohn/gi));
 
-//Events
+//Brower Events
       // document.addEventListener("contextmenu", () => {
       //   console.log("right clicked")
       // });
@@ -3730,7 +3791,6 @@
       // mybox2.onscroll = function() {
       //   console.log('scrolled');
       //   console.log(this);
-
       // }
 
       // setTimeout(()=> {
@@ -3746,73 +3806,105 @@
       //   console.log("thanks again!");
       // })
 
-      document.addEventListener("DOMContentLoaded" , () => {
-          console.log("loaded");
-      })
+      // document.addEventListener("DOMContentLoaded" , () => {
+      //     console.log("loaded");
+      // })
 
-      mybox2.onclick = function(event) {
-        console.log(event.type);
-        console.log(event.target);
-        console.log(event.currentTarget);
-        console.log(event.clientX, event.clientY);
-      }
+      // mybox2.onclick = function(event) {
+      //   console.log(event.type);
+      //   console.log(event.target);
+      //   console.log(event.currentTarget);
+      //   console.log(event.clientX, event.clientY);
+      // }
 
-      let object = {
-        handleEvent(event) {
-          alert(event.target);
-        } 
-      }
+      // let object = {
+      //   handleEvent(event) {
+      //     alert(event.target);
+      //   } 
+      // }
 
-      class Menu {
-        handleEvent(event) {
-            switch(event.type) {
-              case "mousedown" : {
-                console.log("mousedown");
-                break;
-              }
+      // class Menu {
+      //   handleEvent(event) {
+      //       switch(event.type) {
+      //         case "mousedown" : {
+      //           console.log("mousedown");
+      //           break;
+      //         }
 
-              case "mouseup" : {
-                console.log("mouseUp");
-                break;
-              }
+      //         case "mouseup" : {
+      //           console.log("mouseUp");
+      //           break;
+      //         }
               
-              case "mousemove" : {
-                console.log("mousemove");
-                break;
-              }
+      //         case "mousemove" : {
+      //           console.log("mousemove");
+      //           break;
+      //         }
 
-              case "click" : {
-                console.log("click");
-                break;
-              }
+      //         case "click" : {
+      //           console.log("click");
+      //           break;
+      //         }
 
-              default : {
-                console.log("unknown event")
-                break;
-              }
+      //         default : {
+      //           console.log("unknown event")
+      //           break;
+      //         }
 
-            }
-        }
-      }
+      //       }
+      //   }
+      // }
 
-      mybox3.style.width = '30%';
-      mybox3.style.height = '200px';
-      mybox3.style.marginTop = '2%';
+      // mybox3.style.width = '30%';
+      // mybox3.style.height = '200px';
+      // mybox3.style.marginTop = '2%';
 
+      // let eventHandlers = new Menu();
+      // mybox3.addEventListener("click" , eventHandlers);
+      // mybox3.addEventListener("mousedown" , eventHandlers);
+      // mybox3.addEventListener("mouseup" , eventHandlers);
+      // mybox3.addEventListener("mousemove" , eventHandlers);
 
-      let eventHandlers = new Menu();
-      mybox3.addEventListener("click" , eventHandlers);
-      mybox3.addEventListener("mousedown" , eventHandlers);
-      mybox3.addEventListener("mouseup" , eventHandlers);
-      mybox3.addEventListener("mousemove" , eventHandlers);
+      // function handler() {
+      //   console.log("Hi")
+      //   console.log(this);
+      // }
       
+      // mybox3.addEventListener("click", handler)
+      // mybox3.removeEventListener("click", handler)
 
 
-
-
- 
+      // mybox3.onclick = function(event) {
+      //   console.log(event.target);
+      //   // this.hidden = true;
+      // }
 
       // mybox2.onscroll = null;
+      
+    //Tasks
+
+      //corousel
+
+      let leftBtn = document.getElementById("leftBtn");
+      let rightBtn = document.getElementById("rightBtn");
+      let ul = document.getElementsByClassName("imgContainer")[0];
+      let step = 10 0;
+      let displacement = 0;
+      // ul.style.transition = 'transform 0.5s ease-in-out';
+      function leftSlid() {
+        displacement -= step;
+        ul.style.transform = `translate(${displacement}px)`
+      }
+
+      function rightSlid() {
+        displacement += step;
+        ul.style.transform = `translate(${displacement}px)`
+      }
+
+      leftBtn.addEventListener("click", leftSlid);
+      rightBtn.addEventListener('click' ,  rightSlid);
+
+
     </script>
   </body>
 </html>
