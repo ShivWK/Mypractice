@@ -187,7 +187,7 @@
 
     <!-- <button id="scroller">scroller</button> -->
 
-    <form action="" name="myForm">
+    <!-- <form action="" name="myForm">
       <input type="text" name="one">
       <input type="text" name="two">
       <fieldset name="myFieldset">
@@ -199,13 +199,13 @@
         <option value="valueTwo">Two</option>
         <option value="valueThree">three</option>
       </select>
-    </form>
+    </form> -->
 
     <!-- <div id="mybox2" style="border: 2px solid black; height: 100px; overflow: auto;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem, dolor. Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, iusto. Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum reprehenderit qui vero a! Explicabo error necessitatibus unde. Nihil architecto sed illo iste quos tempore dolorem, ea, officia aliquid voluptatibus explicabo repellat, animi debitis consequuntur nobis sapiente molestias suscipit distinctio eligendi delectus ratione adipisci quibusdam nesciunt aperiam! Quis, eius enim? Reprehenderit officiis quasi impedit ducimus ratione incidunt animi! Est impedit beatae quibusdam laborum tempora possimus nesciunt veniam nihil delectus, fuga excepturi totam voluptatum natus saepe ipsam illum voluptatibus, iusto corporis dignissimos explicabo eligendi magnam? Voluptatum asperiores provident dignissimos itaque ipsam reiciendis, recusandae officia minima, odit modi reprehenderit nulla assumenda consectetur tempora.</div> -->
 
     <!-- <div id="mybox3" style="border: 2px solid black;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, beatae.</div> -->
 
-    <button id="leftBtn">left</button>
+    <!-- <button id="leftBtn">left</button>
         <button id="rightBtn">right</button>
 
       <div class="caro">
@@ -222,9 +222,36 @@
           <li class="images">10</li>
         </ul>
         
+      </div> -->
+
+      <div id="grandParent" style="border: 2px solid black; padding: 2%;" >
+        <div id="parent"  style="border: 2px solid black; padding: 2%;">
+          <div id="child" style="border: 2px solid black; padding: 2%;" > 
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium sit quam magnam adipisci ab dicta doloremque accusantium, optio consequuntur dolor?
+        </div>
+        </div>
       </div>
 
     <script>
+      function clickHandler3(event) {
+        event.stopPropagation();
+        console.log(event.currentTarget, event.target) ;
+      }
+
+      for (let ele of document.querySelectorAll('div')) {
+        ele.addEventListener("click", e => {console.log("capture clicked")}, {capture : true});
+        ele.addEventListener('click', e => {console.log("bubble clicked")
+          e.stopPropagation();
+
+        })
+      }
+
+      child.addEventListener("click", (event)=>{
+        event.stopPropagation();
+        console.log(event.currentTarget, event.target) 
+        console.log("second handler of child")
+      }, {capture : true})
+
       //Object creatation by constructor function
 
       // function User(name) {
@@ -3885,24 +3912,26 @@
 
       //corousel
 
-      let leftBtn = document.getElementById("leftBtn");
-      let rightBtn = document.getElementById("rightBtn");
-      let ul = document.getElementsByClassName("imgContainer")[0];
-      let step = 10 0;
-      let displacement = 0;
-      // ul.style.transition = 'transform 0.5s ease-in-out';
-      function leftSlid() {
-        displacement -= step;
-        ul.style.transform = `translate(${displacement}px)`
-      }
+      // let leftBtn = document.getElementById("leftBtn");
+      // let rightBtn = document.getElementById("rightBtn");
+      // let ul = document.getElementsByClassName("imgContainer")[0];
+      // let step = 10 0;
+      // let displacement = 0;
+      // // ul.style.transition = 'transform 0.5s ease-in-out';
+      // function leftSlid() {
+      //   displacement -= step;
+      //   ul.style.transform = `translate(${displacement}px)`
+      // }
 
-      function rightSlid() {
-        displacement += step;
-        ul.style.transform = `translate(${displacement}px)`
-      }
+      // function rightSlid() {
+      //   displacement += step;
+      //   ul.style.transform = `translate(${displacement}px)`
+      // }
 
-      leftBtn.addEventListener("click", leftSlid);
-      rightBtn.addEventListener('click' ,  rightSlid);
+      // leftBtn.addEventListener("click", leftSlid);
+      // rightBtn.addEventListener('click' ,  rightSlid);
+
+       
 
 
     </script>
