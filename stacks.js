@@ -120,6 +120,57 @@
         // console.log(myNewStack.peek());
         // console.log(myNewStack.size());
 
+    //Stack implementation using Linked List
+
+        class Node {
+            constructor(data) {
+                this.data = data;
+                this.next = null;
+            }
+        }
+
+        class StackLinkedList {
+            constructor() {
+                this.top = null;
+                this.currentSize = 0;
+            }
+
+            push(ele) {
+                let node = new Node(ele);
+                node.next = this.top;
+                this.top = node;
+                this.currentSize++;
+                return "pushed";
+            }
+
+            pop() {
+                if (!this.top) return "Stack is empty";
+                let popped = this.top;
+                this.top = this.top.next;
+                this.currentSize--;
+                return popped.data;
+            }
+
+            size() {
+                return this.currentSize;
+            }
+
+            peek() {
+                return this.top.data;
+            }
+        }  
+
+        let stack = new StackLinkedList();
+        stack.push(10);
+        stack.push(20);
+        stack.push(30);
+        console.log(stack.peek());  // Output: 30
+        console.log(stack.pop());   // Output: 30
+        console.log(stack.size());  // Output: 2
+        console.log(stack.pop());   // Output: 20
+        console.log(stack.pop());   // Output: 10
+        console.log(stack.pop());   // Output: null (since stack is empty)
+
 
 //Queue useing arrays
 
@@ -181,27 +232,27 @@
 
         class QueueImp {
             constructor(size = 0) {
-                this.maxSise = size;
+                this.maxSize = size;
                 this.queue = [];
                 this.start = -1;
                 this.end = -1;
-                if (this.maxSise > 0) {
+                if (this.maxSize > 0) {
                     this.currentSize = 0;
                 }
             }
 
             push(ele) {
-                if (this.maxSise !== 0) {
+                if (this.maxSize !== 0) {
 
                     //bounded case
-                    if (this.currentSize >= this.maxSise) {
+                    if (this.currentSize >= this.maxSize) {
                         return "Queue is full";
                     }
                     if (this.currentSize === 0) {
                         this.start = 0;
                         this.end = 0;
                     } else {
-                        this.end = (this.end + 1) % this.maxSise;
+                        this.end = (this.end + 1) % this.maxSize;
                     }
 
                     this.queue[this.end] = ele;
@@ -221,7 +272,7 @@
             }
 
             pop() {
-                if (this.maxSise !== 0) {
+                if (this.maxSize !== 0) {
 
                     //Bounded case
                     if (this.currentSize === 0) {
@@ -238,7 +289,7 @@
                         this.end = -1;
 
                     } else {
-                        this.start = (this.start + 1) % this.maxSise;
+                        this.start = (this.start + 1) % this.maxSize;
                     }
  
                     this.currentSize--;
@@ -273,7 +324,7 @@
                     return "queue is empty";
                 }
 
-                if (this.maxSise !== 0) {
+                if (this.maxSize !== 0) {
                     return this.currentSize;
                 }
 
@@ -282,16 +333,16 @@
         }
 
 
-        let myQueue = new QueueImp();
+        // let myQueue = new QueueImp();
 
-        console.log(myQueue.push(11));
-        console.log(myQueue.push(12));
-        console.log(myQueue.size());
-        console.log(myQueue.pop());
-        console.log(myQueue.pop());
-        console.log(myQueue.pop());
+        // console.log(myQueue.push(11));
+        // console.log(myQueue.push(12));
+        // console.log(myQueue.size());
+        // console.log(myQueue.pop());
+        // console.log(myQueue.pop());
+        // console.log(myQueue.pop());
 
-        console.log(myQueue.size());
+        // console.log(myQueue.size());
 
         // let myQueue2 = new QueueImp(4);
 
