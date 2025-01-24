@@ -241,12 +241,14 @@
         <tr style="border: 2px solid black;">...2 more lines of this kind...</tr>
       </table> -->
 
-      <div id="menu">
+      <!-- <div id="menu">
         <button data-action="save">Save</button>
         <button data-action="load">Load</button>
         <button data-action="search">Search</button>
-      </div>
-
+      </div> -->
+      
+      <p>counter : <button data-counter="increment">+</button></p>
+      <p>decreament counter : <button data-decreament="decreament">-</button></p>
     <script>
 
       //Object creatation by constructor function
@@ -3983,33 +3985,43 @@
     //     selectedTd.classList.add("heighlight");
     //   }
 
-      class Menu {
-      constructor(elem) {
-        this._elem = elem;
-        elem.onclick = this.onClick.bind(this); // (*)
-      }
+  //     class Menu {
+  //     constructor(elem) {
+  //       this._elem = elem;
+  //       elem.onclick = this.onClick.bind(this); // (*)
+  //     }
 
-      save() {
-        alert('saving');
-      }
+  //     save() {
+  //       alert('saving');
+  //     }
 
-      load() {
-        alert('loading');
-      }
+  //     load() {
+  //       alert('loading');
+  //     }
 
-      search() {
-        alert('searching');
-      }
+  //     search() {
+  //       alert('searching');
+  //     }
 
-      onClick(event) {
-        let action = event.target.dataset.action;
-        if (action) {
-          this[action]();
-        }
-      };
+  //     onClick(event) {
+  //       let action = event.target.dataset.action;
+  //       if (action) {
+  //         this[action]();
+  //       }
+  //     };
+  //   }
+
+  // new Menu(menu);
+
+  document.addEventListener('click', function(event) {
+    if (event.target.dataset.counter == "increment") {
+      console.log("increament");
+    } 
+
+    if (event.target.dataset.decreament == "decreament") {
+      console.log("decreament");
     }
-
-  new Menu(menu);
+   })
       
 
     </script>
