@@ -160,16 +160,16 @@
             }
         }  
 
-        let stack = new StackLinkedList();
-        stack.push(10);
-        stack.push(20);
-        stack.push(30);
-        console.log(stack.peek());  // Output: 30
-        console.log(stack.pop());   // Output: 30
-        console.log(stack.size());  // Output: 2
-        console.log(stack.pop());   // Output: 20
-        console.log(stack.pop());   // Output: 10
-        console.log(stack.pop());   // Output: null (since stack is empty)
+        // let stack = new StackLinkedList();
+        // stack.push(10);
+        // stack.push(20);
+        // stack.push(30);
+        // console.log(stack.peek());  // Output: 30
+        // console.log(stack.pop());   // Output: 30
+        // console.log(stack.size());  // Output: 2
+        // console.log(stack.pop());   // Output: 20
+        // console.log(stack.pop());   // Output: 10
+        // console.log(stack.pop());   // Output: null (since stack is empty)
 
 
 //Queue useing arrays
@@ -357,7 +357,73 @@
         // console.log(myQueue2.pop());
         // console.log(myQueue2.size());
 
+    //Queue using linked List
 
+        //two pointers are needed start and end
+        //pop - remove from front
+        //push - add in last
+
+        class QueueLinkedList {
+            constructor () {
+                this.start = null;
+                this.end = null;
+                this.currentSize = 0;
+            }
+
+            push(ele) {
+                let node = new Node(ele);
+
+                if (this.start == null) {
+                    this.start = node;
+                    this.end = node;
+                } else {
+                    //initiallly end and start both are pointing to the same node so end.next == start.next, so 1st insertion ke bad 2nd insertion pe jo end.next diya jaega wahi start.next pe hoga, 2nd ke bad aisa nahi hoga
+
+                    this.end.next = node; //start pe jo bhi node hogi uske next pe new node aa gai ager ye 2nd insertion hai to
+                    this.end = node; //end ko age badh diya
+
+                }
+
+                this.currentSize++;
+                return "Element added";
+            } 
+
+            pop() {
+                if (this.start == null) return "Queue is empty";
+
+                let poppedData = this.start.data;
+
+                if (this.currentSize === 1) {
+                    this.start = null;
+                    this.end = null; 
+                } else {
+                    this.start = this.start.next;
+                }
+
+                this.currentSize--;
+                return poppedData;
+            }
+
+            peek() {
+                if (this.start == null) return "Queue is empty";
+                return this.start.data;
+            }
+
+            size() {
+                return this.currentSize;
+            }
+        }
+
+        let queue = new QueueLinkedList();
+            queue.push(10);
+            queue.push(20);
+            queue.push(30);
+            console.log(queue.peek());  // Output: 10
+            console.log(queue.pop());   // Output: 10
+            console.log(queue.size());  // Output: 2
+            console.log(queue.pop());   // Output: 20
+            console.log(queue.pop());   // Output: 30
+            console.log(queue.pop());   // Output: "Queue is empty"
 
 
 //Balanced Prarenthesis
