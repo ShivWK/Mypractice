@@ -6,7 +6,7 @@
     <!-- <meta http-equiv="refresh" content="5"/> -->
     <title>Document</title>
     <style>
-      .myNewElement {
+      /* .myNewElement {
         color : red;
         font-style: italic;
       }
@@ -37,24 +37,12 @@
         top: 200%;
         left: 50%;
         transform: translate(-50%, -50%);
-        /* margin: auto; */
         overflow: auto;
         border: 4px solid black;
         padding: 2%;
         box-sizing: border-box;
         margin-bottom:500px;
       }
-
-      /* .outer {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        border: 2px solid black;
-        padding: 2%;
-        display: flex;
-        align-items: center;
-      } */
 
       .caro {
         position: absolute;
@@ -68,12 +56,10 @@
         overflow: hidden;
         display: flex;
         align-items: center;
-        /* padding: 1%; */
       }
 
       .imgContainer{
         list-style: none;
-        /* border: 2px solid black; */
         display: flex;
         padding: 0;
         transition: transform 0.5s ease-in-out;
@@ -85,6 +71,12 @@
         height: 100px;
         width: 100px;
         display: inline-block;    
+      } */
+
+      .heighlight {
+        background: red;
+        color: white;
+        font-weight: bold;
       }
     </style>
   </head>
@@ -224,33 +216,32 @@
         
       </div> -->
 
-      <div id="grandParent" style="border: 2px solid black; padding: 2%;" >
+      <!-- bubbling and capturing -->
+
+      <!-- <div id="grandParent" style="border: 2px solid black; padding: 2%;" >
         <div id="parent"  style="border: 2px solid black; padding: 2%;">
           <div id="child" style="border: 2px solid black; padding: 2%;" > 
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium sit quam magnam adipisci ab dicta doloremque accusantium, optio consequuntur dolor?
         </div>
         </div>
-      </div>
+      </div> -->
+
+      <!-- Eveent delegation -->
+       
+      <table id="table" style="border: 2px solid black;">
+        <tr style="border: 2px solid black;">
+          <th colspan="3"><em>Bagua</em> Chart: Direction, Element, Color, Meaning</th>
+        </tr>
+        <tr style="border: 2px solid black;">
+          <td class="nw" style="border: 2px solid black;"><strong>Northwest</strong><br>Metal<br>Silver<br>Elders</td>
+          <td class="n" style="border: 2px solid black;">...</td>
+          <td class="ne" style="border: 2px solid black;">...</td>
+        </tr>
+        <tr style="border: 2px solid black;">...2 more lines of this kind...</tr>
+        <tr style="border: 2px solid black;">...2 more lines of this kind...</tr>
+      </table>
 
     <script>
-      function clickHandler3(event) {
-        event.stopPropagation();
-        console.log(event.currentTarget, event.target) ;
-      }
-
-      for (let ele of document.querySelectorAll('div')) {
-        ele.addEventListener("click", e => {console.log("capture clicked")}, {capture : true});
-        ele.addEventListener('click', e => {console.log("bubble clicked")
-          e.stopPropagation();
-
-        })
-      }
-
-      child.addEventListener("click", (event)=>{
-        event.stopPropagation();
-        console.log(event.currentTarget, event.target) 
-        console.log("second handler of child")
-      }, {capture : true})
 
       //Object creatation by constructor function
 
@@ -3931,8 +3922,61 @@
       // leftBtn.addEventListener("click", leftSlid);
       // rightBtn.addEventListener('click' ,  rightSlid);
 
-       
+  //Bubble and capture 
+      
+      // function clickHandler3(event) {
+      //   event.stopPropagation();
+      //   console.log(event.currentTarget, event.target) ;
+      // }
 
+      // for (let ele of document.querySelectorAll('div')) {
+      //   ele.addEventListener("click", e => {console.log("capture clicked")}, {capture : true});
+      //   ele.addEventListener('click', e => {console.log("bubble clicked")
+      //     e.stopPropagation();
+
+      //   })
+      // }
+
+      // child.addEventListener("click", (event)=>{
+      //   event.stopPropagation();
+      //   console.log(event.currentTarget, event.target) 
+      //   console.log("second handler of child")
+      // }, {capture : true})
+
+  //Event delegation
+
+      let selectedTd;
+
+    //If we've simple <td> w/o any nested element then
+
+      table.onclick = function(event) {
+        let target  = event.target;
+
+        if(target.tagName != 'TD') return
+        highlight(target);
+      }
+
+    //If we've <td> with nested elements then 
+
+        table.onclick = function(event) {
+          let td = event.target.closest('td');
+
+          if (!td) retrun;
+
+          if (!table.contains(td)) return;
+
+          highlight(td);
+        }
+
+      function highlight(td) {
+        if (selectedTd) {
+          selectedTd.classList.remove("highlight");
+        }
+
+        selectedTd = td;
+        selectedTd.classList.add("heighlight");
+      }
+      
 
     </script>
   </body>
