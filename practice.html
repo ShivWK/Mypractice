@@ -228,7 +228,7 @@
 
       <!-- Eveent delegation -->
        
-      <table id="table" style="border: 2px solid black;">
+      <!-- <table id="table" style="border: 2px solid black;">
         <tr style="border: 2px solid black;">
           <th colspan="3"><em>Bagua</em> Chart: Direction, Element, Color, Meaning</th>
         </tr>
@@ -239,7 +239,13 @@
         </tr>
         <tr style="border: 2px solid black;">...2 more lines of this kind...</tr>
         <tr style="border: 2px solid black;">...2 more lines of this kind...</tr>
-      </table>
+      </table> -->
+
+      <div id="menu">
+        <button data-action="save">Save</button>
+        <button data-action="load">Load</button>
+        <button data-action="search">Search</button>
+      </div>
 
     <script>
 
@@ -3945,37 +3951,65 @@
 
   //Event delegation
 
-      let selectedTd;
+    //   let selectedTd;
 
-    //If we've simple <td> w/o any nested element then
+    // //If we've simple <td> w/o any nested element then
 
-      table.onclick = function(event) {
-        let target  = event.target;
+    //   table.onclick = function(event) {
+    //     let target  = event.target;
 
-        if(target.tagName != 'TD') return
-        highlight(target);
+    //     if(target.tagName != 'TD') return
+    //     highlight(target);
+    //   }
+
+    // //If we've <td> with nested elements then 
+
+    //     table.onclick = function(event) {
+    //       let td = event.target.closest('td');
+
+    //       if (!td) retrun;
+
+    //       if (!table.contains(td)) return;
+
+    //       highlight(td);
+    //     }
+
+    //   function highlight(td) {
+    //     if (selectedTd) {
+    //       selectedTd.classList.remove("highlight");
+    //     }
+
+    //     selectedTd = td;
+    //     selectedTd.classList.add("heighlight");
+    //   }
+
+      class Menu {
+      constructor(elem) {
+        this._elem = elem;
+        elem.onclick = this.onClick.bind(this); // (*)
       }
 
-    //If we've <td> with nested elements then 
-
-        table.onclick = function(event) {
-          let td = event.target.closest('td');
-
-          if (!td) retrun;
-
-          if (!table.contains(td)) return;
-
-          highlight(td);
-        }
-
-      function highlight(td) {
-        if (selectedTd) {
-          selectedTd.classList.remove("highlight");
-        }
-
-        selectedTd = td;
-        selectedTd.classList.add("heighlight");
+      save() {
+        alert('saving');
       }
+
+      load() {
+        alert('loading');
+      }
+
+      search() {
+        alert('searching');
+      }
+
+      onClick(event) {
+        let action = event.target.dataset.action;
+        if (action) {
+          this[action]();
+        }
+      };
+    }
+
+  new Menu(menu);
       
 
     </script>
