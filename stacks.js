@@ -171,6 +171,60 @@
         // console.log(stack.pop());   // Output: 10
         // console.log(stack.pop());   // Output: null (since stack is empty)
 
+    //Stacks using Queues
+        
+        class StacksByQueue {
+            constructor() {
+                this.queue = [];
+            }
+
+            push(element) {
+                let size = this.queue.length;
+                this.queue.push(element);
+
+                for (let i = 1; i <= size; i++) {
+                    this.queue.push(this.queue.shift());
+                }
+            }
+
+            pop() {
+                if (this.isEmpty()) {   //this object has all the properties and methods of the class available to it so we can call any method anywhere. 
+                    return "Stack is empty";
+                }
+
+                return this.queue.shift();
+            }
+
+            isEmpty() {
+                return this.queue.length === 0;
+            }
+
+            peek() {
+                if (this.isEmpty()) {
+                    return "Stack is empty"
+                }
+
+                return this.queue[0];
+            }
+
+            size() {
+                return this.queue.length;
+            }
+        } 
+
+        let myQStack = new StacksByQueue();
+        myQStack.push(11);
+        myQStack.push(12); 
+        myQStack.push(13); 
+        myQStack.push(14); 
+        console.log(myQStack.peek());
+        console.log(myQStack.pop());
+        myQStack.push(15);
+        console.log(myQStack.pop());
+        console.log(myQStack.pop());
+        console.log(myQStack.pop());
+        console.log(myQStack.pop());
+        console.log(myQStack.pop());
 
 //Queue useing arrays
 
@@ -414,17 +468,20 @@
             }
         }
 
-        let queue = new QueueLinkedList();
-            queue.push(10);
-            queue.push(20);
-            queue.push(30);
-            console.log(queue.peek());  // Output: 10
-            console.log(queue.pop());   // Output: 10
-            console.log(queue.size());  // Output: 2
-            console.log(queue.pop());   // Output: 20
-            console.log(queue.pop());   // Output: 30
-            console.log(queue.pop());   // Output: "Queue is empty"
+        // let queue = new QueueLinkedList();
+        //     queue.push(10);
+        //     queue.push(20);
+        //     queue.push(30);
+        //     console.log(queue.peek());  // Output: 10
+        //     console.log(queue.pop());   // Output: 10
+        //     console.log(queue.size());  // Output: 2
+        //     console.log(queue.pop());   // Output: 20
+        //     console.log(queue.pop());   // Output: 30
+        //     console.log(queue.pop());   // Output: "Queue is empty"
 
+    //Queue implementation using stacks
+        
+        
 
 //Balanced Prarenthesis
 
