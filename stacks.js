@@ -212,19 +212,19 @@
             }
         } 
 
-        let myQStack = new StacksByQueue();
-        myQStack.push(11);
-        myQStack.push(12); 
-        myQStack.push(13); 
-        myQStack.push(14); 
-        console.log(myQStack.peek());
-        console.log(myQStack.pop());
-        myQStack.push(15);
-        console.log(myQStack.pop());
-        console.log(myQStack.pop());
-        console.log(myQStack.pop());
-        console.log(myQStack.pop());
-        console.log(myQStack.pop());
+        // let myQStack = new StacksByQueue();
+        // myQStack.push(11);
+        // myQStack.push(12); 
+        // myQStack.push(13); 
+        // myQStack.push(14); 
+        // console.log(myQStack.peek());
+        // console.log(myQStack.pop());
+        // myQStack.push(15);
+        // console.log(myQStack.pop());
+        // console.log(myQStack.pop());
+        // console.log(myQStack.pop());
+        // console.log(myQStack.pop());
+        // console.log(myQStack.pop());
 
 //Queue useing arrays
 
@@ -481,7 +481,78 @@
 
     //Queue implementation using stacks
         
-        
+            class StackByQueue {
+                constructor(maxsize = null) {
+                    this.stack = [];
+                    this.maxsize = maxsize;
+                }
+
+                push(eleemnt) {
+                    if (this.size() === this.maxsize) {
+                        console.error("Stack Overflow: Cannot add more elements.");
+                    } else {
+                        let size = this.stack.length;
+                        this.stack.push(eleemnt);
+
+                        for (let i = 1; i <= size; i++) {
+                            this.stack.push(this.stack.shift());
+                        }
+                    }
+                }
+
+                pop() {
+                    if (this.size() === 0) {
+                        return "stack is empty";
+                    }
+
+                    return this.stack.pop();
+                }
+
+                peek() {
+                    if (this.size() === 0) {
+                        return "stack is empty";
+                    }
+
+                    return this.stack[this.stack.length - 1];
+                }
+
+                isEmpty() {
+                    return this.stack.length === 0;
+                }
+
+                size() {
+                    return this.stack.length;
+                }
+
+                print() {
+                    for (let i = 0; i < this.size(); i++) {
+                        console.log(i === this.size() - 1 ? this.stack[i] + '' : this.stack[i] + ",");
+                    }
+                }
+            }
+
+            let mySQueue = new StackByQueue();
+            mySQueue.push(11);
+            mySQueue.push(12);
+            mySQueue.push(13)
+            mySQueue.push(14)
+            mySQueue.push(15);
+            console.log(mySQueue.peek());
+            console.log(mySQueue.pop());
+            console.log(mySQueue.pop());
+            console.log(mySQueue.pop());
+            mySQueue.push(16)
+            mySQueue.push(17);
+            mySQueue.push(18);
+            console.log(mySQueue.peek());
+            console.log(mySQueue.pop());
+            console.log(mySQueue.pop());
+            console.log(mySQueue.pop());
+            console.log(mySQueue.pop());
+            console.log(mySQueue.pop());
+            console.log(mySQueue.pop());
+            mySQueue.print()
+
 
 //Balanced Prarenthesis
 
