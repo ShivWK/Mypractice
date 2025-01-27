@@ -705,6 +705,8 @@
 
 //MinStack
 
+    //Brute force
+
         class MinStack {
             constructor() {
                 this.minStack = [];
@@ -753,6 +755,80 @@
         console.log(minStack.getMin());
         console.log(minStack.pop());
         console.log(minStack.pop());
+
+        //T.C = O(1) but S.C = O(2n)
+
+        console.log("Optimised solution results")
+
+    //optimal approach
+
+        class MinStackOptimal {
+            constructor() {
+                this.stack = [];
+                this.minValue = Infinity;
+            }
+
+            push(x) {
+                if (x < this.minValue) {
+                    let newX = 2*x - this.minValue;
+                    this.stack.push(newX);
+                    this.minValue = x;
+                } else {
+                    this.stack.push(x);
+                }
+            }
+
+            pop() {
+                if (this.stack.length === 0) return "Stack is empty!";
+
+                if (this.stack[this.stack.length - 1] < this.minValue) {
+                    let newPopped = this.minValue;
+                    this.minValue = 2*this.minValue - this.stack.pop();
+
+                    return newPopped;
+                } else {
+                    return this.stack.pop();
+                }
+            }
+
+            peek() {
+                if (this.stack.length === 0) return "Stack is empty!";
+
+                if (this.stack[this.stack.length - 1] < this.minValue) {
+                    return this.minValue;
+                } else {
+                    return this.stack[this.stack.length - 1];
+                }
+            }
+
+            getMin() {
+                if (this.stack.length === 0) return "Stack is empty!";
+
+                return this.minValue;
+            }
+        }
+
+        let minStack2 = new MinStackOptimal();
+        minStack2.push(11);
+        minStack2.push(10);
+        minStack2.push(15);
+        minStack2.push(8);
+        minStack2.push(2);
+        minStack2.push(55);
+        console.log(minStack2.peek());
+        console.log(minStack2.getMin());
+        console.log(minStack2.pop());
+        console.log("next");
+        console.log(minStack2.peek());
+        console.log(minStack2.getMin());
+        console.log(minStack2.pop());
+        console.log(minStack2.pop());
+        console.log(minStack2.pop());
+        console.log(minStack2.getMin());
+        console.log(minStack2.pop());
+        console.log(minStack2.pop());
+
+
 
 
 
