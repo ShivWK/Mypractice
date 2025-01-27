@@ -737,6 +737,10 @@
         } 
  
         let minStack = new MinStack();
+
+        console.log(minStack.peek());
+        console.log(minStack.getMin());
+        console.log(minStack.pop());
         minStack.push(11);
         minStack.push(10);
         minStack.push(15);
@@ -809,6 +813,10 @@
         }
 
         let minStack2 = new MinStackOptimal();
+
+        console.log(minStack2.peek());
+        console.log(minStack2.getMin());
+        console.log(minStack2.pop());
         minStack2.push(11);
         minStack2.push(10);
         minStack2.push(15);
