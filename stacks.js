@@ -191,7 +191,7 @@
                 if (this.isEmpty()) {   //this object has all the properties and methods of the class available to it so we can call any method anywhere. 
                     return "Stack is empty";
                 }
-
+ 
                 return this.queue.shift();
             }
 
@@ -481,7 +481,7 @@
 
     //Queue implementation using stacks
         
-            class StackByQueue {
+            class QueueByStack {
                 constructor(maxsize = null) {
                     this.stack = [];
                     this.maxsize = maxsize;
@@ -489,7 +489,7 @@
 
                 push(eleemnt) {
                     if (this.size() === this.maxsize) {
-                        console.error("Stack Overflow: Cannot add more elements.");
+                        console.error("Queue Overflow: Cannot add more elements.");
                     } else {
                         let size = this.stack.length;
                         this.stack.push(eleemnt);
@@ -502,7 +502,7 @@
 
                 pop() {
                     if (this.size() === 0) {
-                        return "stack is empty";
+                        return "Queue is empty";
                     }
 
                     return this.stack.pop();
@@ -510,7 +510,7 @@
 
                 peek() {
                     if (this.size() === 0) {
-                        return "stack is empty";
+                        return "Queue is empty";
                     }
 
                     return this.stack[this.stack.length - 1];
@@ -531,74 +531,39 @@
                 }
             }
 
-            let mySQueue = new StackByQueue();
-            mySQueue.push(11);
-            mySQueue.push(12);
-            mySQueue.push(13)
-            mySQueue.push(14)
-            mySQueue.push(15);
-            console.log(mySQueue.peek());
-            console.log(mySQueue.pop());
-            console.log(mySQueue.pop());
-            console.log(mySQueue.pop());
-            mySQueue.push(16)
-            mySQueue.push(17);
-            mySQueue.push(18);
-            console.log(mySQueue.peek());
-            console.log(mySQueue.pop());
-            console.log(mySQueue.pop());
-            console.log(mySQueue.pop());
-            console.log(mySQueue.pop());
-            console.log(mySQueue.pop());
-            console.log(mySQueue.pop());
-            mySQueue.print()
-
-
-//Balanced Prarenthesis
-
-        function balancedParenthesis(str) {
-            let stack = new Stack()
-
-            for (let i = 0; i < str.length; i++) {
-                if (str[i] === "(" || str[i] === "{" || str[i] === "[") {
-
-                    stack.push(str[i]);
-                } else {
-                    let popped = stack.pop();
-
-                    if (popped === "stack is empty") {
-                        return false;
-                    }
-
-                    if (
-                        (str[i] === ")" && popped !== "(") || 
-                        (str[i] === "}" && popped !== "{") || 
-                        (str[i] === "]" && popped !== "[")
-                        ) 
-                        {
-                        return false;
-                    } 
-                    
-                }
-            }
-
-            return stack.isEmpty();
-        }
-
-        // console.log(balancedParenthesis("(){[()]}"));
-        // console.log(balancedParenthesis("]["));
+            // let mySQueue = new QueueByStack();
+            // mySQueue.push(11);
+            // mySQueue.push(12);
+            // mySQueue.push(13)
+            // mySQueue.push(14)
+            // mySQueue.push(15);
+            // console.log(mySQueue.peek());
+            // console.log(mySQueue.pop());
+            // console.log(mySQueue.pop());
+            // console.log(mySQueue.pop());
+            // mySQueue.push(16)
+            // mySQueue.push(17);
+            // mySQueue.push(18);
+            // console.log(mySQueue.peek());
+            // console.log(mySQueue.pop());
+            // console.log(mySQueue.pop());
+            // console.log(mySQueue.pop());
+            // console.log(mySQueue.pop());
+            // console.log(mySQueue.pop());
+            // console.log(mySQueue.pop());
+            // mySQueue.print()
 
 //expression convertions
 
-    function priority(str) {
-        if (str === "^") return 3;
-        else if (str === "*" || str === "/") return 2;
-        else if (str === "+" || str === "-") return 1;
-        else return -1;
-    }
+        function priority(str) {
+            if (str === "^") return 3;
+            else if (str === "*" || str === "/") return 2;
+            else if (str === "+" || str === "-") return 1;
+            else return -1;
+        }
 
-    //infix to postfix conversion
-    
+//infix to postfix conversion
+
         function infixToPostfix(str) {
             let ans = '', i = 0;
             let stack1 = new Stack();
@@ -653,7 +618,7 @@
             return ans;
         }
 
-    // infix to prefix
+// infix to prefix
 
         function infixToPrefix(str) {
             let ans = '', i = 0;
@@ -702,5 +667,96 @@
             return ans;
         }
 
-       // console.log(infixToPrefix('(A*B)+(C*D)'));
+        // console.log(infixToPrefix('(A*B)+(C*D)'));
+
+//Balanced Prarenthesis
+
+        function balancedParenthesis(str) {
+            let stack = new Stack()
+
+            for (let i = 0; i < str.length; i++) {
+                if (str[i] === "(" || str[i] === "{" || str[i] === "[") {
+
+                    stack.push(str[i]);
+                } else {
+                    let popped = stack.pop();
+
+                    if (popped === "stack is empty") {
+                        return false;
+                    }
+
+                    if (
+                        (str[i] === ")" && popped !== "(") || 
+                        (str[i] === "}" && popped !== "{") || 
+                        (str[i] === "]" && popped !== "[")
+                        ) 
+                        {
+                        return false;
+                    } 
+                    
+                }
+            }
+
+            return stack.isEmpty();
+        }
+
+        // console.log(balancedParenthesis("(){[()]}"));
+        // console.log(balancedParenthesis("]["));
+
+//MinStack
+
+        class MinStack {
+            constructor() {
+                this.minStack = [];
+            }
+
+            push(ele) {
+                let min = (this.minStack.length === 0) ? ele : Math.min(ele, this.minStack[this.minStack.length - 1][1]);
+                this.minStack.push([ele, min]);
+            }
+
+            pop() {
+                if (this.minStack.length === 0) return "Stack in empty!";
+
+                return this.minStack.pop()[0];
+            }
+
+            peek() {
+                if (this.minStack.length === 0) return "Stack in empty!";
+
+                return this.minStack[this.minStack.length - 1][0];
+            }
+            
+            getMin() {
+                if (this.minStack.length === 0) return "Stack in empty!";
+
+                return this.minStack[this.minStack.length - 1][1];
+            }
+        } 
+ 
+        let minStack = new MinStack();
+        minStack.push(11);
+        minStack.push(10);
+        minStack.push(15);
+        minStack.push(8);
+        minStack.push(2);
+        minStack.push(55);
+        console.log(minStack.peek());
+        console.log(minStack.getMin());
+        console.log(minStack.pop());
+        console.log("next");
+        console.log(minStack.peek());
+        console.log(minStack.getMin());
+        console.log(minStack.pop());
+        console.log(minStack.pop());
+        console.log(minStack.pop());
+        console.log(minStack.getMin());
+        console.log(minStack.pop());
+        console.log(minStack.pop());
+
+
+
+
+
+
 
