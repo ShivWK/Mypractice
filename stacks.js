@@ -842,7 +842,7 @@
 
     //Brute force
 
-        function Gne(arr){
+        function NgeBrute(arr){
             if (arr.length === 0) return "Array/Stack is empty!";
             let size = arr.length - 1;
             let ansArray = [];
@@ -863,7 +863,65 @@
             return ansArray;
         }
 
-        console.log(Gne([6,0,8,1,3]))
+        console.log(NgeBrute([6,8,0,8,1,3]))
+
+    //Optimal solution
+
+        function NgeOptimal(arr) {
+            if (arr.length === 0) return "Array/Stack is empty!";
+            let n = arr.length;
+            let stack = [];
+            let ansArray = new Array(n);
+            
+            for (let i = n - 1; i >= 0; i--) {
+                if (arr[i] < stack[stack.length - 1]) {
+                    ansArray[i] = stack[stack.length - 1];
+                    stack.push(arr[i]);
+                } else {
+                    for (let j = stack.length - 1; j >= 0; j--) {
+                        if (stack[stack.length - 1] > arr[i]) break; 
+
+                        stack.pop();
+                    }
+
+                    if (arr[i] < stack[stack.length - 1]) {
+                        ansArray[i] = stack[stack.length - 1];
+                        stack.push(arr[i])
+                    } else {
+                        ansArray[i] = -1;
+                        stack.push(arr[i])
+                    }
+                    
+                }
+
+            }
+
+            return ansArray;
+        }
+
+        console.log(NgeOptimal([6,8,0,8,1,3]))
+
+        //more shorter 
+
+        function NgeOptimal(arr) {
+            if (arr.length === 0) return "Array/Stack is empty!";
+            let n = arr.length;
+            let stack = [];
+            let ansArray = new Array(n);
+        
+            for (let i = n - 1; i >= 0; i--) {
+                while (stack.length > 0 && stack[stack.length - 1] <= arr[i]) {
+                    stack.pop(); // Remove smaller elements as they can't be the NGE
+                }
+                ansArray[i] = stack.length === 0 ? -1 : stack[stack.length - 1]; // Assign NGE or -1
+                stack.push(arr[i]); // Push current element to stack
+            }
+        
+            return ansArray;
+        }
+        
+        console.log(NgeOptimal([6, 0, 8, 1, 3])); // Output: [8, 8, -1, 3, -1]
+        
 
 
 
