@@ -736,33 +736,31 @@
             }
         } 
  
-        let minStack = new MinStack();
+        // let minStack = new MinStack();
 
-        console.log(minStack.peek());
-        console.log(minStack.getMin());
-        console.log(minStack.pop());
-        minStack.push(11);
-        minStack.push(10);
-        minStack.push(15);
-        minStack.push(8);
-        minStack.push(2);
-        minStack.push(55);
-        console.log(minStack.peek());
-        console.log(minStack.getMin());
-        console.log(minStack.pop());
-        console.log("next");
-        console.log(minStack.peek());
-        console.log(minStack.getMin());
-        console.log(minStack.pop());
-        console.log(minStack.pop());
-        console.log(minStack.pop());
-        console.log(minStack.getMin());
-        console.log(minStack.pop());
-        console.log(minStack.pop());
+        // console.log(minStack.peek());
+        // console.log(minStack.getMin());
+        // console.log(minStack.pop());
+        // minStack.push(11);
+        // minStack.push(10);
+        // minStack.push(15);
+        // minStack.push(8);
+        // minStack.push(2);
+        // minStack.push(55);
+        // console.log(minStack.peek());
+        // console.log(minStack.getMin());
+        // console.log(minStack.pop());
+        // console.log("next");
+        // console.log(minStack.peek());
+        // console.log(minStack.getMin());
+        // console.log(minStack.pop());
+        // console.log(minStack.pop());
+        // console.log(minStack.pop());
+        // console.log(minStack.getMin());
+        // console.log(minStack.pop());
+        // console.log(minStack.pop());
 
         //T.C = O(1) but S.C = O(2n)
-
-        console.log("Optimised solution results")
 
     //optimal approach
 
@@ -780,6 +778,8 @@
                 } else {
                     this.stack.push(x);
                 }
+
+                console.log(this.stack);
             }
 
             pop() {
@@ -814,31 +814,56 @@
 
         let minStack2 = new MinStackOptimal();
 
-        console.log(minStack2.peek());
-        console.log(minStack2.getMin());
-        console.log(minStack2.pop());
-        minStack2.push(11);
-        minStack2.push(10);
-        minStack2.push(15);
-        minStack2.push(8);
-        minStack2.push(2);
-        minStack2.push(55);
-        console.log(minStack2.peek());
-        console.log(minStack2.getMin());
-        console.log(minStack2.pop());
-        console.log("next");
-        console.log(minStack2.peek());
-        console.log(minStack2.getMin());
-        console.log(minStack2.pop());
-        console.log(minStack2.pop());
-        console.log(minStack2.pop());
-        console.log(minStack2.getMin());
-        console.log(minStack2.pop());
-        console.log(minStack2.pop());
+        // console.log(minStack2.peek());
+        // console.log(minStack2.getMin());
+        // console.log(minStack2.pop());
+        // minStack2.push(11);
+        // minStack2.push(10);
+        // minStack2.push(15);
+        // minStack2.push(8);
+        // minStack2.push(2);
+        // minStack2.push(55);
+        // console.log(minStack2.peek());
+        // console.log(minStack2.getMin());
+        // console.log(minStack2.pop());
+        // console.log("next");
+        // console.log(minStack2.peek());
+        // console.log(minStack2.getMin());
+        // console.log(minStack2.pop());
+        // console.log(minStack2.pop());
+        // console.log(minStack2.pop());
+        // console.log(minStack2.getMin());
+        // console.log(minStack2.pop());
+        // console.log(minStack2.pop());
+        
+        // T.C = O(1), S.C = O(n + 1) = O(n);
 
+//Next greater element
 
+    //Brute force
 
+        function Gne(arr){
+            if (arr.length === 0) return "Array/Stack is empty!";
+            let size = arr.length - 1;
+            let ansArray = [];
 
+            for (let i = 0; i <= size; i++) {
+                for (let j = i + 1; j <= size; j++) {
+                    if (arr[i] < arr[j])  {
+                        ansArray[i] = arr[j];
+                        break;
+                    }
+                }
+
+                if (ansArray[i] === undefined) {
+                    ansArray[i] = -1;
+                }
+            }
+
+            return ansArray;
+        }
+
+        console.log(Gne([6,0,8,1,3]))
 
 
 
