@@ -953,11 +953,32 @@
             return ansArray;
         }
 
-        console.log(FNGE1([2,10,12,1,11]))
+        // console.log(FNGE1([2,10,12,1,11]))
         
     //Better solution
 
-       
+        function FNGE2(arr) {
+            if (arr.length === 0) return "Array/Stack is empty!";
+            let size = arr.length;
+            let ansArray = [];
+
+            for (let i = 0; i <= size - 1; i++) {
+                for (let j = i + 1; j <= i + size - 1; j++) {
+                    let index = j%size;
+
+                    if (arr[i] < arr[index]) {
+                        ansArray[i] = arr[index];
+                        break;
+                    }
+                }
+
+                if (ansArray[i] == undefined) ansArray[i] = -1;
+            }
+
+            return ansArray;
+        }
+
+        console.log(FNGE2([2,10,12,1,11]));
 
 
 
