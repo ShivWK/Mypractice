@@ -843,7 +843,7 @@
     //Brute force
 
         function NgeBrute(arr){
-            if (arr.length === 0) return "Array/Stack is empty!";
+            if (arr.length === 0) return "Array is empty!";
             let size = arr.length - 1;
             let ansArray = [];
 
@@ -868,7 +868,7 @@
     //Optimal solution
 
         function NgeOptimal(arr) {
-            if (arr.length === 0) return "Array/Stack is empty!";
+            if (arr.length === 0) return "Array is empty!";
             let n = arr.length;
             let stack = [];
             let ansArray = new Array(n);
@@ -904,7 +904,7 @@
         //more shorter 
 
         function NgeOptimal(arr) {
-            if (arr.length === 0) return "Array/Stack is empty!";
+            if (arr.length === 0) return "Array is empty!";
             let n = arr.length;
             let stack = [];
             let ansArray = new Array(n);
@@ -927,7 +927,7 @@
     //Brute force
         
         function FNGE1(arr) {
-            if (arr.length === 0) return "Array/Stack is empty!";
+            if (arr.length === 0) return "Array is empty!";
             let size = arr.length;
             let ansArray = [];
 
@@ -954,11 +954,12 @@
         }
 
         // console.log(FNGE1([2,10,12,1,11]))
+        // T.C = O(n^2) ans S.C = O(n)
         
     //Better solution
 
         function FNGE2(arr) {
-            if (arr.length === 0) return "Array/Stack is empty!";
+            if (arr.length === 0) return "Array is empty!";
             let size = arr.length;
             let ansArray = [];
 
@@ -979,6 +980,31 @@
         }
 
         console.log(FNGE2([2,10,12,1,11]));
+        // T.C = O(n^2) ans S.C = O(n)
+
+//optimal solution
+
+        function FNGE3(arr) {
+            if (arr.length === 0) return "Array is empty!";
+            let n = arr.length;
+            let ansArray = [];
+            let stack = [];
+
+            for (let i = 2*n - 1; i >= 0; i--) {
+                while (stack.length > 0 && stack[stack.length - 1] <= arr[i%n]) {
+                    stack.pop();
+                }
+
+                ansArray[i%n] = (stack.length == 0) ? -1 : stack[stack.length - 1];
+                stack.push(arr[i%n]);
+            }
+
+            return ansArray;
+        }
+
+        console.log(FNGE3([2,10,12,1,11]));
+
+
 
 
 
