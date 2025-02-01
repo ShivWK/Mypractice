@@ -1040,8 +1040,23 @@
     //Optimal solution
 
         
+    function NSE2(arr) {
+        if (arr.length === 0) return "Empty ji";
+        let n = arr.length;
+        let ansArray = [];
+        let stack = [];
 
+        for (let i = 0; i <= n - 1; i++) { 
+            while (stack.length > 0 && stack[stack.length - 1] > arr[i]) {
+                stack.pop();
+            }
 
+            ansArray = (stack.length < 0) ? -1 : stack[stack.length - 1];
+            stack.push(arr[i]);
+        }
 
+        return ansArray;
+    }
 
+    console.log(NSE1([4,5,2,10,8]));
 
