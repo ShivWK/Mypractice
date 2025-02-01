@@ -901,7 +901,7 @@
 
         // console.log(NgeOptimal([2,4,3,1,8,9,7,2,5,1,6,5]))
 
-        //more shorter 
+    //more shorter Optimal
 
         function NgeOptimal(arr) {
             if (arr.length === 0) return "Array is empty!";
@@ -979,7 +979,7 @@
             return ansArray;
         }
 
-        console.log(FNGE2([2,10,12,1,11]));
+        // console.log(FNGE2([2,10,12,1,11]));
         // T.C = O(n^2) ans S.C = O(n)
 
 //optimal solution
@@ -990,19 +990,56 @@
             let ansArray = [];
             let stack = [];
 
+            let count = 0;
+
             for (let i = 2*n - 1; i >= 0; i--) {
+                
                 while (stack.length > 0 && stack[stack.length - 1] <= arr[i%n]) {
                     stack.pop();
+                    count++;
                 }
 
                 ansArray[i%n] = (stack.length == 0) ? -1 : stack[stack.length - 1];
                 stack.push(arr[i%n]);
             }
+            console.log(stack);
+            console.log(count);
+            return ansArray;
+        }
+
+        // console.log(FNGE3([15, 14, 13, 12, 11]));
+        // O(2n + 2n) = O(4n) = O(n) and the S.c = O(n) + O(n) = O(2n) = O(n)
+
+//Nearest smaller element
+
+    //Brute Force 
+
+        function NSE1(arr) {
+            if (arr.length === 0) return "Empty ji";
+            let n = arr.length;
+            let ansArray = [];
+
+            for (let i = 0; i <= n - 1; i++) {
+                for (let j = i - 1; j >= 0; j--) {
+                    if (arr[j] < arr[i]) {
+                        ansArray[i] = arr[j];
+                        break;
+                    }
+                }
+
+                if (ansArray[i] == undefined) ansArray[i] = -1;
+            }
 
             return ansArray;
         }
 
-        console.log(FNGE3([2,10,12,1,11]));
+        console.log(NSE1([4,5,2,10,8]));
+
+        // T.C = O(n^2) and S.C = O(n);
+        
+    //Optimal solution
+
+        
 
 
 
