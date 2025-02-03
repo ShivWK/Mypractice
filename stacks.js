@@ -1033,7 +1033,7 @@
             return ansArray;
         }
 
-        console.log(NSE1([4,5,2,10,8]));
+        // console.log(NSE1([4,5,2,10,8]));
 
         // T.C = O(n^2) and S.C = O(n);
         
@@ -1058,5 +1058,50 @@
         return ansArray;
     }
 
-    console.log(NSE1([4,5,2,10,8]));
+    // console.log(NSE1([4,5,2,10,8]));
 
+//Traping rain water
+
+    //Brute Force
+
+        function prefixMax(arr) {
+            let prefix = [];
+            let n = arr.length;
+            prefix[0] = arr[0];
+
+            for (let i = 1; i < n; i++) {
+                prefix[i] = Math.max(prefix[i - 1], arr[i]);
+            }
+
+            return prefix;
+        }
+
+        function suffixMax(arr) {
+            let suffix = [];
+            let n = arr.length;
+            suffix[n - 1] = arr[n - 1];
+
+            for (let i = n - 2; i >= 0; i--) {
+                suffix[i] = Math.max(suffix[i + 1], arr[i]);
+            }
+
+            return suffix;
+        }
+
+        function trappedWater(arr) {
+            if (arr.length === 0) return 0;
+            let n = arr.length;
+            let leftMax = prefixMax(arr);
+            let rightMax = suffixMax(arr);
+            let totalWater = 0;
+
+            for (let i = 0; i <= n - 1; i++) {
+                if (arr[i] < leftMax[i] && arr[i] < rightMax[i]){
+                    totalWater += (Math.min(leftMax[i], rightMax[i]) - arr[i]);
+                }
+            }
+
+            return totalWater;
+        }
+
+        console.log(trappedWater([1,0,2,1,0,2,3,2,1,2,1]));
