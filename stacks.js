@@ -1134,7 +1134,7 @@
                     return ansArray;
         }
         
-        console.log(NGE1V2([1,3], [2,5,9,7,3,8,1]));
+        // console.log(NGE1V2([1,3], [2,5,9,7,3,8,1]));
 
 //Optimal solution
 
@@ -1160,4 +1160,30 @@
                     return ansArray;
         }
 
-        console.log(NGE2V2([1,3], [2,5,9,7,3,8,1]))   
+        // console.log(NGE2V2([1,3], [2,5,9,7,3,8,1]))   
+
+//Number of next greater element
+
+    //final as required by question T.C = O(queries*N), S.C = O(queries)
+
+       function NUMNGE(N, arr, queries, indices) {
+        let ansArray = [];
+        
+        for (let i = 0; i <= queries - 1; i++) {
+            let count = 0;
+            for (let j = indices[i] + 1; j <= N - 1; j++) {
+                if (arr[indices[i]] < arr[j]) {
+                    count++;
+                }
+            }
+            
+            ansArray[i] = count;
+        } 
+        
+        return ansArray;
+       }
+
+       console.log(NUMNGE(5, [2,5,6,3,1], 3, [0,2,1]))
+
+
+    
