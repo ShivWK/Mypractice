@@ -1138,4 +1138,26 @@
 
 //Optimal solution
 
+        function NGE2V2(nums1, nums2) {
+            if (nums1.length === 0 || nums2.length === 0) return;
+                    let n2 = nums2.length;
+                    let ansArray = new Array(nums1.length)
+                    let stack = [];
+                    let ngeMap = new Map();
+                
+                    for (let i = n2 - 1; i >= 0; i--) {
+                        while (stack.length > 0 && stack[stack.length - 1] <= nums2[i]) {
+                            stack.pop(); 
+                        }
+                        ngeMap.set(nums2[i], stack.length === 0 ? -1 : stack[stack.length - 1])
+                        stack.push(nums2[i]);
+                    }
 
+                    for (let i = 0; i <= nums1.length - 1; i++) {
+                        ansArray[i] = ngeMap.get(nums1[i]);
+                    }
+
+                    return ansArray;
+        }
+
+        console.log(NGE2V2([1,3], [2,5,9,7,3,8,1]))   
