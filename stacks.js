@@ -1104,4 +1104,38 @@
             return totalWater;
         }
 
-        console.log(trappedWater([1,0,2,1,0,2,3,2,1,2,1]));
+        // console.log(trappedWater([1,0,2,1,0,2,3,2,1,2,1]));
+
+//Instead of using indexOf() use hashMap to store a value for each element of an array so when you need the value for a element in the array you can see the hashmap for that value which will take O(1) instead of maintainig another array for values for each index of your first array in which you will get index of the element then u will find that in your another array O(n).
+
+//Next greater elements version 2
+
+    //Brute force solution
+
+        function NGE1V2(nums1, nums2) {
+            if (nums1.length === 0 || nums2.length === 0) return;
+                    let n2 = nums2.length;
+                    let ansArray = new Array(nums1.length)
+                    let stack = [];
+                    let ngeArray = new Array(n2);
+                    for (let i = n2 - 1; i >= 0; i--) {
+                        while (stack.length > 0 && stack[stack.length - 1] <= nums2[i]) {
+                            stack.pop(); 
+                        }
+                        ngeArray[i] = stack.length === 0 ? -1 : stack[stack.length - 1]; 
+                        stack.push(nums2[i]);
+                    }
+        
+                    for (let i = 0; i <= nums1.length - 1; i++) {
+                        let index = nums2.indexOf(nums1[i]);
+                        ansArray[i] = ngeArray[index];
+                    }
+                
+                    return ansArray;
+        }
+        
+        console.log(NGE1V2([1,3], [2,5,9,7,3,8,1]));
+
+//Optimal solution
+
+
