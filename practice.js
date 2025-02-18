@@ -90,19 +90,26 @@ count.reset = function() {
    a = 0;
 }
 
-console.log(count());
-console.log(count());
-console.log(count());
-console.log(count());
-count.reset();
-console.log(count());
-console.log(count());
+// console.log(count());
+// console.log(count());
+// console.log(count());
+// console.log(count());
+// count.reset();
+// console.log(count());
+// console.log(count());
 
-// //Multiplyer function
+//Multiplyer function
 
-//    function multiplyer(factor) {
-//       return function(x) {
-//          return factor*x;
-//       }
-//    }
+   function multiplyer(factor) {
+      return function(x) {
+         return factor*x;
+      }
+   }
+
+   let multipyBy2 = multiplyer(2);
+
+   console.log(multipyBy2(4))
+   console.log(multipyBy2(5))
+   console.log(multipyBy2(6))
+   console.log(multipyBy2(7))
 
