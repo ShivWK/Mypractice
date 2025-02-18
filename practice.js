@@ -38,12 +38,43 @@ function spliptIt(arr) {
       {
          username : "Shivendra",
          orders : [
-            {item : "perse", amounr : 1500},
-            {item : "phone", amounr : 20000},
-            {item : "charger", amounr : 800},
-            {item : "cover", amounr : 4000},
+            {item : "perse", amount : 1500},
+            {item : "phone", amount : 20000},
+            {item : "charger", amount : 800},
+            {item : "cover", amount : 4000},
+         ]
+      },
+      {
+         username : "Devendra",
+         orders : [
+            {item : "perse", amount : 1500},
+            {item : "phone", amount : 20000},
+            {item : "charger", amount : 800},
+            {item : "cover", amount : 4000},
          ]
       },
    ]
 
-   console.log(flarter(customers));
+   function flater2(customers){
+      let flattenedArray = [];
+    
+      for (let i = 0; i < customers.length; i++) {
+        //we got first customers object
+        
+        let customer = customers[i];
+    
+        //iterating over the orders array
+        
+        for (let j = 0; j < customer.orders.length; j++){
+          flattenedArray.push({
+            username: customer.username,
+            item: customer.orders[j].item,
+            amount: customer.orders[j].amount
+          })
+        }
+      }
+    
+      return flattenedArray;
+    }
+
+   console.log(flater2(customers));
