@@ -13,9 +13,30 @@ function spliptIt(arr) {
     return ansArray;
 }
 
-// console.log(spliptIt([{name: "banana" , quantity: 2}, {name: "carrat" , quantity: 3}]))
+//console.log(spliptIt([{name: "banana" , quantity: 2}, {name: "carrat" , quantity: 3}]))
 
 //flatening nested arrays
+
+let customers = [
+   {
+      username : "Shivendra",
+      orders : [
+         {item : "perse", amount : 1500},
+         {item : "phone", amount : 20000},
+         {item : "charger", amount : 800},
+         {item : "cover", amount : 4000},
+      ]
+   },
+   {
+      username : "Devendra",
+      orders : [
+         {item : "perse", amount : 1500},
+         {item : "phone", amount : 20000},
+         {item : "charger", amount : 800},
+         {item : "cover", amount : 4000},
+      ]
+   },
+]
 
    function flarter(arr) {
       let answer = [];
@@ -33,27 +54,6 @@ function spliptIt(arr) {
 
       return answer;
    }
-
-   let customers = [
-      {
-         username : "Shivendra",
-         orders : [
-            {item : "perse", amount : 1500},
-            {item : "phone", amount : 20000},
-            {item : "charger", amount : 800},
-            {item : "cover", amount : 4000},
-         ]
-      },
-      {
-         username : "Devendra",
-         orders : [
-            {item : "perse", amount : 1500},
-            {item : "phone", amount : 20000},
-            {item : "charger", amount : 800},
-            {item : "cover", amount : 4000},
-         ]
-      },
-   ]
 
    function flater2(customers){
       let flattenedArray = [];
@@ -77,4 +77,32 @@ function spliptIt(arr) {
       return flattenedArray;
     }
 
-   console.log(flater2(customers));
+   // console.log(flater2(customers));
+
+let a = 0;
+
+function count()
+{
+  return a++
+}
+
+count.reset = function() {
+   a = 0;
+}
+
+console.log(count());
+console.log(count());
+console.log(count());
+console.log(count());
+count.reset();
+console.log(count());
+console.log(count());
+
+// //Multiplyer function
+
+//    function multiplyer(factor) {
+//       return function(x) {
+//          return factor*x;
+//       }
+//    }
+
