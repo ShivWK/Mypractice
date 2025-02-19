@@ -8,12 +8,31 @@
 <body>
     <h1>Second JavaScript Docs Practice</h1>
     <script>
-        //prompt untill correct
+    //prompt untill correct
 
-        let value;
-        do{
-            value = prompt('enter a number', '');
-        }while(value <= 100 && value)
+        // let value;
+        // do{
+        //     value = prompt('enter a number', '');
+        // }while(value <= 100 && value)
+
+    //printing prime numbers
+
+        function printPrime(x) {
+            let till = x;
+            let allPrimes = [];
+
+            nextPrime: for (let i = 2; i <= till; i++) {
+                for (let j = 2; j < igit; j++) {
+                    if (i % j == 0) continue nextPrime;
+                }
+
+                allPrimes.push(i);
+            }
+
+            return  allPrimes
+        }
+
+        console.log(printPrime(6));
 
     </script>
 </body>
