@@ -36,55 +36,85 @@
 
     //Switch case 
 
-        let d = 2 + 2;
-        switch (d) {
-            case 4: 
-            console.log("Done");
-            break;
+        // let d = 2 + 2;
+        // switch (d) {
+        //     case 4: 
+        //     console.log("Done");
+        //     break;
         
-            case 12: 
-                console.log("large");
-                console.log("Extra Large");
-                break;
+        //     case 12: 
+        //         console.log("large");
+        //         console.log("Extra Large");
+        //         break;
 
-            default:
-                console.log('Not Defined');
-        }
+        //     default:
+        //         console.log('Not Defined');
+        // }
 
-        let a = 2 + 8;
+        // let a = 2 + 8;
 
-        switch (a) {
-            case 6: 
-            console.log("small");
-            break;
+        // switch (a) {
+        //     case 6: 
+        //     console.log("small");
+        //     break;
             
-            case 8: {
-                console.log("medium");
-                break;
-            }
+        //     case 8: {
+        //         console.log("medium");
+        //         break;
+        //     }
 
-            case 10: 
-            // no break given execution will go long
-            case 12: 
-                console.log("large");
-                console.log("Extra Large");
+        //     case 10: 
+        //     // no break given execution will go long
+        //     case 12: 
+        //         console.log("large");
+        //         console.log("Extra Large");
+        //         break;
+
+        //     default:
+        //         console.log('Not Defined');
+        // }
+
+        // let b = "1";
+        // let c = 0;
+
+        // switch (+b) {
+        //     case c + 1:
+        //         console.log("it is fine as c = 0");
+        //         break;
+
+        //     default:
+        //         console.log("Not defined");
+        // }
+
+        let value = prompt("give your value");
+
+        switch (value) {
+            case '1':
+            case '2':
+                console.log("entered 1 or 2");
+                break;
+
+            case 3:
+                console.log("never executed");
                 break;
 
             default:
-                console.log('Not Defined');
-        }
+                console.log("An unknown value");
+         }
 
-        let b = "1";
-        let c = 0;
+         switch (+value) {
+            case '1':
+            case '2':
+                console.log("Never execute");
+                break;
 
-        switch (+b) {
-            case c + 1:
-                console.log("it is fine as c = 0");
+            case 3:
+                console.log("entered 3");
                 break;
 
             default:
-                console.log("Not defined");
-        }
+                console.log("An unknown value");
+         }
     </script>
 </body>
 </html>
