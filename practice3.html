@@ -188,55 +188,100 @@
 
         //Inner variable shadows the outer same name variable
 
-            let name = "Shivendra";
+            // let name = "Shivendra";
             
-            function family() {
-                let name = "Sahil";
+            // function family() {
+            //     let name = "Sahil";
 
-                console.log("hi", name, "by family");
-            }
+            //     console.log("hi", name, "by family");
+            // }
 
-            family();
-            console.log("hi", name, "by world");
+            // family();
+            // console.log("hi", name, "by world");
 
         //variable modification by function
 
-            let designation = "Software Engineer";
-            let tobePassed = "outter";
-            let obj = {
-              name : "Shivendra Dwivedi",
-            }
+            // let designation = "Software Engineer";
+            // let tobePassed = "outter";
+            // let obj = {
+            //   name : "Shivendra Dwivedi",
+            // }
 
-            function change(x, obj2) {
-              designation = "Yes I'm a Software Engineer";
-              obj2.name = "Sahil";
+            // function change(x, obj2) {
+            //   designation = "Yes I'm a Software Engineer";
+            //   obj2.name = "Sahil";
 
-              let given = x;
-              given = "Inner";
-            }
+            //   let given = x;
+            //   given = "Inner";
+            // }
 
-            change(tobePassed, obj);
-            console.log(designation); //Changed 
-            console.log(tobePassed); //Not changed
-            console.log(obj.name); //Changed because Objects are passed by reference
+            // change(tobePassed, obj);
+            // console.log(designation); //Changed 
+            // console.log(tobePassed); //Not changed
+            // console.log(obj.name); //Changed because Objects are passed by reference
 
         //DEFAULT VALUE
 
-            function see(x, y = 1) {
-              let sum = x + y;
-              console.log(y)
-              console.log(sum);
+            // function see(x, y = 1) {
+            //   let sum = x + y;
+            //   console.log(y)
+            //   console.log(sum);
+            // }
+
+            // see(5, null)  // sum: 5, as null = 0; (w/o default param)
+            // see(5, undefined) // NaN, as undefined = NaN (w/o default param)
+            // see(6) // NaN, as y = undefined (w/o default param)
+
+            // see(5, null)  // sum: 5, as null = 0; (with default param)
+            // see(5, undefined) // 5, as undefined so y = 1 (with default param)
+            // see(6) // 1, as y = 1 (with default param)
+
+            // function againDefault(x) {
+            //   if (x === undefined) {
+            //     x = "Not given";
+            //   }
+
+            //   console.log(x);
+            // }
+
+            // console.log(againDefault("Hi i have given"))
+            // console.log(againDefault());
+
+            // function used() {
+            //   console.log("called");
+            //   return 8;
+            // }    
+
+            // function cal(x, y = used()) {
+            //   let sum = x + y;
+
+            //   console.log(sum);
+            // }
+
+            // cal(4,5); //used wont be called
+            // cal(5); //used will be called 
+            
+            function againDefault2(x) {
+              if (!x) {
+                x = "Not given";
+              }
+
+              console.log(x);
             }
 
-            see(5, null)  // sum: 5, as null = 0; (w/o default param)
-            see(5, undefined) // NaN, as undefined = NaN (w/o default param)
-            see(6) // NaN, as y = undefined (w/o default param)
+            // console.log(againDefault2("Hi i have given"))
+            // console.log(againDefault2(0)); //0 is a falsy value that why skipped
 
-            see(5, null)  // sum: 5, as null = 0; (with default param)
-            see(5, undefined) // 5, as undefined so y = 1 (with default param)
-            see(6) // 1, as y = 1 (with default param)
+            //solution
 
- 
-    </script>
+            function againDefault3(x) {
+              console.log(x ?? "null or undefined");
+            }
+
+            console.log(againDefault3("Hi i have given"))
+            console.log(againDefault3(0))
+            console.log(againDefault3());
+          
+          </script>
   </body>
 </html>
