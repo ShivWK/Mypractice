@@ -1,120 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JS Practice 2</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Second JavaScript Docs Practice</h1>
     <script>
-    //prompt untill correct
+      //prompt untill correct
 
-        // let value;
-        // do{
-        //     value = prompt('enter a number', '');
-        // }while(value <= 100 && value)
+      // let value;
+      // do{
+      //     value = prompt('enter a number', '');
+      // }while(value <= 100 && value)
 
-    //printing prime numbers
+      //printing prime numbers
 
-        // function printPrime(x) {
-        //     let till = x;
-        //     let allPrimes = [];
+      // function printPrime(x) {
+      //     let till = x;
+      //     let allPrimes = [];
 
-        //     nextPrime: for (let i = 2; i <= till; i++) {
-        //         for (let j = 2; j < i; j++) {
-        //             if (i % j == 0) continue nextPrime;
-        //         }
+      //     nextPrime: for (let i = 2; i <= till; i++) {
+      //         for (let j = 2; j < i; j++) {
+      //             if (i % j == 0) continue nextPrime;
+      //         }
 
-        //         allPrimes.push(i);
-        //     }
+      //         allPrimes.push(i);
+      //     }
 
-        //     return  allPrimes
-        // }
+      //     return  allPrimes
+      // }
 
-        // console.log(printPrime(6));
+      // console.log(printPrime(6));
 
-    //Switch case 
+      //Switch case
 
-        // let d = 2 + 2;
-        // switch (d) {
-        //     case 4: 
-        //     console.log("Done");
-        //     break;
-        
-        //     case 12: 
-        //         console.log("large");
-        //         console.log("Extra Large");
-        //         break;
+      // let d = 2 + 2;
+      // switch (d) {
+      //     case 4:
+      //     console.log("Done");
+      //     break;
 
-        //     default:
-        //         console.log('Not Defined');
-        // }
+      //     case 12:
+      //         console.log("large");
+      //         console.log("Extra Large");
+      //         break;
 
-        // let a = 2 + 8;
+      //     default:
+      //         console.log('Not Defined');
+      // }
 
-        // switch (a) {
-        //     case 6: 
-        //     console.log("small");
-        //     break;
-            
-        //     case 8: {
-        //         console.log("medium");
-        //         break;
-        //     }
+      // let a = 2 + 8;
 
-        //     case 10: 
-        //     // no break given execution will go long
-        //     case 12: 
-        //         console.log("large");
-        //         console.log("Extra Large");
-        //         break;
+      // switch (a) {
+      //     case 6:
+      //     console.log("small");
+      //     break;
 
-        //     default:
-        //         console.log('Not Defined');
-        // }
+      //     case 8: {
+      //         console.log("medium");
+      //         break;
+      //     }
 
-        // let b = "1";
-        // let c = 0;
+      //     case 10:
+      //     // no break given execution will go long
+      //     case 12:
+      //         console.log("large");
+      //         console.log("Extra Large");
+      //         break;
 
-        // switch (+b) {
-        //     case c + 1:
-        //         console.log("it is fine as c = 0");
-        //         break;
+      //     default:
+      //         console.log('Not Defined');
+      // }
 
-        //     default:
-        //         console.log("Not defined");
-        // }
+      // let b = "1";
+      // let c = 0;
 
-        let value = prompt("give your value");
+      // switch (+b) {
+      //     case c + 1:
+      //         console.log("it is fine as c = 0");
+      //         break;
 
-        switch (value) {
-            case '1':
-            case '2':
-                console.log("entered 1 or 2");
-                break;
+      //     default:
+      //         console.log("Not defined");
+      // }
 
-            case 3:
-                console.log("never executed");
-                break;
+      // let value = prompt("give your value");
 
-            default:
-                console.log("An unknown value");
-         }
+      // switch (value) {
+      //     case '1':
+      //     case '2':
+      //         console.log("entered 1 or 2");
+      //         break;
 
-         switch (+value) {
-            case '1':
-            case '2':
-                console.log("Never execute");
-                break;
+      //     case 3:
+      //         console.log("never executed");
+      //         break;
 
-            case 3:
-                console.log("entered 3");
-                break;
+      //     default:
+      //         console.log("An unknown value");
+      //  }
 
-            default:
-                console.log("An unknown value");
-         }
+      //  switch (+value) {
+      //     case '1':
+      //     case '2':
+      //         console.log("Never execute");
+      //         break;
+
+      //     case 3:
+      //         console.log("entered 3");
+      //         break;
+
+      //     default:
+      //         console.log("An unknown value");
+      //  }
+
+    //Task 1
+
+      let browser = "Chrome";
+
+      switch (browser) {
+        case "Edge":
+          alert("You've got the Edge!");
+          break;
+
+        case "Chrome":
+        case "Firefox":
+        case "Safari":
+        case "Opera":
+          alert("Okay we support these browsers too");
+          break;
+
+        default:
+          alert("We hope that this page looks ok!");
+      }
+
+      console.log("if conversion");
+
+      if (browser === "Edge") {
+        console.log("You have got Edge!");
+      } else if (
+        browser === "Chrome" ||
+        browser === "Firefox" ||
+        browser === "Safari" ||
+        browser === "Opera"
+      ) {
+        console.log("Okay we supoort this browser too");
+      } else {
+        console.log("We hope that this page looks ok!");
+      }
+      
     </script>
-</body>
+  </body>
 </html>
