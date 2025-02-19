@@ -17,23 +17,74 @@
 
     //printing prime numbers
 
-        function printPrime(x) {
-            let till = x;
-            let allPrimes = [];
+        // function printPrime(x) {
+        //     let till = x;
+        //     let allPrimes = [];
 
-            nextPrime: for (let i = 2; i <= till; i++) {
-                for (let j = 2; j < igit; j++) {
-                    if (i % j == 0) continue nextPrime;
-                }
+        //     nextPrime: for (let i = 2; i <= till; i++) {
+        //         for (let j = 2; j < i; j++) {
+        //             if (i % j == 0) continue nextPrime;
+        //         }
 
-                allPrimes.push(i);
-            }
+        //         allPrimes.push(i);
+        //     }
 
-            return  allPrimes
+        //     return  allPrimes
+        // }
+
+        // console.log(printPrime(6));
+
+    //Switch case 
+
+        let d = 2 + 2;
+        switch (d) {
+            case 4: 
+            console.log("Done");
+            break;
+        
+            case 12: 
+                console.log("large");
+                console.log("Extra Large");
+                break;
+
+            default:
+                console.log('Not Defined');
         }
 
-        console.log(printPrime(6));
+        let a = 2 + 8;
 
+        switch (a) {
+            case 6: 
+            console.log("small");
+            break;
+            
+            case 8: {
+                console.log("medium");
+                break;
+            }
+
+            case 10: 
+            // no break given execution will go long
+            case 12: 
+                console.log("large");
+                console.log("Extra Large");
+                break;
+
+            default:
+                console.log('Not Defined');
+        }
+
+        let b = "1";
+        let c = 0;
+
+        switch (+b) {
+            case c + 1:
+                console.log("it is fine as c = 0");
+                break;
+
+            default:
+                console.log("Not defined");
+        }
     </script>
 </body>
 </html>
