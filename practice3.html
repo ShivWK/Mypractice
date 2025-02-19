@@ -8,6 +8,7 @@
   <body>
     <h1>Second JavaScript Docs Practice</h1>
     <script>
+
     //prompt untill correct
 
             // let value;
@@ -153,35 +154,89 @@
 
         //Task 2
 
-          let a = +prompt('a?', '');
+            //   let a = +prompt('a?', '');
 
-            if (a == 0) {
-                alert( 0 );
+            //     if (a == 0) {
+            //         alert( 0 );
+            //     }
+            //     if (a == 1) {
+            //         alert( 1 );
+            //     }
+
+            //     if (a == 2 || a == 3) {
+            //         alert( '2,3' );
+            //     }
+
+            //   //Switch conversion
+
+            //     switch (a) {
+            //         case 0:
+            //             console.log(0);
+            //             break;
+                    
+            //         case 1:
+            //             console.log(1);
+            //             break;
+
+            //         case 2:
+            //         case 3:
+            //             console.log("2,3");
+            //             break;
+            //     }
+
+    //Functions
+
+        //Inner variable shadows the outer same name variable
+
+            let name = "Shivendra";
+            
+            function family() {
+                let name = "Sahil";
+
+                console.log("hi", name, "by family");
             }
-            if (a == 1) {
-                alert( 1 );
+
+            family();
+            console.log("hi", name, "by world");
+
+        //variable modification by function
+
+            let designation = "Software Engineer";
+            let tobePassed = "outter";
+            let obj = {
+              name : "Shivendra Dwivedi",
             }
 
-            if (a == 2 || a == 3) {
-                alert( '2,3' );
+            function change(x, obj2) {
+              designation = "Yes I'm a Software Engineer";
+              obj2.name = "Sahil";
+
+              let given = x;
+              given = "Inner";
             }
 
-          //Switch conversion
+            change(tobePassed, obj);
+            console.log(designation); //Changed 
+            console.log(tobePassed); //Not changed
+            console.log(obj.name); //Changed because Objects are passed by reference
 
-            switch (a) {
-                case 0:
-                    console.log(0);
-                    break;
-                
-                case 1:
-                    console.log(1);
-                    break;
+        //DEFAULT VALUE
 
-                case 2:
-                case 3:
-                    console.log("2,3");
-                    break;
+            function see(x, y = 1) {
+              let sum = x + y;
+              console.log(y)
+              console.log(sum);
             }
+
+            see(5, null)  // sum: 5, as null = 0; (w/o default param)
+            see(5, undefined) // NaN, as undefined = NaN (w/o default param)
+            see(6) // NaN, as y = undefined (w/o default param)
+
+            see(5, null)  // sum: 5, as null = 0; (with default param)
+            see(5, undefined) // 5, as undefined so y = 1 (with default param)
+            see(6) // 1, as y = 1 (with default param)
+
+ 
     </script>
   </body>
 </html>
