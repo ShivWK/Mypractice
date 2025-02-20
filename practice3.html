@@ -261,27 +261,52 @@
             // cal(4,5); //used wont be called
             // cal(5); //used will be called 
             
-            function againDefault2(x) {
-              if (!x) {
-                x = "Not given";
-              }
+            // function againDefault2(x) {
+            //   if (!x) {
+            //     x = "Not given";
+            //   }
 
-              console.log(x);
-            }
+            //   console.log(x);
+            // }
 
             // console.log(againDefault2("Hi i have given"))
             // console.log(againDefault2(0)); //0 is a falsy value that why skipped
 
             //solution
 
-            function againDefault3(x) {
-              console.log(x ?? "null or undefined");
+            // function againDefault3(x) {
+            //   console.log(x ?? "null or undefined");
+            // }
+
+            // console.log(againDefault3("Hi i have given"))
+            // console.log(againDefault3(0))
+            // console.log(againDefault3());
+
+          //task 2
+
+            function checkAge1(age) {
+              return (age > 18) ? true : confirm("Did parents allow you?");
             }
 
-            console.log(againDefault3("Hi i have given"))
-            console.log(againDefault3(0))
-            console.log(againDefault3());
+            function checkAge2(age) {
+              return age > 18 || confirm("Did parents allow you?");
+            } 
+
+            function checkAge3(age) {
+              if (age > 18) {
+                return true;
+              }
+
+              return confirm("Did prarents allow you?");
+            } 
+
+            console.log(1, checkAge1(50));
+            console.log(2, checkAge2(55))
+            console.log(3, checkAge3(5))
           
+          //task 4
+
+            
           </script>
   </body>
 </html>
