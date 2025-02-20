@@ -306,23 +306,69 @@
           
           //task 4
 
-            function pow(x, n) {
-              let power = x;
+            // function pow(x, n) {
+            //   let power = x;
 
-              if (n < 1) {
-                console.error(n, "is not supported please use positive value");
-                return;
-              } else {
-                for (let i = 1; i < n; i++) {
-                    power *= x;
-                }
-              }
+            //   if (n < 1) {
+            //     console.error(n, "is not supported please use positive value");
+            //     return;
+            //   } else {
+            //     for (let i = 1; i < n; i++) {
+            //         power *= x;
+            //     }
+            //   }
 
-              return power;
+            //   return power;
+            // }
+
+            // console.log(pow(4, 2))
+
+          //function name can be overriden
+          
+            // function random() {
+            //   return "hi";
+            // }
+
+            // random = function() {
+            //   return 'bye';
+            // }
+
+            // random = "hello";
+
+            // console.log(random()); //error
+            // console.log(random); //hello
+          
+          // welcome()
+
+          // 'use strict'
+
+          let value = prompt("age", 18);
+
+          if (value > 18) {
+            function welcome() {
+              console.log("Hello!");
             }
+          } else {
+            function welcome() {
+              console.log("greetings!")
+            }
+          }
 
-            console.log(pow(4, 2))
+          welcome();
 
+          let horra;
+
+          if (value > 18) {
+            horra = function() {
+              console.log("horra");
+            }
+          } else {
+            horra = function() {
+              console.log("Chotta")
+            }
+          }
+
+          horra()
 
           </script>
   </body>
