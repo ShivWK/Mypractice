@@ -284,29 +284,46 @@
 
           //task 2
 
-            function checkAge1(age) {
-              return (age > 18) ? true : confirm("Did parents allow you?");
-            }
+            // function checkAge1(age) {
+            //   return (age > 18) ? true : confirm("Did parents allow you?");
+            // }
 
-            function checkAge2(age) {
-              return age > 18 || confirm("Did parents allow you?");
-            } 
+            // function checkAge2(age) {
+            //   return age > 18 || confirm("Did parents allow you?");
+            // } 
 
-            function checkAge3(age) {
-              if (age > 18) {
-                return true;
-              }
+            // function checkAge3(age) {
+            //   if (age > 18) {
+            //     return true;
+            //   }
 
-              return confirm("Did prarents allow you?");
-            } 
+            //   return confirm("Did prarents allow you?");
+            // } 
 
-            console.log(1, checkAge1(50));
-            console.log(2, checkAge2(55))
-            console.log(3, checkAge3(5))
+            // console.log(1, checkAge1(50));
+            // console.log(2, checkAge2(55))
+            // console.log(3, checkAge3(5))
           
           //task 4
 
-            
+            function pow(x, n) {
+              let power = x;
+
+              if (n < 1) {
+                console.error(n, "is not supported please use positive value");
+                return;
+              } else {
+                for (let i = 1; i < n; i++) {
+                    power *= x;
+                }
+              }
+
+              return power;
+            }
+
+            console.log(pow(4, 2))
+
+
           </script>
   </body>
 </html>
