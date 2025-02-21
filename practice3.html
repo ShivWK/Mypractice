@@ -342,34 +342,62 @@
 
           // 'use strict'
 
-          let value = prompt("age", 18);
+          // let value = prompt("age", 18);
 
-          if (value > 18) {
-            function welcome() {
-              console.log("Hello!");
-            }
-          } else {
-            function welcome() {
-              console.log("greetings!")
-            }
+          // if (value > 18) {
+          //   function welcome() {
+          //     console.log("Hello!");
+          //   }
+          // } else {
+          //   function welcome() {
+          //     console.log("greetings!")
+          //   }
+          // }
+
+          // welcome();
+
+          // let horra;
+
+          // if (value > 18) {
+          //   horra = function() {
+          //     console.log("horra");
+          //   }
+          // } else {
+          //   horra = function() {
+          //     console.log("Chotta")
+          //   }
+          // }
+
+          // horra()
+
+        //Var keyword scope, and without any keyword
+
+          var a = "Shivendra"; //will be added to the global/window object
+
+          function scoped() {
+            var b = "Sahil"; //will exist only inside the function wont be the part of the global/window object
           }
+          scoped();
 
-          welcome();
+          console.log(window.a);
+          console.log(window.b);
 
-          let horra;
+          c = "w/o prefix out";
 
-          if (value > 18) {
-            horra = function() {
-              console.log("horra");
-            }
-          } else {
-            horra = function() {
-              console.log("Chotta")
-            }
+          function scoped2() {
+            d = "w/o prefix in";
           }
+          scoped2();
 
-          horra()
+          console.log(window.c);
+          console.log(window.d);
 
+          let var_able = "";
+          let $ = '';
+          let _ = "";
+          
+          let $hi = "";
+          let _ho = "";
           </script>
   </body>
 </html>
