@@ -452,64 +452,127 @@
 
           //Check if empty
 
-            let obj4 = {};
+          //   let obj4 = {};
 
-            function isEmpty() {
-              for (let key in obj4) {
-                return false;
-              }
+          //   function isEmpty() {
+          //     for (let key in obj4) {
+          //       return false;
+          //     }
 
-              return true;
-            }
+          //     return true;
+          //   }
             
-            console.log(isEmpty(obj4));
+          //   console.log(isEmpty(obj4));
 
-            obj4["one"] = "First";
+          //   obj4["one"] = "First";
 
-            console.log(isEmpty(obj4));
+          //   console.log(isEmpty(obj4));
 
-          // Sum object Properties
+          // // Sum object Properties
 
-            let salaries = {
-              John : 100,
-              ann : 300,
-              Vic : 400,
-              last : 500.
-            }
+          //   let salaries = {
+          //     John : 100,
+          //     ann : 300,
+          //     Vic : 400,
+          //     last : 500.
+          //   }
 
-            let obj5 = {}
+          //   let obj5 = {}
 
-            function sumUp(obj) {
-              let sum = 0;
+          //   function sumUp(obj) {
+          //     let sum = 0;
 
-              for (let key in obj) {
-                sum += obj[key];
-              }
+          //     for (let key in obj) {
+          //       sum += obj[key];
+          //     }
 
-              return sum;
-            }
+          //     return sum;
+          //   }
 
-            console.log(sumUp(salaries));
-            console.log(sumUp(obj5));
+          //   console.log(sumUp(salaries));
+          //   console.log(sumUp(obj5));
 
-          //Multiplyer
+          // //Multiplyer
             
-            let obj6 = {
-              width : 200,
-              height : 300,
-              name : "Building",
-            }
+          //   let obj6 = {
+          //     width : 200,
+          //     height : 300,
+          //     name : "Building",
+          //   }
 
-            function multiplyer(obj) {
-              for (let key in obj) {
-                if (typeof obj[key] === 'number') {
-                  obj[key] *= 2;
-                }
+          //   function multiplyer(obj) {
+          //     for (let key in obj) {
+          //       if (typeof obj[key] === 'number') {
+          //         obj[key] *= 2;
+          //       }
+          //     }
+          //   }
+          //   multiplyer(obj6)
+
+          //   console.log(obj6);
+
+        //Function to clone an object deeply
+
+          function cloneObject(obj) {
+            let clone = {};
+
+            for (let key in obj) {
+              if (typeof obj[key] === 'object') {
+                clone[key] = cloneObject(obj[key]);
+              } else {
+                clone[key] = obj[key];
               }
             }
-            multiplyer(obj6)
 
-            console.log(obj6);
+            return clone;
+          }
+
+          let obj7 = {
+            one : "Shivendra",
+            two : "Sahil",
+            three : "Ritik",
+            four : {
+              age : 26,
+              employment : "unemployed",
+              when : "very soon",
+            },
+          }
+
+          let clonedObj = cloneObject(obj7);
+          console.log(clonedObj); 
+          console.log(clonedObj.four === obj7.four)
+
+          let clonedObj2 = Object.assign({}, obj7);
+          console.log(clonedObj2.four === obj7.four)
+
+          let clonedObj3 = structuredClone(obj7)
+          console.log(clonedObj3.four === obj7.four)
+
+          let obj8 = {
+            one : "Shivendra",
+            two : "Sahil",
+            three : "Ritik",
+            four : {
+              age : 26,
+              employment : "unemployed",
+              when : "very soon",
+            },
+            five : function() {
+                console.log("hi");
+            }
+          }
+
+          let clonedObj4 = cloneObject(obj8);
+          console.log(clonedObj4); 
+          console.log(clonedObj4.five === obj8.five)
+
+          let clonedObj5 = Object.assign({}, obj8);
+          console.log(clonedObj5.five === obj8.five)
+
+          let clonedObj6 = structuredClone(obj8) // Error on function value
+          console.log(clonedObj6.five === obj8.five)
+
+
           </script>
   </body>
 </html>
