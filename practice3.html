@@ -404,51 +404,112 @@
 
         //Objects in JS
 
-              let obj1 = {
-                0 : "Shivendra",
-                1 : "Dwivedi",
+              // let obj1 = {
+              //   0 : "Shivendra",
+              //   1 : "Dwivedi",
+              // }
+
+              // console.log(obj1[0]);
+              // console.log(obj1[1]);
+              // console.log(obj1["0"]);
+
+              // let obj2 = {
+              //   5 : "one",
+              //   4 : "Two",
+              //   3 : "three",
+              //   2 : "Four",
+              //   1 : "Five",
+              // }
+
+              // for (let key in obj2) {
+              //   console.log(key)
+              // }
+
+              // let obj3 = {
+              //   four : "1",
+              //   three : "3",
+              //   two : "2",
+              //   one : "1",
+              // }
+
+              // for (let key in obj3) {
+              //   console.log(key)
+              // }
+
+              // delete obj3.one;
+
+              // for (let key in obj3) {
+              //   console.log(key)
+              // }
+
+              // let arr1 = ["shiv", "sahil", "me", "ritik"]
+              // delete arr1[2];
+
+              // console.log(arr1.length);
+              // for (let index of arr1) {
+              //   console.log(index);
+              // }
+
+          //Check if empty
+
+            let obj4 = {};
+
+            function isEmpty() {
+              for (let key in obj4) {
+                return false;
               }
 
-              console.log(obj1[0]);
-              console.log(obj1[1]);
-              console.log(obj1["0"]);
+              return true;
+            }
+            
+            console.log(isEmpty(obj4));
 
-              let obj2 = {
-                5 : "one",
-                4 : "Two",
-                3 : "three",
-                2 : "Four",
-                1 : "Five",
+            obj4["one"] = "First";
+
+            console.log(isEmpty(obj4));
+
+          // Sum object Properties
+
+            let salaries = {
+              John : 100,
+              ann : 300,
+              Vic : 400,
+              last : 500.
+            }
+
+            let obj5 = {}
+
+            function sumUp(obj) {
+              let sum = 0;
+
+              for (let key in obj) {
+                sum += obj[key];
               }
 
-              for (let key in obj2) {
-                console.log(key)
+              return sum;
+            }
+
+            console.log(sumUp(salaries));
+            console.log(sumUp(obj5));
+
+          //Multiplyer
+            
+            let obj6 = {
+              width : 200,
+              height : 300,
+              name : "Building",
+            }
+
+            function multiplyer(obj) {
+              for (let key in obj) {
+                if (typeof obj[key] === 'number') {
+                  obj[key] *= 2;
+                }
               }
+            }
+            multiplyer(obj6)
 
-              let obj3 = {
-                four : "1",
-                three : "3",
-                two : "2",
-                one : "1",
-              }
-
-              for (let key in obj3) {
-                console.log(key)
-              }
-
-              delete obj3.one;
-
-              for (let key in obj3) {
-                console.log(key)
-              }
-
-              let arr1 = ["shiv", "sahil", "me", "ritik"]
-              delete arr1[2];
-
-              console.log(arr1.length);
-              for (let index of arr1) {
-                console.log(index);
-              }
+            console.log(obj6);
           </script>
   </body>
 </html>
