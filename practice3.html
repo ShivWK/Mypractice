@@ -307,18 +307,18 @@
           //task 4
 
             // function pow(x, n) {
-            //   let power = x;
+            //   let base = x;
 
             //   if (n < 1) {
             //     console.error(n, "is not supported please use positive value");
             //     return;
             //   } else {
             //     for (let i = 1; i < n; i++) {
-            //         power *= x;
+            //         base *= x;
             //     }
             //   }
 
-            //   return power;
+            //   return base;
             // }
 
             // console.log(pow(4, 2))
@@ -338,66 +338,117 @@
             // console.log(random()); //error
             // console.log(random); //hello
           
-          // welcome()
+            // welcome()
 
-          // 'use strict'
+            // 'use strict'
 
-          // let value = prompt("age", 18);
+            // let value = prompt("age", 18);
 
-          // if (value > 18) {
-          //   function welcome() {
-          //     console.log("Hello!");
-          //   }
-          // } else {
-          //   function welcome() {
-          //     console.log("greetings!")
-          //   }
-          // }
+            // if (value > 18) {
+            //   function welcome() {
+            //     console.log("Hello!");
+            //   }
+            // } else {
+            //   function welcome() {
+            //     console.log("greetings!")
+            //   }
+            // }
 
-          // welcome();
+            // welcome();
 
-          // let horra;
+            // let horra;
 
-          // if (value > 18) {
-          //   horra = function() {
-          //     console.log("horra");
-          //   }
-          // } else {
-          //   horra = function() {
-          //     console.log("Chotta")
-          //   }
-          // }
+            // if (value > 18) {
+            //   horra = function() {
+            //     console.log("horra");
+            //   }
+            // } else {
+            //   horra = function() {
+            //     console.log("Chotta")
+            //   }
+            // }
 
-          // horra()
+            // horra()
 
         //Var keyword scope, and without any keyword
 
-          var a = "Shivendra"; //will be added to the global/window object
+            // var a = "Shivendra"; //will be added to the global/window object
 
-          function scoped() {
-            var b = "Sahil"; //will exist only inside the function wont be the part of the global/window object
-          }
-          scoped();
+            // function scoped() {
+            //   var b = "Sahil"; //will exist only inside the function wont be the part of the global/window object
+            // }
+            // scoped();
 
-          console.log(window.a);
-          console.log(window.b);
+            // console.log(window.a);
+            // console.log(window.b);
 
-          c = "w/o prefix out";
+            // c = "w/o prefix out";
 
-          function scoped2() {
-            d = "w/o prefix in";
-          }
-          scoped2();
+            // function scoped2() {
+            //   d = "w/o prefix in";
+            // }
+            // scoped2();
 
-          console.log(window.c);
-          console.log(window.d);
+            // console.log(window.c);
+            // console.log(window.d);
 
-          let var_able = "";
-          let $ = '';
-          let _ = "";
-          
-          let $hi = "";
-          let _ho = "";
+            // let var_able = "";
+            // let $ = '';
+            // let _ = "";
+            
+            // let $hi = "";
+            // let _ho = "";
+
+              // let value = prompt("value", 'h');
+              // console.log(value);
+
+        //Objects in JS
+
+              let obj1 = {
+                0 : "Shivendra",
+                1 : "Dwivedi",
+              }
+
+              console.log(obj1[0]);
+              console.log(obj1[1]);
+              console.log(obj1["0"]);
+
+              let obj2 = {
+                5 : "one",
+                4 : "Two",
+                3 : "three",
+                2 : "Four",
+                1 : "Five",
+              }
+
+              for (let key in obj2) {
+                console.log(key)
+              }
+
+              let obj3 = {
+                four : "1",
+                three : "3",
+                two : "2",
+                one : "1",
+              }
+
+              for (let key in obj3) {
+                console.log(key)
+              }
+
+              delete obj3.one;
+
+              for (let key in obj3) {
+                console.log(key)
+              }
+
+              let arr1 = ["shiv", "sahil", "me", "ritik"]
+              delete arr1[2];
+
+              console.log(arr1.length);
+              for (let index of arr1) {
+                console.log(index);
+              }
           </script>
   </body>
 </html>
