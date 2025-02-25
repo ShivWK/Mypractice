@@ -88,6 +88,21 @@
               console.log(this); // button as function will be called on the element object
             })
 
+            //Inside class
+
+            class Action {
+              constructor(name) {
+                this.name = name;
+              }
+
+              method1() {
+                console.log(this);
+              }
+            } 
+
+            let object1 = new Action("object 1");
+            object1.method1(); // object1
+
         // Inside Arrow function
          // Arrow function doesnt have this keyword them inherit them from there lexical scope
 
@@ -97,7 +112,7 @@
               console.log(this);
             }
 
-            arrow(); // window
+            // arrow(); // window
          
           // Inside a fucntion
 
@@ -109,7 +124,7 @@
               arrow()
             }
 
-            first(); //global
+            // first(); //global
 
           // Inside an object
 
@@ -119,7 +134,7 @@
               }
             }
 
-            obj4.first(); // global
+            // obj4.first(); // global
 
           // Inside a fucntion but functon is binded
 
@@ -131,7 +146,7 @@
               arrow();
             }
 
-            second.call({name : "outside"}); //object
+            // second.call({name : "outside"}); //object
 
           // Inside a function which is inside an object
             
@@ -146,7 +161,7 @@
               }
             }
 
-            obj5.outside(); // Obj5
+            // obj5.outside(); // Obj5
 
           // Assigning to a variable
 
@@ -162,7 +177,7 @@
             }
 
             let returnedFunction = obj6.outside;
-            returnedFunction(); // Outside
+            // returnedFunction(); // Outside
 
           //In addEventListener
 
@@ -184,7 +199,7 @@
             }
 
             let arrowOut = obj7.first();
-            arrowOut(); // Though we have taken it outside but it is defiend inside the function so this will be the object.
+            // arrowOut(); // Though we have taken it outside but it is defiend inside the function so this will be the object.
 
     </script>
 </body>
