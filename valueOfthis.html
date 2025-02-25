@@ -6,10 +6,13 @@
     <title>Document</title>
 </head>
 <body>
+
+    <button id="btn">click</button>
     <script>
         // Value of 'this' practice
 
         // Inside a regular function non strict mode
+        // Here value will depend on how function is called not on where fucntion is defined
 
           // in global
 
@@ -20,7 +23,7 @@
             // inGlobal();
 
           // Inside an object
-            let name = "Outside"
+            var name1 = "Outside"
 
             let obj1 = {
               name : "Inside",
@@ -76,8 +79,113 @@
                 console.log(this);
             }
 
-            explicit.call({name : "call"});
-            explicit.apply([{name : "apply"}, "hi"]);
+            // explicit.call({name : "call"});
+            // explicit.apply([{name : "apply"}, "hi"]);
+
+            //I  addEventListener
+
+            document.getElementById("btn").addEventListener("click", function() {
+              console.log(this); // button as function will be called on the element object
+            })
+
+        // Inside Arrow function
+         // Arrow function doesnt have this keyword them inherit them from there lexical scope
+
+          // In global space
+
+            let arrow = () => {
+              console.log(this);
+            }
+
+            arrow(); // window
+         
+          // Inside a fucntion
+
+            function first() {
+              let arrow = () => {
+                console.log(this);
+              }
+
+              arrow()
+            }
+
+            first(); //global
+
+          // Inside an object
+
+            let obj4 = {
+              first : () => {
+                console.log(this);
+              }
+            }
+
+            obj4.first(); // global
+
+          // Inside a fucntion but functon is binded
+
+            function second() {
+              let arrow = () => {
+                console.log(this);
+              }
+
+              arrow();
+            }
+
+            second.call({name : "outside"}); //object
+
+          // Inside a function which is inside an object
+            
+            let obj5 = {
+              name : "obj5",
+              outside : function() {
+                let arrow = () => {
+                  console.log(this.name);
+                }
+
+                arrow();
+              }
+            }
+
+            obj5.outside(); // Obj5
+
+          // Assigning to a variable
+
+          let obj6 = {
+              name1 : "obj6",
+              outside : function() {
+                let arrow = () => {
+                  console.log(this.name1);
+                }
+
+                arrow();
+              }
+            }
+
+            let returnedFunction = obj6.outside;
+            returnedFunction(); // Outside
+
+          //In addEventListener
+
+          document.getElementById("btn").addEventListener("click", () => {
+              console.log(this); // window as function will be called in the global scope
+          })
+
+          // Arrow function itself returned to an variable
+
+            let obj7 = {
+              name : "Shivendra",
+              first : function() {
+                let arrow = () => {
+                  console.log(this)
+                }
+
+                return arrow;
+              }
+            }
+
+            let arrowOut = obj7.first();
+            arrowOut(); // Though we have taken it outside but it is defiend inside the function so this will be the object.
+
     </script>
 </body>
 </html>
