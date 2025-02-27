@@ -7,7 +7,9 @@
 </head>
 <body>
 
-    <button id="btn">click</button>
+    <button id="btn1">click 1</button>
+    <button id="btn2">click 2</button>
+
     <script>
         // Value of 'this' practice
 
@@ -82,7 +84,7 @@
             // explicit.call({name : "call"});
             // explicit.apply([{name : "apply"}, "hi"]);
 
-            //I  addEventListener
+            //In  addEventListener
 
             document.getElementById("btn").addEventListener("click", function() {
               console.log(this); // button as function will be called on the element object
@@ -101,7 +103,7 @@
             } 
 
             let object1 = new Action("object 1");
-            object1.method1(); // object1
+            // object1.method1(); // object1
 
         // Inside Arrow function
          // Arrow function doesnt have this keyword them inherit them from there lexical scope
@@ -201,6 +203,56 @@
             let arrowOut = obj7.first();
             // arrowOut(); // Though we have taken it outside but it is defiend inside the function so this will be the object.
 
+            //Arrow function given from outside
+
+            obj7.second = () => {
+              console.log(this);
+            }
+
+            // obj7.second(); // Window because function is defined outside
+
+          
+          //this inside the class
+
+             //inside a class with arrow function
+              // Inside a class this will always point to the object So regular fucntion will give this as object as they are called on the object, and arrow fucntions will also give this = object as in class this is always object.
+
+              class New {
+                constructor() {
+                  console.log(this);
+                }
+
+                show() {
+                  console.log(this);
+                }
+
+                show2 = () => {
+                  console.log(this);
+                }
+    
+              }
+              object2 = new New(); // New 'New' is representing the object2
+              object2.show(); // New
+              object2.show2(); // New
+
+              // AddEventListner inside the class
+
+              class New2 {
+                constructor() {
+                  document.getElementById('btn1').addEventListener("click", function() {
+                    console.log(this); // button
+                  })
+                }
+
+                attach() {
+                  document.getElementById('btn2').addEventListener("click", () => {
+                    console.log(this); //New
+                  })
+                }
+              }
+
+              let object3 = new New2();
+              object3.attach();
     </script>
 </body>
 </html>
