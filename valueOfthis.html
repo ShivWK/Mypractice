@@ -86,24 +86,15 @@
 
             //In  addEventListener
 
-            document.getElementById("btn").addEventListener("click", function() {
+            document.getElementById("btn1").addEventListener("click", function() {
               console.log(this); // button as function will be called on the element object
             })
 
-            //Inside class
+            // AddEventListner when binded explicitly
 
-            class Action {
-              constructor(name) {
-                this.name = name;
-              }
-
-              method1() {
-                console.log(this);
-              }
-            } 
-
-            let object1 = new Action("object 1");
-            // object1.method1(); // object1
+            document.getElementById("btn1").addEventListener("click", function() {
+              console.log(this); // Window as we have explicitly binded
+            }.bind(window));
 
         // Inside Arrow function
          // Arrow function doesnt have this keyword them inherit them from there lexical scope
@@ -183,9 +174,9 @@
 
           //In addEventListener
 
-          document.getElementById("btn").addEventListener("click", () => {
-              console.log(this); // window as function will be called in the global scope
-          })
+          // document.getElementById("btn1").addEventListener("click", () => {
+          //     console.log(this); // window as function will be called in the global scope
+          // })
 
           // Arrow function itself returned to an variable
 
@@ -214,6 +205,23 @@
           
           //this inside the class
 
+             //Inside class
+
+             class Action {
+              constructor(name) {
+                this.name = name;
+              }
+
+              method1() {
+                console.log(this);
+              }
+            } 
+
+            let object1 = new Action("object 1");
+            let object4 = new Action("Object 4")
+            object1.method1(); // object1
+            object4.method1(); // object4
+
              //inside a class with arrow function
               // Inside a class this will always point to the object So regular fucntion will give this as object as they are called on the object, and arrow fucntions will also give this = object as in class this is always object.
 
@@ -231,28 +239,28 @@
                 }
     
               }
-              object2 = new New(); // New 'New' is representing the object2
-              object2.show(); // New
-              object2.show2(); // New
+              // object2 = new New(); // New 'New' is representing the object2
+              // object2.show(); // New
+              // object2.show2(); // New
 
               // AddEventListner inside the class
 
               class New2 {
                 constructor() {
-                  document.getElementById('btn1').addEventListener("click", function() {
-                    console.log(this); // button
-                  })
+                  // document.getElementById('btn1').addEventListener("click", function() {
+                  //   console.log(this); // button
+                  // })
                 }
 
                 attach() {
-                  document.getElementById('btn2').addEventListener("click", () => {
-                    console.log(this); //New
-                  })
+                  // document.getElementById('btn2').addEventListener("click", () => {
+                  //   console.log(this); //New
+                  // })
                 }
               }
 
-              let object3 = new New2();
-              object3.attach();
+              // let object3 = new New2();
+              // object3.attach();
     </script>
 </body>
 </html>
