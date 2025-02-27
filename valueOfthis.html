@@ -318,6 +318,19 @@
         console.log(user2.ref); //undefined
         console.log(user2.ref?.name1); //undefined
 
+        // DEpends on execution context 
+        let obj10 = {
+          name : "obj10",
+          show() {
+            return {
+              ref : this
+            }
+          }
+        }
+
+        let objReturned = obj10.show()
+        console.log(objReturned); //obj10, obj is created inside execution context of show(), in which this = obj10 as it is a normal fucntion called on obj10.
+
     </script>
   </body>
 </html>
