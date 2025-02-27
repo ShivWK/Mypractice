@@ -11,18 +11,15 @@
     <button id="btn2">click 2</button>
 
     <script>
-        // Value of 'this' practice
-
         // Inside a regular function non strict mode
-        // Here value will depend on how function is called not on where fucntion is defined
+         // Here value will depend on how function is called not on where fucntion is defined
 
           // in global
-
           function inGlobal() {
               console.log(this);
             }
 
-            // inGlobal();
+            inGlobal(); // Window, as called in script scope
 
           // Inside an object
             var name1 = "Outside"
@@ -34,7 +31,7 @@
               }
             }
 
-            // obj1.show()
+            obj1.show() // obj1, as called on object
 
           // Inside nested function
 
@@ -43,10 +40,10 @@
                 console.log(this);
               }
 
-              second()
+              second() // standalone
             }
 
-            // first()
+            first() //Window, as istandalone
 
             //inside nested but inside an object
 
@@ -57,11 +54,11 @@
                   console.log(this);
                 }
 
-                second();
+                second(); // Standalone
               }
             }
 
-            // obj2.first();
+            obj2.first(); // Window
 
             //when fucntion assigned to a variable
 
@@ -73,7 +70,7 @@
             }
 
             let firstCall = obj3.first;
-            // firstCall(); // will be window as now it is a standalone fucntion and called as normal function.
+            firstCall(); // Window, as now it is a standalone fucntion and called as normal function.
 
             // When Explicit binding no rules will work
 
@@ -81,19 +78,19 @@
                 console.log(this);
             }
 
-            // explicit.call({name : "call"});
-            // explicit.apply([{name : "apply"}, "hi"]);
+            explicit.call({name : "call"}); // given object
+            explicit.apply([{name : "apply"}, "hi"]); // given object
 
             //In  addEventListener
 
             document.getElementById("btn1").addEventListener("click", function() {
-              console.log(this); // button as function will be called on the element object
+              console.log(this); // button, as function will be called on the element object
             })
 
             // AddEventListner when binded explicitly
 
             document.getElementById("btn1").addEventListener("click", function() {
-              console.log(this); // Window as we have explicitly binded
+              console.log(this); // Window, as we have explicitly binded
             }.bind(window));
 
         // Inside Arrow function
@@ -105,7 +102,7 @@
               console.log(this);
             }
 
-            // arrow(); // window
+            arrow(); // Window, since defined in Script scope
          
           // Inside a fucntion
 
@@ -117,7 +114,7 @@
               arrow()
             }
 
-            // first(); //global
+            first(); // Window, as defined inside a normal fucntion which is called in script scope
 
           // Inside an object
 
@@ -127,7 +124,22 @@
               }
             }
 
-            // obj4.first(); // global
+            obj4.first(); // Window, as inside object this = Window
+
+            let obj8 = {
+              name : this,
+            }
+
+            console.log(obj8)
+
+            let obj9 = {
+              name : "obj9",
+              object : {
+                name : this
+              }
+            }
+            
+            console.log(obj9) // Window, as object is executed in script scope
 
           // Inside a fucntion but functon is binded
 
@@ -139,7 +151,7 @@
               arrow();
             }
 
-            // second.call({name : "outside"}); //object
+            second.call({name : "outside"}); // given object
 
           // Inside a function which is inside an object
             
@@ -154,7 +166,7 @@
               }
             }
 
-            // obj5.outside(); // Obj5
+            obj5.outside(); // Obj5, as inside a normal function which is called on obj5
 
           // Assigning to a variable
 
@@ -170,13 +182,13 @@
             }
 
             let returnedFunction = obj6.outside;
-            // returnedFunction(); // Outside
+            returnedFunction(); // 'Outside', outside is called as standalone function, so inside it this = Window and in Window we have a var variable name1 with value = "outside" 
 
           //In addEventListener
 
-          // document.getElementById("btn1").addEventListener("click", () => {
-          //     console.log(this); // window as function will be called in the global scope
-          // })
+          document.getElementById("btn1").addEventListener("click", () => {
+              console.log(this); // Window, as function will be called in the global scope
+          })
 
           // Arrow function itself returned to an variable
 
@@ -192,7 +204,7 @@
             }
 
             let arrowOut = obj7.first();
-            // arrowOut(); // Though we have taken it outside but it is defiend inside the function so this will be the object.
+            arrowOut(); // obj7, Though we have taken it outside but it is defiend inside the normal function which is called on the object.
 
             //Arrow function given from outside
 
@@ -200,9 +212,8 @@
               console.log(this);
             }
 
-            // obj7.second(); // Window because function is defined outside
+            obj7.second(); // Window, because function is defined outside
 
-          
           //this inside the class
 
              //Inside class
@@ -213,7 +224,7 @@
               }
 
               method1() {
-                console.log(this);
+                console.log(this); 
               }
             } 
 
@@ -227,40 +238,55 @@
 
               class New {
                 constructor() {
-                  console.log(this);
+                  console.log(this); //Constructor is always of the object
                 }
 
                 show() {
-                  console.log(this);
+                  console.log(this); 
                 }
 
                 show2 = () => {
-                  console.log(this);
+                  console.log(this); //as defined inside the class where this = Object (New)
                 }
     
               }
-              // object2 = new New(); // New 'New' is representing the object2
-              // object2.show(); // New
-              // object2.show2(); // New
+              object2 = new New(); // New 'New' is representing the object2
+              object2.show(); // New
+              object2.show2(); // New
 
               // AddEventListner inside the class
 
               class New2 {
                 constructor() {
-                  // document.getElementById('btn1').addEventListener("click", function() {
-                  //   console.log(this); // button
-                  // })
+                  document.getElementById('btn1').addEventListener("click", function() {
+                    console.log(this); // button
+                  })
                 }
 
                 attach() {
-                  // document.getElementById('btn2').addEventListener("click", () => {
-                  //   console.log(this); //New
-                  // })
+                  document.getElementById('btn2').addEventListener("click", () => {
+                    console.log(this); //New
+                  })
                 }
               }
 
-              // let object3 = new New2();
-              // object3.attach();
+              let object3 = new New2();
+              object3.attach();
+
+              // In static methods 
+
+              class Test {
+                static show() {
+                  console.log(this);
+                }
+
+                static show2 = () => {
+                  console.log(this)
+                }
+              }
+              Test.show(); // `this` will be `Test` class itself as static methods belong to the class not to the object
+              Test.show2(); // `this` will be `Test` class itself as static properties too belong to the class not to the object
+  
     </script>
 </body>
 </html>
