@@ -628,12 +628,51 @@
             }
 
             this.show = function() {
-              console.log(name, age);
+              console.log(this.name, this.age);
             };
           }
 
-          let newObject = new CreateObj("Shivendra" , 26);
-          newObject.show();
+          // let newObject = new CreateObj("Shivendra" , 26);
+          // newObject.show();
+
+          function CreateObj2() {
+            this.name = "second function";
+
+            console.log("called")
+          }
+
+          // let newObject2 = CreateObj2(); //Cant set name to undefined, 
+          // let newObject3 = new CreateObj2; // worked
+
+          let newObject4 = new function() {
+            this.name = "Shiv";
+            this.age = 26;
+
+            this.show = function() {
+              console.log(this.name, this.age);
+            }
+          }
+
+          // newObject4.show();
+
+          function CreateObj3() {
+            this.name = "sahil";
+
+            return;
+          }
+
+          // let newObject5 = new CreateObj3();
+          // console.log(newObject5.name); // Created object is returned instead of undefined
+
+          function CreateObj4() {
+            this.name = "sahil";
+
+            return {name : "Ritik"};
+          }
+
+          let newObject6 = new CreateObj4();
+          console.log(newObject6.name); // Custom object returned
+
           </script>
   </body>
 </html>
