@@ -7,7 +7,7 @@
   </head>
   <body>
     <h1>Second JavaScript Docs Practice</h1>
-    <script>
+    <script type="module">
 
     //prompt untill correct
 
@@ -338,9 +338,7 @@
             // console.log(random()); //error
             // console.log(random); //hello
           
-            // welcome()
-
-            // 'use strict'
+            // welcome(
 
             // let value = prompt("age", 18);
 
@@ -538,15 +536,15 @@
             },
           }
 
-          let clonedObj = cloneObject(obj7);
-          console.log(clonedObj); 
-          console.log(clonedObj.four === obj7.four)
+          // let clonedObj = cloneObject(obj7);
+          // console.log(clonedObj); 
+          // console.log(clonedObj.four === obj7.four)
 
-          let clonedObj2 = Object.assign({}, obj7);
-          console.log(clonedObj2.four === obj7.four)
+          // let clonedObj2 = Object.assign({}, obj7);
+          // console.log(clonedObj2.four === obj7.four)
 
-          let clonedObj3 = structuredClone(obj7)
-          console.log(clonedObj3.four === obj7.four)
+          // let clonedObj3 = structuredClone(obj7)
+          // console.log(clonedObj3.four === obj7.four)
 
           let obj8 = {
             one : "Shivendra",
@@ -562,16 +560,60 @@
             }
           }
 
-          let clonedObj4 = cloneObject(obj8);
-          console.log(clonedObj4); 
-          console.log(clonedObj4.five === obj8.five)
+          // let clonedObj4 = cloneObject(obj8);
+          // console.log(clonedObj4); 
+          // console.log(clonedObj4.five === obj8.five)
 
-          let clonedObj5 = Object.assign({}, obj8);
-          console.log(clonedObj5.five === obj8.five)
+          // let clonedObj5 = Object.assign({}, obj8);
+          // console.log(clonedObj5.five === obj8.five)
 
-          let clonedObj6 = structuredClone(obj8) // Error on function value
-          console.log(clonedObj6.five === obj8.five)
+          // let clonedObj6 = structuredClone(obj8) // Error on function value
+          // console.log(clonedObj6.five === obj8.five)
 
+      // Object performing tasks
+          
+          let calculation = {
+            a : null,
+            b : null,
+
+            sum() {
+              return this.a + this.b;
+            },
+
+            mul() {
+              return this.a * this.b;
+            },
+
+            read() {
+              this.a = +prompt("Number One: ", 0);
+              this.b = +prompt("Number Two: ", 0);
+            }
+          }
+
+          // calculation.read();
+          // console.log(calculation.sum());
+          // console.log(calculation.mul());
+
+      // Laddr object making it chainable
+
+          let ladder = {
+            step: 0,
+            up() {
+              this.step++;
+              return this;
+            },
+            down() {
+              this.step--;
+              return this;
+
+            },
+            showStep: function() { // shows the current step
+              alert( this.step );
+              return this;
+            }
+          }; 
+
+          ladder.up().up().down().showStep().down().showStep();
 
           </script>
   </body>
