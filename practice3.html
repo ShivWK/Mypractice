@@ -613,8 +613,27 @@
             }
           }; 
 
-          ladder.up().up().down().showStep().down().showStep();
+          // ladder.up().up().down().showStep().down().showStep();
 
+      //Constructor function
+
+          function CreateObj(name, age) {
+            this.name = name;
+            this.age = age;
+
+            if (new.target){
+              console.log("Called with new")
+            } else {
+              console.log("Called without new");
+            }
+
+            this.show = function() {
+              console.log(name, age);
+            };
+          }
+
+          let newObject = new CreateObj("Shivendra" , 26);
+          newObject.show();
           </script>
   </body>
 </html>
