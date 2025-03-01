@@ -670,8 +670,67 @@
             return {name : "Ritik"};
           }
 
-          let newObject6 = new CreateObj4();
-          console.log(newObject6.name); // Custom object returned
+          // let newObject6 = new CreateObj4();
+          // console.log(newObject6.name); // Custom object returned
+
+        //Tasks
+
+          // new A() === new B()
+
+          let obj = {name : "Hi"}
+
+          function A() {
+            return obj;
+          }
+
+          function B() {
+            return obj
+          }
+
+          // console.log(new A() === new B()); // True
+
+      // Symbol key
+
+          let id = Symbol();
+          
+
+          let obj2 = {
+            [id] : "Shivendra",
+            [Symbol()] : "Dwivedi",
+          }
+
+          obj2['id'] = "Ritik";
+
+          console.log(obj2);
+
+          // for (let key in obj2) {
+          //   console.log(obj[key]);
+          // } // doesn't get anything "undefined"
+
+          console.log(Object.getOwnPropertySymbols(obj2));
+
+          let id2 = Symbol("id2");
+
+          console.log(id2);
+          // alert(id2); // Cant convert a Symbol value to string
+
+          // alert(id2.description)
+
+          let symbolKeys = Object.getOwnPropertySymbols(obj2);
+
+          for (let key of symbolKeys) {
+            console.log(obj2[key])
+          }
+
+          let id3 = Symbol.for("id3");
+          let id4 = Symbol.for("id3");
+
+          console.log(id3 === id4); //true
+
+          let kwy1 = Symbol.keyFor(Symbol.for("id3"));
+          console.log(kwy1)
+
+
 
           </script>
   </body>
