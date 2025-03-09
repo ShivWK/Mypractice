@@ -4041,27 +4041,46 @@
       
   //Tasks from Arrays in Docs part 1
 
-      function sumUp() {
-         let number = [];
+      // function sumUp() {
+      //    let number = [];
 
-         while (true) {
-            let value = prompt("Enter a number" , 0)
+      //    while (true) {
+      //       let value = prompt("Enter a number" , 0)
 
-            if (value === "" || value === null || !isFinite(value)) break;
+      //       if (value === "" || value === null || !isFinite(value)) break;
 
-            number.push(+value);
-         }
+      //       number.push(+value);
+      //    }
 
-         let sum = 0;
+      //    let sum = 0;
 
-         for (let value of number) {
-            sum += value;
-         }
+      //    for (let value of number) {
+      //       sum += value;
+      //    }
 
-         return sum;
-      }
+      //    return sum;
+      // }
 
-      console.log(sumUp());
+      // console.log(sumUp());
+
+    //array splice method
+
+      let arr = ["Shivendra", "Ritik", "Sahil", "Dwivedi"];
+
+      //remove
+
+      arr.splice(1, 2);
+      console.log(arr);
+
+      //Insert
+
+      arr.splice(1, 0, "Sahil", "Ritik");
+      console.log(arr);
+
+      //Replace
+
+      arr.splice(1, 2, "Priya", "Shubham");
+      console.log(arr);
     </script>
   </body>
 </html>
