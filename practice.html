@@ -247,8 +247,14 @@
         <button data-action="search">Search</button>
       </div> -->
       
-      <p>counter : <button data-counter="increment">+</button></p>
-      <p>decreament counter : <button data-decreament="decreament">-</button></p>
+      <!-- behaviour -->
+
+      <!-- <p>counter : <button data-counter="increment">+</button></p>
+      <p>decreament counter : <button data-decreament="decreament">-</button></p> -->
+
+      <p id="mail">hi im there</p>
+      <button data-toggle-id="mail">clickme</button>
+
     <script>
 
       //Object creatation by constructor function
@@ -4013,17 +4019,49 @@
 
   // new Menu(menu);
 
-  document.addEventListener('click', function(event) {
-    if (event.target.dataset.counter == "increment") {
-      console.log("increament");
-    } 
+//behavior iplementation
 
-    if (event.target.dataset.decreament == "decreament") {
-      console.log("decreament");
-    }
-   })
+  // document.addEventListener('click', function(event) {
+  //   if (event.target.dataset.counter == "increment") {
+  //     console.log("increament");
+  //   } 
+
+  //   if (event.target.dataset.decreament == "decreament") {
+  //     console.log("decreament");
+  //   }
+  //  })
+
+      // document.addEventListener("click", e => {
+      //   let id = e.target.dataset.toggleId;
+
+      //   if (!id) return;
+      //   let ele = document.getElementById(id);
+      //   ele.hidden = !ele.hidden;
+      // })
       
+  //Tasks from Arrays in Docs part 1
 
+      function sumUp() {
+         let number = [];
+
+         while (true) {
+            let value = prompt("Enter a number" , 0)
+
+            if (value === "" || value === null || !isFinite(value)) break;
+
+            number.push(+value);
+         }
+
+         let sum = 0;
+
+         for (let value of number) {
+            sum += value;
+         }
+
+         return sum;
+      }
+
+      console.log(sumUp());
     </script>
   </body>
 </html>
