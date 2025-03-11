@@ -4070,17 +4070,51 @@
       //remove
 
       arr.splice(1, 2);
-      console.log(arr);
+      // console.log(arr);
 
       //Insert
 
       arr.splice(1, 0, "Sahil", "Ritik");
-      console.log(arr);
+      // console.log(arr);
 
       //Replace
 
       arr.splice(1, 2, "Priya", "Shubham");
-      console.log(arr);
+      // console.log(arr);
+
+  //[Symbol.isCancatSpreadable]
+        
+        let arr1 = [1, 2,3 ,4,5];
+        let arr2 = [6,7,8,9,10]
+
+        let arr3 = arr1.concat(arr2);
+        console.log(arr3); //done
+
+        let arr4 = arr3.concat(11,12,13,14,15,16);
+        console.log(arr4) //done
+
+        let obj = {
+          0 : "Shivendra",
+          1 : 26,
+          length : 2
+        }
+
+        let arr5 = ["hi"];
+        let arr6 = arr5.concat(obj);
+        console.log(arr6); //done complete object is itself inserted in the array
+        alert(arr6)
+
+        let obj2 = {
+          0 : "Sahil",
+          1 : 26,
+
+          [Symbol.isConcatSpreadable] : true,
+          length : 2
+        }
+
+        let arr7 = arr5.concat(obj2)
+        console.log(arr7); //DONE because obj2 is array like plus have isConcatSpreadable prop
+
     </script>
   </body>
 </html>
