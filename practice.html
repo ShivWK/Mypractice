@@ -4088,10 +4088,10 @@
         let arr2 = [6,7,8,9,10]
 
         let arr3 = arr1.concat(arr2);
-        console.log(arr3); //done
+        // console.log(arr3); //done
 
         let arr4 = arr3.concat(11,12,13,14,15,16);
-        console.log(arr4) //done
+        // console.log(arr4) //done
 
         let obj = {
           0 : "Shivendra",
@@ -4101,8 +4101,8 @@
 
         let arr5 = ["hi"];
         let arr6 = arr5.concat(obj);
-        console.log(arr6); //done complete object is itself inserted in the array
-        alert(arr6)
+        // console.log(arr6); //done complete object is itself inserted in the array
+        // alert(arr6)
 
         let obj2 = {
           0 : "Sahil",
@@ -4113,7 +4113,27 @@
         }
 
         let arr7 = arr5.concat(obj2)
-        console.log(arr7); //DONE because obj2 is array like plus have isConcatSpreadable prop
+        // console.log(arr7); //DONE because obj2 is array like plus have isConcatSpreadable prop
+
+  //Array method tasks
+
+      //1
+        
+        function camelize(str) {
+          let arr = str.split("-");
+
+          arr = arr.map((item, index)=> {
+              if (index != "0") {
+                 return item[0].toUpperCase() + item.slice(1);
+              }
+
+              return item;
+          })
+
+          return arr.join("");
+        }
+
+        console.log(camelize("Background-color"));
 
     </script>
   </body>
