@@ -188,8 +188,9 @@ count.reset = function() {
    function findMissingNum(arr) {
       let isAscending = arr[0] < arr[arr.length - 1]; 
       let expectedNum = arr[0] + (isAscending ? 1 : -1); 
+      let arrLength = arr.length;
   
-      for (let i = 1; i < arr.length; i++) {
+      for (let i = 1; i < arrLength; i++) {
           if (arr[i] !== expectedNum) return expectedNum;
           expectedNum += isAscending ? 1 : -1;
       }
