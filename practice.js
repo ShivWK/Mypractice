@@ -218,7 +218,7 @@ count.reset = function() {
       return arr;
   }
 
-  console.log(filterInplace([5, 26, 8, 9, 2, 1, 0], 2, 10)) //O(n^2)
+//   console.log(filterInplace([5, 26, 8, 9, 2, 1, 0], 2, 10)) //O(n^2)
 
   // Better solution
 
@@ -237,7 +237,7 @@ count.reset = function() {
          return arr;
       }
 
-      console.log(filterInplace2([5, 26, 8, 9, 2, 1, 0], 2, 10)) //O(n)
+      // console.log(filterInplace2([5, 26, 8, 9, 2, 1, 0], 2, 10)) //O(n)
 
    //Extendable object 
       
@@ -265,9 +265,24 @@ count.reset = function() {
       }
 
       let obj = new Calculater();
-      console.log(obj.calculate("2 + 6"));
+      // console.log(obj.calculate("2 + 6"));
 
       obj.addMethods("**", (a, b)=>a**b);
-      console.log(obj.calculate("2 ** 4"));
+      // console.log(obj.calculate("2 ** 4"));
 
- 
+ // Object from and array
+
+      function objFromArray(arr) {
+         return arr.reduce((obj, crr)=> {
+            obj[crr.id] = crr;
+            return obj;
+         }, {})
+      }
+
+      console.log(objFromArray([
+         {id : "John", name : "John cena", age: 48},
+         {id : "Randy", name : "Randy Ortan", age: 50},
+         {id : "Brock", name : "Brock Leasner", age: 52},
+         {id : "Big", name : "Big Show", age: 62},
+         {id : "Under", name : "Under Taker", age: 82}
+      ]))
