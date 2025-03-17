@@ -181,8 +181,8 @@ count.reset = function() {
       return null;
    }
 
-   console.log(findMissingNum([2,3,4,5,6,7])); //null
-   console.log(findMissingNum([2,4,5,6,7])); //3
+   // console.log(findMissingNum([2,3,4,5,6,7])); //null
+   // console.log(findMissingNum([2,4,5,6,7])); //3
 
    //Works for both increasing and decreasing arrays
    function findMissingNum(arr) {
@@ -198,8 +198,45 @@ count.reset = function() {
       return null; 
   }
   
-  console.log(findMissingNum([2, 3, 4, 5, 6, 7])); // null (no missing number)
-  console.log(findMissingNum([2, 4, 5, 6, 7])); // 3 (increasing order)
-  console.log(findMissingNum([7, 6, 4, 3, 2])); // 5 (decreasing order)
+//   console.log(findMissingNum([2, 3, 4, 5, 6, 7])); // null (no missing number)
+//   console.log(findMissingNum([2, 4, 5, 6, 7])); // 3 (increasing order)
+//   console.log(findMissingNum([7, 6, 4, 3, 2])); // 5 (decreasing order)
   
+// Array methods practice
 
+  //Filter inplace
+  const filterInplace = (arr, a, b) => {
+      let n = arr.length;
+
+      for (let i = 0; i < n; i++) {
+         if (arr[i] < a || arr[i] > b) {
+            arr.splice(i, 1);
+            i--;
+         }
+      }
+
+      return arr;
+  }
+
+  console.log(filterInplace([5, 26, 8, 9, 2, 1, 0], 2, 10))
+
+   // Better solution
+
+      const filterInplace2 = (arr, a, b) => {
+         let index = 0;
+         let n = arr.length;
+
+         for (let i = 0; i < n; i++) {
+            if (arr[i] >= a && arr[i] <= b) {
+               arr[index] = arr[i];
+               index++;
+            }
+         }
+
+         arr.length = index;
+         return arr;
+      }
+
+      console.log(filterInplace2([5, 26, 8, 9, 2, 1, 0], 2, 10))
+
+ 
