@@ -182,7 +182,7 @@ count.reset = function() {
    }
 
    // console.log(findMissingNum([2,3,4,5,6,7])); //null
-   // console.log(findMissingNum([2,4,5,6,7])); //3
+   // console.log(findMissingNum([2,4,5,6,7])); //3 O(n)
 
    //Works for both increasing and decreasing arrays
    function findMissingNum(arr) {
@@ -200,7 +200,7 @@ count.reset = function() {
   
 //   console.log(findMissingNum([2, 3, 4, 5, 6, 7])); // null (no missing number)
 //   console.log(findMissingNum([2, 4, 5, 6, 7])); // 3 (increasing order)
-//   console.log(findMissingNum([7, 6, 4, 3, 2])); // 5 (decreasing order)
+//   console.log(findMissingNum([7, 6, 4, 3, 2])); // 5 (decreasing order) //O(n)
   
 // Array methods practice
 
@@ -218,9 +218,9 @@ count.reset = function() {
       return arr;
   }
 
-  console.log(filterInplace([5, 26, 8, 9, 2, 1, 0], 2, 10))
+  console.log(filterInplace([5, 26, 8, 9, 2, 1, 0], 2, 10)) //O(n^2)
 
-   // Better solution
+  // Better solution
 
       const filterInplace2 = (arr, a, b) => {
          let index = 0;
@@ -237,6 +237,37 @@ count.reset = function() {
          return arr;
       }
 
-      console.log(filterInplace2([5, 26, 8, 9, 2, 1, 0], 2, 10))
+      console.log(filterInplace2([5, 26, 8, 9, 2, 1, 0], 2, 10)) //O(n)
+
+   //Extendable object 
+      
+      function Calculater() {
+         this.methods = {
+            "+" : (a, b) => a + b,
+         };
+
+         this.calculate = function(str) {
+            let arr = str.split(" ");
+            let a = +arr[0];
+            let op = arr[1];
+            let b = +arr[2];
+
+            if (isNaN(a) || isNaN(b) || !this.methods[op]) {
+               return NaN;
+            }
+
+            return this.methods[op](a, b);
+         };
+
+         this.addMethods = function(name, func) {
+            this.methods[name] = func;
+         };
+      }
+
+      let obj = new Calculater();
+      console.log(obj.calculate("2 + 6"));
+
+      obj.addMethods("**", (a, b)=>a**b);
+      console.log(obj.calculate("2 ** 4"));
 
  
