@@ -334,6 +334,46 @@ count.reset = function() {
       console.log(Math.max(-10, 0, 20, -5)); // 20
       console.log(Math.max()); // -Infinity
 
+      console.log(Math.random()); // 0.908883683249599
+      console.log(Math.random() * 10); // 4.305273940090042
+      console.log(Math.floor(Math.random() * 10)); // 5
+      console.log(Math.floor(Math.random() * 100) + 1); //78
+
+      console.log(Math.round(4.3)); // 4
+      console.log(Math.round(4.7)); // 5
+      console.log(Math.round(4.5)); // 5
+      console.log(Math.round(-4.5)); // -4
+
+
+      console.log(Math.pow(2, 3));  // 8
+      console.log(Math.pow(10, -1)); // 0.1
+
+      console.log(Math.trunc(4.9));  // 4
+      console.log(Math.trunc(-4.9)); // -4
+      console.log(Math.trunc(0.99)); // 0
+      console.log(Math.trunc(-0.99)); // -0
+
+      console.log(Math.sqrt(25)); // 5 
+      console.log(Math.sqrt(49)); // 7 
+      console.log(Math.sqrt(0)); // 0 
+      console.log(Math.sqrt(-4)); // NaN 
+
+      console.log(Math.cbrt(27)); // 3  
+      console.log(Math.cbrt(64)); // 4   
+      console.log(Math.cbrt(-8)); // -2 
+      console.log(Math.cbrt(0));  // 0
+
+      console.log(Object.is(10, 10)); // true
+      console.log(Object.is(5, "5")); // false
+
+      console.log(Number("42"));    // 42
+      console.log(Number("Hello")); // NaN
+      console.log(Number(null));    // 0
+      console.log(Number(undefined)); // NaN
+
+      console.log(+"42");    // 42 (string to number)
+
+
 
       
 
