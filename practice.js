@@ -316,8 +316,26 @@ count.reset = function() {
       console.log(parseFloat("3.14abc")); // 3.14 
       console.log(parseFloat("abc")); // NaN
 
-     
+      console.log(Math.floor(4.9));  // 4
+      console.log(Math.floor(4.1));  // 4
+      console.log(Math.floor(-4.1)); // -5
+      console.log(Math.floor(-4.9)); // -5
 
+      console.log(Math.ceil(4.1));  // 5
+      console.log(Math.ceil(4.9));  // 5
+      console.log(Math.ceil(-4.1)); // -4
+      console.log(Math.ceil(-4.9)); // -4
+
+      console.log(Math.min(5, 2, 8, 1)); // 1
+      console.log(Math.min(-10, 0, 20, -5)); // -10
+      console.log(Math.min()); // Infinity
+
+      console.log(Math.max(5, 2, 8, 1)); // 8
+      console.log(Math.max(-10, 0, 20, -5)); // 20
+      console.log(Math.max()); // -Infinity
+
+
+      
 
 
 
