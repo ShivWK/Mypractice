@@ -279,10 +279,45 @@ count.reset = function() {
          }, {})
       }
 
-      console.log(objFromArray([
-         {id : "John", name : "John cena", age: 48},
-         {id : "Randy", name : "Randy Ortan", age: 50},
-         {id : "Brock", name : "Brock Leasner", age: 52},
-         {id : "Big", name : "Big Show", age: 62},
-         {id : "Under", name : "Under Taker", age: 82}
-      ]))
+      // console.log(objFromArray([
+      //    {id : "John", name : "John cena", age: 48},
+      //    {id : "Randy", name : "Randy Ortan", age: 50},
+      //    {id : "Brock", name : "Brock Leasner", age: 52},
+      //    {id : "Big", name : "Big Show", age: 62},
+      //    {id : "Under", name : "Under Taker", age: 82}
+      // ]))
+
+      // console.log([[1,2,3],[4,5,6],[7,8,9], [1,[3,4, [5,6]]]].toString())
+
+   //Practicing Number and MAths funtions
+
+      let num = 155;
+
+      console.log(num.toString());  // "155"
+      console.log( num.toString(16) );  // "9b"
+      console.log( num.toString(2) );   // "10011011"
+
+   
+      console.log( isNaN(45) ); // false
+      console.log( isNaN("string") ); // true
+      console.log( isNaN(undefined) ); // true
+
+      console.log( Number.isNaN(45) ); // false
+      console.log( Number.isNaN("45") ); // false
+      console.log( Number.isNaN(undefined) ); // false
+
+      console.log(parseInt("42")); // 42
+      console.log(parseInt("42.99")); // 42 
+      console.log(parseInt("101", 2)); // 5 (binary to decimal)
+      console.log(parseInt("abc")); // NaN 
+
+      console.log(parseFloat("42.99")); // 42.99
+      console.log(parseFloat("42")); // 42 
+      console.log(parseFloat("3.14abc")); // 3.14 
+      console.log(parseFloat("abc")); // NaN
+
+     
+
+
+
+
