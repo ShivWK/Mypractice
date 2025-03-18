@@ -373,7 +373,15 @@ count.reset = function() {
 
       console.log(+"42");    // 42 (string to number)
 
+   //Testing [Symbol.iterator] method existance in the Array
+      let arr = [1,2,3];
 
+      let re = arr[Symbol.iterator]();
+
+      console.log(re.next())
+      console.log(re.next())
+      console.log(re.next())
+      console.log(re.next())
 
       
 
