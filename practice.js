@@ -409,23 +409,35 @@ count.reset = function() {
       // console.log(arr.unshift(9, 3)) // 5 (length)
       // console.log(arr) // [9, 3, 2, 3, 4]
 
-      let arr1 = [1, 2, 3, 4];
+      // let arr1 = [1, 2, 3, 4];
 
-      console.log(arr1.splice(1, 2, 5, 6)); // [2, 3] (removed elements)
-      console.log(arr1); // [1, 5, 6, 4] (replace)
-      console.log(arr1.splice(1, 2)) // [5, 6] (removed element)
-      console.log(arr1); // [1, 4] (replace)
-      console.log(arr1.splice(1, 0, 2, 3)) // [] (no removed element)
-      console.log(arr1); // [1, 2, 3, 4] (insert)
+      // console.log(arr1.splice(1, 2, 5, 6)); // [2, 3] (removed elements)
+      // console.log(arr1); // [1, 5, 6, 4] (replace)
+      // console.log(arr1.splice(1, 2)) // [5, 6] (removed element)
+      // console.log(arr1); // [1, 4] (replace)
+      // console.log(arr1.splice(1, 0, 2, 3)) // [] (no removed element)
+      // console.log(arr1); // [1, 2, 3, 4] (insert)
 
-      let arr2 = [10, 20, 30, 40, 50];
-      let newArr = arr2.slice(1, 4);
-      console.log(newArr); // [20, 30, 40]
-      console.log(arr2);    // [10, 20, 30, 40, 50] (original remains unchanged)
+      // let arr2 = [10, 20, 30, 40, 50];
+      // let newArr = arr2.slice(1, 4);
+      // console.log(newArr); // [20, 30, 40]
+      // console.log(arr2);    // [10, 20, 30, 40, 50] (original remains unchanged)
 
+      // let arr1 = [1, 3, 4];
+      // console.log(arr1.some(num => num % 2 === 0)); // true
 
+      // let arr2 = [2, 4, 6];
+      // console.log(arr2.every(num => num % 2 === 0)); // true
 
+      // let arr = ["a", "b", "c"];
+      // console.log(arr.join("-")); // "a-b-c"
       
+      let arr = [1, 2, 3, 2];
+      console.log(arr.includes(2)); // true
+      console.log(arr.includes(4)); // false
 
+      console.log(arr.indexOf(2)); // 1
+      
+      console.log(arr.lastIndexOf(2)); // 3
 
 
