@@ -291,97 +291,139 @@ count.reset = function() {
 
    //Practicing Number and MAths funtions
 
-      let num = 155;
+   //    let num = 155;
 
-      console.log(num.toString());  // "155"
-      console.log( num.toString(16) );  // "9b"
-      console.log( num.toString(2) );   // "10011011"
+   //    console.log(num.toString());  // "155"
+   //    console.log( num.toString(16) );  // "9b"
+   //    console.log( num.toString(2) );   // "10011011"
 
    
-      console.log( isNaN(45) ); // false
-      console.log( isNaN("string") ); // true
-      console.log( isNaN(undefined) ); // true
+   //    console.log( isNaN(45) ); // false
+   //    console.log( isNaN("string") ); // true
+   //    console.log( isNaN(undefined) ); // true
 
-      console.log( Number.isNaN(45) ); // false
-      console.log( Number.isNaN("45") ); // false
-      console.log( Number.isNaN(undefined) ); // false
+   //    console.log( Number.isNaN(45) ); // false
+   //    console.log( Number.isNaN("45") ); // false
+   //    console.log( Number.isNaN(undefined) ); // false
 
-      console.log(parseInt("42")); // 42
-      console.log(parseInt("42.99")); // 42 
-      console.log(parseInt("101", 2)); // 5 (binary to decimal)
-      console.log(parseInt("abc")); // NaN 
+   //    console.log(parseInt("42")); // 42
+   //    console.log(parseInt("42.99")); // 42 
+   //    console.log(parseInt("101", 2)); // 5 (binary to decimal)
+   //    console.log(parseInt("abc")); // NaN 
 
-      console.log(parseFloat("42.99")); // 42.99
-      console.log(parseFloat("42")); // 42 
-      console.log(parseFloat("3.14abc")); // 3.14 
-      console.log(parseFloat("abc")); // NaN
+   //    console.log(parseFloat("42.99")); // 42.99
+   //    console.log(parseFloat("42")); // 42 
+   //    console.log(parseFloat("3.14abc")); // 3.14 
+   //    console.log(parseFloat("abc")); // NaN
 
-      console.log(Math.floor(4.9));  // 4
-      console.log(Math.floor(4.1));  // 4
-      console.log(Math.floor(-4.1)); // -5
-      console.log(Math.floor(-4.9)); // -5
+   //    console.log(Math.floor(4.9));  // 4
+   //    console.log(Math.floor(4.1));  // 4
+   //    console.log(Math.floor(-4.1)); // -5
+   //    console.log(Math.floor(-4.9)); // -5
 
-      console.log(Math.ceil(4.1));  // 5
-      console.log(Math.ceil(4.9));  // 5
-      console.log(Math.ceil(-4.1)); // -4
-      console.log(Math.ceil(-4.9)); // -4
+   //    console.log(Math.ceil(4.1));  // 5
+   //    console.log(Math.ceil(4.9));  // 5
+   //    console.log(Math.ceil(-4.1)); // -4
+   //    console.log(Math.ceil(-4.9)); // -4
 
-      console.log(Math.min(5, 2, 8, 1)); // 1
-      console.log(Math.min(-10, 0, 20, -5)); // -10
-      console.log(Math.min()); // Infinity
+   //    console.log(Math.min(5, 2, 8, 1)); // 1
+   //    console.log(Math.min(-10, 0, 20, -5)); // -10
+   //    console.log(Math.min()); // Infinity
 
-      console.log(Math.max(5, 2, 8, 1)); // 8
-      console.log(Math.max(-10, 0, 20, -5)); // 20
-      console.log(Math.max()); // -Infinity
+   //    console.log(Math.max(5, 2, 8, 1)); // 8
+   //    console.log(Math.max(-10, 0, 20, -5)); // 20
+   //    console.log(Math.max()); // -Infinity
 
-      console.log(Math.random()); // 0.908883683249599
-      console.log(Math.random() * 10); // 4.305273940090042
-      console.log(Math.floor(Math.random() * 10)); // 5
-      console.log(Math.floor(Math.random() * 100) + 1); //78
+   //    console.log(Math.random()); // 0.908883683249599
+   //    console.log(Math.random() * 10); // 4.305273940090042
+   //    console.log(Math.floor(Math.random() * 10)); // 5
+   //    console.log(Math.floor(Math.random() * 100) + 1); //78
 
-      console.log(Math.round(4.3)); // 4
-      console.log(Math.round(4.7)); // 5
-      console.log(Math.round(4.5)); // 5
-      console.log(Math.round(-4.5)); // -4
+   //    console.log(Math.round(4.3)); // 4
+   //    console.log(Math.round(4.7)); // 5
+   //    console.log(Math.round(4.5)); // 5
+   //    console.log(Math.round(-4.5)); // -4
 
 
-      console.log(Math.pow(2, 3));  // 8
-      console.log(Math.pow(10, -1)); // 0.1
+   //    console.log(Math.pow(2, 3));  // 8
+   //    console.log(Math.pow(10, -1)); // 0.1
 
-      console.log(Math.trunc(4.9));  // 4
-      console.log(Math.trunc(-4.9)); // -4
-      console.log(Math.trunc(0.99)); // 0
-      console.log(Math.trunc(-0.99)); // -0
+   //    console.log(Math.trunc(4.9));  // 4
+   //    console.log(Math.trunc(-4.9)); // -4
+   //    console.log(Math.trunc(0.99)); // 0
+   //    console.log(Math.trunc(-0.99)); // -0
 
-      console.log(Math.sqrt(25)); // 5 
-      console.log(Math.sqrt(49)); // 7 
-      console.log(Math.sqrt(0)); // 0 
-      console.log(Math.sqrt(-4)); // NaN 
+   //    console.log(Math.sqrt(25)); // 5 
+   //    console.log(Math.sqrt(49)); // 7 
+   //    console.log(Math.sqrt(0)); // 0 
+   //    console.log(Math.sqrt(-4)); // NaN 
 
-      console.log(Math.cbrt(27)); // 3  
-      console.log(Math.cbrt(64)); // 4   
-      console.log(Math.cbrt(-8)); // -2 
-      console.log(Math.cbrt(0));  // 0
+   //    console.log(Math.cbrt(27)); // 3  
+   //    console.log(Math.cbrt(64)); // 4   
+   //    console.log(Math.cbrt(-8)); // -2 
+   //    console.log(Math.cbrt(0));  // 0
 
-      console.log(Object.is(10, 10)); // true
-      console.log(Object.is(5, "5")); // false
+   //    console.log(Object.is(10, 10)); // true
+   //    console.log(Object.is(5, "5")); // false
 
-      console.log(Number("42"));    // 42
-      console.log(Number("Hello")); // NaN
-      console.log(Number(null));    // 0
-      console.log(Number(undefined)); // NaN
+   //    console.log(Number("42"));    // 42
+   //    console.log(Number("Hello")); // NaN
+   //    console.log(Number(null));    // 0
+   //    console.log(Number(undefined)); // NaN
 
-      console.log(+"42");    // 42 (string to number)
+   //    console.log(+"42");    // 42 (string to number)
 
-   //Testing [Symbol.iterator] method existance in the Array
-      let arr = [1,2,3];
+   // //Testing [Symbol.iterator] method existance in the Array
+   //    let arr = [1,2,3];
 
-      let re = arr[Symbol.iterator]();
+   //    let re = arr[Symbol.iterator]();
 
-      console.log(re.next())
-      console.log(re.next())
-      console.log(re.next())
-      console.log(re.next())
+   //    console.log(re.next())
+   //    console.log(re.next())
+   //    console.log(re.next())
+   //    console.log(re.next())
+
+   // Tricky question
+
+      // "use strict";
+      // let myObject = {
+      // innerWidth: "10",
+      // myFunction: () => console.log(this),
+      // myFunction2: function myTricky() {console.log(typeof this.innerWidth)},
+      // };
+
+      // myObject.myFunction();
+      // myObject.myFunction2();
+
+   // Array Methods
+
+      // let arr = [1,2,3,4];
+      
+      // console.log(arr.push(7)); // 5 (length)
+      // console.log(arr) // [1, 2, 3, 4, 7]
+      // console.log(arr.pop()); // 7 (removed element)
+      // console.log(arr) // [1, 2, 3, 4]
+
+      // console.log(arr.shift()) // 1 (removed element)
+      // console.log(arr) // [2, 3, 4]
+      // console.log(arr.unshift(9, 3)) // 5 (length)
+      // console.log(arr) // [9, 3, 2, 3, 4]
+
+      let arr1 = [1, 2, 3, 4];
+
+      console.log(arr1.splice(1, 2, 5, 6)); // [2, 3] (removed elements)
+      console.log(arr1); // [1, 5, 6, 4] (replace)
+      console.log(arr1.splice(1, 2)) // [5, 6] (removed element)
+      console.log(arr1); // [1, 4] (replace)
+      console.log(arr1.splice(1, 0, 2, 3)) // [] (no removed element)
+      console.log(arr1); // [1, 2, 3, 4] (insert)
+
+      let arr2 = [10, 20, 30, 40, 50];
+      let newArr = arr2.slice(1, 4);
+      console.log(newArr); // [20, 30, 40]
+      console.log(arr2);    // [10, 20, 30, 40, 50] (original remains unchanged)
+
+
 
       
 
