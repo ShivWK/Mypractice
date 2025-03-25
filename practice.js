@@ -432,12 +432,88 @@ count.reset = function() {
       // let arr = ["a", "b", "c"];
       // console.log(arr.join("-")); // "a-b-c"
       
-      let arr = [1, 2, 3, 2];
-      console.log(arr.includes(2)); // true
-      console.log(arr.includes(4)); // false
+      // let arr = [1, 2, 3, 2];
+      // console.log(arr.includes(2)); // true
+      // console.log(arr.includes(4)); // false
 
-      console.log(arr.indexOf(2)); // 1
+      // console.log(arr.indexOf(2)); // 1
+
+      // console.log(arr.lastIndexOf(2)); // 3
+
+      // let arr = [1, 2, 3, 4, 3];
+      // console.log(arr.find(num => num > 2)); //3
+      // console.log(arr.find(num => num > 5)); //undefined
+
+      // console.log(arr.findIndex(num => num > 2)); //2
+      // console.log(arr.findIndex(num => num > 5)); //-1
+
+      // console.log(arr.findLastIndex(num => num > 2)); // 4 (last occurrence of 3)
+      // console.log(arr.findLastIndex(num => num > 5)); // -1 (last occurrence of 3)
+
+// spread with objects
+
+      // let obj1 = {
+      //    a : 1,
+      //    b : {
+      //       c : 2
+      //    }
+      // }
+    
+      // let copy = {...obj1};
+      // copy.b.c = 3;
+      // console.log(obj1);
+
+// Practice array methods 
+
+      let arr1 = [1, 2, 3, 4];
+      console.log(arr1.filter(num => num % 2 === 0)); // [2, 4]
+      console.log(arr1.map(num => num * 2)); // [2, 4, 6, 8]
+
+      let arr2 = [5, 6];
+      console.log(arr2.concat(arr1)); // [1, 2, 3, 4, 5, 6]
+
+      let arr3 = [100, 2, 25, 10, 1];
+      console.log(arr3.toString()) // 100,2,25,10,1
+
+      console.log(arr3.sort()); // [ 1, 10, 100, 2, 25 ]
+      console.log(arr3.sort((a, b) => a - b)); // [ 1, 2, 10, 25, 100 ]
+      let arr4 = ['f', 'a', 'd', 'b']
+      console.log(arr4.sort()) // [ 'a', 'b', 'd', 'f' ]
+      console.log(arr4); // [ 'a', 'b', 'd', 'f' ] (original array modified)
+
+      console.log(arr4.reverse()); // [ 'f', 'd', 'b', 'a' ]
+
+      let arr5 = [1, [2, [3, 4]]];
+      console.log(arr5.flat(2)); // [1, 2, 3, 4]
+
+      let arr6 = [1, 2, 3];
+      console.log(arr6.flatMap(num => [num, num * 2])); // [1, 2, 2, 4, 3, 6]
+
+      let arr7 = [1, 2, 3, 4];
+      let sum = arr7.reduce((acc, num) => acc + num, 0);
+      console.log(sum); // 10
+
+      let arr8 = [10, 20, 30, 40];
+      console.log(arr8.at(-1)); // 40 (last element)
+
+      let arr9 = new Array(5);
+      console.log(arr9); // [ <5 empty items> ]
+      console.log(arr9.fill(0)); // [0, 0, 0, 0, 0]
+
+      let arr10 = [1, 2, 3, 4, 5]; 
+      console.log(arr10.fill(9, 1, 4)); // [1, 9, 9, 9, 5]
+
+      console.log(Array.isArray([2,3,5])); // true
+      console.log(Array.isArray({})); // false
+
+
+
+
+
+
+
       
-      console.log(arr.lastIndexOf(2)); // 3
+
+
 
 
