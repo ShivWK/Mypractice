@@ -567,7 +567,7 @@ count.reset = function() {
 
          key1.push("more");
    
-         console.log(key1);
+         // console.log(key1);
 
       //Solution2 
 
@@ -578,9 +578,36 @@ count.reset = function() {
 
          key2.push("more");
 
-         console.log(key1);
+         // console.log(key1);
 
+// Object.* methods
 
+      let obj3 = {
+         name : "Shivendra",
+         cast : "Dwivedi",
+      }
+
+      console.log(Object.keys(obj3));
+      console.log(Object.values(obj3));
+      console.log(Object.entries(obj3));
+
+   // Applying array methods on the objects
+
+      function applyMethod(obj) {
+         let arrayObj = Object.entries(obj);
+         let newArrayObj = arrayObj.map(value => [value[0], value[1]*2]);
+         return Object.fromEntries(newArrayObj);
+      } 
+
+      let obj4 = {
+         apple : 2,
+         banana : 3,
+         graps : 5,
+      }
+
+      console.log(applyMethod(obj4))
+
+   
 
 
 
