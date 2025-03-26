@@ -532,7 +532,7 @@ count.reset = function() {
 
    // Filter ansgrams
 
-      console.log("teacher".split("").sort().join(''));
+      // console.log("teacher".split("").sort().join(''));
 
       function filterAnagrams(arr) {
          let myMap = new Map();
@@ -545,10 +545,41 @@ count.reset = function() {
          return Array.from(myMap.values());
       }
 
-      console.log(filterAnagrams(["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"]));
+      // console.log(filterAnagrams(["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"]));
 
+   // Senirio based
 
-      
+      // problem below code doesnt work
+
+         let map = new Map();
+         map.set("name", "John");
+
+         let key = map.keys();
+
+         // key.push("more"); // Error: key is not a function. This is because .keys() returns an iterable not a array so push() and other array methods are not available to key.
+         
+      //Solution1 : making the return of map.keys() an array
+
+         let map1 = new Map();
+         map1.set("name", "John");
+
+         let key1 = [...map1.keys()]; //Now an array
+
+         key1.push("more");
+   
+         console.log(key1);
+
+      //Solution2 
+
+         let map2 = new Map();
+         map2.set("name", "John");
+
+         let key2 = [...map2.keys()]; //Now an array
+
+         key2.push("more");
+
+         console.log(key1);
+
 
 
 
