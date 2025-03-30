@@ -511,30 +511,30 @@
 
         //Function to clone an object deeply
 
-          function cloneObject(obj) {
-            let clone = {};
+          // function cloneObject(obj) {
+          //   let clone = {};
 
-            for (let key in obj) {
-              if (typeof obj[key] === 'object') {
-                clone[key] = cloneObject(obj[key]);
-              } else {
-                clone[key] = obj[key];
-              }
-            }
+          //   for (let key in obj) {
+          //     if (typeof obj[key] === 'object') {
+          //       clone[key] = cloneObject(obj[key]);
+          //     } else {
+          //       clone[key] = obj[key];
+          //     }
+          //   }
 
-            return clone;
-          }
+          //   return clone;
+          // }
 
-          let obj7 = {
-            one : "Shivendra",
-            two : "Sahil",
-            three : "Ritik",
-            four : {
-              age : 26,
-              employment : "unemployed",
-              when : "very soon",
-            },
-          }
+          // let obj7 = {
+          //   one : "Shivendra",
+          //   two : "Sahil",
+          //   three : "Ritik",
+          //   four : {
+          //     age : 26,
+          //     employment : "unemployed",
+          //     when : "very soon",
+          //   },
+          // }
 
           // let clonedObj = cloneObject(obj7);
           // console.log(clonedObj); 
@@ -546,19 +546,19 @@
           // let clonedObj3 = structuredClone(obj7)
           // console.log(clonedObj3.four === obj7.four)
 
-          let obj8 = {
-            one : "Shivendra",
-            two : "Sahil",
-            three : "Ritik",
-            four : {
-              age : 26,
-              employment : "unemployed",
-              when : "very soon",
-            },
-            five : function() {
-                console.log("hi");
-            }
-          }
+          // let obj8 = {
+          //   one : "Shivendra",
+          //   two : "Sahil",
+          //   three : "Ritik",
+          //   four : {
+          //     age : 26,
+          //     employment : "unemployed",
+          //     when : "very soon",
+          //   },
+          //   five : function() {
+          //       console.log("hi");
+          //   }
+          // }
 
           // let clonedObj4 = cloneObject(obj8);
           // console.log(clonedObj4); 
@@ -572,23 +572,23 @@
 
       // Object performing tasks
           
-          let calculation = {
-            a : null,
-            b : null,
+          // let calculation = {
+          //   a : null,
+          //   b : null,
 
-            sum() {
-              return this.a + this.b;
-            },
+          //   sum() {
+          //     return this.a + this.b;
+          //   },
 
-            mul() {
-              return this.a * this.b;
-            },
+          //   mul() {
+          //     return this.a * this.b;
+          //   },
 
-            read() {
-              this.a = +prompt("Number One: ", 0);
-              this.b = +prompt("Number Two: ", 0);
-            }
-          }
+          //   read() {
+          //     this.a = +prompt("Number One: ", 0);
+          //     this.b = +prompt("Number Two: ", 0);
+          //   }
+          // }
 
           // calculation.read();
           // console.log(calculation.sum());
@@ -596,79 +596,79 @@
 
       // Laddr object making it chainable
 
-          let ladder = {
-            step: 0,
-            up() {
-              this.step++;
-              return this;
-            },
-            down() {
-              this.step--;
-              return this;
+          // let ladder = {
+          //   step: 0,
+          //   up() {
+          //     this.step++;
+          //     return this;
+          //   },
+          //   down() {
+          //     this.step--;
+          //     return this;
 
-            },
-            showStep: function() { // shows the current step
-              alert( this.step );
-              return this;
-            }
-          }; 
+          //   },
+          //   showStep: function() { // shows the current step
+          //     alert( this.step );
+          //     return this;
+          //   }
+          // }; 
 
           // ladder.up().up().down().showStep().down().showStep();
 
       //Constructor function
 
-          function CreateObj(name, age) {
-            this.name = name;
-            this.age = age;
+          // function CreateObj(name, age) {
+          //   this.name = name;
+          //   this.age = age;
 
-            if (new.target){
-              console.log("Called with new")
-            } else {
-              console.log("Called without new");
-            }
+          //   if (new.target){
+          //     console.log("Called with new")
+          //   } else {
+          //     console.log("Called without new");
+          //   }
 
-            this.show = function() {
-              console.log(this.name, this.age);
-            };
-          }
+          //   this.show = function() {
+          //     console.log(this.name, this.age);
+          //   };
+          // }
 
           // let newObject = new CreateObj("Shivendra" , 26);
           // newObject.show();
 
-          function CreateObj2() {
-            this.name = "second function";
+          // function CreateObj2() {
+          //   this.name = "second function";
 
-            console.log("called")
-          }
+          //   console.log("called")
+          // }
 
           // let newObject2 = CreateObj2(); //Cant set name to undefined, 
           // let newObject3 = new CreateObj2; // worked
 
-          let newObject4 = new function() {
-            this.name = "Shiv";
-            this.age = 26;
+          // let newObject4 = new function() {
+          //   this.name = "Shiv";
+          //   this.age = 26;
 
-            this.show = function() {
-              console.log(this.name, this.age);
-            }
-          }
+          //   this.show = function() {
+          //     console.log(this.name, this.age);
+          //   }
+          // }
 
           // newObject4.show();
 
-          function CreateObj3() {
-            this.name = "sahil";
+          // function CreateObj3() {
+          //   this.name = "sahil";
 
-            return;
-          }
+          //   return;
+          // }
 
           // let newObject5 = new CreateObj3();
           // console.log(newObject5.name); // Created object is returned instead of undefined
 
-          function CreateObj4() {
-            this.name = "sahil";
+          // function CreateObj4() {
+          //   this.name = "sahil";
 
-            return {name : "Ritik"};
-          }
+          //   return {name : "Ritik"};
+          // }
 
           // let newObject6 = new CreateObj4();
           // console.log(newObject6.name); // Custom object returned
@@ -677,15 +677,15 @@
 
           // new A() === new B()
 
-          let obj = {name : "Hi"}
+          // let obj = {name : "Hi"}
 
-          function A() {
-            return obj;
-          }
+          // function A() {
+          //   return obj;
+          // }
 
-          function B() {
-            return obj
-          }
+          // function B() {
+          //   return obj
+          // }
 
           // console.log(new A() === new B()); // True
 
@@ -763,9 +763,9 @@
         married
       } = obj6;
 
-      console.log(name, age, streat, House_Num, married);
+      // console.log(name, age, streat, House_Num, married);
       let num = 91;
-      console.log(num.toString())
+      // console.log(num.toString())
 
       let salaries = {
         "john" : 3000,
@@ -788,7 +788,53 @@
         return maxSalaryPerson;
       }
 
-      console.log(maxSalary(salaries));
+      // console.log(maxSalary(salaries));
+
+  //WeakMap and WeakSet
+  
+      let obj1 = {name : "Shivendra"};
+
+      let map1 = new Map();
+      map1.set(obj1, "Object 1");
+
+      let weakMap1 = new WeakMap();
+      weakMap1.set(obj1, "Object 2")
+
+
+      // console.log(map1);
+      // console.log(weakMap1);
+
+      obj1 = null;
+
+      // console.log(map1);
+      // console.log(weakMap1);
+      
+      // Garbage collection doesn't occur immidiately it is not predictatble so we may not see the change
+
+  // cashing
+
+      let object1 = {
+        count: 2,
+      }
+
+      let object2 = {
+        count : 5,
+      }
+
+      let myMap = new Map();
+    
+      function add(obj) {
+        if(!myMap.has(obj)) {
+          let sum = obj.count + 2;
+
+          myMap.set(obj, sum);
+          return sum;
+        }
+
+        return myMap.get(obj);
+      }
+
+      console.log(add(object1));
 
       </script>
   </body>
