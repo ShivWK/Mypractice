@@ -7,37 +7,54 @@
 </head>
 <body>
     <script>
-        let arr = [1, 2, 3, 4, 5]; // [2, 4, 6, 8, 10] (required)
 
-        function modifyArray(arr) {
-            let arr1 = [];
-            let n = arr.length;
+    // Ramdom questions 
 
-            for (let i = 0; i < n; i++) {
-                arr1[i] = arr[i]*2;
-            }
+        // setTimeout(()=> {console.log(1)}, 0);
+        // new Promise((resolve)=> {
+        //     console.log(2);
+        //     resolve();
+        // })
+        // .then(()=> {
+        //     console.log(3)
+        // })
+        // console.log(4);
 
-            return arr1;
-        }
+    // Map polyfil
 
-        let newArray = arr.map(a => a*2);
-        console.log(newArray); // [2, 4, 6, 8, 10]
+        // let arr = [1, 2, 3, 4, 5]; // [2, 4, 6, 8, 10] (required)
 
-        console.log(modifyArray(arr)); // [2, 4, 6, 8, 10]
+        // function modifyArray(arr) {
+        //     let arr1 = [];
+        //     let n = arr.length;
+
+        //     for (let i = 0; i < n; i++) {
+        //         arr1[i] = arr[i]*2;
+        //     }
+
+        //     return arr1;
+        // }
+
+        // let newArray = arr.map(a => a*2);
+        // console.log(newArray); // [2, 4, 6, 8, 10]
+
+        // console.log(modifyArray(arr)); // [2, 4, 6, 8, 10]
+
+    // Random Question
+
+        const cart = [
+            {item : "Laptop", price : 1000},
+            {item : "Mobile", price : 500},
+            {item : "Tab", price : 700},
+        ];
+
+        const totalPrice = cart.reduce((total, item) => total.price + item.price);
+        console.log(totalPrice);
 
     </script>
 </body>
 </html>
 
-<!-- // setTimeout(()=> {console.log(1)}, 0);
-// new Promise((resolve)=> {
-//     console.log(2);
-//     resolve();
-// })
-// .then(()=> {
-//     console.log(3)
-// })
-// console.log(4); -->
 
 <!-- The issue you're encountering is due to the Same-Origin Policy (SOP), which restricts web pages from making requests to a different domain than the one that served the web page. Since your HTML file is being served from a local file system (file://), and you're trying to fetch a JSON file from the same local file system, you're running into CORS (Cross-Origin Resource Sharing) restrictions.
 
