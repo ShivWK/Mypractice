@@ -587,9 +587,9 @@ count.reset = function() {
          cast : "Dwivedi",
       }
 
-      console.log(Object.keys(obj3));
-      console.log(Object.values(obj3));
-      console.log(Object.entries(obj3));
+      // console.log(Object.keys(obj3));
+      // console.log(Object.values(obj3));
+      // console.log(Object.entries(obj3));
 
    // Applying array methods on the objects
 
@@ -605,9 +605,26 @@ count.reset = function() {
          graps : 5,
       }
 
-      console.log(applyMethod(obj4))
+      // console.log(applyMethod(obj4))
 
-   
+// Destructuring assignment
+
+      let title1, width1, age1;
+
+      let obj10 = {
+         title1 : "Shivendra",
+         width1 : 25,
+         age1 : 26
+      };
+
+      ( { title1, width1, age1 } = obj10 );
+
+      console.log(title1);
+      console.log(width1);
+      console.log(age1);
+
+
+
 
 
 
