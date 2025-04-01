@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FE Interview Questions</title>
+</head>
+<body>
+    <h1>Front-End Interview Questions Practice</h1>
+    <script>
+
+    //Object.create() Method
+
+        let obj1 = {
+            name : "Shivendra",
+            age: 26,
+            address: "91/741"
+        }
+
+        let obj2 = {
+            type: {
+                value: "Human"
+            },
+            race: {
+                value: "fair"
+            },
+            show : {
+                hi : "Helllo"
+            }
+        }
+
+        let obj3 = Object.create(obj1, obj2);
+        // console.log(obj3)
+        // console.log(obj3.__proto__);
+
+    // Freezing an object having nested object
+
+        let obj = {
+            name : "Shivendra",
+            address: {
+                streat: "Triveni Nagar",
+            }
+        }
+
+        Object.freeze(obj);
+
+        console.log(obj.address.streat = "Fetehpur");
+        console.log(obj.address.streat); // "Fetehpur" (Nested not freezed)
+
+        function freezeIt(val) {
+            Object.keys(val).forEach(element => {
+                if (typeof val[element] === 'object') {
+                    Object.freeze(val[element]);
+                }
+            });
+
+            Object.freeze(val);
+        }
+
+        freezeIt(obj);
+        obj.address.streat = "Fetehpur";
+        console.log(obj.address.streat);
+
+        obj.name = "Ritik";
+        console.log(obj.name);
+
+    </script>
+</body>
+</html>
