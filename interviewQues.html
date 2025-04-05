@@ -44,8 +44,8 @@
 
         Object.freeze(obj);
 
-        console.log(obj.address.streat = "Fetehpur");
-        console.log(obj.address.streat); // "Fetehpur" (Nested not freezed)
+        // console.log(obj.address.streat = "Fetehpur");
+        // console.log(obj.address.streat); // "Fetehpur" (Nested not freezed)
 
         function freezeIt(val) {
             Object.keys(val).forEach(element => {
@@ -59,10 +59,51 @@
 
         freezeIt(obj);
         obj.address.streat = "Fetehpur";
-        console.log(obj.address.streat);
+        // console.log(obj.address.streat);
 
         obj.name = "Ritik";
-        console.log(obj.name);
+        // console.log(obj.name);
+
+    // Show callback  hell and how promises prevents it
+
+        function getUser(UserId, callback) {
+            setTimeout(()=> {
+                //User fetched
+                console.log("User fetched");
+                callback({id : UserId, name: "Shivendra"});
+            }, 1000)
+        }
+
+        //We need to show the posts of the user
+
+        function getPost(userId, callback) {
+            setTimeout(()=> {
+                //Post fetching
+                console.log("Posts fetched");
+                callback([1, 2, 3]);
+            }, 1000)
+        }
+
+        //We need to show the commments on those posts
+
+        function getComments(postId, callback) {
+            setTimeout(()=> {
+                //Fetching the comments
+                console.log("Comments fetched")
+                callback({commentId: 1, text : "very nice!"});
+            }, 1000)
+        }
+
+        // Use
+        getUser(1, (user) => {
+            console.log(user.name);
+            getPost(user.id, (postId)=> {
+                console.log("Carousel post");
+                getComments(postId, (comment)=>{
+                    console.log(comment.text);
+                })
+            })
+        })
 
     </script>
 </body>
