@@ -179,6 +179,45 @@
             setTimeout(() => reject(new Error("Error occured")), 1000);
         })
 
+        // callback hell and solve by promises
+
+        // Callback hell
+        setTimeout(() => {
+            console.log("Task 1 done");
+            setTimeout(() => {
+                console.log("Task 2 done");
+                setTimeout(() => {
+                    console.log("Task 3 done");
+                }, 1000);
+            }, 1000);
+        }, 1000);
+
+
+       // Promise-based solution to avoid callback hell
+        function asyncTask(msg, delay) {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    console.log(msg);
+                    resolve();
+                }, delay);
+            });
+        }
+
+        asyncTask("Task 1 done", 1000)
+            .then(() => asyncTask("Task 2 done", 1000))
+            .then(() => asyncTask("Task 3 done", 1000));
+
+        // Promise.then()
+
+        promise.then(
+            result => console.log("Resolved:", result),
+            error => console.log("Rejected:", error) // optional
+        );
+
+        //Promise.catch()
+        promise
+            .then(result => console.log("Resolved:", result))
+            .catch(error => console.error("Error:", error));
 
     </script>
 </body>
