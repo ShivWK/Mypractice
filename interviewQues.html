@@ -219,6 +219,22 @@
             .then(result => console.log("Resolved:", result))
             .catch(error => console.error("Error:", error));
 
+        //then.finally()
+
+        promise
+            .then(res => console.log("Resolved:", res))
+            .catch(err => console.log("Rejected:", err))
+            .finally(() => console.log("Always runs"));
+
+        // Promise Chaining
+
+        loginUser("shivendra", "1234")
+            .then(user => fetchProfile(user.id))
+            .then(profile => showDashboard(profile))
+            .catch(err => console.error("❌", err.message))
+            .finally(() => console.log("Done"));
+
+        
     </script>
 </body>
 </html>
