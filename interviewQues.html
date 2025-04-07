@@ -234,6 +234,23 @@
             .catch(err => console.error("❌", err.message))
             .finally(() => console.log("Done"));
 
+        // Promise.resolve(), .reject()
+
+        function fetchUserData(success) {
+            if (success) {
+                return Promise.resolve({ name: "Shivendra" });
+            } else {
+                return Promise.reject(new Error("User not found"));
+            }
+        }
+
+        fetchUserData(true)
+        .then(data => console.log("User:", data.name)) // User: Shivendra
+        .catch(err => console.error("Error:", err)); // won't execute
+
+        fetchUserData(false)
+        .then(data => console.log("User:", data.name)) // won't execute
+        .catch(err => console.error("Error:", err.message)); // Error: User not
         
     </script>
 </body>
