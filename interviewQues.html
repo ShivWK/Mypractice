@@ -107,132 +107,132 @@
 
     // Solution using promise
 
-        function getUser(UserId) {
-            return new Promise((resolve, reject) => {
-                setTimeout(()=> {
-                    //User fetched
-                    console.log("User fetched");
-                    resolve({id: UserId, name : "Shivendra"});
-                }, 1000)
-            })
-        }
+        // function getUser(UserId) {
+        //     return new Promise((resolve, reject) => {
+        //         setTimeout(()=> {
+        //             //User fetched
+        //             console.log("User fetched");
+        //             resolve({id: UserId, name : "Shivendra"});
+        //         }, 1000)
+        //     })
+        // }
 
-        //We need to show the posts of the user
+        // //We need to show the posts of the user
 
-        function getPost(userId) {
-            return new Promise((resolve, reject) => {
-                setTimeout(()=> {
-                    //Post fetching
-                    console.log("Posts fetched");
-                    const errorOccured = true;
+        // function getPost(userId) {
+        //     return new Promise((resolve, reject) => {
+        //         setTimeout(()=> {
+        //             //Post fetching
+        //             console.log("Posts fetched");
+        //             const errorOccured = true;
 
-                    if(errorOccured) {
-                        const error = new Error("Error Occured");
-                        reject(error);
-                    }
+        //             if(errorOccured) {
+        //                 const error = new Error("Error Occured");
+        //                 reject(error);
+        //             }
 
-                    resolve([1, 2, 3]);
-                }, 1000)
-            })
-        }
+        //             resolve([1, 2, 3]);
+        //         }, 1000)
+        //     })
+        // }
 
-        //We need to show the commments on those posts
+        // //We need to show the commments on those posts
 
-        function getComments(postId) {
-            return new Promise((resolve, reject) => {
-                setTimeout(()=> {
-                    //Fetching the comments
-                    console.log("Comments fetched");
-                    resolve({commentId: 1, text : "very nice!"});
-                }, 1000)
-            })
-        }
+        // function getComments(postId) {
+        //     return new Promise((resolve, reject) => {
+        //         setTimeout(()=> {
+        //             //Fetching the comments
+        //             console.log("Comments fetched");
+        //             resolve({commentId: 1, text : "very nice!"});
+        //         }, 1000)
+        //     })
+        // }
 
-        // Use
-        getUser(1)
-        .then(data => {
-            console.log(data.name);
-            return getPost(data.id);
-        })
-        .then(PostIds => {
-            console.log("Carousel Post");
-            return getComments(PostIds);
-        })
-        .then(data => {
-            console.log(data);
-        }) 
-        .catch(err => {
-            console.log(err.message);
-        })
+        // // Use
+        // getUser(1)
+        // .then(data => {
+        //     console.log(data.name);
+        //     return getPost(data.id);
+        // })
+        // .then(PostIds => {
+        //     console.log("Carousel Post");
+        //     return getComments(PostIds);
+        // })
+        // .then(data => {
+        //     console.log(data);
+        // }) 
+        // .catch(err => {
+        //     console.log(err.message);
+        // })
 
         // After this show them , how this can br refectored with async/await.
 
     // carousel code examples
 
         // Resolving promise
-        let promise1 = new Promise(function(resolve, reject) {
-            setTimeout(() => resolve("Done"), 1000);
-        })
+    //     let promise1 = new Promise(function(resolve, reject) {
+    //         setTimeout(() => resolve("Done"), 1000);
+    //     })
 
-        // Rejecting promise
-        let promise2 = new Promise(function(resolve, reject) {
-            setTimeout(() => reject(new Error("Error occured")), 1000);
-        })
+    //     // Rejecting promise
+    //     let promise2 = new Promise(function(resolve, reject) {
+    //         setTimeout(() => reject(new Error("Error occured")), 1000);
+    //     })
 
-        // callback hell and solve by promises
+    //     // callback hell and solve by promises
 
-        // Callback hell
-        setTimeout(() => {
-            console.log("Task 1 done");
-            setTimeout(() => {
-                console.log("Task 2 done");
-                setTimeout(() => {
-                    console.log("Task 3 done");
-                }, 1000);
-            }, 1000);
-        }, 1000);
+    //     // Callback hell
+    //     setTimeout(() => {
+    //         console.log("Task 1 done");
+    //         setTimeout(() => {
+    //             console.log("Task 2 done");
+    //             setTimeout(() => {
+    //                 console.log("Task 3 done");
+    //             }, 1000);
+    //         }, 1000);
+    //     }, 1000);
 
 
-       // Promise-based solution to avoid callback hell
-        function asyncTask(msg, delay) {
-            return new Promise((resolve) => {
-                setTimeout(() => {
-                    console.log(msg);
-                    resolve();
-                }, delay);
-            });
-        }
+    //    // Promise-based solution to avoid callback hell
+    //     function asyncTask(msg, delay) {
+    //         return new Promise((resolve) => {
+    //             setTimeout(() => {
+    //                 console.log(msg);
+    //                 resolve();
+    //             }, delay);
+    //         });
+    //     }
 
-        asyncTask("Task 1 done", 1000)
-            .then(() => asyncTask("Task 2 done", 1000))
-            .then(() => asyncTask("Task 3 done", 1000));
+    //     asyncTask("Task 1 done", 1000)
+    //         .then(() => asyncTask("Task 2 done", 1000))
+    //         .then(() => asyncTask("Task 3 done", 1000));
 
-        // Promise.then()
+    //     // Promise.then()
 
-        promise.then(
-            result => console.log("Resolved:", result),
-            error => console.log("Rejected:", error) // optional
-        );
+    //     promise.then(
+    //         result => console.log("Resolved:", result),
+    //         error => console.log("Rejected:", error) // optional
+    //     );
 
-        //Promise.catch()
-        promise
-            .then(result => console.log("Resolved:", result))
-            .catch(error => console.error("Error:", error));
+    //     //Promise.catch()
+    //     promise
+    //         .then(result => console.log("Resolved:", result))
+    //         .catch(error => console.error("Error:", error));
 
-        //then.finally()
+    //     //then.finally()
 
-        promise
-            .then(res => console.log("Resolved:", res))
-            .catch(err => console.log("Rejected:", err))
-            .finally(() => console.log("Always runs"));
+    //     promise
+    //         .then(res => console.log("Resolved:", res))
+    //         .catch(err => console.log("Rejected:", err))
+    //         .finally(() => console.log("Always runs"));
 
-        // Promise Chaining
+    //     // Promise Chaining
 
-        loginUser("shivendra", "1234")
-            .then(user => fetchProfile(user.id))
-            .then(profile => showDashboard(profile))
-            .catch(err => console.error("❌", err.message))
-            .finally(() => console.log("Done"));
+    //     loginUser("shivendra", "1234")
+    //         .then(user => fetchProfile(user.id))
+    //         .then(profile => showDashboard(profile))
+    //         .catch(err => console.error("❌", err.message))
+    //         .finally(() => console.log("Done"));
 
         // Promise.resolve(), .reject()
 
@@ -244,14 +244,88 @@
             }
         }
 
-        fetchUserData(true)
-        .then(data => console.log("User:", data.name)) // User: Shivendra
-        .catch(err => console.error("Error:", err)); // won't execute
+        // fetchUserData(true)
+        // .then(data => console.log("User:", data.name)) // User: Shivendra
+        // .catch(err => console.error("Error:", err)); // won't execute
 
-        fetchUserData(false)
-        .then(data => console.log("User:", data.name)) // won't execute
-        .catch(err => console.error("Error:", err.message)); // Error: User not
+        // fetchUserData(false)
+        // .then(data => console.log("User:", data.name)) // won't execute
+        // .catch(err => console.error("Error:", err.message)); // Error: User not
+
+        // Promise.all, .allSettled, .race, .any
+
+        const P1 = new Promise((resolve, reject) => {
+            setTimeout(()=> resolve("P1 resolved"), 3000);
+        });
+
+        const P2 = new Promise((resolve, reject) => {
+            setTimeout(()=> resolve("P2 resolved"), 1000);
+        });
+
+        const P3 = new Promise((resolve, reject) => {
+            setTimeout(()=> resolve("P3 resolved"), 2000);
+        });
+
+        //Promise.all()
+        Promise.all([P1, P2, P3]) // Either all resolved or 1st failed
+        .then(result => console.log(result)) // ["P1 resolved", "P2 resolved", "P3 resolved"]
+        .catch(err => console.log(err.message));
+
+        const P4 = new Promise((resolve, reject) => {
+            setTimeout(()=> resolve("P4 resolved"), 3000);
+        });
+
+        const P5 = new Promise((resolve, reject) => {
+            setTimeout(()=> reject("P5 rejected"), 1000);
+        });
+
+        const P6 = new Promise((resolve, reject) => {
+            setTimeout(()=> resolve("P6 resolved"), 2000);
+        });
         
+        // Promise.allSettled
+        Promise.allSettled([P4, P5, P6]) // All Settled
+        .then(result => console.log(result)) // An array of objects having "status", "value/reason".
+        // [
+        //   { status: 'fulfilled', value: 'P4 resolved' },
+        //   { status: 'rejected', reason: 'P5 rejected' },
+        //   { status: 'fulfilled', value: 'P6 resolved' }
+        // ]
+
+        const P7 = new Promise((resolve, reject) => {
+            setTimeout(()=> resolve("P7 resolved"), 3000);
+        });
+
+        const P8 = new Promise((resolve, reject) => {
+            setTimeout(()=> reject("P8 rejected"), 1000);
+        });
+
+        const P9 = new Promise((resolve, reject) => {
+            setTimeout(()=> resolve("P9 resolved"), 2000);
+        });
+        
+        // Promise.race
+        Promise.race([P7, P8, P9]) // First settled
+        .then(result => console.log(result)) 
+        .catch(err => console.log(err.message)); // P8 rejected
+
+        const P10 = new Promise((resolve, reject) => {
+            setTimeout(()=> resolve("P10 resolved"), 3000);
+        });
+
+        const P11 = new Promise((resolve, reject) => {
+            setTimeout(()=> reject("P8 rejected"), 1000);
+        });
+
+        const P13 = new Promise((resolve, reject) => {
+            setTimeout(()=> resolve("P13 resolved"), 2000);
+        });
+        
+        // Promise.any
+        Promise.any([P10, P11, P13]) // First resolved
+        .then(result => console.log(result)) // P13 resolved
+        .catch(err => console.log(err.message)); // run only if all reject
+
     </script>
 </body>
 </html>
