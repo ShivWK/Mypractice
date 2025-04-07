@@ -326,6 +326,47 @@
         .then(result => console.log(result)) // P13 resolved
         .catch(err => console.log(err.message)); // run only if all reject
 
+        //Async / Await
+
+        async function functionName() {
+            const result = await someAsyncTask();
+            console.log(result);
+        }
+
+        function fetchData() {
+            return new Promise(resolve => {
+                setTimeout(() => resolve("Data received"), 2000);
+            });
+        }
+
+        async function getData() {
+            console.log("Fetching...");
+            const data = await fetchData(); // pauses here
+            console.log(data); // "Data received"
+        }
+
+        getData();
+
+        //Promise hell 
+        loginUser("shivendra")
+            .then(user => fetchProfile(user))
+            .then(profile => fetchDashboard(profile))
+            .then(dashboard => showDashboard(dashboard))
+            .catch(err => console.log("Error:", err));
+
+
+            async function handleDashboard() {
+                try {
+                    const user = await loginUser("shivendra");
+                    const profile = await fetchProfile(user);
+                    const dashboard = await fetchDashboard(profile);
+                    showDashboard(dashboard);
+                } catch (err) {
+                    console.log("Error:", err);
+                }
+            }
+
+
     </script>
 </body>
 </html>
