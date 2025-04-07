@@ -366,6 +366,22 @@
                 }
             }
 
+        // Error  handling 
+
+        async function fetchUserData() {
+            try {
+                console.log("Fetching user data...");
+                const response = await fetch("https://dummyjson.com/carts");
+                const data = await response.json();
+                console.log("✅ User Data:", data);
+            } catch (error) {
+                console.log("Error fetching user data:", error.message);
+            } finally {
+                console.log("Cleanup: Closing connection or hiding loader.");
+            }
+        }
+
+        fetchUserData();
 
     </script>
 </body>
