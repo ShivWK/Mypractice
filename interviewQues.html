@@ -7,92 +7,92 @@
 </head>
 <body>
     <h1>Front-End Interview Questions Practice</h1>
-    <script>
+    <script type="module">
 
     //Object.create() Method
 
-        let obj1 = {
-            name : "Shivendra",
-            age: 26,
-            address: "91/741"
-        }
+        // let obj1 = {
+        //     name : "Shivendra",
+        //     age: 26,
+        //     address: "91/741"
+        // }
 
-        let obj2 = {
-            type: {
-                value: "Human"
-            },
-            race: {
-                value: "fair"
-            },
-            show : {
-                hi : "Helllo"
-            }
-        }
+        // let obj2 = {
+        //     type: {
+        //         value: "Human"
+        //     },
+        //     race: {
+        //         value: "fair"
+        //     },
+        //     show : {
+        //         hi : "Helllo"
+        //     }
+        // }
 
-        let obj3 = Object.create(obj1, obj2);
+        // let obj3 = Object.create(obj1, obj2);
         // console.log(obj3)
         // console.log(obj3.__proto__);
 
     // Freezing an object having nested object
 
-        let obj = {
-            name : "Shivendra",
-            address: {
-                streat: "Triveni Nagar",
-            }
-        }
+        // let obj = {
+        //     name : "Shivendra",
+        //     address: {
+        //         streat: "Triveni Nagar",
+        //     }
+        // }
 
-        Object.freeze(obj);
+        // Object.freeze(obj);
 
         // console.log(obj.address.streat = "Fetehpur");
         // console.log(obj.address.streat); // "Fetehpur" (Nested not freezed)
 
-        function freezeIt(val) {
-            Object.keys(val).forEach(element => {
-                if (typeof val[element] === 'object') {
-                    Object.freeze(val[element]);
-                }
-            });
+        // function freezeIt(val) {
+        //     Object.keys(val).forEach(element => {
+        //         if (typeof val[element] === 'object') {
+        //             Object.freeze(val[element]);
+        //         }
+        //     });
 
-            Object.freeze(val);
-        }
+        //     Object.freeze(val);
+        // }
 
-        freezeIt(obj);
-        obj.address.streat = "Fetehpur";
+        // freezeIt(obj);
+        // obj.address.streat = "Fetehpur";
         // console.log(obj.address.streat);
 
-        obj.name = "Ritik";
+        // obj.name = "Ritik";
         // console.log(obj.name);
 
 // Show callback  hell and how promises prevents it
 
-        function getUser(UserId, callback) {
-            setTimeout(()=> {
-                //User fetched
-                console.log("User fetched");
-                callback({id : UserId, name: "Shivendra"});
-            }, 1000)
-        }
+        // function getUser(UserId, callback) {
+        //     setTimeout(()=> {
+        //         //User fetched
+        //         console.log("User fetched");
+        //         callback({id : UserId, name: "Shivendra"});
+        //     }, 1000)
+        // }
 
         //We need to show the posts of the user
 
-        function getPost(userId, callback) {
-            setTimeout(()=> {
-                //Post fetching
-                console.log("Posts fetched");
-                callback([1, 2, 3]);
-            }, 1000)
-        }
+        // function getPost(userId, callback) {
+        //     setTimeout(()=> {
+        //         //Post fetching
+        //         console.log("Posts fetched");
+        //         callback([1, 2, 3]);
+        //     }, 1000)
+        // }
 
-        //We need to show the commments on those posts
+        // //We need to show the commments on those posts
 
-        function getComments(postId, callback) {
-            setTimeout(()=> {
-                //Fetching the comments
-                console.log("Comments fetched")
-                callback({commentId: 1, text : "very nice!"});
-            }, 1000)
-        }
+        // function getComments(postId, callback) {
+        //     setTimeout(()=> {
+        //         //Fetching the comments
+        //         console.log("Comments fetched")
+        //         callback({commentId: 1, text : "very nice!"});
+        //     }, 1000)
+        // }
 
         // Use
         // getUser(1, (user) => {
@@ -236,13 +236,13 @@
 
         // Promise.resolve(), .reject()
 
-        function fetchUserData(success) {
-            if (success) {
-                return Promise.resolve({ name: "Shivendra" });
-            } else {
-                return Promise.reject(new Error("User not found"));
-            }
-        }
+        // function fetchUserData(success) {
+        //     if (success) {
+        //         return Promise.resolve({ name: "Shivendra" });
+        //     } else {
+        //         return Promise.reject(new Error("User not found"));
+        //     }
+        // }
 
         // fetchUserData(true)
         // .then(data => console.log("User:", data.name)) // User: Shivendra
@@ -254,134 +254,165 @@
 
         // Promise.all, .allSettled, .race, .any
 
-        const P1 = new Promise((resolve, reject) => {
-            setTimeout(()=> resolve("P1 resolved"), 3000);
-        });
+        // const P1 = new Promise((resolve, reject) => {
+        //     setTimeout(()=> resolve("P1 resolved"), 3000);
+        // });
 
-        const P2 = new Promise((resolve, reject) => {
-            setTimeout(()=> resolve("P2 resolved"), 1000);
-        });
+        // const P2 = new Promise((resolve, reject) => {
+        //     setTimeout(()=> resolve("P2 resolved"), 1000);
+        // });
 
-        const P3 = new Promise((resolve, reject) => {
-            setTimeout(()=> resolve("P3 resolved"), 2000);
-        });
+        // const P3 = new Promise((resolve, reject) => {
+        //     setTimeout(()=> resolve("P3 resolved"), 2000);
+        // });
 
         //Promise.all()
-        Promise.all([P1, P2, P3]) // Either all resolved or 1st failed
-        .then(result => console.log(result)) // ["P1 resolved", "P2 resolved", "P3 resolved"]
-        .catch(err => console.log(err.message));
+        // Promise.all([P1, P2, P3]) // Either all resolved or 1st failed
+        // .then(result => console.log(result)) // ["P1 resolved", "P2 resolved", "P3 resolved"]
+        // .catch(err => console.log(err.message));
 
-        const P4 = new Promise((resolve, reject) => {
-            setTimeout(()=> resolve("P4 resolved"), 3000);
-        });
+        // const P4 = new Promise((resolve, reject) => {
+        //     setTimeout(()=> resolve("P4 resolved"), 3000);
+        // });
 
-        const P5 = new Promise((resolve, reject) => {
-            setTimeout(()=> reject("P5 rejected"), 1000);
-        });
+        // const P5 = new Promise((resolve, reject) => {
+        //     setTimeout(()=> reject("P5 rejected"), 1000);
+        // });
 
-        const P6 = new Promise((resolve, reject) => {
-            setTimeout(()=> resolve("P6 resolved"), 2000);
-        });
+        // const P6 = new Promise((resolve, reject) => {
+        //     setTimeout(()=> resolve("P6 resolved"), 2000);
+        // });
         
         // Promise.allSettled
-        Promise.allSettled([P4, P5, P6]) // All Settled
-        .then(result => console.log(result)) // An array of objects having "status", "value/reason".
+        // Promise.allSettled([P4, P5, P6]) // All Settled
+        // .then(result => console.log(result)) // An array of objects having "status", "value/reason".
         // [
         //   { status: 'fulfilled', value: 'P4 resolved' },
         //   { status: 'rejected', reason: 'P5 rejected' },
         //   { status: 'fulfilled', value: 'P6 resolved' }
         // ]
 
-        const P7 = new Promise((resolve, reject) => {
-            setTimeout(()=> resolve("P7 resolved"), 3000);
-        });
+        // const P7 = new Promise((resolve, reject) => {
+        //     setTimeout(()=> resolve("P7 resolved"), 3000);
+        // });
 
-        const P8 = new Promise((resolve, reject) => {
-            setTimeout(()=> reject("P8 rejected"), 1000);
-        });
+        // const P8 = new Promise((resolve, reject) => {
+        //     setTimeout(()=> reject("P8 rejected"), 1000);
+        // });
 
-        const P9 = new Promise((resolve, reject) => {
-            setTimeout(()=> resolve("P9 resolved"), 2000);
-        });
+        // const P9 = new Promise((resolve, reject) => {
+        //     setTimeout(()=> resolve("P9 resolved"), 2000);
+        // });
         
         // Promise.race
-        Promise.race([P7, P8, P9]) // First settled
-        .then(result => console.log(result)) 
-        .catch(err => console.log(err.message)); // P8 rejected
+        // Promise.race([P7, P8, P9]) // First settled
+        // .then(result => console.log(result)) 
+        // .catch(err => console.log(err.message)); // P8 rejected
 
-        const P10 = new Promise((resolve, reject) => {
-            setTimeout(()=> resolve("P10 resolved"), 3000);
-        });
+        // const P10 = new Promise((resolve, reject) => {
+        //     setTimeout(()=> resolve("P10 resolved"), 3000);
+        // });
 
-        const P11 = new Promise((resolve, reject) => {
-            setTimeout(()=> reject("P8 rejected"), 1000);
-        });
+        // const P11 = new Promise((resolve, reject) => {
+        //     setTimeout(()=> reject("P8 rejected"), 1000);
+        // });
 
-        const P13 = new Promise((resolve, reject) => {
-            setTimeout(()=> resolve("P13 resolved"), 2000);
-        });
+        // const P13 = new Promise((resolve, reject) => {
+        //     setTimeout(()=> resolve("P13 resolved"), 2000);
+        // });
         
         // Promise.any
-        Promise.any([P10, P11, P13]) // First resolved
-        .then(result => console.log(result)) // P13 resolved
-        .catch(err => console.log(err.message)); // run only if all reject
+        // Promise.any([P10, P11, P13]) // First resolved
+        // .then(result => console.log(result)) // P13 resolved
+        // .catch(err => console.log(err.message)); // run only if all reject
 
         //Async / Await
 
-        async function functionName() {
-            const result = await someAsyncTask();
-            console.log(result);
-        }
+        // async function functionName() {
+        //     const result = await someAsyncTask();
+        //     console.log(result);
+        // }
 
-        function fetchData() {
-            return new Promise(resolve => {
-                setTimeout(() => resolve("Data received"), 2000);
-            });
-        }
+        // function fetchData() {
+        //     return new Promise(resolve => {
+        //         setTimeout(() => resolve("Data received"), 2000);
+        //     });
+        // }
 
-        async function getData() {
-            console.log("Fetching...");
-            const data = await fetchData(); // pauses here
-            console.log(data); // "Data received"
-        }
+        // async function getData() {
+        //     console.log("Fetching...");
+        //     const data = await fetchData(); // pauses here
+        //     console.log(data); // "Data received"
+        // }
 
-        getData();
+        // getData();
 
         //Promise hell 
-        loginUser("shivendra")
-            .then(user => fetchProfile(user))
-            .then(profile => fetchDashboard(profile))
-            .then(dashboard => showDashboard(dashboard))
-            .catch(err => console.log("Error:", err));
+        // loginUser("shivendra")
+        //     .then(user => fetchProfile(user))
+        //     .then(profile => fetchDashboard(profile))
+        //     .then(dashboard => showDashboard(dashboard))
+        //     .catch(err => console.log("Error:", err));
 
 
-            async function handleDashboard() {
-                try {
-                    const user = await loginUser("shivendra");
-                    const profile = await fetchProfile(user);
-                    const dashboard = await fetchDashboard(profile);
-                    showDashboard(dashboard);
-                } catch (err) {
-                    console.log("Error:", err);
-                }
-            }
+        //     async function handleDashboard() {
+        //         try {
+        //             const user = await loginUser("shivendra");
+        //             const profile = await fetchProfile(user);
+        //             const dashboard = await fetchDashboard(profile);
+        //             showDashboard(dashboard);
+        //         } catch (err) {
+        //             console.log("Error:", err);
+        //         }
+        //     }
 
         // Error  handling 
 
-        async function fetchUserData() {
-            try {
-                console.log("Fetching user data...");
-                const response = await fetch("https://dummyjson.com/carts");
-                const data = await response.json();
-                console.log("✅ User Data:", data);
-            } catch (error) {
-                console.log("Error fetching user data:", error.message);
-            } finally {
-                console.log("Cleanup: Closing connection or hiding loader.");
-            }
+        // async function fetchUserData() {
+        //     try {
+        //         console.log("Fetching user data...");
+        //         const response = await fetch("https://dummyjson.com/carts");
+        //         const data = await response.json();
+        //         console.log("✅ User Data:", data);
+        //     } catch (error) {
+        //         console.log("Error fetching user data:", error.message);
+        //     } finally {
+        //         console.log("Cleanup: Closing connection or hiding loader.");
+        //     }
+        // }
+
+        // fetchUserData();
+
+        // multiple promise execution
+
+        const p1 = new Promise((resolve, reject) => {
+            setTimeout(()=> {
+                resolve("P1 Done")
+            }, 2000);
+        })
+
+        const p2 = new Promise((resolve, reject) => {
+            setTimeout(()=> {
+                resolve("P2 Done")
+            }, 3000);
+        })
+
+        async function multiplePromises() {
+            console.log("Before Promise 1");
+
+            const response1 = await p1;
+            console.log(response1);
+
+            console.log("Before Promise 2");
+            
+            const response2 = await p2;
+            console.log(response2);
+
+            console.log("End");
         }
 
-        fetchUserData();
+        multiplePromises();
+       
 
     </script>
 </body>
