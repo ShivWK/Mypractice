@@ -411,33 +411,39 @@
             console.log("End");
         }
 
-        multiplePromises();
+        // multiplePromises();
 
         // at top level
 
-        const resp = await p2;
-        console.log(resp)
+        // const resp = await p2;
+        // console.log(resp)
     
     // Middle catch() 
     
-    Promise.resolve("Step 1")
-        .then(res => {
-            console.log(res);
-            return "Step 2";
-        })
-        .catch(err => {
-            // Catches errors only from Step 1 or Step 2 (above)
-            console.log("Caught in middle:", err);
-        })
-        .then(res => {
-            throw new Error("Something went wrong in Step 3");
-        })
-        .catch(err => {
-            console.log("Final catch:", err.message);
-        });
+    // Promise.resolve("Step 1")
+    //     .then(res => {
+    //         console.log(res);
+    //         return "Step 2";
+    //     })
+    //     .catch(err => {
+    //         // Catches errors only from Step 1 or Step 2 (above)
+    //         console.log("Caught in middle:", err);
+    //     })
+    //     .then(res => {
+    //         throw new Error("Something went wrong in Step 3");
+    //     })
+    //     .catch(err => {
+    //         console.log("Final catch:", err.message);
+    //     });
 
- // This will throw an error
-// This one catches the error from Step 3
+// Random questions
+
+    var x = 1;
+      (function() {
+         console.log(x);
+         var x = 2
+    })()
+
     </script>
 </body>
 </html>
