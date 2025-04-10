@@ -619,9 +619,65 @@ count.reset = function() {
 
       ( { title1, width1, age1 } = obj10 );
 
-      console.log(title1);
-      console.log(width1);
-      console.log(age1);
+      // console.log(title1);
+      // console.log(width1);
+      // console.log(age1);
+
+//JSON methods
+
+      // console.log(JSON.stringify({a: "Shiv", age : 26}));
+      // console.log(JSON.stringify([1,2,3,4,5]));
+      // console.log(JSON.stringify(null));
+      // console.log(JSON.stringify(undefined));
+      // console.log(JSON.stringify(true));
+      // console.log(JSON.stringify('Shivendra'));
+   
+      let user = {
+         show() {
+            console.log("HI");
+         },
+         [Symbol("id")] : 123,
+         crime: undefined,
+         status: "Kuchh nahi"
+      }
+
+      // console.log(JSON.stringify(user));
+
+      let second = {
+         bro : 25
+      }
+
+      let first = {
+         name: "Shivendra",
+         age: 26,
+      }
+
+      first.bhai = second;
+      second.bhaiya = first;
+
+      // console.log(JSON.stringify(first)); // TypeError: Converting circular reference
+
+      let result = JSON.stringify(first, function(key, value) {
+         if (key !== "" && value === first) return undefined
+         return value;
+      })
+
+      console.log(result);
+      
+      let user2 = {
+         name : "Shivendra",
+         age : 26,
+         toJSON() {
+            return  "Kuchh nahi milega";
+         }
+       }
+
+       console.log(JSON.stringify(user2)); //"Kuchh nahi milega"
+
+       
+
+
+
 
 
 
