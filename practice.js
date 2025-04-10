@@ -678,9 +678,9 @@ count.reset = function() {
          today: new Date(),
       }
 
-      console.log(JSON.stringify(date)); // date is string and resolved
+      // console.log(JSON.stringify(date)); // date is string and resolved
       
-      console.log(JSON.parse(JSON.stringify(date))) // converted double qouted to single qouted
+      // console.log(JSON.parse(JSON.stringify(date))) // converted double qouted to single qouted
       
       // console.log(JSON.parse(JSON.stringify(date)).today.getDate()) //TypeError
 
@@ -691,19 +691,24 @@ count.reset = function() {
       // console.log(JSON.parse(undefined));
       // console.log(JSON.parse(true));
       // console.log(JSON.parse('Shivendra'));
-      console.log(JSON.parse("[1]")); // works 
+      // console.log(JSON.parse("[1]")); // works 
 
       let result2 = JSON.parse(JSON.stringify(date), function(key, value) {
          if (key === "today") return new Date(value);
          return value;
       });
 
-      console.log(result2);
-      console.log(result2.today.getDate()) //worked
+      // console.log(result2);
+      // console.log(result2.today.getDate()) //worked
 
+// Rest param and spread syntax
 
-
-
+      let object1 = {
+         name : "Shivendra",
+         age: 26
+      }
+      console.log({...object1}) // Works on object spread
+      console.log([...object1]) // TypeError: needs and iterable for array spread so wont work
 
 
 
