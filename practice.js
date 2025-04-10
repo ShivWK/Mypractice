@@ -662,7 +662,7 @@ count.reset = function() {
          return value;
       })
 
-      console.log(result);
+      // console.log(result);
       
       let user2 = {
          name : "Shivendra",
@@ -670,13 +670,36 @@ count.reset = function() {
          toJSON() {
             return  "Kuchh nahi milega";
          }
-       }
+      }
 
-       console.log(JSON.stringify(user2)); //"Kuchh nahi milega"
+      // console.log(JSON.stringify(user2)); //"Kuchh nahi milega"
 
-       
+      let date = {
+         today: new Date(),
+      }
+
+      console.log(JSON.stringify(date)); // date is string and resolved
+      
+      console.log(JSON.parse(JSON.stringify(date))) // converted double qouted to single qouted
+      
+      // console.log(JSON.parse(JSON.stringify(date)).today.getDate()) //TypeError
 
 
+      // console.log(JSON.parse({a: "Shiv", age : 26}));
+      // console.log(JSON.parse([1,2,3,4,5]));
+      // console.log(JSON.parse(null));
+      // console.log(JSON.parse(undefined));
+      // console.log(JSON.parse(true));
+      // console.log(JSON.parse('Shivendra'));
+      console.log(JSON.parse("[1]")); // works 
+
+      let result2 = JSON.parse(JSON.stringify(date), function(key, value) {
+         if (key === "today") return new Date(value);
+         return value;
+      });
+
+      console.log(result2);
+      console.log(result2.today.getDate()) //worked
 
 
 
