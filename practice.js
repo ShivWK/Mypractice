@@ -707,8 +707,23 @@ count.reset = function() {
          name : "Shivendra",
          age: 26
       }
-      console.log({...object1}) // Works on object spread
-      console.log([...object1]) // TypeError: needs and iterable for array spread so wont work
+      // console.log({...object1}) // Works on object spread
+      // console.log([...object1]) // TypeError: needs and iterable for array spread so wont work
 
+      let object2 = {...object1}
 
+      // console.log(JSON.stringify(object1) === JSON.stringify(object2)) // true
+      // console.log(object1 === object2); // false
 
+// RegExp
+
+      let regex = new RegExp("^\\d", "gm");
+      let regex2 = /^\d/gm;
+
+      let str = "1st 5Hellow\n2nd Hi\n3rd Namestey";
+
+      // console.log(str.match(regex2));
+      // console.log(str.match(/^\d/gm))
+
+      let str2 = "1 \n2 \n3 ";
+      console.log(str2.match(/^\d\s$/gm))
