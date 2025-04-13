@@ -726,4 +726,18 @@ count.reset = function() {
       // console.log(str.match(/^\d/gm))
 
       let str2 = "1 \n2 \n3 ";
-      console.log(str2.match(/^\d\s$/gm))
+      // console.log(str2.match(/^\d\s$/gm));
+
+      let regex3 = new RegExp("\\d\\/\\d+", "g");
+      let str3 = "2/5 hi I'm Shivendra 5/10";
+      console.log(str3.match(regex3));
+
+      let regex4 = new RegExp("(\\d\\(\\))+", "g");
+      let str4 = "5() 6() 8()";
+      console.log(str4.match(regex4))
+
+      let regex5 = /\d\/\d+/g;
+      console.log(str3.match(regex3));
+
+      let regex6 = /(\d\(\))+/g;
+      console.log(str4.match(regex4));
