@@ -772,3 +772,12 @@ count.reset = function() {
       console.log('💖'.match(/\u{1F496}/));  // null
       console.log('💖'.match(/\u{1F496}/u));  // [ '💖' ]
 
+   // Classes
+
+      console.log("123abc".match(/\d/));   // ["1"]
+      console.log("123abc".match(/\D/));   // ["a"]
+      console.log("@_z".match(/\w/));      // ["_"]
+      console.log("123abc()".match(/\W/)); // ["("]
+      console.log(" a".match(/\s/));       // [" "]
+      console.log("abc".match(/\S/));      // ["a"]
+   
