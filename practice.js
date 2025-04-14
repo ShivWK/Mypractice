@@ -746,5 +746,29 @@ count.reset = function() {
       let str5 = "5() 6() 8()";
       // console.log(str5.match(regex7)) // [ '5()', '6()', '8()' ]
 
-  
+   // Carousel examples
+
+      // global flag (g)
+      console.log("123abc".match(/\d/)); // [ '1' ]
+      console.log("123abc".match(/\d/g)); // [ '1', '2', '3' ]
+
+      // ignore case flag (i)
+      console.log("Hello".match(/hello/)); // null
+      console.log("Hello".match(/hello/i)); // [ 'Hello' ]
+
+      // multiline flag (m)
+      console.log("first\nsecond".match(/^second/)); // null
+      console.log("first\nsecond".match(/^second/m)); // [ 'second' ]
+
+      // dotAll flag (s)
+      console.log("hello\nworld".match(/hello.world/)); // null
+      console.log("hello\nworld".match(/hello.world/s)); // [ 'hello\nworld' ]
+
+      // unicode flag (u)
+      console.log('💖'.match(/\u{1F496}/));  // null
+      console.log('💖'.match(/\u{1F496}/u));  // [ '💖' ]
+
+      // sticky flag (y)
+      console.log('💖'.match(/\u{1F496}/));  // null
+      console.log('💖'.match(/\u{1F496}/u));  // [ '💖' ]
 
