@@ -759,6 +759,8 @@ count.reset = function() {
       // multiline flag (m)
       console.log("first\nsecond".match(/^second/)); // null
       console.log("first\nsecond".match(/^second/m)); // [ 'second' ]
+      let str6 = "1 \n2 \n3 ";
+      console.log(str6.match(/^\d\s$/gm)); // [ '1 ', '2 ', '3 ' ]
 
       // dotAll flag (s)
       console.log("hello\nworld".match(/hello.world/)); // null
@@ -769,8 +771,8 @@ count.reset = function() {
       console.log('💖'.match(/\u{1F496}/u));  // [ '💖' ]
 
       // sticky flag (y)
-      console.log('💖'.match(/\u{1F496}/));  // null
-      console.log('💖'.match(/\u{1F496}/u));  // [ '💖' ]
+      console.log();  // null
+      console.log();  // 
 
    // Classes
 
@@ -781,3 +783,21 @@ count.reset = function() {
       console.log(" a".match(/\s/));       // [" "]
       console.log("abc".match(/\S/));      // ["a"]
    
+   // Random
+      let result1 = "";
+
+      switch(2) {
+         case 1: result1 += "1";
+         case 2: result1 += "2";
+         case 3: result1 += "3";
+         default : result1 += "d";
+      }
+
+      console.log(result1)
+
+   //  methods
+
+      console.log("abc123".match(/\d+/)) // [ '123' ];
+      console.log(123.match(/\d+/)) // error
+
+
