@@ -717,87 +717,101 @@ count.reset = function() {
 
 // RegExp
 
-      let regex = new RegExp("^\\d", "gm");
-      let regex2 = /^\d/gm;
+      // let regex = new RegExp("^\\d", "gm");
+      // let regex2 = /^\d/gm;
 
-      let str = "1st 5Hellow\n2nd Hi\n3rd Namestey";
+      // let str = "1st 5Hellow\n2nd Hi\n3rd Namestey";
 
-      // console.log(str.match(regex2));
-      // console.log(str.match(/^\d/gm))
+      // // console.log(str.match(regex2));
+      // // console.log(str.match(/^\d/gm))
 
-      let str2 = "1 \n2 \n3 ";
-      console.log(str2.match(/^\d\s$/gm));
+      // let str2 = "1 \n2 \n3 ";
+      // console.log(str2.match(/^\d\s$/gm));
 
-      let regex3 = new RegExp("\\d\\/\\d+", "g");
-      let str3 = "2/5 hi I'm Shivendra 5/10";
-      // console.log(str3.match(regex3));
+      // let regex3 = new RegExp("\\d\\/\\d+", "g");
+      // let str3 = "2/5 hi I'm Shivendra 5/10";
+      // // console.log(str3.match(regex3));
 
-      let regex4 = new RegExp("(\\d\\(\\))+", "g");
-      let str4 = "5() 6() 8()";
-      // console.log(str4.match(regex4))
+      // let regex4 = new RegExp("(\\d\\(\\))+", "g");
+      // let str4 = "5() 6() 8()";
+      // // console.log(str4.match(regex4))
 
-      let regex5 = /\d\/\d+/g;
-      // console.log(str3.match(regex3));
+      // let regex5 = /\d\/\d+/g;
+      // // console.log(str3.match(regex3));
 
-      let regex6 = /(\d\(\))+/g;
-      // console.log(str4.match(regex4));
+      // let regex6 = /(\d\(\))+/g;
+      // // console.log(str4.match(regex4));
 
-      let regex7 = /(\d\(\))+/g;
-      let str5 = "5() 6() 8()";
+      // let regex7 = /(\d\(\))+/g;
+      // let str5 = "5() 6() 8()";
       // console.log(str5.match(regex7)) // [ '5()', '6()', '8()' ]
 
    // Carousel examples
 
       // global flag (g)
-      console.log("123abc".match(/\d/)); // [ '1' ]
-      console.log("123abc".match(/\d/g)); // [ '1', '2', '3' ]
+      // console.log("123abc".match(/\d/)); // [ '1' ]
+      // console.log("123abc".match(/\d/g)); // [ '1', '2', '3' ]
 
-      // ignore case flag (i)
-      console.log("Hello".match(/hello/)); // null
-      console.log("Hello".match(/hello/i)); // [ 'Hello' ]
+      // // ignore case flag (i)
+      // console.log("Hello".match(/hello/)); // null
+      // console.log("Hello".match(/hello/i)); // [ 'Hello' ]
 
-      // multiline flag (m)
-      console.log("first\nsecond".match(/^second/)); // null
-      console.log("first\nsecond".match(/^second/m)); // [ 'second' ]
-      let str6 = "1 \n2 \n3 ";
-      console.log(str6.match(/^\d\s$/gm)); // [ '1 ', '2 ', '3 ' ]
+      // // multiline flag (m)
+      // console.log("first\nsecond".match(/^second/)); // null
+      // console.log("first\nsecond".match(/^second/m)); // [ 'second' ]
+      // let str6 = "1 \n2 \n3 ";
+      // console.log(str6.match(/^\d\s$/gm)); // [ '1 ', '2 ', '3 ' ]
 
-      // dotAll flag (s)
-      console.log("hello\nworld".match(/hello.world/)); // null
-      console.log("hello\nworld".match(/hello.world/s)); // [ 'hello\nworld' ]
+      // // dotAll flag (s)
+      // console.log("hello\nworld".match(/hello.world/)); // null
+      // console.log("hello\nworld".match(/hello.world/s)); // [ 'hello\nworld' ]
 
-      // unicode flag (u)
-      console.log('💖'.match(/\u{1F496}/));  // null
-      console.log('💖'.match(/\u{1F496}/u));  // [ '💖' ]
+      // // unicode flag (u)
+      // console.log('💖'.match(/\u{1F496}/));  // null
+      // console.log('💖'.match(/\u{1F496}/u));  // [ '💖' ]
 
-      // sticky flag (y)
-      console.log();  // null
-      console.log();  // 
+      // // sticky flag (y)
+      // console.log();  // null
+      // console.log();  // 
 
    // Classes
 
-      console.log("123abc".match(/\d/));   // ["1"]
-      console.log("123abc".match(/\D/));   // ["a"]
-      console.log("@_z".match(/\w/));      // ["_"]
-      console.log("123abc()".match(/\W/)); // ["("]
-      console.log(" a".match(/\s/));       // [" "]
-      console.log("abc".match(/\S/));      // ["a"]
+      // console.log("123abc".match(/\d/));   // ["1"]
+      // console.log("123abc".match(/\D/));   // ["a"]
+      // console.log("@_z".match(/\w/));      // ["_"]
+      // console.log("123abc()".match(/\W/)); // ["("]
+      // console.log(" a".match(/\s/));       // [" "]
+      // console.log("abc".match(/\S/));      // ["a"]
    
    // Random
-      let result1 = "";
+      // let result1 = "";
 
-      switch(2) {
-         case 1: result1 += "1";
-         case 2: result1 += "2";
-         case 3: result1 += "3";
-         default : result1 += "d";
-      }
+      // switch(2) {
+      //    case 1: result1 += "1";
+      //    case 2: result1 += "2";
+      //    case 3: result1 += "3";
+      //    default : result1 += "d";
+      // }
 
-      console.log(result1)
+      // console.log(result1)
 
    //  methods
 
-      console.log("abc123".match(/\d+/)) // [ '123' ];
-      console.log(123.match(/\d+/)) // error
+      // console.log("abc123".match(/\d+/)) // [ '123' ];
+      // console.log(123.match(/\d+/)) // error
+
+      let str = "let varName = 'hi'";
+      let regex = /\w+/y;
+
+      regex.lastIndex = 3;
+      let word = regex.exec(str);
+      console.log(word); // null
+      console.log(regex.lastIndex); // 0
+
+      regex.lastIndex = 4;
+      word = regex.exec(str);
+      console.log(word); // [ 'varName' ]
+      console.log(regex.lastIndex); // 11
 
 
+      lrt 
