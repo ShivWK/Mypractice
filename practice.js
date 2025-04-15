@@ -800,18 +800,38 @@ count.reset = function() {
       // console.log("abc123".match(/\d+/)) // [ '123' ];
       // console.log(123.match(/\d+/)) // error
 
-      let str = "let varName = 'hi'";
-      let regex = /\w+/y;
+      // let str = "let varName = 'hi'";
+      // let regex = /\w+/y;
 
-      regex.lastIndex = 3;
-      let word = regex.exec(str);
-      console.log(word); // null
-      console.log(regex.lastIndex); // 0
+      // regex.lastIndex = 3;
+      // let word = regex.exec(str);
+      // console.log(word); // null
+      // console.log(regex.lastIndex); // 0
 
-      regex.lastIndex = 4;
-      word = regex.exec(str);
-      console.log(word); // [ 'varName' ]
-      console.log(regex.lastIndex); // 11
+      // regex.lastIndex = 4;
+      // word = regex.exec(str);
+      // console.log(word); // [ 'varName' ]
+      // console.log(regex.lastIndex); // 11
+   
+      let str1 = "Shivendra123";
+      let str2 = "Hello123";
+      let regex = /^Hello\d+/g;
+
+      console.log(str1.match(regex)); // null
+      console.log(str2.match(regex)); // [ 'Hello123' ]
+
+      regex = /\d+$/;
+      str2 = "hello123B";
+
+      console.log(str1.match(regex)); // [ '123' ]
+      console.log(str2.match(regex)); // null
+
+      str2 = "Shivendra123D";
+      regex = /^\w+\d+$/;
+
+      console.log(str1.match(regex)); // [ 'Shivendra123' ]
+      console.log(str2.match(regex)); // null
+
+     
 
 
-      lrt 
