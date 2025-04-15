@@ -813,25 +813,28 @@ count.reset = function() {
       // console.log(word); // [ 'varName' ]
       // console.log(regex.lastIndex); // 11
    
-      let str1 = "Shivendra123";
-      let str2 = "Hello123";
-      let regex = /^Hello\d+/g;
+      // let str1 = "Shivendra123";
+      // let str2 = "Hello123";
+      // let regex = /^Hello\d+/g;
 
-      console.log(str1.match(regex)); // null
-      console.log(str2.match(regex)); // [ 'Hello123' ]
+      // console.log(str1.match(regex)); // null
+      // console.log(str2.match(regex)); // [ 'Hello123' ]
 
-      regex = /\d+$/;
-      str2 = "hello123B";
+      // regex = /\d+$/;
+      // str2 = "hello123B";
 
-      console.log(str1.match(regex)); // [ '123' ]
-      console.log(str2.match(regex)); // null
+      // console.log(str1.match(regex)); // [ '123' ]
+      // console.log(str2.match(regex)); // null
 
-      str2 = "Shivendra123D";
-      regex = /^\w+\d+$/;
+      // str2 = "Shivendra123D";
+      // regex = /^\w+\d+$/;
 
-      console.log(str1.match(regex)); // [ 'Shivendra123' ]
-      console.log(str2.match(regex)); // null
+      // console.log(str1.match(regex)); // [ 'Shivendra123' ]
+      // console.log(str2.match(regex)); // null
 
-     
+      const regex1 = /\./; 
+      console.log("a.b".match(regex1)); // Output: ['.']
 
-
+      const regex2 = new RegExp("\\.");  
+      console.log("a.b".match(regex2)); // Output: ['.']
+      
