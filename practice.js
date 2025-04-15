@@ -832,9 +832,31 @@ count.reset = function() {
       // console.log(str1.match(regex)); // [ 'Shivendra123' ]
       // console.log(str2.match(regex)); // null
 
-      const regex1 = /\./; 
-      console.log("a.b".match(regex1)); // Output: ['.']
+      // const regex1 = /\./; 
+      // console.log("a.b".match(regex1)); // Output: ['.']
 
-      const regex2 = new RegExp("\\.");  
-      console.log("a.b".match(regex2)); // Output: ['.']
+      // const regex2 = new RegExp("\\.");  
+      // console.log("a.b".match(regex2)); // Output: ['.']
+      
+   // sets and ranges
+
+   let str1 = "a1B";
+   let regex1 = /[abc]/g; 
+   console.log(str1.match(regex1)); // ['a']
+   
+   let str2 = "a1Bz";
+   let regex2 =  /[A-Za-z]/g; 
+   console.log(str2.match(regex2)); // ['a','B','z']
+
+      let str3 = "A1a$";
+      let regex3 = /[^A-Za-z]/g; 
+      console.log(str3.match(regex3)); // [ '1', '$' ]
+
+
+      let str = "1 + 2 - 3";
+      let regex = /[-()+.^]/g;
+      console.log(str.match(regex)); // [ '+', '-' ]
+
+// Regex Quantifiers
+
       
