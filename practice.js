@@ -859,24 +859,29 @@ count.reset = function() {
 
 // Regex Quantifiers
 
-      let str1 = "123-45-678";
-      let regex1 = /\d{3}/g;
-      console.log(str1.match(regex1)); // ['123', '678']
+      // let str1 = "123-45-678";
+      // let regex1 = /\d{3}/g;
+      // console.log(str1.match(regex1)); // ['123', '678']
 
-      let str2 = "1234 12 1";
-      let regex2 = /\d{2,4}/g;
-      console.log(str2.match(regex2)); // ['1234', '12']
+      // let str2 = "1234 12 1";
+      // let regex2 = /\d{2,4}/g;
+      // console.log(str2.match(regex2)); // ['1234', '12']
 
-      let str3 = "My phone: 99999";
-      let regex3 = /\d+/g;
-      console.log(str3.match(regex3)); // ['99999']
+      // let str3 = "My phone: 99999";
+      // let regex3 = /\d+/g;
+      // console.log(str3.match(regex3)); // ['99999']
 
-      let str4 = "g go goo gooo";
-      let regex4 = /go*/g;
-      console.log(str4.match(regex4)); // ['g', 'go', 'goo', 'gooo']
+      // let str4 = "g go goo gooo";
+      // let regex4 = /go*/g;
+      // console.log(str4.match(regex4)); // ['g', 'go', 'goo', 'gooo']
 
-      let str5 = "color colour";
-      let regex5 = /colou?r/g;
-      console.log(str5.match(regex5)); // ['color', 'colour']
+      // let str5 = "color colour";
+      // let regex5 = /colou?r/g;
+      // console.log(str5.match(regex5)); // ['color', 'colour']
 
-      
+// Regex word boundary
+
+      let str = "hi John, johnny is not john but johndoe is not either";
+      let regex = /\bjohn\b/gi;
+      console.log(str.match(regex)); // [ 'John', 'john' ]
+
