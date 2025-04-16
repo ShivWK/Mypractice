@@ -915,4 +915,14 @@ count.reset = function() {
       const result1 = str.replace(/JavaScript/, "React");
       console.log(result1); // I love React!
 
+// Alteration 
+
+      const str1 = "I love JavaScript";
+      const str2 = "I love React";
+      const regex = /JavaScript|React/g;
+
+      console.log(str1.match(regex)); // [ 'JavaScript' ]
+      console.log(str2.match(regex)); // [ 'React' ]
+
+// 
 
