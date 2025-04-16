@@ -840,23 +840,43 @@ count.reset = function() {
       
    // sets and ranges
 
-   let str1 = "a1B";
-   let regex1 = /[abc]/g; 
-   console.log(str1.match(regex1)); // ['a']
-   
-   let str2 = "a1Bz";
-   let regex2 =  /[A-Za-z]/g; 
-   console.log(str2.match(regex2)); // ['a','B','z']
+      // let str1 = "a1B";
+      // let regex1 = /[abc]/g; 
+      // console.log(str1.match(regex1)); // ['a']
+      
+      // let str2 = "a1Bz";
+      // let regex2 =  /[A-Za-z]/g; 
+      // console.log(str2.match(regex2)); // ['a','B','z']
 
-      let str3 = "A1a$";
-      let regex3 = /[^A-Za-z]/g; 
-      console.log(str3.match(regex3)); // [ '1', '$' ]
+      // let str3 = "A1a$";
+      // let regex3 = /[^A-Za-z]/g; 
+      // console.log(str3.match(regex3)); // [ '1', '$' ]
 
 
-      let str = "1 + 2 - 3";
-      let regex = /[-()+.^]/g;
-      console.log(str.match(regex)); // [ '+', '-' ]
+      // let str = "1 + 2 - 3";
+      // let regex = /[-()+.^]/g;
+      // console.log(str.match(regex)); // [ '+', '-' ]
 
 // Regex Quantifiers
+
+      let str1 = "123-45-678";
+      let regex1 = /\d{3}/g;
+      console.log(str1.match(regex1)); // ['123', '678']
+
+      let str2 = "1234 12 1";
+      let regex2 = /\d{2,4}/g;
+      console.log(str2.match(regex2)); // ['1234', '12']
+
+      let str3 = "My phone: 99999";
+      let regex3 = /\d+/g;
+      console.log(str3.match(regex3)); // ['99999']
+
+      let str4 = "g go goo gooo";
+      let regex4 = /go*/g;
+      console.log(str4.match(regex4)); // ['g', 'go', 'goo', 'gooo']
+
+      let str5 = "color colour";
+      let regex5 = /colou?r/g;
+      console.log(str5.match(regex5)); // ['color', 'colour']
 
       
