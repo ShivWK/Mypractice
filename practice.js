@@ -896,20 +896,23 @@ count.reset = function() {
       // console.log(str2.match(regex2)); // [ '"witch"', '"broom"' ]
 
 // test() preactice
-
       
-      console.log(/love/i.test(str)); // true
-      console.log(/Hi/i.test(str)); // false
+      // console.log(/love/i.test(str)); // true
+      // console.log(/Hi/i.test(str)); // false
 
-      let str = "I love Carousels";
-      let regex = /love/ig;
-      regex.lastIndex = 6;
-      console.log(regex.test(str)); // false
-      console.log(regex.lastIndex); // 0 
-      regex.lastIndex = 1;
-      console.log(regex.test(str)); // true
-      console.log(regex.lastIndex); // 6
+      // let str = "I love Carousels";
+      // let regex = /love/ig;
+      // regex.lastIndex = 6;
+      // console.log(regex.test(str)); // false
+      // console.log(regex.lastIndex); // 0 
+      // regex.lastIndex = 1;
+      // console.log(regex.test(str)); // true
+      // console.log(regex.lastIndex); // 6
 
-      
-      //(no match so 0)
+// replace intro
+
+      const str = "I love JavaScript!";
+      const result1 = str.replace(/JavaScript/, "React");
+      console.log(result1); // I love React!
+
 
