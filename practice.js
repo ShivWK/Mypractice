@@ -885,3 +885,12 @@ count.reset = function() {
       let regex = /\bjohn\b/gi;
       console.log(str.match(regex)); // [ 'John', 'john' ]
 
+// Greedy and Lazy Quantifiers
+
+      let str1 = 'a "witch" and her "broom" is one';
+      let regex1 = /".+"/g 
+      console.log(str1.match(regex1)); // [ '"witch" and her "broom"' ]
+
+      let str2 = 'a "witch" and her "broom" is one';
+      let regex2 = /".+?"/g 
+      console.log(str2.match(regex2)); // [ '"witch"', '"broom"' ]
