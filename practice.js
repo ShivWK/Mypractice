@@ -881,16 +881,35 @@ count.reset = function() {
 
 // Regex word boundary
 
-      let str = "hi John, johnny is not john but johndoe is not either";
-      let regex = /\bjohn\b/gi;
-      console.log(str.match(regex)); // [ 'John', 'john' ]
+      // let str = "hi John, johnny is not john but johndoe is not either";
+      // let regex = /\bjohn\b/gi;
+      // console.log(str.match(regex)); // [ 'John', 'john' ]
 
 // Greedy and Lazy Quantifiers
 
-      let str1 = 'a "witch" and her "broom" is one';
-      let regex1 = /".+"/g 
-      console.log(str1.match(regex1)); // [ '"witch" and her "broom"' ]
+      // let str1 = 'a "witch" and her "broom" is one';
+      // let regex1 = /".+"/g 
+      // console.log(str1.match(regex1)); // [ '"witch" and her "broom"' ]
 
-      let str2 = 'a "witch" and her "broom" is one';
-      let regex2 = /".+?"/g 
-      console.log(str2.match(regex2)); // [ '"witch"', '"broom"' ]
+      // let str2 = 'a "witch" and her "broom" is one';
+      // let regex2 = /".+?"/g 
+      // console.log(str2.match(regex2)); // [ '"witch"', '"broom"' ]
+
+// test() preactice
+
+      
+      console.log(/love/i.test(str)); // true
+      console.log(/Hi/i.test(str)); // false
+
+      let str = "I love Carousels";
+      let regex = /love/ig;
+      regex.lastIndex = 6;
+      console.log(regex.test(str)); // false
+      console.log(regex.lastIndex); // 0 
+      regex.lastIndex = 1;
+      console.log(regex.test(str)); // true
+      console.log(regex.lastIndex); // 6
+
+      
+      //(no match so 0)
+
