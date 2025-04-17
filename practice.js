@@ -657,10 +657,10 @@ count.reset = function() {
 
       // console.log(JSON.stringify(first)); // TypeError: Converting circular reference
 
-      let result = JSON.stringify(first, function(key, value) {
-         if (key !== "" && value === first) return undefined
-         return value;
-      })
+      // let result = JSON.stringify(first, function(key, value) {
+      //    if (key !== "" && value === first) return undefined
+      //    return value;
+      // })
 
       // console.log(result);
       
@@ -693,10 +693,10 @@ count.reset = function() {
       // console.log(JSON.parse('Shivendra'));
       // console.log(JSON.parse("[1]")); // works 
 
-      let result2 = JSON.parse(JSON.stringify(date), function(key, value) {
-         if (key === "today") return new Date(value);
-         return value;
-      });
+      // let result2 = JSON.parse(JSON.stringify(date), function(key, value) {
+      //    if (key === "today") return new Date(value);
+      //    return value;
+      // });
 
       // console.log(result2);
       // console.log(result2.today.getDate()) //worked
@@ -911,18 +911,67 @@ count.reset = function() {
 
 // replace intro
 
-      const str = "I love JavaScript!";
-      const result1 = str.replace(/JavaScript/, "React");
-      console.log(result1); // I love React!
+      // const str = "I love JavaScript!";
+      // const result1 = str.replace(/JavaScript/, "React");
+      // console.log(result1); // I love React!
 
 // Alteration 
 
-      const str1 = "I love JavaScript";
-      const str2 = "I love React";
-      const regex = /JavaScript|React/g;
+      // const str1 = "I love JavaScript";
+      // const str2 = "I love React";
+      // const regex = /JavaScript|React/g;
 
-      console.log(str1.match(regex)); // [ 'JavaScript' ]
-      console.log(str2.match(regex)); // [ 'React' ]
+      // console.log(str1.match(regex)); // [ 'JavaScript' ]
+      // console.log(str2.match(regex)); // [ 'React' ]
 
-// 
+// Capturing group
 
+      // const str = "My name is Shivendra";
+      // const regex = /name is (\w+)/;
+
+      // const result1 = str.match(regex);
+      // console.log(result1); // ['name is Shivendra', 'Shivendra', index: 3, ...]
+      // console.log(result1[0]); // "name is Shivendra" 
+      // console.log(result1[1]); // "Shivendra" 
+
+   // nested
+
+      // let str = '<span class="my">';
+      // let regex = /<(([a-z]+)\s*([^>]*))>/
+
+      // let result1 = str.match(regex);
+      // console.log(result1[0]); // <span class="my">
+      // console.log(result1[1]); // span class="my"
+      // console.log(result1[2]); // span
+      // console.log(result1[3]); // class="my"
+
+   // non capturing group
+
+      // let str = 'Gogogo John!';
+      // let regex = /(?:go)+\s*(\w+)/i;
+      // let result1 = str.match(regex);
+
+      // console.log(result1[0]); // Gogogo John
+      // console.log(result1[1]); // John
+      // console.log(result1.length); // 2
+
+   // naming
+
+   let str = 'Gogogo John!';
+   let regex = /(?<first>go)+\s*(?<second>\w+)/i;
+   let result1 = str.match(regex);
+
+   console.log(result1); // Gogogo John
+   console.log(result1.groups.first); // go
+   console.log(result1.groups.second); // John
+
+   let str2 = 'Gogogo John!';
+   let regex2 = /(?<first>go)+\s*(?<second>\w+)/ig;
+   let result2 = str2.matchAll(regex2);
+
+   for (let result of result2) {
+
+      let {first, second } = result.groups;
+      console.log(first); // go
+      console.log(second); // John
+   }
