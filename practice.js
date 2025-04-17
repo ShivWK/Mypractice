@@ -957,21 +957,32 @@ count.reset = function() {
 
    // naming
 
-   let str = 'Gogogo John!';
-   let regex = /(?<first>go)+\s*(?<second>\w+)/i;
-   let result1 = str.match(regex);
+      // let str = 'Gogogo John!';
+      // let regex = /(?<first>go)+\s*(?<second>\w+)/i;
+      // let result1 = str.match(regex);
 
-   console.log(result1); // Gogogo John
-   console.log(result1.groups.first); // go
-   console.log(result1.groups.second); // John
+      // console.log(result1); // Gogogo John
+      // console.log(result1.groups.first); // go
+      // console.log(result1.groups.second); // John
 
-   let str2 = 'Gogogo John!';
-   let regex2 = /(?<first>go)+\s*(?<second>\w+)/ig;
-   let result2 = str2.matchAll(regex2);
+      // let str2 = 'Gogogo John!';
+      // let regex2 = /(?<first>go)+\s*(?<second>\w+)/ig;
+      // let result2 = str2.matchAll(regex2);
 
-   for (let result of result2) {
+      // for (let result of result2) {
 
-      let {first, second } = result.groups;
-      console.log(first); // go
-      console.log(second); // John
-   }
+      //    let {first, second } = result.groups;
+      //    console.log(first); // go
+      //    console.log(second); // John
+      // }
+
+// Backreferencing
+
+   let str1 = "<b>bold</b>";
+
+   let regex1 = /<(\w+)>.*<\/\1>/g;
+   console.log(str1.match(regex1)); // [ '<b>bold</b>' ]
+
+   let str2 = "<i>italic</i>";
+   let regex2 = /<(?<tag>\w+)>.*<\/\k<tag>>/g;
+   console.log(str2.match(regex2)); // [ '<i>italic</i>' ]
