@@ -1005,18 +1005,46 @@ count.reset = function() {
    // let regex4 = /(?<!\$)\d+/;
    // console.log(str4.match(regex4)); // ['500']
 
- //group caturing too
+ // group caturing too
 
- let str1 = "hello123";
- let regex1 = /[a-z]+(?=(\d+))/;
- let match1 = str1.match(regex1);
- console.log(match1[0]); // "hello"
- console.log(match1[1]); // 123
- 
- let str2 = "ID#789";
- let regex2 = /(?<=(ID#))\d+/;
- let match2 = str2.match(regex2);
- console.log(match2[0]); // 789
- console.log(match2[1]); // "ID#"
-1
- 
+      //  let str1 = "hello123";
+      //  let regex1 = /[a-z]+(?=(\d+))/;
+      //  let match1 = str1.match(regex1);
+      //  console.log(match1[0]); // "hello"
+      //  console.log(match1[1]); // 123
+      
+      //  let str2 = "ID#789";
+      //  let regex2 = /(?<=(ID#))\d+/;
+      //  let match2 = str2.match(regex2);
+      //  console.log(match2[0]); // 789
+      //  console.log(match2[1]); // "ID#"
+
+// methods
+
+      // const str = "Name: John";
+      // const result = str.match(/Name: (\w+)/);
+      // console.log(result); // ['Name: John','John', index: 0, input: 'Name: John', groups: undefined]
+
+      // const str = "go go go!";
+      // console.log(str.match(/go/g)); // ["go", "go", "go"]
+      
+      // const str = "Name: John";
+      // const regex = /Name: (\w+)/g;
+
+      // for (const match of str.matchAll(regex)) {
+      // console.log(match);
+      // }
+      // [
+      //    'Name: John',
+      //    'John',
+      //    index: 0,
+      //    input: 'Name: John',
+      //    groups: undefined
+      //  ]
+
+      // console.log("apple, banana, mango".split(",")); // ["apple", "banana", "mango"]
+      // console.log("apple, banana, mango".split(/,\s*/)); // ["apple", "banana", "mango"]
+      // console.log("apple, banana, mango".split(/,\s*/, 2)); // ["apple", "banana"]
+
+      console.log("hello world".search(/world/)); // 6
+      console.log("hello world".search(/xyz/)); // -1
