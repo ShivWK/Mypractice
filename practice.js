@@ -978,11 +978,45 @@ count.reset = function() {
 
 // Backreferencing
 
-   let str1 = "<b>bold</b>";
+   // let str1 = "<b>bold</b>";
 
-   let regex1 = /<(\w+)>.*<\/\1>/g;
-   console.log(str1.match(regex1)); // [ '<b>bold</b>' ]
+   // let regex1 = /<(\w+)>.*<\/\1>/g;
+   // console.log(str1.match(regex1)); // [ '<b>bold</b>' ]
 
-   let str2 = "<i>italic</i>";
-   let regex2 = /<(?<tag>\w+)>.*<\/\k<tag>>/g;
-   console.log(str2.match(regex2)); // [ '<i>italic</i>' ]
+   // let str2 = "<i>italic</i>";
+   // let regex2 = /<(?<tag>\w+)>.*<\/\k<tag>>/g;
+   // console.log(str2.match(regex2)); // [ '<i>italic</i>' ]
+
+// LookArounds
+
+   // let str1 = "Apple123";
+   // let regex1 = /\w+(?=\d+)/;
+   // console.log(str1.match(regex1)); // ['Apple']
+
+   // let str2 = "ItemX";
+   // let regex2 = /\w+(?!\d)/;
+   // console.log(str2.match(regex2)); // ['ItemX']
+
+   // let str3 = "$500";
+   // let regex3 = /(?<=\$)\d+/;
+   // console.log(str3.match(regex3)); // ['500']
+
+   // let str4 = "USD500";
+   // let regex4 = /(?<!\$)\d+/;
+   // console.log(str4.match(regex4)); // ['500']
+
+ //group caturing too
+
+ let str1 = "hello123";
+ let regex1 = /[a-z]+(?=(\d+))/;
+ let match1 = str1.match(regex1);
+ console.log(match1[0]); // "hello"
+ console.log(match1[1]); // 123
+ 
+ let str2 = "ID#789";
+ let regex2 = /(?<=(ID#))\d+/;
+ let match2 = str2.match(regex2);
+ console.log(match2[0]); // 789
+ console.log(match2[1]); // "ID#"
+1
+ 
