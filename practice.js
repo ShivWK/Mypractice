@@ -1046,5 +1046,28 @@ count.reset = function() {
       // console.log("apple, banana, mango".split(/,\s*/)); // ["apple", "banana", "mango"]
       // console.log("apple, banana, mango".split(/,\s*/, 2)); // ["apple", "banana"]
 
-      console.log("hello world".search(/world/)); // 6
-      console.log("hello world".search(/xyz/)); // -1
+      // console.log("hello world".search(/world/)); // 6
+      // console.log("hello world".search(/xyz/)); // -1
+
+      console.log("I love coding".replace(/love/, "❤️ $& ❤️")); // "I ❤️ love ❤️ coding"
+      console.log("I love coding".replace(/love/, "[$`]")); // "I [I ] coding"
+      console.log("I love coding".replace(/love/, "[$']")); // "I [ coding] coding"
+      console.log("I love coding".replace(/love/, "$$LOVE")); // "I $LOVE coding"
+      console.log("Shivendra Dwivedi".replace(/(\w+) (\w+)/, "$2 $1")) // Dwivedi Shivendra
+      console.log("Shivendra Dwivedi".replace(/(?<first>\w+) (?<second>\w+)/, "$<second> $<first>")) 
+      // Dwivedi Shivendra
+
+      // const regex = /\d+/;
+      // const str = "ID: 101 and 202";
+      // console.log(regex.exec(str));
+      // [ '101', index: 4, input: 'ID: 101 and 202', groups: undefined ]
+
+      let str = "one1 two2";
+      let regex = /\d/g;
+      let match;
+
+      while ((match = regex.exec(str)) !== null) {
+         console.log(match[0]); // logs '1' then '2'
+      }
+
+
