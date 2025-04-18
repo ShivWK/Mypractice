@@ -1062,14 +1062,18 @@ count.reset = function() {
       // console.log(regex.exec(str));
       // [ '101', index: 4, input: 'ID: 101 and 202', groups: undefined ]
 
-      let str = "one1 two2";
-      let regex = /\d/g;
-      let match;
+      // let str = "one1 two2";
+      // let regex = /\d/g;
+      // let match;
 
-      while ((match = regex.exec(str)) !== null) {
-         console.log(match[0]); // logs '1' then '2'
-      }
+      // while ((match = regex.exec(str)) !== null) {
+      //    console.log(match[0]); // logs '1' then '2'
+      // }
 
-      // hi
+      let str1 = "I love JavaScript and JavaScript is the best programming language."
+      console.log(str1.replace("JavaScript", "Python"))
+      // I love Python and JavaScript is the best programming language.
 
-
+      let str2 = "I love JavaScript and JavaScript is the best programming language."
+      console.log(str2.replace(/JavaScript/g, "Python"))
+      // I love Python and Python is the best programming language.
