@@ -1070,4 +1070,6 @@ count.reset = function() {
          console.log(match[0]); // logs '1' then '2'
       }
 
+      // hi
+
 
