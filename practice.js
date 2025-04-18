@@ -1062,14 +1062,25 @@ count.reset = function() {
       // console.log(regex.exec(str));
       // [ '101', index: 4, input: 'ID: 101 and 202', groups: undefined ]
 
-      let str = "one1 two2";
-      let regex = /\d/g;
-      let match;
+      // let str = "one1 two2";
+      // let regex = /\d/g;
+      // let match;
 
-      while ((match = regex.exec(str)) !== null) {
-         console.log(match[0]); // logs '1' then '2'
-      }
+      // while ((match = regex.exec(str)) !== null) {
+      //    console.log(match[0]); // logs '1' then '2'
+      // }
 
-      // hi
+      let result1 = "hello 123 world".replace(/\d+/g, (match) => {
+            return `[${match}]`;
+      });
+      console.log(result1); // "hello [123] world"
+
+      let result2 ="John Smith".replace(/(\w+)\s(\w+)/, (match, first, last, offset, input) => {
+         console.log(match); // "John Smith"
+         console.log(first); // "John"
+         console.log(last);  // "Smith"
+         return `${last}, ${first}`;
+      });
+      console.log(result2) // "Smith, John"
 
 
