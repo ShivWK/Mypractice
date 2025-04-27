@@ -4169,6 +4169,20 @@
 
     // console.log(count); // 500000000067109000 
 
+    function nonBlocking() {
+      return new Promise((resolve,reject) => {
+        setTimeout(() => {
+          resolve("Done")
+        }, 3000)
+      })
+    }
+
+    nonBlocking().then((res) => {
+      console.log(res); // Done (after 3 seconds from execution)
+    })
+
+    console.log("hi there"); // Hi there
+
     </script>
   </body>
 </html>
