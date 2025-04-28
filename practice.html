@@ -4169,19 +4169,29 @@
 
     // console.log(count); // 500000000067109000 
 
-    function nonBlocking() {
-      return new Promise((resolve,reject) => {
-        setTimeout(() => {
-          resolve("Done")
-        }, 3000)
-      })
-    }
+    // function nonBlocking() {
+    //   return new Promise((resolve,reject) => {
+    //     setTimeout(() => {
+    //       resolve("Done")
+    //     }, 3000)
+    //   })
+    // }
 
-    nonBlocking().then((res) => {
-      console.log(res); // Done (after 3 seconds from execution)
-    })
+    // nonBlocking().then((res) => {
+    //   console.log(res); // Done (after 3 seconds from execution)
+    // })
 
-    console.log("hi there"); // Hi there
+    // console.log("hi there"); // Hi there
+    
+    setTimeout(() => {
+      console.log("setTimeout 1"); // setTimeout 1
+    }, 0);
+
+    setTimeout(() => {
+      console.log("setTimeout 2"); // setTimeout 2
+    }, 0);
+
+
 
     </script>
   </body>
