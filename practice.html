@@ -4183,13 +4183,25 @@
 
     // console.log("hi there"); // Hi there
     
-    setTimeout(() => {
-      console.log("setTimeout 1"); // setTimeout 1
-    }, 0);
+    // setTimeout(() => {
+    //   console.log("setTimeout 1"); // setTimeout 1
+    // }, 0);
+
+    // setTimeout(() => {
+    //   console.log("setTimeout 2"); // setTimeout 2
+    // }, 0);
+
+    console.log("Start");
 
     setTimeout(() => {
-      console.log("setTimeout 2"); // setTimeout 2
+      console.log("Timeout callback");
     }, 0);
+
+    Promise.resolve().then(() => {
+      console.log("Promise resolved");
+    });
+
+    console.log("End");
 
 
 
