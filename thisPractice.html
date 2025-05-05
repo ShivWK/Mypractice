@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>This Practice</title>
+</head>
+
+<body>
+    <button id="btn">click</button>
+    <script>
+        // "use strict"
+
+        // console.log(this); // window
+
+        // function test() {
+        //     console.log(this);
+        // }
+
+        // test(); // window
+
+        // var name = "Shivendra Outside";
+
+        // let obj = {
+        //     name : "Shivendra inside",
+        //     show: function() {
+        //         console.log(this.name) // Outside
+        //     }
+        // }
+        // obj.show();
+        // const button = document.getElementById("btn");
+
+        // btn.addEventListener("click", () => {
+        //     console.log(this); // window
+        // })
+
+        // console.log(this);
+
+        // let obj = {
+        //     name : "Shivendra",
+        //     show() {
+        //         console.log(this); 
+        //     }
+        // }
+
+        // obj.show(); // called on object obj
+
+        // function showThis() {
+        //     console.log(this);
+        // }
+
+        // showThis(); // calld as standalone
+
+        // const show = () => {
+        //     console.log(this); 
+        // }
+        // show(); // window
+
+        // var where = "Outside";
+        // const obj = {
+        //     where: "Inside",
+        //     show: () => {
+        //         console.log(this.where);
+        //     }
+        // }
+
+        // obj.show(); // Outside
+
+        // let obj1 = {
+        //     name1 : "Shivendra",
+        //     show() {
+        //         function inner() {
+        //             console.log(this.name1)
+        //         }
+        //         inner(); 
+        //     }
+        // }
+
+        // obj1.show(); // undefined
+
+        // let obj2 = {
+        //     name1 : "Shivendra",
+        //     show() {
+        //         let inner = () => {
+        //             console.log(this.name1)
+        //         }
+        //         inner(); 
+        //     }
+        // }
+
+        // obj2.show(); // Shivendra
+
+        function initCarousel() {
+
+            btn.addEventListener("click", () => {
+                console.log(this); // {name: "Outside"}
+            });
+        }
+        initCarousel.call({name: "Outside"});
+
+        
+
+
+    </script>
+</body>
+
+</html>
+
+// `this` = `initCarousel`'s `this` (lexical)
+// "My Carousel" (closure)
