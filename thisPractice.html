@@ -162,16 +162,24 @@
 
         // cover.call({ name : "From Outside"});
 
-        function greet(lang1, lang2) {
-            console.log(`${this.name} speaks ${lang1} and ${lang2}`);
+        // function greet(lang1, lang2) {
+        //     console.log(`${this.name} speaks ${lang1} and ${lang2}`);
+        // }
+
+        // const user = { name: "John" };
+        // const fixedGreet = greet.bind(user, "Hindi", "English"); 
+
+        // fixedGreet() // John speaks Hindi and English
+
+        function showName() {
+            console.log(this.name);
         }
 
-        const user = { name: "John" };
-        const fixedGreet = greet.bind(user, "Hindi", "English"); 
+        const user1 = { name: "Shivendra" };
+        const boundFn = showName.bind(user1);
 
-        fixedGreet() // John speaks Hindi and English
-
-        
+        const user2 = { name: "Other User" };
+        boundFn.call(user2); // Still logs Shivendra instead of Other User
 
     </script>
 </body>
