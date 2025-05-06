@@ -91,16 +91,45 @@
 
         // obj2.show(); // Shivendra
 
-        function initCarousel() {
+        // function initCarousel() {
 
-            btn.addEventListener("click", () => {
-                console.log(this); // {name: "Outside"}
-            });
+        //     btn.addEventListener("click", () => {
+        //         console.log(this); // {name: "Outside"}
+        //     });
+        // }
+        // initCarousel.call({name: "Outside"});
+
+        var where = "From outside the object";
+
+        let obj = {
+            where : "From inside the object",
+
+            show1() {
+                console.log(this.where);
+            },
         }
-        initCarousel.call({name: "Outside"});
 
-        
+        setTimeout(()=> { 
+            obj.show1(); // "From inside the object"
+        }, 1000); 
 
+        // let obj2 = {
+        //     name: "Shiv",
+        //     show() {
+        //         console.log(2,this);
+        //     }
+        // }
+
+        // let fn = obj2.show;
+        // fn();
+
+        // let obj3 = {
+        //     show: () => {
+        //         console.log(3,this)
+        //     }
+        // }
+
+        // obj3.show()
 
     </script>
 </body>
