@@ -1066,14 +1066,10 @@ count.reset = function() {
       // let regex = /\d/g;
       // let match;
 
-      // while ((match = regex.exec(str)) !== null) {
-      //    console.log(match[0]); // logs '1' then '2'
-      // }
+      while ((match = regex.exec(str)) !== null) {
+         console.log(match[0]); // logs '1' then '2'
+      }
 
-      let str1 = "I love JavaScript and JavaScript is the best programming language."
-      console.log(str1.replace("JavaScript", "Python"))
-      // I love Python and JavaScript is the best programming language.
+      // hi
 
-      let str2 = "I love JavaScript and JavaScript is the best programming language."
-      console.log(str2.replace(/JavaScript/g, "Python"))
-      // I love Python and Python is the best programming language.
+
