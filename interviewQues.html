@@ -479,61 +479,103 @@
     // const newArr2 = arr.filter(e => e%2 === 0).map(e => e**2);
     // console.log(newArr2);
 
-    const score = +prompt("Give your score");
+    // const score = +prompt("Give your score");
     
-    switch(true) {
-        case score >= 90: {
-            console.log("A");
-        }
-        break;
+    // switch(true) {
+    //     case score >= 90: {
+    //         console.log("A");
+    //     }
+    //     break;
 
-        case score >= 80 && score < 90: {
-            console.log("B");
-        }
-        break;
+    //     case score >= 80 && score < 90: {
+    //         console.log("B");
+    //     }
+    //     break;
 
-        case score >= 70 && score < 80: {
-            console.log("C");
-        }
-        break;
+    //     case score >= 70 && score < 80: {
+    //         console.log("C");
+    //     }
+    //     break;
 
-        case score >= 60 && score < 70: {
-            console.log("D");
-        }
-        break;
+    //     case score >= 60 && score < 70: {
+    //         console.log("D");
+    //     }
+    //     break;
 
-        default: {
-            console.log("Fail");
+    //     default: {
+    //         console.log("Fail");
+    //     }
+    // }
+
+    // switch(score) {
+    //     case 90: {
+    //         console.log("A");
+    //     }
+    //     break;
+
+    //     case 80: {
+    //         console.log("B");
+    //     }
+    //     break;
+
+    //     case 70:
+    //     case 60:
+    //     case 50: 
+    //     case 55: {
+    //         console.log("C");
+    //     }
+    //     break;
+
+    //     default: {
+    //         console.log("Fail");
+    //     }
+    // }
+
+    function checkAge(age) {
+        if (age > 18) {
+            return true;
+        } else {
+            return confirm("Did parents allow you?");
         }
     }
 
-    switch(score) {
-        case 90: {
-            console.log("A");
-        }
-        break;
-
-        case 80: {
-            console.log("B");
-        }
-        break;
-
-        case 70:
-        case 60:
-        case 50: 
-        case 55: {
-            console.log("C");
-        }
-        break;
-
-        default: {
-            console.log("Fail");
-        }
+    function checkAge2(age) {
+        return age > 18 ? true : confirm("Did parents allow you?");
     }
 
+    function checkAge3(age) {
+        return age > 18 || confirm("Did your parent allow you?");
+    }
 
-    
+    function pow(x, n) {
+        let y = x
 
+        for (let i = 1; i < n ; i++) {
+            y *= x;
+        }
+
+        return y;
+    }
+
+//    console.log( pow(2, 8))
+
+    function mutate() {
+        console.log(++mutate.count)
+    }
+
+    mutate.count= 0;
+
+    mutate.show = () => {
+        console.log("HiT")
+    }
+
+    mutate()
+    mutate()
+    mutate()
+
+    mutate.show()
+
+ 
     </script>
 </body>
 </html>
