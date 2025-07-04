@@ -385,31 +385,31 @@
 
         // multiple promise execution
 
-        const p1 = new Promise((resolve, reject) => {
-            setTimeout(()=> {
-                resolve("P1 Done")
-            }, 2000);
-        })
+        // const p1 = new Promise((resolve, reject) => {
+        //     setTimeout(()=> {
+        //         resolve("P1 Done")
+        //     }, 2000);
+        // })
 
-        const p2 = new Promise((resolve, reject) => {
-            setTimeout(()=> {
-                resolve("P2 Done")
-            }, 3000);
-        })
+        // const p2 = new Promise((resolve, reject) => {
+        //     setTimeout(()=> {
+        //         resolve("P2 Done")
+        //     }, 3000);
+        // })
 
-        async function multiplePromises() {
-            console.log("Before Promise 1");
+        // async function multiplePromises() {
+        //     console.log("Before Promise 1");
 
-            const response1 = await p1;
-            console.log(response1);
+        //     const response1 = await p1;
+        //     console.log(response1);
 
-            console.log("Before Promise 2");
+        //     console.log("Before Promise 2");
             
-            const response2 = await p2;
-            console.log(response2);
+        //     const response2 = await p2;
+        //     console.log(response2);
 
-            console.log("End");
-        }
+        //     console.log("End");
+        // }
 
         // multiplePromises();
 
@@ -438,11 +438,11 @@
 
 // Random questions
 
-        var x = 1;
-        (function() {
-            console.log(x);
-            var x = 2
-        })()
+    var x = 1;
+      (function() {
+         console.log(x);
+         var x = 2
+    })()
 
     </script>
 </body>
