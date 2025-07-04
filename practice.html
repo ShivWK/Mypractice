@@ -4225,15 +4225,43 @@
     //   // Microtask inside Macrotask
     // }, 0);
 
-    let x = 7;
-   function show(val = x) {
-      x = 5;
-      console.log(val);
-   }
+  //   let x = 7;
+  //  function show(val = x) {
+  //     x = 5;
+  //     console.log(val);
+  //  }
 
-   show();
+  //  show();
 
+  let id = Symbol("id");
+  let id2 = Symbol("id");
 
+  // console.log(id === id2); // false, because symbols are unique
+
+  // alert(id.description);
+
+  let user = {
+    [id]: "Shivendra",
+    [id2]: "Dwivedi",
+    [Symbol("age")]: 25,
+    name: "Shivendra Dwivedi",
+    age: 25,
+  }
+
+  for (let key in user) {
+    console.log(key, ":", user[key]);
+  }
+
+  const symbolKeys = Object.getOwnPropertySymbols(user);
+  const objKeys = Object.keys(user);
+
+  const allKeys = [...symbolKeys, ...objKeys]
+
+  for (let key of allKeys) {
+    console.log(key, ": ", user[key]);
+  }
+
+  console.log(user[id]);
 
     </script>
   </body>
