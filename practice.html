@@ -4233,35 +4233,65 @@
 
   //  show();
 
-  let id = Symbol("id");
-  let id2 = Symbol("id");
+  // let id = Symbol("id");
+  // let id2 = Symbol("id");
 
   // console.log(id === id2); // false, because symbols are unique
 
   // alert(id.description);
 
-  let user = {
-    [id]: "Shivendra",
-    [id2]: "Dwivedi",
-    [Symbol("age")]: 25,
-    name: "Shivendra Dwivedi",
-    age: 25,
+  // let user = {
+  //   [id]: "Shivendra",
+  //   [id2]: "Dwivedi",
+  //   [Symbol("age")]: 25,
+  //   name: "Shivendra Dwivedi",
+  //   age: 25,
+  // }
+
+  // for (let key in user) {
+  //   console.log(key, ":", user[key]);
+  // }
+
+  // const symbolKeys = Object.getOwnPropertySymbols(user);
+  // const objKeys = Object.keys(user);
+
+  // const allKeys = [...symbolKeys, ...objKeys]
+
+  // for (let key of allKeys) {
+  //   console.log(key, ": ", user[key]);
+  // }
+
+  // console.log(user[id]);
+
+  let cal = {
+    money: 1000,
+    name: "Shivendra",
+
+    [Symbol.toPrimitive](hint) {
+      if (hint === "string") {
+        return `Name: ${this.name}`;
+      } else if (hint === "number") {
+        return this.money;
+      } else {
+        return this;
+      }
+    },
+
+    toString() {
+      return this.name;
+    },
+
+    valueOf() {
+      return this.money;
+    }
   }
 
-  for (let key in user) {
-    console.log(key, ":", user[key]);
-  }
+  alert(cal);
+  console.log(cal + 100); // 1100 , as hint will def
+  console.log(String(cal)); // string
+  console.log(Number(cal)); // number
+  console.log("string" + cal); // default: 1st valueOf, then toString
 
-  const symbolKeys = Object.getOwnPropertySymbols(user);
-  const objKeys = Object.keys(user);
-
-  const allKeys = [...symbolKeys, ...objKeys]
-
-  for (let key of allKeys) {
-    console.log(key, ": ", user[key]);
-  }
-
-  console.log(user[id]);
 
     </script>
   </body>
