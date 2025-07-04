@@ -4191,17 +4191,47 @@
     //   console.log("setTimeout 2"); // setTimeout 2
     // }, 0);
 
-    console.log("Start");
+    // console.log("Start");
 
-    setTimeout(() => {
-      console.log("Timeout callback");
-    }, 0);
+    // setTimeout(() => {
+    //   console.log("Timeout callback");
+    // }, 0);
 
-    Promise.resolve().then(() => {
-      console.log("Promise resolved");
-    });
+    // Promise.resolve().then(() => {
+    //   console.log("Promise resolved");
+    // });
 
-    console.log("End");
+    // console.log("End");
+
+    // console.log('1'); // Sync
+
+    // setTimeout(() => {
+    //   console.log('2'); // Macrotask
+    // }, 0);
+
+    // Promise.resolve().then(() => {
+    //   console.log('3'); // Microtask
+    // });
+
+    // queueMicrotask(() => {
+    //   console.log('4'); // Microtask
+    // });
+
+    // console.log('5'); // Sync
+
+    // setTimeout(() => {
+    //   console.log('6'); // Macrotask
+    //   Promise.resolve().then(() => console.log('7')); 
+    //   // Microtask inside Macrotask
+    // }, 0);
+
+    let x = 7;
+   function show(val = x) {
+      x = 5;
+      console.log(val);
+   }
+
+   show();
 
 
 

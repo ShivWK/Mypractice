@@ -1,18 +1,13 @@
+"use strict"
 
+        let obj = {
+            name: "Shivendra",
+            show() {
+                console.log(this);
+            }
+        }
 
-let obj = {
-    name : "Shivendra",
-    show() {
-        console.log(this); 
-    }
-}
+        const fn = obj.show;
+        fn();
 
-obj.show(); // obj
-
-function showThis() {
-    console.log(this);
-}
-
-showThis(); // global object
-
-
+        setTimeout(obj.show, 0)
