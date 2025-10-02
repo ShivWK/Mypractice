@@ -1,15 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FE Interview Questions</title>
 </head>
+
 <body>
     <h1>Front-End Interview Questions Practice</h1>
+
+    <div
+        style="background-color: white; width: 100%; border-radius: 10px; overflow: hidden; font-family: Arial, Helvetica, sans-serif; margin-inline: auto;">
+        <div
+            style="background-color: #ff5200; display: flex; align-items: center; justify-content: center; padding-block: 0.1rem; width: 100%;">
+            <h1
+                style="color: white; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+                Your OTP code</h1>
+        </div>
+        <p>Your One-Time Password (OTP) to complete your signup is:</p>
+        <div
+            style="background-color: rgb(45, 236, 45); padding-block: 2px; padding-inline: 50px; width: fit-content; display: block; margin-inline: auto; border-radius: 15px;">
+            <p
+                style="font-size: x-large; font-weight: 500; color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; box-sizing: border-box;">
+                558882</p>
+        </div>
+        <p>Do not share this code with anyone. This code is valid for 5 minutes.</p>
+    </div>
+
     <script type="module">
 
-    //Object.create() Method
+        //Object.create() Method
 
         // let obj1 = {
         //     name : "Shivendra",
@@ -33,7 +54,7 @@
         // console.log(obj3)
         // console.log(obj3.__proto__);
 
-    // Freezing an object having nested object
+        // Freezing an object having nested object
 
         // let obj = {
         //     name : "Shivendra",
@@ -64,7 +85,7 @@
         // obj.name = "Ritik";
         // console.log(obj.name);
 
-// Show callback  hell and how promises prevents it
+        // Show callback  hell and how promises prevents it
 
         // function getUser(UserId, callback) {
         //     setTimeout(()=> {
@@ -105,7 +126,7 @@
         //     })
         // })
 
-    // Solution using promise
+        // Solution using promise
 
         // function getUser(UserId) {
         //     return new Promise((resolve, reject) => {
@@ -167,72 +188,72 @@
 
         // After this show them , how this can br refectored with async/await.
 
-    // carousel code examples
+        // carousel code examples
 
         // Resolving promise
-    //     let promise1 = new Promise(function(resolve, reject) {
-    //         setTimeout(() => resolve("Done"), 1000);
-    //     })
+        //     let promise1 = new Promise(function(resolve, reject) {
+        //         setTimeout(() => resolve("Done"), 1000);
+        //     })
 
-    //     // Rejecting promise
-    //     let promise2 = new Promise(function(resolve, reject) {
-    //         setTimeout(() => reject(new Error("Error occured")), 1000);
-    //     })
+        //     // Rejecting promise
+        //     let promise2 = new Promise(function(resolve, reject) {
+        //         setTimeout(() => reject(new Error("Error occured")), 1000);
+        //     })
 
-    //     // callback hell and solve by promises
+        //     // callback hell and solve by promises
 
-    //     // Callback hell
-    //     setTimeout(() => {
-    //         console.log("Task 1 done");
-    //         setTimeout(() => {
-    //             console.log("Task 2 done");
-    //             setTimeout(() => {
-    //                 console.log("Task 3 done");
-    //             }, 1000);
-    //         }, 1000);
-    //     }, 1000);
+        //     // Callback hell
+        //     setTimeout(() => {
+        //         console.log("Task 1 done");
+        //         setTimeout(() => {
+        //             console.log("Task 2 done");
+        //             setTimeout(() => {
+        //                 console.log("Task 3 done");
+        //             }, 1000);
+        //         }, 1000);
+        //     }, 1000);
 
 
-    //    // Promise-based solution to avoid callback hell
-    //     function asyncTask(msg, delay) {
-    //         return new Promise((resolve) => {
-    //             setTimeout(() => {
-    //                 console.log(msg);
-    //                 resolve();
-    //             }, delay);
-    //         });
-    //     }
+        //    // Promise-based solution to avoid callback hell
+        //     function asyncTask(msg, delay) {
+        //         return new Promise((resolve) => {
+        //             setTimeout(() => {
+        //                 console.log(msg);
+        //                 resolve();
+        //             }, delay);
+        //         });
+        //     }
 
-    //     asyncTask("Task 1 done", 1000)
-    //         .then(() => asyncTask("Task 2 done", 1000))
-    //         .then(() => asyncTask("Task 3 done", 1000));
+        //     asyncTask("Task 1 done", 1000)
+        //         .then(() => asyncTask("Task 2 done", 1000))
+        //         .then(() => asyncTask("Task 3 done", 1000));
 
-    //     // Promise.then()
+        //     // Promise.then()
 
-    //     promise.then(
-    //         result => console.log("Resolved:", result),
-    //         error => console.log("Rejected:", error) // optional
-    //     );
+        //     promise.then(
+        //         result => console.log("Resolved:", result),
+        //         error => console.log("Rejected:", error) // optional
+        //     );
 
-    //     //Promise.catch()
-    //     promise
-    //         .then(result => console.log("Resolved:", result))
-    //         .catch(error => console.error("Error:", error));
+        //     //Promise.catch()
+        //     promise
+        //         .then(result => console.log("Resolved:", result))
+        //         .catch(error => console.error("Error:", error));
 
-    //     //then.finally()
+        //     //then.finally()
 
-    //     promise
-    //         .then(res => console.log("Resolved:", res))
-    //         .catch(err => console.log("Rejected:", err))
-    //         .finally(() => console.log("Always runs"));
+        //     promise
+        //         .then(res => console.log("Resolved:", res))
+        //         .catch(err => console.log("Rejected:", err))
+        //         .finally(() => console.log("Always runs"));
 
-    //     // Promise Chaining
+        //     // Promise Chaining
 
-    //     loginUser("shivendra", "1234")
-    //         .then(user => fetchProfile(user.id))
-    //         .then(profile => showDashboard(profile))
-    //         .catch(err => console.error("❌", err.message))
-    //         .finally(() => console.log("Done"));
+        //     loginUser("shivendra", "1234")
+        //         .then(user => fetchProfile(user.id))
+        //         .then(profile => showDashboard(profile))
+        //         .catch(err => console.error("❌", err.message))
+        //         .finally(() => console.log("Done"));
 
         // Promise.resolve(), .reject()
 
@@ -282,7 +303,7 @@
         // const P6 = new Promise((resolve, reject) => {
         //     setTimeout(()=> resolve("P6 resolved"), 2000);
         // });
-        
+
         // Promise.allSettled
         // Promise.allSettled([P4, P5, P6]) // All Settled
         // .then(result => console.log(result)) // An array of objects having "status", "value/reason".
@@ -303,7 +324,7 @@
         // const P9 = new Promise((resolve, reject) => {
         //     setTimeout(()=> resolve("P9 resolved"), 2000);
         // });
-        
+
         // Promise.race
         // Promise.race([P7, P8, P9]) // First settled
         // .then(result => console.log(result)) 
@@ -320,7 +341,7 @@
         // const P13 = new Promise((resolve, reject) => {
         //     setTimeout(()=> resolve("P13 resolved"), 2000);
         // });
-        
+
         // Promise.any
         // Promise.any([P10, P11, P13]) // First resolved
         // .then(result => console.log(result)) // P13 resolved
@@ -404,7 +425,7 @@
         //     console.log(response1);
 
         //     console.log("Before Promise 2");
-            
+
         //     const response2 = await p2;
         //     console.log(response2);
 
@@ -417,165 +438,230 @@
 
         // const resp = await p2;
         // console.log(resp)
-    
-    // Middle catch() 
-    
-    // Promise.resolve("Step 1")
-    //     .then(res => {
-    //         console.log(res);
-    //         return "Step 2";
-    //     })
-    //     .catch(err => {
-    //         // Catches errors only from Step 1 or Step 2 (above)
-    //         console.log("Caught in middle:", err);
-    //     })
-    //     .then(res => {
-    //         throw new Error("Something went wrong in Step 3");
-    //     })
-    //     .catch(err => {
-    //         console.log("Final catch:", err.message);
-    //     });
 
-// Random questions
+        // Middle catch() 
 
-    // var x = 1;
-    //   (function() {
-    //      console.log(x);
-    //      var x = 2
-    // })()
+        // Promise.resolve("Step 1")
+        //     .then(res => {
+        //         console.log(res);
+        //         return "Step 2";
+        //     })
+        //     .catch(err => {
+        //         // Catches errors only from Step 1 or Step 2 (above)
+        //         console.log("Caught in middle:", err);
+        //     })
+        //     .then(res => {
+        //         throw new Error("Something went wrong in Step 3");
+        //     })
+        //     .catch(err => {
+        //         console.log("Final catch:", err.message);
+        //     });
 
-// 19/06/25
+        // Random questions
 
-    // localStorage.setItem("pass", "hello");
-    // console.log(typeof localStorage.getItem("pass"));
+        // var x = 1;
+        //   (function() {
+        //      console.log(x);
+        //      var x = 2
+        // })()
 
-    // const arr = [1,2,3,4,5];
+        // 19/06/25
 
-    // const newArr = (arr) => {
-    //     let newArr = [];
+        // localStorage.setItem("pass", "hello");
+        // console.log(typeof localStorage.getItem("pass"));
 
-    //     for (let ele of arr) {
-    //         if (ele % 2 === 0) {
-    //             newArr.push(ele**2);
-    //         }
-    //     }
+        // const arr = [1,2,3,4,5];
 
-    //     return newArr;
-    // }
+        // const newArr = (arr) => {
+        //     let newArr = [];
 
-    // console.log(newArr(arr));
+        //     for (let ele of arr) {
+        //         if (ele % 2 === 0) {
+        //             newArr.push(ele**2);
+        //         }
+        //     }
+
+        //     return newArr;
+        // }
+
+        // console.log(newArr(arr));
 
 
-    // const modArray = arr.reduce((acc, crr) => {
-    //         if (crr % 2 === 0) {
-    //             acc.push(crr**2);
-    //         }
+        // const modArray = arr.reduce((acc, crr) => {
+        //         if (crr % 2 === 0) {
+        //             acc.push(crr**2);
+        //         }
 
-    //         return acc;
-    // }, []);
+        //         return acc;
+        // }, []);
 
-    // console.log(modArray);
+        // console.log(modArray);
 
-    // const newArr2 = arr.filter(e => e%2 === 0).map(e => e**2);
-    // console.log(newArr2);
+        // const newArr2 = arr.filter(e => e%2 === 0).map(e => e**2);
+        // console.log(newArr2);
 
-    // const score = +prompt("Give your score");
-    
-    // switch(true) {
-    //     case score >= 90: {
-    //         console.log("A");
-    //     }
-    //     break;
+        // const score = +prompt("Give your score");
 
-    //     case score >= 80 && score < 90: {
-    //         console.log("B");
-    //     }
-    //     break;
+        // switch(true) {
+        //     case score >= 90: {
+        //         console.log("A");
+        //     }
+        //     break;
 
-    //     case score >= 70 && score < 80: {
-    //         console.log("C");
-    //     }
-    //     break;
+        //     case score >= 80 && score < 90: {
+        //         console.log("B");
+        //     }
+        //     break;
 
-    //     case score >= 60 && score < 70: {
-    //         console.log("D");
-    //     }
-    //     break;
+        //     case score >= 70 && score < 80: {
+        //         console.log("C");
+        //     }
+        //     break;
 
-    //     default: {
-    //         console.log("Fail");
-    //     }
-    // }
+        //     case score >= 60 && score < 70: {
+        //         console.log("D");
+        //     }
+        //     break;
 
-    // switch(score) {
-    //     case 90: {
-    //         console.log("A");
-    //     }
-    //     break;
+        //     default: {
+        //         console.log("Fail");
+        //     }
+        // }
 
-    //     case 80: {
-    //         console.log("B");
-    //     }
-    //     break;
+        // switch(score) {
+        //     case 90: {
+        //         console.log("A");
+        //     }
+        //     break;
 
-    //     case 70:
-    //     case 60:
-    //     case 50: 
-    //     case 55: {
-    //         console.log("C");
-    //     }
-    //     break;
+        //     case 80: {
+        //         console.log("B");
+        //     }
+        //     break;
 
-    //     default: {
-    //         console.log("Fail");
-    //     }
-    // }
+        //     case 70:
+        //     case 60:
+        //     case 50: 
+        //     case 55: {
+        //         console.log("C");
+        //     }
+        //     break;
 
-    function checkAge(age) {
-        if (age > 18) {
-            return true;
-        } else {
-            return confirm("Did parents allow you?");
+        //     default: {
+        //         console.log("Fail");
+        //     }
+        // }
+
+        //     function checkAge(age) {
+        //         if (age > 18) {
+        //             return true;
+        //         } else {
+        //             return confirm("Did parents allow you?");
+        //         }
+        //     }
+
+        //     function checkAge2(age) {
+        //         return age > 18 ? true : confirm("Did parents allow you?");
+        //     }
+
+        //     function checkAge3(age) {
+        //         return age > 18 || confirm("Did your parent allow you?");
+        //     }
+
+        //     function pow(x, n) {
+        //         let y = x
+
+        //         for (let i = 1; i < n ; i++) {
+        //             y *= x;
+        //         }
+
+        //         return y;
+        //     }
+
+        // //    console.log( pow(2, 8))
+
+        //     function mutate() {
+        //         console.log(++mutate.count)
+        //     }
+
+        //     mutate.count= 0;
+
+        //     mutate.show = () => {
+        //         console.log("HiT")
+        //     }
+
+        //     mutate()
+        //     mutate()
+        //     mutate()
+
+        //     mutate.show()
+
+        // (function() {
+        //     var a = b = 7;
+        //   })()
+        //   console.log(typeof b)
+
+        // Arrays
+
+        function ask() {
+            let arr = [];
+            let sum = 0;
+
+            while (true) {
+                let resp = +prompt("Give", "");
+                if (!resp) break;
+
+                arr.push(resp);
+            }
+
+            for (let val of arr) {
+                if (typeof val === "number" && !isNaN(val)) {
+                    sum += val;
+                }
+            }
+            console.log(arr)
+            return sum
         }
-    }
+        // console.log(ask());
 
-    function checkAge2(age) {
-        return age > 18 ? true : confirm("Did parents allow you?");
-    }
+        function capitalise(str) {
+            const arr = str.split("-");
+            let result = arr[0];
 
-    function checkAge3(age) {
-        return age > 18 || confirm("Did your parent allow you?");
-    }
+            for (let i = 1; i < arr.length; i++) {
+                const str = arr[i];
 
-    function pow(x, n) {
-        let y = x
+                const newStr = str[0].toUpperCase() + str.slice(1);
+                result += newStr;
+            }
 
-        for (let i = 1; i < n ; i++) {
-            y *= x;
+            return result;
         }
 
-        return y;
-    }
+        // console.log(capitalise("Hi-buddy-how-are-your"));
+        // do the same wit regex
 
-//    console.log( pow(2, 8))
+        function filterRangeInPlace(arr, a, b) {
+            let n = arr.length;
 
-    function mutate() {
-        console.log(++mutate.count)
-    }
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] <= a || arr[i] >= b) {
+                    arr.splice(i, 1);
+                    i--;
+                }
+            }
+        }
 
-    mutate.count= 0;
+        let arr = [2, 5, 9, 4, 3, 7, 8, 9, 6, 3, 10, 12, 14, 15, 18, 19, 20, 21];
+        // console.log("Before", arr);
 
-    mutate.show = () => {
-        console.log("HiT")
-    }
+        // filterRangeInPlace(arr, 10, 20);
+        // console.log("After", arr);
 
-    mutate()
-    mutate()
-    mutate()
+        const arr2 = arr.toSorted((a,b) => b - a);
+        console.log(arr2, arr)
 
-    mutate.show()
-
- 
     </script>
 </body>
+
 </html>
