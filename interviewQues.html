@@ -465,202 +465,128 @@
         //      var x = 2
         // })()
 
-        // 19/06/25
+// 19/06/25
 
-        // localStorage.setItem("pass", "hello");
-        // console.log(typeof localStorage.getItem("pass"));
+    // localStorage.setItem("pass", "hello");
+    // console.log(typeof localStorage.getItem("pass"));
 
-        // const arr = [1,2,3,4,5];
+    // const arr = [1,2,3,4,5];
 
-        // const newArr = (arr) => {
-        //     let newArr = [];
+    // const newArr = (arr) => {
+    //     let newArr = [];
 
-        //     for (let ele of arr) {
-        //         if (ele % 2 === 0) {
-        //             newArr.push(ele**2);
-        //         }
-        //     }
+    //     for (let ele of arr) {
+    //         if (ele % 2 === 0) {
+    //             newArr.push(ele**2);
+    //         }
+    //     }
 
-        //     return newArr;
-        // }
+    //     return newArr;
+    // }
 
-        // console.log(newArr(arr));
+    // console.log(newArr(arr));
 
 
-        // const modArray = arr.reduce((acc, crr) => {
-        //         if (crr % 2 === 0) {
-        //             acc.push(crr**2);
-        //         }
+    // const modArray = arr.reduce((acc, crr) => {
+    //         if (crr % 2 === 0) {
+    //             acc.push(crr**2);
+    //         }
 
-        //         return acc;
-        // }, []);
+    //         return acc;
+    // }, []);
 
-        // console.log(modArray);
+    // console.log(modArray);
 
-        // const newArr2 = arr.filter(e => e%2 === 0).map(e => e**2);
-        // console.log(newArr2);
+    // const newArr2 = arr.filter(e => e%2 === 0).map(e => e**2);
+    // console.log(newArr2);
 
-        // const score = +prompt("Give your score");
+    // const score = +prompt("Give your score");
+    
+    // switch(true) {
+    //     case score >= 90: {
+    //         console.log("A");
+    //     }
+    //     break;
 
-        // switch(true) {
-        //     case score >= 90: {
-        //         console.log("A");
-        //     }
-        //     break;
+    //     case score >= 80 && score < 90: {
+    //         console.log("B");
+    //     }
+    //     break;
 
-        //     case score >= 80 && score < 90: {
-        //         console.log("B");
-        //     }
-        //     break;
+    //     case score >= 70 && score < 80: {
+    //         console.log("C");
+    //     }
+    //     break;
 
-        //     case score >= 70 && score < 80: {
-        //         console.log("C");
-        //     }
-        //     break;
+    //     case score >= 60 && score < 70: {
+    //         console.log("D");
+    //     }
+    //     break;
 
-        //     case score >= 60 && score < 70: {
-        //         console.log("D");
-        //     }
-        //     break;
+    //     default: {
+    //         console.log("Fail");
+    //     }
+    // }
 
-        //     default: {
-        //         console.log("Fail");
-        //     }
-        // }
+    // switch(score) {
+    //     case 90: {
+    //         console.log("A");
+    //     }
+    //     break;
 
-        // switch(score) {
-        //     case 90: {
-        //         console.log("A");
-        //     }
-        //     break;
+    //     case 80: {
+    //         console.log("B");
+    //     }
+    //     break;
 
-        //     case 80: {
-        //         console.log("B");
-        //     }
-        //     break;
+    //     case 70:
+    //     case 60:
+    //     case 50: 
+    //     case 55: {
+    //         console.log("C");
+    //     }
+    //     break;
 
-        //     case 70:
-        //     case 60:
-        //     case 50: 
-        //     case 55: {
-        //         console.log("C");
-        //     }
-        //     break;
+    //     default: {
+    //         console.log("Fail");
+    //     }
+    // }
 
-        //     default: {
-        //         console.log("Fail");
-        //     }
-        // }
+// Arrays
+    // Que 6
+    function Calculator() {
+        this.myMap = new Map();
+        this.myMap.set("+", (a, b) => a + b);
 
-        //     function checkAge(age) {
-        //         if (age > 18) {
-        //             return true;
-        //         } else {
-        //             return confirm("Did parents allow you?");
-        //         }
-        //     }
-
-        //     function checkAge2(age) {
-        //         return age > 18 ? true : confirm("Did parents allow you?");
-        //     }
-
-        //     function checkAge3(age) {
-        //         return age > 18 || confirm("Did your parent allow you?");
-        //     }
-
-        //     function pow(x, n) {
-        //         let y = x
-
-        //         for (let i = 1; i < n ; i++) {
-        //             y *= x;
-        //         }
-
-        //         return y;
-        //     }
-
-        // //    console.log( pow(2, 8))
-
-        //     function mutate() {
-        //         console.log(++mutate.count)
-        //     }
-
-        //     mutate.count= 0;
-
-        //     mutate.show = () => {
-        //         console.log("HiT")
-        //     }
-
-        //     mutate()
-        //     mutate()
-        //     mutate()
-
-        //     mutate.show()
-
-        // (function() {
-        //     var a = b = 7;
-        //   })()
-        //   console.log(typeof b)
-
-        // Arrays
-
-        function ask() {
-            let arr = [];
-            let sum = 0;
-
-            while (true) {
-                let resp = +prompt("Give", "");
-                if (!resp) break;
-
-                arr.push(resp);
-            }
-
-            for (let val of arr) {
-                if (typeof val === "number" && !isNaN(val)) {
-                    sum += val;
-                }
-            }
-            console.log(arr)
-            return sum
-        }
-        // console.log(ask());
-
-        function capitalise(str) {
-            const arr = str.split("-");
-            let result = arr[0];
-
-            for (let i = 1; i < arr.length; i++) {
-                const str = arr[i];
-
-                const newStr = str[0].toUpperCase() + str.slice(1);
-                result += newStr;
-            }
-
-            return result;
+        this.addMethod = function(name, value) {
+            this.myMap.set(name, value);
         }
 
-        // console.log(capitalise("Hi-buddy-how-are-your"));
-        // do the same wit regex
+        this.calculate = function(str) {
+            const arr = str.split(" ");
+            const func = this.myMap.get(arr[1]);
+            console.log(func)
 
-        function filterRangeInPlace(arr, a, b) {
-            let n = arr.length;
-
-            for (let i = 0; i < arr.length; i++) {
-                if (arr[i] <= a || arr[i] >= b) {
-                    arr.splice(i, 1);
-                    i--;
-                }
-            }
+            return func(+arr[0], +arr[2])
         }
+    }
 
-        let arr = [2, 5, 9, 4, 3, 7, 8, 9, 6, 3, 10, 12, 14, 15, 18, 19, 20, 21];
-        // console.log("Before", arr);
+    const powerCalc = new Calculator();
+    console.log(powerCalc.calculate("4 + 5"));
 
-        // filterRangeInPlace(arr, 10, 20);
-        // console.log("After", arr);
+    powerCalc.addMethod("**", (a, b) => a ** b);
+    powerCalc.addMethod("*", (a, b) => a * b);
+    powerCalc.addMethod("/", (a, b) => a / b);
+    powerCalc.addMethod("-", (a, b) => a - b);
+    
+    console.log(powerCalc.calculate("4 * 5"));
+    console.log(powerCalc.calculate("4 + 5"));
+    console.log(powerCalc.calculate("4 - 5"));
+    console.log(powerCalc.calculate("4 ** 5"));
+    console.log(powerCalc.calculate("4 / 2"));
 
-        const arr2 = arr.toSorted((a,b) => b - a);
-        console.log(arr2, arr)
-
+    // Que 8
+    
     </script>
 </body>
 

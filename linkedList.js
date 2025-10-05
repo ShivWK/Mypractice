@@ -1,6 +1,6 @@
 // console.log("shivendra") 
 
-//Firest we need to make a node (ekement of linked list) first , using class so that we can make multiple nodes with this and it is created as general purpose
+//First we need to make a node (ekement of linked list) first , using class so that we can make multiple nodes with this and it is created as general purpose
 
 class Node {
     constructor(data) {

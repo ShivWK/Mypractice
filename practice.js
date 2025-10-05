@@ -1055,7 +1055,11 @@ count.reset = function() {
       // console.log("I love coding".replace(/love/, "$$LOVE")); // "I $LOVE coding"
       // console.log("Shivendra Dwivedi".replace(/(\w+) (\w+)/, "$2 $1")) // Dwivedi Shivendra
       // console.log("Shivendra Dwivedi".replace(/(?<first>\w+) (?<second>\w+)/, "$<second> $<first>")) 
+<<<<<<< HEAD
       // // Dwivedi Shivendra
+=======
+      // Dwivedi Shivendra
+>>>>>>> 02ab5170db5ac44173cefe85d1bc16c66020865a
 
       // // const regex = /\d+/;
       // // const str = "ID: 101 and 202";
@@ -1066,8 +1070,39 @@ count.reset = function() {
       // // let regex = /\d/g;
       // // let match;
 
+<<<<<<< HEAD
       // while ((match = regex.exec(str)) !== null) {
       //    console.log(match[0]); // logs '1' then '2'
       // }
+=======
+      while ((match = regex.exec(str)) !== null) {
+         console.log(match[0]); // logs '1' then '2'
+      }
 
+      let result1 = "hello 123 world".replace(/\d+/g, (match) => {
+            return `[${match}]`;
+      });
+      console.log(result1); // "hello [123] world"
+>>>>>>> 02ab5170db5ac44173cefe85d1bc16c66020865a
+
+      let result2 ="John Smith".replace(/(\w+)\s(\w+)/, (match, first, last, offset, input) => {
+         console.log(match); // "John Smith"
+         console.log(first); // "John"
+         console.log(last);  // "Smith"
+         return `${last}, ${first}`;
+      });
+      console.log(result2) // "Smith, John"
+
+   // catastropic backtracking
+
+   const regex = /(a+)+$/;
+   // console.log(regex.test("aaaaaaaaaaaaaaaaaaaaaaaab")); // Hangs or slows
+
+   let x = 7;
+   function show(val = x) {
+      let x = 5;
+      console.log(val);
+   }
+
+   show();
 
