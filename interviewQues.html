@@ -552,7 +552,7 @@
         //     }
         // }
 
-// Arrays
+        // Arrays
         // Que 6
 
         function Calculator() {
@@ -588,26 +588,48 @@
 
         // Que 8
 
-        let john = { name: "John", surname: "Smith", id: 1 };
-        let pete = { name: "Pete", surname: "Hunt", id: 2 };
-        let mary = { name: "Mary", surname: "Key", id: 3 };
+        // let john = { name: "John", surname: "Smith", id: 1 };
+        // let pete = { name: "Pete", surname: "Hunt", id: 2 };
+        // let mary = { name: "Mary", surname: "Key", id: 3 };
 
-        let users = [john, pete, mary];
+        // let users = [john, pete, mary];
 
-        function usersMapped(arr) {
-            let newArr = arr.map((obj) => ({
-                id: obj.id,
-                fullname: obj.name + " " + obj.surname
-            }))
+        // function usersMapped(arr) {
+        //     let newArr = arr.map((obj) => ({
+        //         id: obj.id,
+        //         fullname: obj.name + " " + obj.surname
+        //     }))
 
-            return newArr
-        }
+        //     return newArr
+        // }
 
         // console.log(usersMapped(users))
-
         
+        //Que 9
 
-    </script> 
+        let john = { name: "John", age: 25 };
+        let pete = { name: "Pete", age: 30 };
+        let mary = { name: "Mary", age: 29 };
+
+        let arr = [pete, john, mary];
+
+        function sorter(arr) {
+            arr.sort((a, b) => a.age - b.age)
+        }
+        sorter(arr)
+
+        function averageAge(arr) {
+            const result = arr.reduce((acc, obj, index, arr) => {
+                return acc + obj.age
+            }, 0) / arr.length;
+
+            return result;
+        }
+
+        console.log(averageAge(arr));
+
+
+    </script>
 </body>
 
 </html>
