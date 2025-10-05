@@ -552,7 +552,8 @@
         //     }
         // }
 
-        // Arrays
+// Arrays
+
         // Que 6
 
         function Calculator() {
@@ -607,46 +608,86 @@
 
         //Que 9
 
-        let john = { name: "John", age: 25 };
-        let pete = { name: "Pete", age: 30 };
-        let mary = { name: "Mary", age: 29 };
+        // let john = { name: "John", age: 25 };
+        // let pete = { name: "Pete", age: 30 };
+        // let mary = { name: "Mary", age: 29 };
 
-        let arr = [pete, john, mary];
+        // let arr = [pete, john, mary];
 
-        function sorter(arr) {
-            arr.sort((a, b) => a.age - b.age)
-        }
-        sorter(arr)
+        // function sorter(arr) {
+        //     arr.sort((a, b) => a.age - b.age)
+        // }
+        // sorter(arr)
 
-        function averageAge(arr) {
-            const result = arr.reduce((acc, obj, index, arr) => {
-                return acc + obj.age
-            }, 0) / arr.length;
+        // function averageAge(arr) {
+        //     const result = arr.reduce((acc, obj, index, arr) => {
+        //         return acc + obj.age
+        //     }, 0) / arr.length;
 
-            return result;
-        }
+        //     return result;
+        // }
 
         // console.log(averageAge(arr));
 
         //Que 12
-        
-        let users = [
-            { id: 'john', name: "John Smith", age: 20 },
-            { id: 'ann', name: "Ann Smith", age: 24 },
-            { id: 'pete', name: "Pete Peterson", age: 31 },
-        ];
 
-        function groupById(arr) {
-            let result = {};
+        // let users = [
+        //     { id: 'john', name: "John Smith", age: 20 },
+        //     { id: 'ann', name: "Ann Smith", age: 24 },
+        //     { id: 'pete', name: "Pete Peterson", age: 31 },
+        // ];
 
-            arr.forEach(element => {
-                result[element.id] = element;
-            });
+        // function groupById(arr) {
+        //     let result = {};
 
-            return result;
+        //     arr.forEach(element => {
+        //         result[element.id] = element;
+        //     });
+
+        //     return result;
+        // }
+
+        // console.log(groupById(users));
+
+        //Que 10
+
+        // let arr = [1,2,3,4,5];
+
+        // function shuffle(arr) {
+        //     const n = arr.length;
+        //     arr.forEach(element => {
+        //         const index = Math.floor(Math.random() * n);
+        //         arr[index] = element;
+        //     })
+        // }
+
+        // function shuffle(arr) {
+        //     let n = arr.length;
+
+        //     for(let i = (n - 1); i >= 0; i--) {
+        //         let j = Math.floor(Math.random() * (i + 1));
+
+        //         [arr[i], arr[j]] = [arr[j], arr[i]];
+        //     }
+        // }
+
+        // shuffle(arr);
+        // console.log(arr)
+
+// Sets and Map
+
+    //Ques 1
+
+        let arr = [1,4,3,2,4,2,1,4,3];
+
+        function uniqueIt(arr) {
+            const mySet = new Set(arr);
+            const newArr = Array.from(mySet.values());
+
+            return newArr.sort((a, b) => a - b);
         }
 
-        console.log(groupById(users));
+        console.log(uniqueIt(arr));
     </script>
 </body>
 
