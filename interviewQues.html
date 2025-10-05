@@ -465,129 +465,149 @@
         //      var x = 2
         // })()
 
-// 19/06/25
+        // 19/06/25
 
-    // localStorage.setItem("pass", "hello");
-    // console.log(typeof localStorage.getItem("pass"));
+        // localStorage.setItem("pass", "hello");
+        // console.log(typeof localStorage.getItem("pass"));
 
-    // const arr = [1,2,3,4,5];
+        // const arr = [1,2,3,4,5];
 
-    // const newArr = (arr) => {
-    //     let newArr = [];
+        // const newArr = (arr) => {
+        //     let newArr = [];
 
-    //     for (let ele of arr) {
-    //         if (ele % 2 === 0) {
-    //             newArr.push(ele**2);
-    //         }
-    //     }
+        //     for (let ele of arr) {
+        //         if (ele % 2 === 0) {
+        //             newArr.push(ele**2);
+        //         }
+        //     }
 
-    //     return newArr;
-    // }
+        //     return newArr;
+        // }
 
-    // console.log(newArr(arr));
+        // console.log(newArr(arr));
 
 
-    // const modArray = arr.reduce((acc, crr) => {
-    //         if (crr % 2 === 0) {
-    //             acc.push(crr**2);
-    //         }
+        // const modArray = arr.reduce((acc, crr) => {
+        //         if (crr % 2 === 0) {
+        //             acc.push(crr**2);
+        //         }
 
-    //         return acc;
-    // }, []);
+        //         return acc;
+        // }, []);
 
-    // console.log(modArray);
+        // console.log(modArray);
 
-    // const newArr2 = arr.filter(e => e%2 === 0).map(e => e**2);
-    // console.log(newArr2);
+        // const newArr2 = arr.filter(e => e%2 === 0).map(e => e**2);
+        // console.log(newArr2);
 
-    // const score = +prompt("Give your score");
-    
-    // switch(true) {
-    //     case score >= 90: {
-    //         console.log("A");
-    //     }
-    //     break;
+        // const score = +prompt("Give your score");
 
-    //     case score >= 80 && score < 90: {
-    //         console.log("B");
-    //     }
-    //     break;
+        // switch(true) {
+        //     case score >= 90: {
+        //         console.log("A");
+        //     }
+        //     break;
 
-    //     case score >= 70 && score < 80: {
-    //         console.log("C");
-    //     }
-    //     break;
+        //     case score >= 80 && score < 90: {
+        //         console.log("B");
+        //     }
+        //     break;
 
-    //     case score >= 60 && score < 70: {
-    //         console.log("D");
-    //     }
-    //     break;
+        //     case score >= 70 && score < 80: {
+        //         console.log("C");
+        //     }
+        //     break;
 
-    //     default: {
-    //         console.log("Fail");
-    //     }
-    // }
+        //     case score >= 60 && score < 70: {
+        //         console.log("D");
+        //     }
+        //     break;
 
-    // switch(score) {
-    //     case 90: {
-    //         console.log("A");
-    //     }
-    //     break;
+        //     default: {
+        //         console.log("Fail");
+        //     }
+        // }
 
-    //     case 80: {
-    //         console.log("B");
-    //     }
-    //     break;
+        // switch(score) {
+        //     case 90: {
+        //         console.log("A");
+        //     }
+        //     break;
 
-    //     case 70:
-    //     case 60:
-    //     case 50: 
-    //     case 55: {
-    //         console.log("C");
-    //     }
-    //     break;
+        //     case 80: {
+        //         console.log("B");
+        //     }
+        //     break;
 
-    //     default: {
-    //         console.log("Fail");
-    //     }
-    // }
+        //     case 70:
+        //     case 60:
+        //     case 50: 
+        //     case 55: {
+        //         console.log("C");
+        //     }
+        //     break;
+
+        //     default: {
+        //         console.log("Fail");
+        //     }
+        // }
 
 // Arrays
-    // Que 6
-    function Calculator() {
-        this.myMap = new Map();
-        this.myMap.set("+", (a, b) => a + b);
+        // Que 6
 
-        this.addMethod = function(name, value) {
-            this.myMap.set(name, value);
+        function Calculator() {
+            this.myMap = new Map();
+            this.myMap.set("+", (a, b) => a + b);
+
+            this.addMethod = function (name, value) {
+                this.myMap.set(name, value);
+            }
+
+            this.calculate = function (str) {
+                const arr = str.split(" ");
+                const func = this.myMap.get(arr[1]);
+                console.log(func)
+
+                return func(+arr[0], +arr[2])
+            }
         }
 
-        this.calculate = function(str) {
-            const arr = str.split(" ");
-            const func = this.myMap.get(arr[1]);
-            console.log(func)
+        const powerCalc = new Calculator();
+        // console.log(powerCalc.calculate("4 + 5"));
 
-            return func(+arr[0], +arr[2])
+        // powerCalc.addMethod("**", (a, b) => a ** b);
+        // powerCalc.addMethod("*", (a, b) => a * b);
+        // powerCalc.addMethod("/", (a, b) => a / b);
+        // powerCalc.addMethod("-", (a, b) => a - b);
+
+        // console.log(powerCalc.calculate("4 * 5"));
+        // console.log(powerCalc.calculate("4 + 5"));
+        // console.log(powerCalc.calculate("4 - 5"));
+        // console.log(powerCalc.calculate("4 ** 5"));
+        // console.log(powerCalc.calculate("4 / 2"));
+
+        // Que 8
+
+        let john = { name: "John", surname: "Smith", id: 1 };
+        let pete = { name: "Pete", surname: "Hunt", id: 2 };
+        let mary = { name: "Mary", surname: "Key", id: 3 };
+
+        let users = [john, pete, mary];
+
+        function usersMapped(arr) {
+            let newArr = arr.map((obj) => ({
+                id: obj.id,
+                fullname: obj.name + " " + obj.surname
+            }))
+
+            return newArr
         }
-    }
 
-    const powerCalc = new Calculator();
-    console.log(powerCalc.calculate("4 + 5"));
+        // console.log(usersMapped(users))
 
-    powerCalc.addMethod("**", (a, b) => a ** b);
-    powerCalc.addMethod("*", (a, b) => a * b);
-    powerCalc.addMethod("/", (a, b) => a / b);
-    powerCalc.addMethod("-", (a, b) => a - b);
-    
-    console.log(powerCalc.calculate("4 * 5"));
-    console.log(powerCalc.calculate("4 + 5"));
-    console.log(powerCalc.calculate("4 - 5"));
-    console.log(powerCalc.calculate("4 ** 5"));
-    console.log(powerCalc.calculate("4 / 2"));
+        
 
-    // Que 8
-    
-    </script>
+    </script> 
 </body>
 
 </html>
