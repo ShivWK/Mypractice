@@ -715,7 +715,7 @@
         // setTimeout(show, 3000, "Shivendra", "Dwivedi")
 
         const newFunc = new Function("name", "caste", "console.log(name, caste)");
-        newFunc("Shivendra", "Dwivedi");
+        // newFunc("Shivendra", "Dwivedi");
 
         function outer() {
             const value = 55;
@@ -723,7 +723,19 @@
             return new Function("value", "console.log(value)")
         }
 
-        outer()(90)
+        // outer()(90)
+
+        // let delay = 2000;
+
+        // let timerId = setTimeout(function tick() {
+        //     let result = prompt("name please", "");
+
+        //     if (!result) {
+        //         delay *= 2;
+        //     }
+
+        //     timerId = setTimeout(tick, delay);
+        // }, delay)
 
     </script>
 </body>
