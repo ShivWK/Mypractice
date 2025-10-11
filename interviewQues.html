@@ -556,24 +556,24 @@
 
         // Que 6
 
-        function Calculator() {
-            this.myMap = new Map();
-            this.myMap.set("+", (a, b) => a + b);
+        // function Calculator() {
+        //     this.myMap = new Map();
+        //     this.myMap.set("+", (a, b) => a + b);
 
-            this.addMethod = function (name, value) {
-                this.myMap.set(name, value);
-            }
+        //     this.addMethod = function (name, value) {
+        //         this.myMap.set(name, value);
+        //     }
 
-            this.calculate = function (str) {
-                const arr = str.split(" ");
-                const func = this.myMap.get(arr[1]);
-                console.log(func)
+        //     this.calculate = function (str) {
+        //         const arr = str.split(" ");
+        //         const func = this.myMap.get(arr[1]);
+        //         console.log(func)
 
-                return func(+arr[0], +arr[2])
-            }
-        }
+        //         return func(+arr[0], +arr[2])
+        //     }
+        // }
 
-        const powerCalc = new Calculator();
+        // const powerCalc = new Calculator();
         // console.log(powerCalc.calculate("4 + 5"));
 
         // powerCalc.addMethod("**", (a, b) => a ** b);
@@ -678,16 +678,53 @@
 
     //Ques 1
 
-        let arr = [1,4,3,2,4,2,1,4,3];
+        // let arr = [1,4,3,2,4,2,1,4,3];
 
-        function uniqueIt(arr) {
-            const mySet = new Set(arr);
-            const newArr = Array.from(mySet.values());
+        // function uniqueIt(arr) {
+        //     const mySet = new Set(arr);
+        //     const newArr = Array.from(mySet.values());
 
-            return newArr.sort((a, b) => a - b);
+        //     return newArr.sort((a, b) => a - b);
+        // }
+
+        // console.log(uniqueIt(arr));
+
+// NFE
+        function sum(a) {
+            let currentSum = a;
+
+            function accumulator(d) {
+                currentSum += d;
+                return accumulator;
+            }
+
+            accumulator.toString = function() {
+                return currentSum
+            }
+
+            return accumulator;
         }
 
-        console.log(uniqueIt(arr));
+        // alert(sum(2)(3)(4)(6)(8)(9));
+        // alert(sum(10)(23)(44)(55)(77));
+
+        function show(name, caste) {
+            console.log(name, caste);
+        }
+
+        // setTimeout(show, 3000, "Shivendra", "Dwivedi")
+
+        const newFunc = new Function("name", "caste", "console.log(name, caste)");
+        newFunc("Shivendra", "Dwivedi");
+
+        function outer() {
+            const value = 55;
+
+            return new Function("value", "console.log(value)")
+        }
+
+        outer()(90)
+
     </script>
 </body>
 
