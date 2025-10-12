@@ -769,7 +769,76 @@
             go()
         }
 
-        counter2(1, 10)
+        // counter2(1, 10)
+
+        let group = {
+            name : "Shivendra",
+            student: ["John", "Pete", "Alice"],
+
+            show() {
+                this.student.forEach(function(student) {
+                    console.log(this.name, student);
+                }, this)
+            }
+        }
+
+        // group.show();
+
+        // function debounce() {
+        //     let timer = null;
+
+        //     return function(str) {
+        //         clearTimeout(timer);
+
+        //         timer = setTimeout((str) => {
+        //             console.log(str)
+        //         }, 1000)
+        //     }
+        // }
+
+        // window.name = "Window wala"
+
+        // let obj = {
+        //     name : "Shivendra"
+        // }
+
+        // function callJi() {
+        //     setInterval(function() {
+        //         console.log(this.name)
+        //     }, 1000)
+        // }
+
+        // callJi.call(obj)
+
+        let obj = {
+            name: "Shivendra Dwivedi",
+            age: 26,
+            occupation: "Software engineer",
+        }
+
+        console.log(Object.getOwnPropertyDescriptor(obj, "name"));
+
+        Object.defineProperty(obj, "salary", {
+            value: 90000,
+            writable: true,
+            enumerable: true,
+            configurable: true,
+        })
+
+        Object.defineProperty(obj, "name", {
+            writable: false
+        })
+
+        console.log(obj);
+
+        // obj.salary = 100000;
+        obj.name = "Sahil"
+
+        for (let key in obj) {
+            console.log(obj[key])
+        }
+
+
 
     </script>
 </body>
