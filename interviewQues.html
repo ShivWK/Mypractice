@@ -816,7 +816,7 @@
             occupation: "Software engineer",
         }
 
-        console.log(Object.getOwnPropertyDescriptor(obj, "name"));
+        console.log(JSON.stringify(Object.getOwnPropertyDescriptor(obj, "name"), null, 2));
 
         Object.defineProperty(obj, "salary", {
             value: 90000,
@@ -829,16 +829,39 @@
             writable: false
         })
 
-        console.log(obj);
+        // console.log(obj);
 
         // obj.salary = 100000;
-        obj.name = "Sahil"
+        // obj.name = "Sahil"
 
         for (let key in obj) {
             console.log(obj[key])
         }
 
+        // console.log(Object.keys(obj));
+        // console.log(Object.values(obj));
+        // console.log(Object.entries(obj));
 
+        let obj2 = Object.defineProperties({}, {
+            name: {
+                value: "Shivendra",
+                writable: true,
+                enumerable: true,
+                configurable: true,
+            },
+
+            age: {
+                value: 26,
+                writable: true,
+                enumerable: false,
+                configurable: true,
+            }
+        })
+
+        // console.log("new", obj2)
+
+        const obj3 = Object.defineProperties({}, Object.getOwnPropertyDescriptors(obj));
+        console.log(obj3)
 
     </script>
 </body>
