@@ -861,8 +861,43 @@
         // console.log("new", obj2)
 
         const obj3 = Object.defineProperties({}, Object.getOwnPropertyDescriptors(obj));
-        console.log(obj3)
+        // console.log(obj3)
 
+        obj3.newProp = "Hi I'm new here";
+
+        Object.preventExtensions(obj3);
+        // obj3.new2 = "Hi new2";
+
+        Object.seal(obj3);
+        Object.freeze(obj3)
+        // obj3.newProp = "Chnaged";
+
+        // delete obj3.newProp
+
+        // console.log(obj3)
+
+        // console.log(Object.isExtensible(obj3))
+        // console.log(Object.isSealed(obj3))
+        // console.log(Object.isFrozen(obj3))
+
+        let obj4 = {
+            name: "Shivendra",
+            age: 26,
+            occupation: "Software engineer"
+        }
+
+        // console.log(obj3.__proto__);
+        // console.log(Object.getPrototypeOf(obj3));
+
+        let obj5 = {
+            address: "(91 triveni Nagar)",
+            subject: "Software development"
+        }
+
+        // obj5.__proto__ = obj4;
+        Object.setPrototypeOf(obj5, obj4)
+
+        console.log(Object.getPrototypeOf(obj5));
     </script>
 </body>
 
