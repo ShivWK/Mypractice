@@ -957,6 +957,41 @@
         console.log(obj1.sayHi());
 
 
+        class MyClass2 {
+            name = "Shivendra";
+
+            sayHi() {
+                console.log("Hi buddy");
+            }
+        }
+
+        const obj6 = new MyClass2();
+        obj6.sayHi();
+        console.log(obj6.name);
+
+        const MyClass4 = class {
+            constructor(name) {
+                this.name = name;
+                // this.show = this.show.bind(this);
+            }
+
+            // show = () => {
+            //     console.log(this.name);
+            // }
+
+            show () {
+                console.log(this.name);
+            }
+        }
+
+        const obj7 = new MyClass4("Shiv");
+        // const callIt = obj7.show.bind(obj7);
+        // const callIt = obj7.show;
+        // callIt.call(obj7);
+        const callIt = () => {
+            obj7.show()
+        }
+        callIt()
     </script>
 </body> 0  
 
