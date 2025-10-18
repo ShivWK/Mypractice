@@ -816,7 +816,7 @@
             occupation: "Software engineer",
         }
 
-        console.log(JSON.stringify(Object.getOwnPropertyDescriptor(obj, "name"), null, 2));
+        // console.log(JSON.stringify(Object.getOwnPropertyDescriptor(obj, "name"), null, 2));
 
         Object.defineProperty(obj, "salary", {
             value: 90000,
@@ -897,8 +897,68 @@
         // obj5.__proto__ = obj4;
         Object.setPrototypeOf(obj5, obj4)
 
-        console.log(Object.getPrototypeOf(obj5));
+        // console.log(Object.getPrototypeOf(obj5));
+
+        let animal = {
+            walk() {
+                if (!this.sleeping) {
+                    alert("I Walk")
+                }
+            },
+
+            sleep() {
+                this.sleeping = true;
+            }
+        }
+
+        let rabbit = {
+            name: "White Rabbit",
+            __proto__ : animal,
+        }
+
+        // rabbit.__proto__ = "SHivbe"
+        // console.log(rabbit.__proto__)
+
+        rabbit.sleep();
+
+        // console.log(rabbit.hasOwnProperty("walk"))
+        // console.log(rabbit.hasOwnProperty("name"))
+
+        // console.log(animal.sleeping);
+        // console.log(rabbit.sleeping);
+
+        const MyClass = class {
+            constructor(name, age, dob) {
+                this._name = name;
+                this.age = age;
+                this.sob = dob
+            }
+
+            get name() {
+                return this._name;
+            }
+
+            set name(value) {
+                if (value.length < 4) {
+                    alert("Name is too short");
+                    return;
+                }
+
+                this._name = value;
+            } 
+
+            ["say" + "Hi"]() {
+                return "Hi";
+            }
+        }
+
+        const obj1 = new MyClass("Shivendra Dwivedi", 26, "05/02/1999");
+        console.log(obj1.name);
+        console.log(obj1.sayHi());
+
+
     </script>
-</body>
+</body> 0  
+
 
 </html>
