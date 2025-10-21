@@ -1081,7 +1081,7 @@
             }
 
             static show2() {
-                console.log(particles2)
+                console.log(Articles.particles2)
             }
         }
 
@@ -1093,21 +1093,59 @@
 
         // articles.sort(Articles.compare);
         // console.log(articles);
-        const obj10 = new Articles();
+        // const obj10 = new Articles();
         // obj10.compare(articles[0], articles[1]);
 
         // Articles.particles = 1000;
         // console.log(Articles.particles2);
 
-        obj10.show();
+        // obj10.show();
         Articles.show2()
 
         class Articles2 extends Articles {
 
         }
 
-        console.log(Articles2.__proto__)
-        console.log(Articles2.prototype.__proto__ === Articles.prototype);
+        // console.log(Articles2.__proto__)
+        // console.log(Articles2.prototype.__proto__ === Articles.prototype);
+
+        class MyCLass8 {
+            #power = 200
+
+            constructor(data) {
+                this._waterMark = data;
+            }
+
+            set power(value) {
+                if (value < 200) {
+                    console.log("Low power");
+                    return;
+                }
+
+                this.#power = value;
+            }
+
+            // get power() {
+            //     return this.#power;
+            // }
+
+            set waterMark(value) {
+                if (value < 200) {
+                    console.log("Low waterMark");
+                    return;
+                }
+
+                this._waterMark = value;
+            }
+
+            // get waterMark() {
+            //     return this._waterMark;
+            // }
+        }
+
+        const obj11 = new MyCLass8(500);
+        console.log("Private", obj11.power);
+        console.log("Protected", obj11.waterMark);
         
     </script>
 </body> 0  
