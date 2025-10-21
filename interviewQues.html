@@ -1065,6 +1065,8 @@
         // console.log(MyClass7.staticMethod());
 
         class Articles {
+            static particles2 = 2000;
+
             constructor(title, date) {
                 this.title = title;
                 this.date = date;
@@ -1072,6 +1074,14 @@
 
             static compare(obj1, obj2) {
                 return obj1.date - obj2.date;
+            }
+
+            show() {
+                console.log(Articles.particles2)
+            }
+
+            static show2() {
+                console.log(particles2)
             }
         }
 
@@ -1081,8 +1091,24 @@
             new Articles("JavaScript", new Date(2021, 11, 1))
         ]
 
-        articles.sort(Articles.compare);
-        console.log(articles);
+        // articles.sort(Articles.compare);
+        // console.log(articles);
+        const obj10 = new Articles();
+        // obj10.compare(articles[0], articles[1]);
+
+        // Articles.particles = 1000;
+        // console.log(Articles.particles2);
+
+        obj10.show();
+        Articles.show2()
+
+        class Articles2 extends Articles {
+
+        }
+
+        console.log(Articles2.__proto__)
+        console.log(Articles2.prototype.__proto__ === Articles.prototype);
+        
     </script>
 </body> 0  
 
