@@ -1028,7 +1028,7 @@
             }
         }
 
-        const obj8 = new MyClass5({ template: "h / m / s" });
+        // const obj8 = new MyClass5({ template: "h / m / s" });
         // obj8.start();
 
         class MyClass6 extends MyClass5 {
@@ -1049,9 +1049,40 @@
             precision: 2000,
         }
  
-        const obj9 = new MyClass6(options);
-        obj9.start()
+        // const obj9 = new MyClass6(options);
+        // obj9.start();
 
+        const MyClass7 = class {
+            // static staticMethod() {
+            //     return this === MyClass7;
+            // }
+        }
+
+        MyClass7.staticMethod = function() {
+            return this === MyClass7;
+        }
+
+        // console.log(MyClass7.staticMethod());
+
+        class Articles {
+            constructor(title, date) {
+                this.title = title;
+                this.date = date;
+            }
+
+            static compare(obj1, obj2) {
+                return obj1.date - obj2.date;
+            }
+        }
+
+        let articles = [
+            new Articles("HTML", new Date(2021, 1, 1)),
+            new Articles("CSS", new Date(2021, 0, 1)),
+            new Articles("JavaScript", new Date(2021, 11, 1))
+        ]
+
+        articles.sort(Articles.compare);
+        console.log(articles);
     </script>
 </body> 0  
 
