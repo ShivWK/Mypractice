@@ -965,9 +965,9 @@
             }
         }
 
-        const obj6 = new MyClass2();
-        obj6.sayHi();
-        console.log(obj6.name);
+        // const obj6 = new MyClass2();
+        // obj6.sayHi();
+        // console.log(obj6.name);
 
         const MyClass4 = class {
             constructor(name) {
@@ -984,14 +984,74 @@
             }
         }
 
-        const obj7 = new MyClass4("Shiv");
+        // const obj.7 = new MyClass4("Shiv");
         // const callIt = obj7.show.bind(obj7);
         // const callIt = obj7.show;
         // callIt.call(obj7);
-        const callIt = () => {
-            obj7.show()
+        // const callIt = () => {
+        //     obj7.show()
+        // }
+        // callIt()
+
+        class MyClass5 {
+            constructor({ template }) {
+                this.template = template;
+            }
+
+            render() {
+                let date = new Date();
+
+                let hours = date.getHours();
+                if (hours < 10) hours = "0" + hours;
+
+                let mins = date.getMinutes();
+                if (mins < 0) mins = "0" + mins;
+                
+                let sec = date.getSeconds();
+                if (sec < 0) sec = "0" + sec;
+
+                let output = this.template
+                            .replace("h", hours)
+                            .replace("m", mins)
+                            .replace("s", sec);
+
+                console.log(output);
+            }
+
+            stop() {
+                clearInterval(this.timer)
+            }
+
+            start() {
+                this.render();
+                this.timer = setInterval(() => this.render(), 1000);
+            }
         }
-        callIt()
+
+        const obj8 = new MyClass5({ template: "h / m / s" });
+        // obj8.start();
+
+        class MyClass6 extends MyClass5 {
+            constructor(options) {
+                super(options);
+                let { precision = 1000 } = options;
+                this.precision = precision;
+            }
+
+            start() {
+                this.render();
+                this.timer = setInterval(() => this.render(), this.precision);
+            }
+        }
+
+        let options = {
+            template: "h / m / s",
+            precision: 2000,
+        }
+ 
+        const obj9 = new MyClass6(options);
+        obj9.start()
+
     </script>
 </body> 0  
 
