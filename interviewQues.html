@@ -690,38 +690,38 @@
         // console.log(uniqueIt(arr));
 
         // NFE
-        function sum(a) {
-            let currentSum = a;
+        // function sum(a) {
+        //     let currentSum = a;
 
-            function accumulator(d) {
-                currentSum += d;
-                return accumulator;
-            }
+        //     function accumulator(d) {
+        //         currentSum += d;
+        //         return accumulator;
+        //     }
 
-            accumulator.toString = function () {
-                return currentSum
-            }
+        //     accumulator.toString = function () {
+        //         return currentSum
+        //     }
 
-            return accumulator;
-        }
+        //     return accumulator;
+        // }
 
         // alert(sum(2)(3)(4)(6)(8)(9));
         // alert(sum(10)(23)(44)(55)(77));
 
-        function show(name, caste) {
-            console.log(name, caste);
-        }
+        // function show(name, caste) {
+        //     console.log(name, caste);
+        // }
 
         // setTimeout(show, 3000, "Shivendra", "Dwivedi")
 
-        const newFunc = new Function("name", "caste", "console.log(name, caste)");
+        // const newFunc = new Function("name", "caste", "console.log(name, caste)");
         // newFunc("Shivendra", "Dwivedi");
 
-        function outer() {
-            const value = 55;
+        // function outer() {
+        //     const value = 55;
 
-            return new Function("value", "console.log(value)")
-        }
+        //     return new Function("value", "console.log(value)")
+        // }
 
         // outer()(90)
 
@@ -737,50 +737,50 @@
         //     timerId = setTimeout(tick, delay);
         // }, delay)
 
-        function counter(from, to) {
-            let count = from;
+        // function counter(from, to) {
+        //     let count = from;
 
-            let timer = setTimeout(function go() {
-                console.log(count);
+        //     let timer = setTimeout(function go() {
+        //         console.log(count);
 
-                if (count < to) {
-                    setTimeout(go, 1000)
-                }
+        //         if (count < to) {
+        //             setTimeout(go, 1000)
+        //         }
 
-                count++;
-            })
-        }
+        //         count++;
+        //     })
+        // }
 
         // counter(1, 10);
 
-        function counter2(from, to) {
-            let count = from;
+        // function counter2(from, to) {
+        //     let count = from;
 
-            function go() {
-                console.log(count);
+        //     function go() {
+        //         console.log(count);
 
-                if (count === 10) {
-                    clearInterval(timer);
-                }
-                count++;
-            }
+        //         if (count === 10) {
+        //             clearInterval(timer);
+        //         }
+        //         count++;
+        //     }
 
-            let timer = setInterval(go, 1000);
-            go()
-        }
+        //     let timer = setInterval(go, 1000);
+        //     go()
+        // }
 
         // counter2(1, 10)
 
-        let group = {
-            name : "Shivendra",
-            student: ["John", "Pete", "Alice"],
+        // let group = {
+        //     name : "Shivendra",
+        //     student: ["John", "Pete", "Alice"],
 
-            show() {
-                this.student.forEach(function(student) {
-                    console.log(this.name, student);
-                }, this)
-            }
-        }
+        //     show() {
+        //         this.student.forEach(function(student) {
+        //             console.log(this.name, student);
+        //         }, this)
+        //     }
+        // }
 
         // group.show();
 
@@ -810,66 +810,66 @@
 
         // callJi.call(obj)
 
-        let obj = {
-            name: "Shivendra Dwivedi",
-            age: 26,
-            occupation: "Software engineer",
-        }
+        // let obj = {
+        //     name: "Shivendra Dwivedi",
+        //     age: 26,
+        //     occupation: "Software engineer",
+        // }
 
         // console.log(JSON.stringify(Object.getOwnPropertyDescriptor(obj, "name"), null, 2));
 
-        Object.defineProperty(obj, "salary", {
-            value: 90000,
-            writable: true,
-            enumerable: true,
-            configurable: true,
-        })
+        // Object.defineProperty(obj, "salary", {
+        //     value: 90000,
+        //     writable: true,
+        //     enumerable: true,
+        //     configurable: true,
+        // })
 
-        Object.defineProperty(obj, "name", {
-            writable: false
-        })
+        // Object.defineProperty(obj, "name", {
+        //     writable: false
+        // })
 
         // console.log(obj);
 
         // obj.salary = 100000;
         // obj.name = "Sahil"
 
-        for (let key in obj) {
-            console.log(obj[key])
-        }
+        // for (let key in obj) {
+        //     console.log(obj[key])
+        // }
 
         // console.log(Object.keys(obj));
         // console.log(Object.values(obj));
         // console.log(Object.entries(obj));
 
-        let obj2 = Object.defineProperties({}, {
-            name: {
-                value: "Shivendra",
-                writable: true,
-                enumerable: true,
-                configurable: true,
-            },
+        // let obj2 = Object.defineProperties({}, {
+        //     name: {
+        //         value: "Shivendra",
+        //         writable: true,
+        //         enumerable: true,
+        //         configurable: true,
+        //     },
 
-            age: {
-                value: 26,
-                writable: true,
-                enumerable: false,
-                configurable: true,
-            }
-        })
+        //     age: {
+        //         value: 26,
+        //         writable: true,
+        //         enumerable: false,
+        //         configurable: true,
+        //     }
+        // })
 
         // console.log("new", obj2)
 
-        const obj3 = Object.defineProperties({}, Object.getOwnPropertyDescriptors(obj));
+        // const obj3 = Object.defineProperties({}, Object.getOwnPropertyDescriptors(obj));
         // console.log(obj3)
 
-        obj3.newProp = "Hi I'm new here";
+        // obj3.newProp = "Hi I'm new here";
 
-        Object.preventExtensions(obj3);
+        // Object.preventExtensions(obj3);
         // obj3.new2 = "Hi new2";
 
-        Object.seal(obj3);
-        Object.freeze(obj3)
+        // Object.seal(obj3);
+        // Object.freeze(obj3)
         // obj3.newProp = "Chnaged";
 
         // delete obj3.newProp
@@ -880,46 +880,46 @@
         // console.log(Object.isSealed(obj3))
         // console.log(Object.isFrozen(obj3))
 
-        let obj4 = {
-            name: "Shivendra",
-            age: 26,
-            occupation: "Software engineer"
-        }
+        // let obj4 = {
+        //     name: "Shivendra",
+        //     age: 26,
+        //     occupation: "Software engineer"
+        // }
 
         // console.log(obj3.__proto__);
         // console.log(Object.getPrototypeOf(obj3));
 
-        let obj5 = {
-            address: "(91 triveni Nagar)",
-            subject: "Software development"
-        }
+        // let obj5 = {
+        //     address: "(91 triveni Nagar)",
+        //     subject: "Software development"
+        // }
 
         // obj5.__proto__ = obj4;
-        Object.setPrototypeOf(obj5, obj4)
+        // Object.setPrototypeOf(obj5, obj4)
 
         // console.log(Object.getPrototypeOf(obj5));
 
-        let animal = {
-            walk() {
-                if (!this.sleeping) {
-                    alert("I Walk")
-                }
-            },
+        // let animal = {
+        //     walk() {
+        //         if (!this.sleeping) {
+        //             alert("I Walk")
+        //         }
+        //     },
 
-            sleep() {
-                this.sleeping = true;
-            }
-        }
+        //     sleep() {
+        //         this.sleeping = true;
+        //     }
+        // }
 
-        let rabbit = {
-            name: "White Rabbit",
-            __proto__ : animal,
-        }
+        // let rabbit = {
+        //     name: "White Rabbit",
+        //     __proto__ : animal,
+        // }
 
         // rabbit.__proto__ = "SHivbe"
         // console.log(rabbit.__proto__)
 
-        rabbit.sleep();
+        // rabbit.sleep();
 
         // console.log(rabbit.hasOwnProperty("walk"))
         // console.log(rabbit.hasOwnProperty("name"))
@@ -927,62 +927,62 @@
         // console.log(animal.sleeping);
         // console.log(rabbit.sleeping);
 
-        const MyClass = class {
-            constructor(name, age, dob) {
-                this._name = name;
-                this.age = age;
-                this.sob = dob
-            }
+        // const MyClass = class {
+        //     constructor(name, age, dob) {
+        //         this._name = name;
+        //         this.age = age;
+        //         this.sob = dob
+        //     }
 
-            get name() {
-                return this._name;
-            }
+        //     get name() {
+        //         return this._name;
+        //     }
 
-            set name(value) {
-                if (value.length < 4) {
-                    alert("Name is too short");
-                    return;
-                }
+        //     set name(value) {
+        //         if (value.length < 4) {
+        //             alert("Name is too short");
+        //             return;
+        //         }
 
-                this._name = value;
-            } 
+        //         this._name = value;
+        //     } 
 
-            ["say" + "Hi"]() {
-                return "Hi";
-            }
-        }
+        //     ["say" + "Hi"]() {
+        //         return "Hi";
+        //     }
+        // }
 
-        const obj1 = new MyClass("Shivendra Dwivedi", 26, "05/02/1999");
-        console.log(obj1.name);
-        console.log(obj1.sayHi());
+        // const obj1 = new MyClass("Shivendra Dwivedi", 26, "05/02/1999");
+        // console.log(obj1.name);
+        // console.log(obj1.sayHi());
 
 
-        class MyClass2 {
-            name = "Shivendra";
+        // class MyClass2 {
+        //     name = "Shivendra";
 
-            sayHi() {
-                console.log("Hi buddy");
-            }
-        }
+        //     sayHi() {
+        //         console.log("Hi buddy");
+        //     }
+        // }
 
         // const obj6 = new MyClass2();
         // obj6.sayHi();
         // console.log(obj6.name);
 
-        const MyClass4 = class {
-            constructor(name) {
-                this.name = name;
-                // this.show = this.show.bind(this);
-            }
+        // const MyClass4 = class {
+        //     constructor(name) {
+        //         this.name = name;
+        //         // this.show = this.show.bind(this);
+        //     }
 
-            // show = () => {
-            //     console.log(this.name);
-            // }
+        //     // show = () => {
+        //     //     console.log(this.name);
+        //     // }
 
-            show () {
-                console.log(this.name);
-            }
-        }
+        //     show () {
+        //         console.log(this.name);
+        //     }
+        // }
 
         // const obj.7 = new MyClass4("Shiv");
         // const callIt = obj7.show.bind(obj7);
@@ -993,103 +993,103 @@
         // }
         // callIt()
 
-        class MyClass5 {
-            constructor({ template }) {
-                this.template = template;
-            }
+        // class MyClass5 {
+        //     constructor({ template }) {
+        //         this.template = template;
+        //     }
 
-            render() {
-                let date = new Date();
+        //     render() {
+        //         let date = new Date();
 
-                let hours = date.getHours();
-                if (hours < 10) hours = "0" + hours;
+        //         let hours = date.getHours();
+        //         if (hours < 10) hours = "0" + hours;
 
-                let mins = date.getMinutes();
-                if (mins < 0) mins = "0" + mins;
+        //         let mins = date.getMinutes();
+        //         if (mins < 0) mins = "0" + mins;
                 
-                let sec = date.getSeconds();
-                if (sec < 0) sec = "0" + sec;
+        //         let sec = date.getSeconds();
+        //         if (sec < 0) sec = "0" + sec;
 
-                let output = this.template
-                            .replace("h", hours)
-                            .replace("m", mins)
-                            .replace("s", sec);
+        //         let output = this.template
+        //                     .replace("h", hours)
+        //                     .replace("m", mins)
+        //                     .replace("s", sec);
 
-                console.log(output);
-            }
+        //         console.log(output);
+        //     }
 
-            stop() {
-                clearInterval(this.timer)
-            }
+        //     stop() {
+        //         clearInterval(this.timer)
+        //     }
 
-            start() {
-                this.render();
-                this.timer = setInterval(() => this.render(), 1000);
-            }
-        }
+        //     start() {
+        //         this.render();
+        //         this.timer = setInterval(() => this.render(), 1000);
+        //     }
+        // }
 
         // const obj8 = new MyClass5({ template: "h / m / s" });
         // obj8.start();
 
-        class MyClass6 extends MyClass5 {
-            constructor(options) {
-                super(options);
-                let { precision = 1000 } = options;
-                this.precision = precision;
-            }
+        // class MyClass6 extends MyClass5 {
+        //     constructor(options) {
+        //         super(options);
+        //         let { precision = 1000 } = options;
+        //         this.precision = precision;
+        //     }
 
-            start() {
-                this.render();
-                this.timer = setInterval(() => this.render(), this.precision);
-            }
-        }
+        //     start() {
+        //         this.render();
+        //         this.timer = setInterval(() => this.render(), this.precision);
+        //     }
+        // }
 
-        let options = {
-            template: "h / m / s",
-            precision: 2000,
-        }
+        // let options = {
+        //     template: "h / m / s",
+        //     precision: 2000,
+        // }
  
         // const obj9 = new MyClass6(options);
         // obj9.start();
 
-        const MyClass7 = class {
+        // const MyClass7 = class {
             // static staticMethod() {
             //     return this === MyClass7;
             // }
-        }
+        // }
 
-        MyClass7.staticMethod = function() {
-            return this === MyClass7;
-        }
+        // MyClass7.staticMethod = function() {
+        //     return this === MyClass7;
+        // }
 
         // console.log(MyClass7.staticMethod());
 
-        class Articles {
-            static particles2 = 2000;
+        // class Articles {
+        //     static particles2 = 2000;
 
-            constructor(title, date) {
-                this.title = title;
-                this.date = date;
-            }
+        //     constructor(title, date) {
+        //         this.title = title;
+        //         this.date = date;
+        //     }
 
-            static compare(obj1, obj2) {
-                return obj1.date - obj2.date;
-            }
+        //     static compare(obj1, obj2) {
+        //         return obj1.date - obj2.date;
+        //     }
 
-            show() {
-                console.log(Articles.particles2)
-            }
+        //     show() {
+        //         console.log(Articles.particles2)
+        //     }
 
-            static show2() {
-                console.log(Articles.particles2)
-            }
-        }
+        //     static show2() {
+        //         console.log(Articles.particles2)
+        //     }
+        // }
 
-        let articles = [
-            new Articles("HTML", new Date(2021, 1, 1)),
-            new Articles("CSS", new Date(2021, 0, 1)),
-            new Articles("JavaScript", new Date(2021, 11, 1))
-        ]
+        // let articles = [
+        //     new Articles("HTML", new Date(2021, 1, 1)),
+        //     new Articles("CSS", new Date(2021, 0, 1)),
+        //     new Articles("JavaScript", new Date(2021, 11, 1))
+        // ]
 
         // articles.sort(Articles.compare);
         // console.log(articles);
@@ -1100,53 +1100,54 @@
         // console.log(Articles.particles2);
 
         // obj10.show();
-        Articles.show2()
+        // Articles.show2()
 
-        class Articles2 extends Articles {
-
-        }
+        // class Articles2 extends Articles {
+        // }
 
         // console.log(Articles2.__proto__)
         // console.log(Articles2.prototype.__proto__ === Articles.prototype);
 
-        class MyCLass8 {
-            #power = 200
+        // class MyCLass8 {
+        //     #power = 200
 
-            constructor(data) {
-                this._waterMark = data;
-            }
+        //     constructor(data) {
+        //         this._waterMark = data;
+        //     }
 
-            set power(value) {
-                if (value < 200) {
-                    console.log("Low power");
-                    return;
-                }
+        //     set power(value) {
+        //         if (value < 200) {
+        //             console.log("Low power");
+        //             return;
+        //         }
 
-                this.#power = value;
-            }
+        //         this.#power = value;
+        //     }
 
             // get power() {
             //     return this.#power;
             // }
 
-            set waterMark(value) {
-                if (value < 200) {
-                    console.log("Low waterMark");
-                    return;
-                }
+            // set waterMark(value) {
+            //     if (value < 200) {
+            //         console.log("Low waterMark");
+            //         return;
+            //     }
 
-                this._waterMark = value;
-            }
+            //     this._waterMark = value;
+            // }
 
             // get waterMark() {
             //     return this._waterMark;
             // }
-        }
+        // }
 
-        const obj11 = new MyCLass8(500);
-        console.log("Private", obj11.power);
-        console.log("Protected", obj11.waterMark);
+        // const obj11 = new MyCLass8(500);
+        // console.log("Private", obj11.power);
+        // console.log("Protected", obj11.waterMark);
         
+        
+                                                   
     </script>
 </body> 0  
 
